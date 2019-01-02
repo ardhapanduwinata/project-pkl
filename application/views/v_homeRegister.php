@@ -6,7 +6,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <body style="background: white">
 <div class="container register">
-    <div class="row">
+    <div class="row" style="margin-bottom: 5%">
         <div class="col-md-3 register-left">
             <!--https://image.ibb.co/n7oTvU/logo_white.png-->
             <img style="width: 100px" src="<?= base_url('assets/img/Listrik.png') ?>" alt=""/>
