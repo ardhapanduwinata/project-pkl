@@ -6,7 +6,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <body style="background: white">
 <div class="container register">
-    <div class="row" style="margin-bottom: 5%">
+    <div class="row" style="width: 1000px">
         <div class="col-md-3 register-left">
             <!--https://image.ibb.co/n7oTvU/logo_white.png-->
             <img style="width: 100px" src="<?= base_url('assets/img/Listrik.png') ?>" alt=""/>
@@ -34,8 +34,8 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" placeholder="Password" value="" />
-                                    <input type="submit" class="btnRegister"  value="Login"/>
-                                </div>    
+                                    <input type="submit" class="btnLogin"  value="Login"/>
+                                </div>
                             </div>
                         </div>
                     </div>
