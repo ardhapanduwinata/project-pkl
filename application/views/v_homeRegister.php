@@ -17,13 +17,10 @@
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="signup-tab" data-toggle="tab" href="<?= 
-                    base_url('homeRegister') ?>" role="tab" aria-controls="signup" aria-selected="true">Sign Up</a>
+                    <a class="nav-link active" id="signup-tab" data-toggle="tab" href="<?= base_url('homeRegister') ?>" role="tab" aria-controls="signup" aria-selected="true">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="login-tab" data-toggle="tab" href="<?= 
-                    base_url('homeLogin') ?>
-                    " role="tab" aria-controls="login" aria-selected="false">Log In</a>
+                    <a class="nav-link" id="login-tab" data-toggle="tab" href="<?= base_url('homeLogin') ?> "role="tab" aria-controls="login" aria-selected="false">Log In</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -42,18 +39,6 @@
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <div class="maxl">
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" value="male" checked>
-                                        <span> Male </span>
-                                    </label>
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" value="female">
-                                        <span>Female </span>
-                                    </label>
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
