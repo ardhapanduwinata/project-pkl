@@ -27,16 +27,18 @@ class homeLogin extends CI_Controller {
             'password' => md5($password)
         );
         $cek = $this->models->get_selected('users', $where)->num_rows();
+        $user = $this->models->get_selected('users', $where)->result();
 
         if($cek > 0)
         {
-            $user = $this->models->get_selected('users', $where)->result();
-            $data_session = array(
-                'nama' => $user['nama_user'],
-                'status' => 'login',
-                'role' => $user['role']
-            );
-
+            foreach($user as $a)
+            {
+                $data_session = array(
+                    'nama' => $a->nama_user,
+                    'status' => 'login',
+                    'role' => $a->role
+                );
+            }
             $this->session->set_userdata($data_session);
 
             redirect(base_url('homeAdmin'));

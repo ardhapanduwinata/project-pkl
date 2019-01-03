@@ -44,6 +44,7 @@
 <section id="topbar" class="d-none d-lg-block">
     <div class="container clearfix">
         <div class="contact-info float-left">
+            <i class="fa fa-p"></i> Welcome <?= $siapa ?>
             <i class="fa fa-envelope-o"></i> <a href="mailto:contact@example.com">contact@example.com</a>
             <i class="fa fa-phone"></i> +1 5589 55488 55
         </div>
