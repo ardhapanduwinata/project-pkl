@@ -22,5 +22,4 @@ class models extends CI_Model {
     {
         $this->db->insert($table, $data);
     }
-
 }
