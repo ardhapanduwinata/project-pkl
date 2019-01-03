@@ -27,12 +27,12 @@
                 <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
                     <h3 class="register-heading">Sign Up</h3>
                     <form action="<?= base_url('homeRegister/aksi_register')?>" method="post">
-                        <?php if(!empty(validation_errors())){ ?>
-                            <div class="alert alert-warning alert-dismissable">
-                                <a class="panel-close close" data-dismiss="alert">×</a>
-                                <?php echo validation_errors(); ?>
-                            </div>
-                        <?php } ?>
+<!--                        --><?php //if(!empty(validation_errors())){ ?>
+<!--                            <div class="alert alert-warning alert-dismissable">-->
+<!--                                <a class="panel-close close" data-dismiss="alert">×</a>-->
+<!--                                --><?php //echo validation_errors(); ?>
+<!--                            </div>-->
+<!--                        --><?php //} ?>
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -42,7 +42,7 @@
                                 <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap *" value="" required/>
                             </div>
                             <div class="form-group">
-                                <select class="form-control" name="jurusan" required>
+                                <select class="form-control" name="jurusan">
                                     <option class="hidden" selected disabled>Jurusan</option>
                                     <?php foreach($jurusan as $row) { ?>
                                         <option value="<?php echo $row->id_jurusan;?>"><?php echo $row->jurusan;?></option>
