@@ -27,13 +27,13 @@
                 <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
                     <h3 class="register-heading">Sign Up</h3>
                     <form action="<?= base_url('homeRegister/aksi_register')?>" method="post">
-<!--                        --><?php //if(!empty(validation_errors())){ ?>
-<!--                            <div class="alert alert-warning alert-dismissable">-->
-<!--                                <a class="panel-close close" data-dismiss="alert">×</a>-->
-<!--                                --><?php //echo validation_errors(); ?>
-<!--                            </div>-->
-<!--                        --><?php //} ?>
                     <div class="row register-form">
+                        <?php if(!empty(validation_errors())){ ?>
+                            <div class="alert alert-info alert-dismissable" style="width: 100%">
+                                <a class="panel-close close" data-dismiss="alert">×</a>
+                                <?php echo validation_errors(); ?>
+                            </div>
+                        <?php } ?>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="nim" placeholder="NIM *" value="" required/>
