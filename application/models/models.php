@@ -40,11 +40,4 @@ class models extends CI_Model {
         return  $this->db->insert_id();
     }
 
-    public function update_data1($key)
-    {
-        $this->db->set('aktif', 'Sudah');
-        $this->db->where('id_user','md5($key)');
-        $this->db->update('users');
-    }
-
 }
