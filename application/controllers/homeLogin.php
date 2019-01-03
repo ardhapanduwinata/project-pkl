@@ -47,4 +47,6 @@ class homeLogin extends CI_Controller {
             $this->load->view('v_homeLogin', $data);
         }
     }
+
+
 }
