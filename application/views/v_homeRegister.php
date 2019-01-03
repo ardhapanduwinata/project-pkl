@@ -26,40 +26,42 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
                     <h3 class="register-heading">Sign Up</h3>
+                    <form action="<?= base_url('homeLogin/aksi_register')?>" method="post">
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="NIM *" value="" />
+                                <input type="text" class="form-control" name="nim" placeholder="NIM *" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nama Lengkap *" value="" />
+                                <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap *" value="" />
                             </div>
                             <div class="form-group">
-                                <select class="form-control">
-                                    <option class="hidden"  selected disabled>Jurusan</option>
+                                <select class="form-control" name="jurusan">
+                                    <option class="hidden" selected disabled>Jurusan</option>
                                     <option>Teknik Informatika</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control"  placeholder="Universitas *" value="" />
+                                <input type="text" class="form-control" name="univ" placeholder="Universitas *" value="" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" name="txtEmpPhone" class="form-control" placeholder="Alamat Anda *" value="" />
+                                <input type="text" name="alamat" class="form-control" placeholder="Alamat Anda *" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email Anda *" value="" />
+                                <input type="email" class="form-control" name="email" placeholder="Email Anda *" value="" />
                             </div>
                             <div class="form-group">
-                                <input type="text" name="txtEmpPhone" class="form-control" placeholder="Username Anda *" value="" />
+                                <input type="text" name="username" class="form-control" placeholder="Username Anda *" value="" />
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Password Anda *" value="" />
                             </div>
-                            <input type="submit" class="btnRegister"  value="Register"/>
+                            <input type="submit" class="btnRegister" name="register"  value="Register"/>
                         </div>
                     </div>
+                </form>
                 </div>
             </div>
         </div>
