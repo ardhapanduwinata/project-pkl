@@ -21,16 +21,7 @@ class HomeRegister extends CI_Controller {
     public function aksi_register()
     {
 
-        $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-        $this->form_validation->set_rules('nim', 'NIM', 'trim|required');
-        $this->form_validation->set_rules('jurusan', 'Jurusan', 'trim|required');
-        $this->form_validation->set_rules('univ', 'Universitas', 'trim|required');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[users.username]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-
-
+//        $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[users.username]');
 
         if ($this->form_validation->run()==FALSE){
             $this->load->view('v_homeRegister');

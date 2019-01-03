@@ -36,13 +36,13 @@
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="nim" placeholder="NIM *" value="" />
+                                <input type="text" class="form-control" name="nim" placeholder="NIM *" value="" required/>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap *" value="" />
+                                <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap *" value="" required/>
                             </div>
                             <div class="form-group">
-                                <select class="form-control" name="jurusan">
+                                <select class="form-control" name="jurusan" required>
                                     <option class="hidden" selected disabled>Jurusan</option>
                                     <?php foreach($jurusan as $row) { ?>
                                         <option value="<?php echo $row->id_jurusan;?>"><?php echo $row->jurusan;?></option>
@@ -50,21 +50,21 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="univ" placeholder="Universitas *" value="" />
+                                <input type="text" class="form-control" name="univ" placeholder="Universitas *" value="" required/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" name="alamat" class="form-control" placeholder="Alamat Anda *" value="" />
+                                <input type="text" name="alamat" class="form-control" placeholder="Alamat Anda *" value="" required/>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email Anda *" value="" />
+                                <input type="email" class="form-control" name="email" placeholder="Email Anda *" value="" required/>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="username" class="form-control" placeholder="Username Anda *" value="" />
+                                <input type="text" name="username" class="form-control" placeholder="Username Anda *" value="" required/>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="password" placeholder="Password Anda *" value="" />
+                                <input type="password" class="form-control" name="password" placeholder="Password Anda *" value="" required/>
                             </div>
                             <input type="submit" class="btnRegister" name="register"  value="Register"/>
                         </div>

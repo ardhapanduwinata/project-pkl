@@ -29,10 +29,4 @@ class homeAdmin extends CI_Controller {
         $this->load->view('header&footer/v_footerAdmin');
         $this->load->view('v_modals');
     }
-
-    public function logout()
-    {
-        $this->session->sess_destroy();
-        redirect(base_url('homeLogin'));
-    }
 }
