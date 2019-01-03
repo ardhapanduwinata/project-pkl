@@ -4,6 +4,7 @@
 
 <link href="<?=base_url('assets')?>/css/login-register.css" rel="stylesheet">
 <!------ Include the above in your HEAD tag ---------->
+<head><title><?= $title ?></title></head>
 <body style="background: white">
 <div class="container register">
     <div class="row" style="width: 1000px">
@@ -17,10 +18,10 @@
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link" id="signup-tab" data-toggle="tab" href="<?= base_url('homeRegister') ?>" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
+                    <a class="nav-link" id="signup-tab" data-toggle="tab" href="<?= base_url('homeLogin/register') ?>" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="<?= base_url('homeLogin') ?> "role="tab" aria-controls="login" aria-selected="true">Log In</a>
+                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="<?= base_url('homeLogin/login') ?> "role="tab" aria-controls="login" aria-selected="true">Log In</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -29,13 +30,15 @@
                         <div class="row register-form">
                             <div class="col-md-2"></div>
                             <div class="col-md-8">
+                                <form action="<?= base_url('homeLogin/aksi_login')?>" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Username" value="" />
+                                    <input type="text" name="username" class="form-control" placeholder="Username" required/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password" value="" />
-                                    <input type="submit" class="btnLogin"  value="Login"/>
+                                    <input type="password" name="password" class="form-control" placeholder="Password" required/>
+                                    <button type="submit" class="btnLogin" />Login</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
