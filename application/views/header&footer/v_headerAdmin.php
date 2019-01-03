@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Reveal Bootstrap Template</title>
+    <title><?= $title ?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -71,8 +71,8 @@
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a class="nav-link" data-toggle="modal" data-target="#signup_modal" href="">Sign Up</a></li>
-                <li><a class="nav-link" data-toggle="modal" data-target="#login_modal" href="">Login</a></li>
+                <li><a class="nav-link" data-toggle="modal" href="">Manage Data</a></li>
+                <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>

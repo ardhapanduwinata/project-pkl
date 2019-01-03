@@ -10,17 +10,12 @@ class homeLogin extends CI_Controller {
         $this->load->model('models');
     }
 
-    public function login()
+    public function index()
 	{
 	    $data['title'] = "Home Login";
+	    $data['note'] = "";
 		$this->load->view('v_homeLogin', $data);
 	}
-
-	public function register()
-    {
-        $data['title'] = "Home Register";
-        $this->load->view('v_homeRegister', $data);
-    }
 
 	public function aksi_login()
     {
@@ -35,9 +30,19 @@ class homeLogin extends CI_Controller {
 
         if($cek > 0)
         {
+            $user = $this->models->get_selected('users', $where)->result();
             $data_session = array(
-                'nama' => $username
+                'nama' => $user['nama_user'],
+                'status' => 'login',
+                'role' => $user['role']
             );
+
+            $this->session->set_userdata($data_session);
+
+            redirect(base_url('homeAdmin'));
+        } else {
+            $data['note'] = "Username atau Password anda salah!";
+            $this->load->view('v_homeLogin', $data);
         }
     }
 }

@@ -18,10 +18,10 @@
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link" id="signup-tab" data-toggle="tab" href="<?= base_url('homeLogin/register') ?>" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
+                    <a class="nav-link" id="signup-tab" data-toggle="tab" href="<?= base_url('homeRegister') ?>" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="<?= base_url('homeLogin/login') ?> "role="tab" aria-controls="login" aria-selected="true">Log In</a>
+                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="<?= base_url('homeLogin') ?> "role="tab" aria-controls="login" aria-selected="true">Log In</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -36,6 +36,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control" placeholder="Password" required/>
+                                    <?= $note ?>
                                     <button type="submit" class="btnLogin" />Login</button>
                                 </div>
                                 </form>
