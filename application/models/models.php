@@ -27,4 +27,24 @@ class models extends CI_Model {
     {
         return $this->db->get_where($table,$where,$limit);
     }
+
+    public function update_data($table, $data, $where)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
+
+    public function add_data1($table, $data)
+    {
+        $this->db->insert($table, $data);
+        return  $this->db->insert_id();
+    }
+
+    public function update_data1($key)
+    {
+        $this->db->set('aktif', 'Sudah');
+        $this->db->where('id_user','md5($key)');
+        $this->db->update('users');
+    }
+
 }
