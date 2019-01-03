@@ -10,17 +10,11 @@ class homeLogin extends CI_Controller {
         $this->load->model('models');
     }
 
-    public function login()
+    public function index()
 	{
 	    $data['title'] = "Home Login";
 		$this->load->view('v_homeLogin', $data);
 	}
-
-	public function register()
-    {
-        $data['title'] = "Home Register";
-        $this->load->view('v_homeRegister', $data);
-    }
 
 	public function aksi_login()
     {
@@ -40,4 +34,6 @@ class homeLogin extends CI_Controller {
             );
         }
     }
+
+
 }

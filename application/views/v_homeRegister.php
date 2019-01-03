@@ -17,7 +17,7 @@
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="signup-tab" data-toggle="tab" href="<?= base_url('homeLogin/register') ?>" role="tab" aria-controls="signup" aria-selected="true">Sign Up</a>
+                    <a class="nav-link active" id="signup-tab" data-toggle="tab" href="<?= base_url('homeLogin') ?>" role="tab" aria-controls="signup" aria-selected="true">Sign Up</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="login-tab" data-toggle="tab" href="<?= base_url('homeLogin/login') ?> "role="tab" aria-controls="login" aria-selected="false">Log In</a>
