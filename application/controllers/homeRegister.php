@@ -87,21 +87,28 @@ class HomeRegister extends CI_Controller {
 
     public function verification($key)
     {
+        $data = array(
+            'aktif' => 'Sudah'
+        );
 
-        $this->models->update_data1($key);
+        $where = array(
+            'md5(id_user)' => $key
+        );
 
-//        $data_user = $this->models->get_selected('users', $where)->result();
-//
-//        foreach($data_user as $a)
-//        {
-//            if($a->aktif == "Sudah"){
-//                echo "<script>alert('Berhasil melakukan verifikasi email, Anda sudah bisa melakukan login');</script>";
-//                redirect('homeLogin','refresh');
-//            } else {
-//                echo "<script>alert('Gagal melakukan verifikasi email');</script>";
-//                redirect('homeLogin','refresh');
-//            }
-//        }
+        $this->models->update_data('users',$data, $where);
+
+        $data_user = $this->models->get_selected('users', $where)->result();
+
+        foreach($data_user as $a)
+        {
+            if($a->aktif == "Sudah"){
+                echo "<script>alert('Berhasil melakukan verifikasi email, Anda sudah bisa melakukan login');</script>";
+                redirect('homeLogin','refresh');
+            } else {
+                echo "<script>alert('Gagal melakukan verifikasi email');</script>";
+                redirect('homeLogin','refresh');
+            }
+        }
 
     }
 
