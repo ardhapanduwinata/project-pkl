@@ -28,4 +28,14 @@ class homeUser extends CI_Controller {
         $this->load->view('header&footer/v_footerUser');
         $this->load->view('v_modals');
     }
+
+    public function biodata()
+    {
+        $data['siapa'] = $this->session->userdata('nama');
+
+        $this->load->view('header&footer/v_headerUser', $data);
+        $this->load->view('user/v_biodataUser');
+        $this->load->view('header&footer/v_footerUser');
+        $this->load->view('v_modals');
+    }
 }
