@@ -4,10 +4,16 @@
 
 <link href="<?=base_url('assets')?>/css/login-register.css" rel="stylesheet">
 <!------ Include the above in your HEAD tag ---------->
-<head><title><?= $title ?></title></head>
+<head>
+    <title><?= $title ?></title>
+
+    <!-- Favicons -->
+    <link href="<?=base_url('assets')?>/img/favicon.ico" rel="shortcut icon">
+    <link href="<?=base_url('assets')?>/img/apple-icon-180x180.png" rel="apple-touch-icon">
+</head>
 <body style="background: white">
 <div class="container register">
-    <div class="row" style="width: 1000px">
+    <div class="row" style="height: 450px">
         <div class="col-md-3 register-left">
             <!--https://image.ibb.co/n7oTvU/logo_white.png-->
             <img style="width: 100px" src="<?= base_url('assets/img/Listrik.png') ?>" alt=""/>
