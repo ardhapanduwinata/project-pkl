@@ -23,8 +23,9 @@ class models extends CI_Model {
         $this->db->insert($table, $data);
     }
 
-    public function get_selected_limit($table,$where,$limit)
+    public function get_selected_limit($table,$where,$limit,$orderby,$id)
     {
+        $this->db->order_by($id, $orderby);
         return $this->db->get_where($table,$where,$limit);
     }
 

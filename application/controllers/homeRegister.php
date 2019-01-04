@@ -27,16 +27,8 @@ class HomeRegister extends CI_Controller {
             $this->load->view('v_homeRegister',$data);
 
         }else{
-            $data = array(
-                'nim' => $this->input->post("nim"),
-                'nama_mhs' => $this->input->post("nama"),
-                'id_jurusan' => $this->input->post("jurusan"),
-                'univ' => $this->input->post("univ"),
-                'alamat' => $this->input->post("alamat"),
-                'email' => $this->input->post("email"),
-            );
 
-            $data1 = array(
+            $data = array(
                 'role' => 1,
                 'nama_user' => $this->input->post("nama"),
                 'username' => $this->input->post("username"),
@@ -44,8 +36,30 @@ class HomeRegister extends CI_Controller {
                 'foto' => 'default.png'
             );
 
-            $this->models->add_data("mhs",$data);
-            $insert = $this->models->add_data1("users",$data1);
+            $where = array(
+                'nama_user' =>$this->input->post("nama")
+            );
+
+            $insert = $this->models->add_data1("users",$data);
+            $select = $this->models->get_selected_limit("users",$where,1,'desc','id_user')->result();
+
+            foreach($select as $a)
+            {
+                $idUser = $a->id_user;
+            }
+
+            $data1 = array(
+                'nim' => $this->input->post("nim"),
+                'nama_mhs' => $this->input->post("nama"),
+                'id_jurusan' => $this->input->post("jurusan"),
+                'univ' => $this->input->post("univ"),
+                'alamat' => $this->input->post("alamat"),
+                'email' => $this->input->post("email"),
+                'id_user' => $idUser
+            );
+
+            $this->models->add_data("mhs",$data1);
+
 
             //enkripsi id
             $encrypted_id = md5($insert);
@@ -79,11 +93,13 @@ class HomeRegister extends CI_Controller {
             if($this->email->send())
             {
                 echo "<script>alert('Berhasil melakukan registrasi, silahkan cek email kamu');</script>";
+                redirect('homeLogin','refresh');
             }else
             {
                 echo "<script>alert('Berhasil melakukan registrasi, namun gagal mengirim verifikasi email');</script>";
+                redirect('homeLogin','refresh');
             }
-            //redirect('homeLogin','refresh');
+            redirect('homeLogin','refresh');
         }
     }
 
