@@ -21,11 +21,12 @@ class homeUser extends CI_Controller {
 
     public function index()
     {
+        $data['title'] = 'Home User';
         $data['siapa'] = $this->session->userdata('nama');
 
-        $this->load->view('header&footer/v_headerUser', $data);
+        $this->load->view('header&footer/user/v_headerHome', $data);
         $this->load->view('user/v_homeUser');
-        $this->load->view('header&footer/v_footerUser');
+        $this->load->view('header&footer/user/v_footerHome');
         $this->load->view('v_modals');
     }
 }

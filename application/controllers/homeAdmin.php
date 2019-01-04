@@ -24,9 +24,9 @@ class homeAdmin extends CI_Controller {
         $data['title'] = "Home Admin";
         $data['siapa'] = $this->session->userdata('nama');
 
-        $this->load->view('header&footer/v_headerAdmin', $data);
+        $this->load->view('header&footer/admin/v_headerHome', $data);
         $this->load->view('admin/v_homeAdmin');
-        $this->load->view('header&footer/v_footerAdmin');
+        $this->load->view('header&footer/admin/v_footerHome');
         $this->load->view('v_modals');
     }
 }

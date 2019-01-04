@@ -24,7 +24,8 @@ class homeLogin extends CI_Controller {
 
         $where = array(
             'username' => $username,
-            'password' => md5($password)
+            'password' => md5($password),
+            'aktif'    => 'Sudah'
         );
         $cek = $this->models->get_selected('users', $where)->num_rows();
         $user = $this->models->get_selected('users', $where)->result();
@@ -43,7 +44,7 @@ class homeLogin extends CI_Controller {
 
             redirect(base_url('homeAdmin'));
         } else {
-            $data['note'] = "Username atau Password anda salah!";
+            $data['note'] = "Username atau Password anda salah! Atau Anda belum verifikasi email";
             $this->load->view('v_homeLogin', $data);
         }
     }
