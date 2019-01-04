@@ -24,9 +24,19 @@ class homeUser extends CI_Controller {
         $data['title'] = 'Home User';
         $data['siapa'] = $this->session->userdata('nama');
 
-        $this->load->view('header&footer/user/v_headerHome', $data);
+        $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_homeUser');
-        $this->load->view('header&footer/user/v_footerHome');
+        $this->load->view('header&footer/user/v_footerUser');
+        $this->load->view('v_modals');
+    }
+
+    public function biodata()
+    {
+        $data['siapa'] = $this->session->userdata('nama');
+
+        $this->load->view('header&footer/user/v_headerUser', $data);
+        $this->load->view('user/v_biodataUser');
+        $this->load->view('header&footer/user/v_footerUser');
         $this->load->view('v_modals');
     }
 }
