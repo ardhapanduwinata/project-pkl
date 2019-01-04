@@ -14,8 +14,8 @@ class HomeRegister extends CI_Controller {
 	{
 		$data['title'] = "Home Register";
 		$data['jurusan'] = $this->models->get_data('jurusan')->result();
-        $this->load->view('v_homeRegister', $data);
 
+        $this->load->view('v_homeRegister', $data);
 	}
 
     public function aksi_register()

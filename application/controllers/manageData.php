@@ -23,9 +23,22 @@ class manageData extends CI_Controller {
     {
         $data['title'] = "Manage Data";
         $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Dashboard";
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
-        $this->load->view('admin/v_manageData');
+        $this->load->view('admin/v_md_dashboard');
+        $this->load->view('header&footer/admin/v_footerManageData');
+        $this->load->view('v_modals');
+    }
+
+    public function jurusan()
+    {
+        $data['title'] = "Manage Jurusan";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Jurusan";
+
+        $this->load->view('header&footer/admin/v_headerManageData', $data);
+        $this->load->view('admin/v_md_jurusan');
         $this->load->view('header&footer/admin/v_footerManageData');
         $this->load->view('v_modals');
     }
