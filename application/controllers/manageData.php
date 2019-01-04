@@ -25,7 +25,7 @@ class manageData extends CI_Controller {
         $data['siapa'] = $this->session->userdata('nama');
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
-        $this->load->view('admin/v_homeAdmin');
+        $this->load->view('admin/v_manageData');
         $this->load->view('header&footer/admin/v_footerManageData');
         $this->load->view('v_modals');
     }

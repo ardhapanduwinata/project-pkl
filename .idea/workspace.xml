@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42e92b0a-0b43-42e0-9246-a01f4089d4d0" name="Default" comment="">
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+=======
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/application/views/header&amp;footer/v_footerAdmin.php" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/assets/img/apple-touch-icon.png" afterPath="" />
@@ -19,6 +23,7 @@
       <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/header&amp;footer/v_headerUser.php" afterPath="$PROJECT_DIR$/application/views/header&amp;footer/user/v_headerUser.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +32,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
+      <file leaf-file-name="homeUser.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controllers/homeUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="27" column="53" lean-forward="false" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+=======
       <file leaf-file-name="v_headerHome.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/header&amp;footer/admin/v_headerHome.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -68,6 +80,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="503">
               <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
               <folding />
             </state>
           </provider>
@@ -78,7 +91,17 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+              <folding>
+                <marker date="1546569333687" expanded="true" signature="110:1414" ph="..." />
+                <marker date="1546569333687" expanded="true" signature="390:1290" ph="{...}" />
+                <marker date="1546569333687" expanded="true" signature="525:603" ph="..." />
+                <marker date="1546569333687" expanded="true" signature="1219:1283" ph="..." />
+                <marker date="1546569333687" expanded="true" signature="1320:1413" ph="{...}" />
+              </folding>
+=======
               <folding />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
             </state>
           </provider>
         </entry>
@@ -88,7 +111,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="217">
               <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+<<<<<<< HEAD
+              <folding>
+                <marker date="1546569333686" expanded="true" signature="110:863" ph="..." />
+                <marker date="1546569333686" expanded="true" signature="541:862" ph="{...}" />
+              </folding>
+=======
               <folding />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
             </state>
           </provider>
         </entry>
@@ -97,10 +127,15 @@
         <entry file="file://$PROJECT_DIR$/application/views/v_homeLogin.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="186">
+<<<<<<< HEAD
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="6" />
+              <folding />
+=======
               <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="12" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
             </state>
           </provider>
         </entry>
@@ -108,6 +143,23 @@
       <file leaf-file-name="v_homeRegister.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/v_homeRegister.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="217">
+              <caret line="55" column="46" lean-forward="false" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
+              <folding>
+                <marker date="1546569333701" expanded="true" signature="3815:3877" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4690" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4717" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4741" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4764" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4783" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4798" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4809" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4816" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3815:4824" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="3930:4098" ph="..." />
+                <marker date="1546569333701" expanded="true" signature="4377:4554" ph="..." />
+=======
             <state relative-caret-position="434">
               <caret line="62" column="46" lean-forward="false" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
               <folding>
@@ -116,6 +168,7 @@
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
               </folding>
             </state>
           </provider>
@@ -126,6 +179,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="496">
               <caret line="85" column="14" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
+<<<<<<< HEAD
+              <folding>
+                <marker date="1546569333703" expanded="true" signature="9:73" ph="{...}" />
+                <marker date="1546569333703" expanded="true" signature="1652:1674" ph="{...}" />
+                <marker date="1546569333703" expanded="true" signature="1704:1858" ph="{...}" />
+                <marker date="1546569333703" expanded="true" signature="1894:1915" ph="{...}" />
+                <marker date="1546569333703" expanded="true" signature="1952:2099" ph="{...}" />
+                <marker date="1546569333703" expanded="true" signature="2117:2209" ph="{...}" />
+              </folding>
+=======
               <folding />
             </state>
           </provider>
@@ -137,6 +200,7 @@
             <state relative-caret-position="271">
               <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
               <folding />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
             </state>
           </provider>
         </entry>
@@ -144,6 +208,10 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+<<<<<<< HEAD
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+=======
     <option name="ROOT_SYNC" value="SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -162,6 +230,7 @@
       </list>
     </option>
   </component>
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -169,11 +238,14 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+<<<<<<< HEAD
+=======
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="width" value="932" />
     <option name="height" value="1090" />
   </component>
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -234,6 +306,8 @@
             <path>
               <item name="project-pkl" type="b2602c69:ProjectViewProjectNode" />
               <item name="project-pkl" type="2a2b976b:PhpTreeStructureProvider$1" />
+<<<<<<< HEAD
+=======
               <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="header&amp;footer" type="2a2b976b:PhpTreeStructureProvider$1" />
@@ -250,6 +324,7 @@
             <path>
               <item name="project-pkl" type="b2602c69:ProjectViewProjectNode" />
               <item name="project-pkl" type="2a2b976b:PhpTreeStructureProvider$1" />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
               <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -288,6 +363,18 @@
       </list>
     </option>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
@@ -303,6 +390,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="71000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-11" y="-11" width="1847" height="1102" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24986301" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
     <option name="totallyTimeSpent" value="5730000" />
   </component>
   <component name="ToolWindowManager">
@@ -310,6 +405,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24986301" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -328,9 +424,12 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+<<<<<<< HEAD
+=======
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -358,10 +457,15 @@
     <entry file="file://$PROJECT_DIR$/application/views/v_homeLogin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
+<<<<<<< HEAD
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="6" />
+          <folding />
+=======
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="12" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
           </folding>
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
         </state>
       </provider>
     </entry>
@@ -369,12 +473,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
           <caret line="85" column="14" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1546569333703" expanded="true" signature="9:73" ph="{...}" />
+            <marker date="1546569333703" expanded="true" signature="1652:1674" ph="{...}" />
+            <marker date="1546569333703" expanded="true" signature="1704:1858" ph="{...}" />
+            <marker date="1546569333703" expanded="true" signature="1894:1915" ph="{...}" />
+            <marker date="1546569333703" expanded="true" signature="1952:2099" ph="{...}" />
+            <marker date="1546569333703" expanded="true" signature="2117:2209" ph="{...}" />
+          </folding>
+=======
           <folding />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/v_homeRegister.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="217">
+          <caret line="55" column="46" lean-forward="false" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
+          <folding>
+            <marker date="1546569333701" expanded="true" signature="3815:3877" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4690" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4717" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4741" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4764" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4783" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4798" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4809" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4816" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3815:4824" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="3930:4098" ph="..." />
+            <marker date="1546569333701" expanded="true" signature="4377:4554" ph="..." />
+=======
         <state relative-caret-position="434">
           <caret line="62" column="46" lean-forward="false" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
           <folding>
@@ -383,6 +515,7 @@
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
           </folding>
         </state>
       </provider>
@@ -397,6 +530,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/v_manageData.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="-272">
+          <caret line="908" column="35" lean-forward="true" selection-start-line="908" selection-start-column="35" selection-end-line="908" selection-end-column="35" />
+          <folding />
+=======
         <state relative-caret-position="-293">
           <caret line="908" column="35" lean-forward="true" selection-start-line="908" selection-start-column="35" selection-end-line="908" selection-end-column="35" />
           <folding>
@@ -406,6 +544,7 @@
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#li#4;n#ul#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#li#6;n#ul#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
         </state>
       </provider>
     </entry>
@@ -413,7 +552,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1546569333687" expanded="true" signature="110:1414" ph="..." />
+            <marker date="1546569333687" expanded="true" signature="390:1290" ph="{...}" />
+            <marker date="1546569333687" expanded="true" signature="525:603" ph="..." />
+            <marker date="1546569333687" expanded="true" signature="1219:1283" ph="..." />
+            <marker date="1546569333687" expanded="true" signature="1320:1413" ph="{...}" />
+          </folding>
+=======
           <folding />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
         </state>
       </provider>
     </entry>
@@ -421,6 +570,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1546569333686" expanded="true" signature="110:863" ph="..." />
+            <marker date="1546569333686" expanded="true" signature="541:862" ph="{...}" />
+          </folding>
+=======
           <folding />
         </state>
       </provider>
@@ -430,6 +585,7 @@
         <state relative-caret-position="503">
           <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
           <folding />
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
         </state>
       </provider>
     </entry>
@@ -449,5 +605,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/application/controllers/homeUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="27" column="53" lean-forward="false" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+=======
+>>>>>>> 569641dba560a68f09f72b44f6094ec59c9594e5
   </component>
 </project>
