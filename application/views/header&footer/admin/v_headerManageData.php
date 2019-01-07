@@ -23,11 +23,19 @@
     <!-- Custom CSS -->
     <link href="<?= base_url('assets') ?>/dist/css/sb-admin-2.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="<?= base_url('assets') ?>/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="<?= base_url('assets') ?>/vendor/datatables/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="<?= base_url('assets') ?>/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
     <!-- Morris Charts CSS -->
     <link href="<?= base_url('assets') ?>/vendor/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="<?= base_url('assets') ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +58,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+            <a class="navbar-brand" href="<?= base_url('admin/homeAdmin') ?>">Hello <?= $siapa ?></a>
         </div>
         <!-- /.navbar-header -->
 
@@ -59,7 +67,7 @@
                 <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
             <li>
-                <a href="<?= base_url('admin/homeAdmin')?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <a href="<?= base_url('admin/homeAdmin')?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
         </ul>
         <!-- /.navbar-top-links -->
@@ -79,13 +87,16 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="<?= base_url('manageData')?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="<?= base_url('admin/manageData')?>"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('manageData/jurusan') ?>"><i class="fa fa-table fa-fw"></i> Jurusan</a>
+                        <a href="<?= base_url('admin/manageData/jurusan') ?>"><i class="fa fa-table fa-fw"></i> Jurusan</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('manageData/Kamus')?>"><i class="fa fa-book fa-fw"></i> Kamus</a>
+                        <a href="<?= base_url('admin/manageData/divisi') ?>"><i class="fas fa-chalkboard-teacher"></i> Divisi</a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('admin/manageData/kamus')?>"><i class="fa fa-book fa-fw"></i> Kamus</a>
                     </li>
                 </ul>
             </div>
