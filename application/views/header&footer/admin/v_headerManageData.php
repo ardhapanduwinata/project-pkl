@@ -59,7 +59,7 @@
                 <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
             <li>
-                <a href="<?= base_url('homeAdmin')?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <a href="<?= base_url('admin/homeAdmin')?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>
         </ul>
         <!-- /.navbar-top-links -->

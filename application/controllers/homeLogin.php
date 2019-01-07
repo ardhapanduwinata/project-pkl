@@ -32,17 +32,23 @@ class homeLogin extends CI_Controller {
 
         if($cek > 0)
         {
-            foreach($user as $a)
-            {
+            foreach($user as $a) {
                 $data_session = array(
                     'nama' => $a->nama_user,
                     'status' => 'login',
-                    'role' => $a->role
+                    'role' => $a->role,
+                    'foto' => $a->foto
                 );
-            }
-            $this->session->set_userdata($data_session);
 
-            redirect(base_url('homeAdmin'));
+                $this->session->set_userdata($data_session);
+                if($a->role == '0')
+                {
+                    redirect(base_url('admin/homeAdmin'));
+                } elseif ($a->role == '1')
+                {
+                    redirect(base_url('user/homeUser'));
+                }
+            }
         } else {
             $data['note'] = "Username atau Password anda salah! Atau Anda belum verifikasi email";
             $this->load->view('v_homeLogin', $data);

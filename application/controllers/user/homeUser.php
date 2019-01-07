@@ -15,7 +15,7 @@ class homeUser extends CI_Controller {
             redirect(base_url('homeLogin'));
         } elseif($role == "0")
         {
-            redirect(base_url('homeAdmin'));
+            redirect(base_url('admin/homeAdmin'));
         }
     }
 
@@ -32,6 +32,7 @@ class homeUser extends CI_Controller {
 
     public function biodata()
     {
+        $data['title'] = "Manage Biodata";
         $data['siapa'] = $this->session->userdata('nama');
 
         $this->load->view('header&footer/user/v_headerUser', $data);

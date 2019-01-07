@@ -15,7 +15,7 @@ class homeAdmin extends CI_Controller {
             redirect(base_url('homeLogin'));
         } elseif($role == "1")
         {
-            redirect(base_url('homeUser'));
+            redirect(base_url('user/homeUser'));
         }
     }
 
