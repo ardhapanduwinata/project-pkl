@@ -34,10 +34,11 @@ class homeLogin extends CI_Controller {
         {
             foreach($user as $a) {
                 $data_session = array(
+                    'id'    => $a->id_user,
                     'nama' => $a->nama_user,
                     'status' => 'login',
-                    'role' => $a->role,
-                    'foto' => $a->foto
+                    'pass' => $a->password,
+                    'role' => $a->role
                 );
 
                 $this->session->set_userdata($data_session);
