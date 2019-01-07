@@ -56,12 +56,9 @@ class homeLogin extends CI_Controller {
         }
     }
 
-    public function add_jurusan()
+    public function logout()
     {
-        $jurusan = $this->input->post('jurusan');
-
-        $data = array(
-
-        );
+        session_destroy();
+        redirect(base_url('homeLogin'));
     }
 }
