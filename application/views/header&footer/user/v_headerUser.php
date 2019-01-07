@@ -65,14 +65,14 @@
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <h1><a class="scrollto" href="<?=site_url('homeUser')?>">Reve<span>al</span></a></h1>
+            <h1><a class="scrollto" href="<?=site_url('user/homeUser')?>">Reve<span>al</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a class="nav-link" href="<?=site_url('homeUser')?>/biodata">Manage Biodata</a></li>
+                <li><a class="nav-link" href="<?=site_url('user/homeUser/biodata')?>/biodata">Manage Biodata</a></li>
                 <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->

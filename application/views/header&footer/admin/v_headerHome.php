@@ -72,7 +72,7 @@
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a class="nav-link" href="<?= base_url('manageData') ?>">Manage Data</a></li>
+                <li><a class="nav-link" href="<?= base_url('admin/manageData') ?>">Manage Data</a></li>
                 <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
