@@ -180,6 +180,16 @@ class homeUser extends CI_Controller {
         $this->session->set_userdata('nama',$this->input->post("nama"));
         echo "<script>alert('Profil User berhasil diubah'); </script>";
         redirect('user/homeUser/biodata','refresh');
+    }
 
+    public function pengajuan()
+    {
+        $data['title'] = 'Pengajuan Magang';
+        $data['siapa'] = $this->session->userdata('nama');
+
+        $this->load->view('header&footer/user/v_headerUser', $data);
+        $this->load->view('user/v_pengajuan');
+        $this->load->view('header&footer/user/v_footerUser');
+        $this->load->view('v_modals');
     }
 }

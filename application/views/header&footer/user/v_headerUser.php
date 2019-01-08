@@ -72,6 +72,7 @@
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
+                <li><a class="nav-link" href="<?=base_url('user/homeUser/pengajuan') ?>">Pengajuan Permohonan Magang</a></li>
                 <li><a class="nav-link" href="<?=site_url('user/homeUser/biodata')?>">Manage Biodata</a></li>
                 <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>
             </ul>
