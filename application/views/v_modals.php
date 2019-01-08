@@ -67,3 +67,41 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="addKamus_modal" tabindex="-1" role="dialog" aria-labelledby="addKamus_modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="<?= base_url('admin/add_kamus') ?>" method="post">
+                    <label>Jurusan</label>
+                    <div class="form-group">
+                        <?php $jurusan=$this->db->get('jurusan') ?>
+                        <select class="form-control" name="jurusan" required>
+                            <?php foreach($jurusan->result as $key) {?>
+                                <option value="<?= $key->id_jurusan ?>"><?= $key->jurusan ?></option>
+                            <?php } ?>
+                        </select>
+
+                        <label for="kategori">Divisi</label>
+                        <?php $divisi=$this->db->get('divisi') ?>
+                        <select class="form-control" name="penerbit" required>
+                            <?php foreach($divisi->result() as $key) {?>
+                                <option value="<?= $key->id_divisi ?>"><?= $key->divisi ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div style="float: right;">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" type="submit">Tambah Data</button>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

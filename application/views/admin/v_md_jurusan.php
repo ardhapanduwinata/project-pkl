@@ -46,15 +46,4 @@
 
 </div>
 <!-- /#wrapper -->
-        <script>
-            $(document).ready(function () {
-                $('#edtJurusan_modal').on('show', function (event) {
-                    var div = $(event.relatedTarget)
-                    var modal = $(this)
-
-                    modal.find('#id').attr("value", div.data('id'));
-                    modal.find('#jurusan').attr("value", div.data('jurusan'));
-                });
-            })
-        </script>
 
