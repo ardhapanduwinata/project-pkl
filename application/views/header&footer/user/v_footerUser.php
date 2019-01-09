@@ -35,5 +35,7 @@
 <!-- Template Main Javascript File -->
 <script src="<?=base_url('assets')?>/js/main.js"></script>
 
+<!--<script src="--><?php //echo base_url('assets'); ?><!--/dropzone/dropzone.js"></script>-->
+
 </body>
 </html>
