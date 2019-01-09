@@ -77,6 +77,7 @@ class magangUser extends CI_Controller
         $on = 'mhs.id_user = users.id_user';
 
         $user = $this->models->get_selected_join($table,$table1,$where,$on)->result();
+
         foreach($user as $a){
            $idMhs = $a->id_mhs;
         }
@@ -113,7 +114,24 @@ class magangUser extends CI_Controller
                 'jenis' => $this->input->post('jenis')
             );
 
-            $this->models->add_data('form_magang',$data);
+            $where1 = array(
+                'id_mhs' =>$idMhs
+            );
+
+            $insert = $this->models->add_data1('form_magang',$data);
+            $select = $this->models->get_selected_limit("form_magang",$where1,1,'desc','id_form')->result();
+
+            foreach($select as $a)
+            {
+                $idForm = $a->id_form;
+            }
+
+            $data1 = array(
+                'id_form' => $idForm,
+                'id_mhs' => $idMhs,
+                'status' => 'Diproses'
+            );
+            $this->models->add_data('surat_konfirm',$data1);
             echo "<script>alert('Berhasil ditambahkan'); </script>";
             redirect('user/magangUser','refresh');
         }
