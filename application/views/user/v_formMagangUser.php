@@ -21,11 +21,14 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="offset-9 col-3" style="float: right">
+                            <button id="add_field_button" class="btn btn-outline-secondary" type="button">Tambah Mahasiswa</button>
+                        </div>
+                        <br><br>
                         <div class="col-md-12">
                             <?php
                             echo form_open_multipart('user/magangUser/uploadPengajuan',array('class' => 'form-horizontal upload-form')); ?>
                             <div class="input_fields_wrap">
-                                <button id="add_field_button" class="btn">Tambah Mahasiswa</button>
                                 <div class="form-group row">
                                     <label for="nim" class="col-4 col-form-label">NIM</label>
                                     <div class="col-8">
@@ -42,14 +45,7 @@
                             <div class="form-group row">
                                 <label for="jurusan" class="col-4 col-form-label">Jurusan</label>
                                 <div class="col-8">
-                                    <select id="jurusan" name="jurusan" class="custom-select" required="required" disabled>
-
-                                        <?php foreach($jurusan as $row) {
-                                            $cat = $row->id_jurusan;
-                                            ?>
-                                            <option <?php if($cat ==  $user[0]->id_jurusan) echo"selected"; ?> value="<?php echo $row->id_jurusan;?>"><?php echo $row->jurusan;?></option>
-                                        <?php } ?>
-                                    </select>
+                                    <input id="univ" name="univ" placeholder="Jurusan Anda" value="<?= $user[0]->id_jurusan?>"<?= $jurusan->jurusan?> class="form-control here" type="text" required="required" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -110,10 +106,9 @@
                                             <div  id="progress-bar-status-show">	</div>
                                         </div>
                                     </div>
-                            </div>
                             <div class="form-group row">
-                                <div class="offset-4 col-8">
-                                    <button name="submit" type="submit" class="btn">Update Profile</button>
+                                <div class="offset-8 col-4" style="float: right;">
+                                    <button name="submit" type="submit" class="btn btn-outline-success">Upload Permohonan Magang</button>
                                 </div>
                             </div>
                             <?php echo form_close();?>
@@ -123,7 +118,7 @@
             </div>
         </div>
     </div>
-
+</div>
 
 
 
