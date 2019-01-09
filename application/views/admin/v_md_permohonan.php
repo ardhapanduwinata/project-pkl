@@ -7,7 +7,7 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                     <tr>
                         <th style="width: 5%">No</th>
@@ -62,9 +62,4 @@
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-</div>
-<!-- /#page-wrapper -->
-
-</div>
-<!-- /#wrapper -->
 

@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4>Form Pengajuan Permohonan Magang / PKL</h4>
+                            <h4>Form Pengajuan Permohonan PKL</h4>
                             <hr>
                         </div>
                     </div>
@@ -66,19 +66,18 @@
                                     <select id="jenis" name="jenis" class="custom-select" required="required">
                                             <option class="hidden" selected disabled>Jenis</option>
                                             <option value="Magang">Magang</option>
-                                            <option value="PKL">PKL</option>
                                             <option value="Penelitian/Wawancara">Penelitian/Wawancara</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tglMulai" class="col-4 col-form-label">Tanggal Mulai Magang</label>
+                                <label for="tglMulai" class="col-4 col-form-label">Tanggal Mulai PKL</label>
                                 <div class="col-8">
                                     <input id="tglMulai" name="tglMulai" placeholder="Tanggal Mulai Magang" class="form-control here" type="date" required="required">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tglAkhir" class="col-4 col-form-label">Tanggal Berakhir Magang</label>
+                                <label for="tglAkhir" class="col-4 col-form-label">Tanggal Berakhir PKL</label>
                                 <div class="col-8">
                                     <input id="tglAkhir" name="tglAkhir" placeholder="Tanggal Berakhir Magang" class="form-control here" type="date" required="required">
                                 </div>
@@ -114,7 +113,7 @@
                                     </div>
                             <div class="form-group row">
                                 <div class="offset-8 col-4" style="float: right;">
-                                    <button name="submit" type="submit" class="btn btn-outline-success">Upload Permohonan Magang</button>
+                                    <button name="submit" type="submit" class="btn btn-outline-success">Upload Permohonan PKL</button>
                                 </div>
                             </div>
                             <?php echo form_close();?>
