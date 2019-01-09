@@ -27,7 +27,7 @@
                                 <?php $divisi=$this->db->get('divisi') ?>
                                 <select class="form-control" name="divisi" required>
                                     <?php foreach($divisi->result() as $key) {
-                                        $cat = $key->id_jurusan?>
+                                        $cat = $key->id_divisi?>
                                         <option <?php if($cat == $a->id_divisi) echo "selected"?>
                                                 value="<?= $key->id_divisi ?>"><?= $key->divisi ?></option>
                                     <?php } ?>

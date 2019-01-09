@@ -21,11 +21,10 @@ class homeUser extends CI_Controller {
 
     public function index()
     {
-        $nama = $this->session->userdata('nama');
-        $where = array('nama_mhs' => $nama);
         $data['title'] = 'Home User';
         $data['siapa'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $where = array('nama_mhs' => $data['siapa']);
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);

@@ -16,7 +16,7 @@
                     '                                <div class="form-group row">\n' +
                     '                                    <label for="nama" class="col-4 col-form-label">Nama Lengkap</label>\n' +
                     '                                    <div class="col-8"><input type="text" name="nama'+x+'" class="form-control here"  placeholder="Nama Lengkap Mahasiswa '+x+' "> </div>\n' +
-                    '                                </div><button id="remove_field" class=" offset-10 col-2 btn">Hapus</button>\n' +
+                    '                                </div><button id="remove_field" class=" offset-10 col-2 btn btn-outline-danger">Hapus</button>\n' +
                     '                            <br><br></div>'); //add input box
             }else{
                 alert('Maksimal hanya boleh 5 Mahasiswa');
