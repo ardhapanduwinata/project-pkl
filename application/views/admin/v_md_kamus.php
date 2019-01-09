@@ -22,7 +22,8 @@
                         <tbody>
                         <tr>
                             <td style="text-align: center"><?= $no++ ?></td>
-                            <td><?= $a->kamus ?></td>
+                            <td><?= $a->jurusan ?></td>
+                            <td><?= $a->divisi ?></td>
                             <td>
                                 <center>
                                     <a class="btn btn-success" href="<?= base_url('admin/manageData/edt_kamus/'.$a->id_kamus) ?>">Edit</a>

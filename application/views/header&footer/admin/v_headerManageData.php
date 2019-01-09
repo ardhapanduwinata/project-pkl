@@ -37,6 +37,12 @@
     <link href="<?= base_url('assets') ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets')?>semantic/dist/semantic.min.css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="<?= base_url('assets')?>semantic/dist/semantic.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -63,6 +69,9 @@
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <a href="admin/homeAdmin"><i class="fas fa-home"></i>Home Page</a>
+            </li>
             <li>
                 <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
@@ -97,6 +106,9 @@
                     </li>
                     <li>
                         <a href="<?= base_url('admin/manageData/kamus')?>"><i class="fa fa-book fa-fw"></i> Kamus</a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('admin/manageData/permohonan')?>"><i class="fas fa-users"></i> Daftar Permohonan Magang</a>
                     </li>
                 </ul>
             </div>

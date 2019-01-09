@@ -44,18 +44,6 @@ class manageData extends CI_Controller {
         $this->load->view('v_modals');
     }
 
-    public function kamus()
-    {
-        $data['title'] = "Manage Kamus";
-        $data['siapa'] = $this->session->userdata('nama');
-        $data['page_header'] = "Kampus Divisi";
-
-        $this->load->view('header&footer/admin/v_headerManageData', $data);
-        $this->load->view('admin/v_md_kamus');
-        $this->load->view('header&footer/admin/v_footerManageData');
-        $this->load->view('v_modals');
-    }
-
     public function add_jurusan()
     {
         $jurusan = $this->input->post('jurusan');
@@ -165,5 +153,83 @@ class manageData extends CI_Controller {
         $where = array('id_divisi' => $id);
         $this->models->delete_data($where, 'divisi');
         redirect(base_url('admin/manageData/divisi'));
+    }
+
+    public function kamus()
+    {
+        $data['title'] = "Manage Kamus";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Kamus Divisi+Jurusan";
+        $data['kamus'] = $this->models->get_3join('kamus', 'jurusan', 'divisi', 'kamus.id_jurusan = jurusan.id_jurusan', 'kamus.id_divisi = divisi.id_divisi')->result();
+
+        $this->load->view('header&footer/admin/v_headerTable_md', $data);
+        $this->load->view('admin/v_md_kamus');
+        $this->load->view('header&footer/admin/v_footerTable_md');
+        $this->load->view('v_modals');
+    }
+
+    public function add_kamus()
+    {
+        $jurusan = $this->input->post('jurusan');
+        $divisi = $this->input->post('divisi');
+
+        $data = array(
+            'id_jurusan' => $jurusan,
+            'id_divisi' => $divisi
+        );
+
+        $this->models->add_data('kamus', $data);
+        redirect(base_url('admin/manageData/kamus'));
+    }
+
+    public function edt_kamus($id)
+    {
+        $where = array('id_kamus' => $id);
+        $data['title'] = "Edit Kamus";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Kamus Divisi+Jurusan";
+        $data['kamus'] = $this->models->get_3selected_join('kamus', 'jurusan', 'divisi', 'kamus.id_jurusan = jurusan.id_jurusan', 'kamus.id_divisi = divisi.id_divisi', $where)->result();
+
+        $this->load->view('header&footer/admin/v_headerTable_md', $data);
+        $this->load->view('admin/v_edt_kamus');
+        $this->load->view('header&footer/admin/v_footerTable_md');
+        $this->load->view('v_modals');
+    }
+
+    public function update_kamus()
+    {
+        $id = $this->input->post('id');
+        $jurusan = $this->input->post('jurusan');
+        $divisi = $this->input->post('divisi');
+
+        $data = array(
+            'id_kamus' => $id,
+            'id_jurusan' => $jurusan,
+            'id_divisi' => $divisi
+        );
+
+        $where = array('id_kamus' => $id);
+
+        $this->models->update_data('kamus', $data, $where);
+        redirect(base_url('admin/manageData/kamus'));
+    }
+
+    public function del_kamus($id)
+    {
+        $where = array('id_kamus' => $id);
+        $this->models->delete_data($where, 'kamus');
+        redirect(base_url('admin/manageData/kamus'));
+    }
+    public function permohonan()
+    {
+        $data['title'] = "Manage Kamus";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Permohonan Magang";
+        $data['datamagang'] = $this->models->get_5join('form_magang', 'mhs', 'kamus', 'jurusan', 'divisi', 'form_magang.id_mhs = mhs.id_mhs', 'mhs.id_jurusan = kamus.id_jurusan', 'kamus.id_jurusan = jurusan.id_jurusan', 'kamus.id_divisi = divisi.id_divisi')->result();
+
+        $this->load->view('header&footer/admin/v_headerTable_md', $data);
+        $this->load->view('admin/v_md_permohonan');
+        $this->load->view('header&footer/admin/v_footerTable_md');
+        $this->load->view('v_modals');
     }
 }
