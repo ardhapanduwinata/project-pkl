@@ -11,13 +11,13 @@ class homeLogin extends CI_Controller {
     }
 
     public function index()
-	{
-	    $data['title'] = "Home Login";
-	    $data['note'] = "";
-		$this->load->view('v_homeLogin', $data);
-	}
+    {
+        $data['title'] = "Home Login";
+        $data['note'] = "";
+        $this->load->view('v_homeLogin', $data);
+    }
 
-	public function aksi_login()
+    public function aksi_login()
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -25,28 +25,25 @@ class homeLogin extends CI_Controller {
         $where = array(
             'username' => $username,
             'password' => md5($password),
-            'aktif'    => 'Sudah'
+            'aktif' => 'Sudah'
         );
         $cek = $this->models->get_selected('users', $where)->num_rows();
         $user = $this->models->get_selected('users', $where)->result();
 
-        if($cek > 0)
-        {
-            foreach($user as $a) {
+        if ($cek > 0) {
+            foreach ($user as $a) {
                 $data_session = array(
-                    'id'    => $a->id_user,
+                    'id' => $a->id_user,
                     'nama' => $a->nama_user,
                     'status' => 'login',
                     'pass' => $a->password,
-                    'role' => $a->role
+                    'role' => $a->role,
                 );
 
                 $this->session->set_userdata($data_session);
-                if($a->role == '0')
-                {
+                if ($a->role == '0') {
                     redirect(base_url('admin/homeAdmin'));
-                } elseif ($a->role == '1')
-                {
+                } elseif ($a->role == '1') {
                     redirect(base_url('user/homeUser'));
                 }
             }

@@ -50,9 +50,9 @@ class HomeRegister extends CI_Controller {
 
             $data1 = array(
                 'nim' => $this->input->post("nim"),
-                'nama_mhs' => $this->input->post("nama"),
+                'nama_mhs' => ucwords($this->input->post("nama")),
                 'id_jurusan' => $this->input->post("jurusan"),
-                'univ' => $this->input->post("univ"),
+                'univ' => ucwords($this->input->post("univ")),
                 'alamat' => $this->input->post("alamat"),
                 'email' => $this->input->post("email"),
                 'id_user' => $idUser

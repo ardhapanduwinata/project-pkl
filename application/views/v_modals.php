@@ -77,19 +77,19 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form enctype="multipart/form-data" action="<?= base_url('admin/add_kamus') ?>" method="post">
+                <form enctype="multipart/form-data" action="<?= base_url('admin/manageData/add_kamus') ?>" method="post">
                     <label>Jurusan</label>
                     <div class="form-group">
                         <?php $jurusan=$this->db->get('jurusan') ?>
                         <select class="form-control" name="jurusan" required>
-                            <?php foreach($jurusan->result as $key) {?>
-                                <option value="<?= $key->id_jurusan ?>"><?= $key->jurusan ?></option>
+                            <?php foreach($jurusan->result() as $a) {?>
+                                <option value="<?= $a->id_jurusan ?>"><?= $a->jurusan ?></option>
                             <?php } ?>
                         </select>
 
                         <label for="kategori">Divisi</label>
                         <?php $divisi=$this->db->get('divisi') ?>
-                        <select class="form-control" name="penerbit" required>
+                        <select class="form-control" name="divisi" required>
                             <?php foreach($divisi->result() as $key) {?>
                                 <option value="<?= $key->id_divisi ?>"><?= $key->divisi ?></option>
                             <?php } ?>

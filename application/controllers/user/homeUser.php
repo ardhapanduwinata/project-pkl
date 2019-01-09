@@ -21,8 +21,12 @@ class homeUser extends CI_Controller {
 
     public function index()
     {
+        $nama = $this->session->userdata('nama');
+        $where = array('nama_mhs' => $nama);
         $data['title'] = 'Home User';
         $data['siapa'] = $this->session->userdata('nama');
+        $data['email'] = $this->session->userdata('email');
+        $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_homeUser');
@@ -32,10 +36,13 @@ class homeUser extends CI_Controller {
 
     public function biodata()
     {
+        $nama = $this->session->userdata('nama');
+        $where = array('nama_mhs' => $nama);
         $data['title'] = "Manage Biodata";
         $data['siapa'] = $this->session->userdata('nama');
         $data['id']    = $this->session->userdata('id');
         $data['jurusan'] = $this->models->get_data('jurusan')->result();
+        $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
         $table  = 'users';
         $table1 = 'mhs';
@@ -184,8 +191,11 @@ class homeUser extends CI_Controller {
 
     public function pengajuan()
     {
+        $nama = $this->session->userdata('nama');
+        $where = array('nama_mhs' => $nama);
         $data['title'] = 'Pengajuan Magang';
         $data['siapa'] = $this->session->userdata('nama');
+        $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_pengajuan');

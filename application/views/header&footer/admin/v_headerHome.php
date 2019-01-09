@@ -28,6 +28,13 @@
     <!-- Main Stylesheet File -->
     <link href="<?=base_url('assets')?>/css/style.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets')?>semantic/dist/semantic.min.css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="<?= base_url('assets')?>semantic/dist/semantic.min.js"></script>
+
     <!-- =======================================================
       Theme Name: Reveal
       Theme URL: https://bootstrapmade.com/reveal-bootstrap-corporate-template/
@@ -45,15 +52,9 @@
     <div class="container clearfix">
         <div class="contact-info float-left">
             <i class="fa fa-user-circle"></i> Welcome <?= $siapa ?>
-            <i class="fa fa-envelope-o"></i> <a href="mailto:contact@example.com">contact@example.com</a>
-            <i class="fa fa-phone"></i> +1 5589 55488 55
         </div>
-        <div class="social-links float-right">
-            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        <div class="contact-info clearfix" style="float: right">
+            <a href="mailto:contact@example.com">contact@example.com </a><i class="fa fa-envelope-o"></i>
         </div>
     </div>
 </section>
@@ -72,6 +73,7 @@
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
+                <li><a href="admin/homeAdmin">Home Page</a></li>
                 <li><a class="nav-link" href="<?= base_url('admin/manageData') ?>">Manage Data</a></li>
                 <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>
             </ul>
