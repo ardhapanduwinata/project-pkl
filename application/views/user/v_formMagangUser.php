@@ -45,7 +45,13 @@
                             <div class="form-group row">
                                 <label for="jurusan" class="col-4 col-form-label">Jurusan</label>
                                 <div class="col-8">
-                                    <input id="univ" name="univ" placeholder="Jurusan Anda" value="<?= $user[0]->id_jurusan?>"<?= $jurusan->jurusan?> class="form-control here" type="text" required="required" readonly>
+                                    <?php foreach($jurusan as $row) {
+                                        $cat = $row->id_jurusan;
+                                        if($cat ==  $user[0]->id_jurusan){?>
+                                            <input id="jurusan" name="jurusan" value="<?php echo $row->jurusan?>" class="form-control here" type="text" required="required" readonly>
+                                        <?php }?>
+                                    <?php } ?>
+
                                 </div>
                             </div>
                             <div class="form-group row">

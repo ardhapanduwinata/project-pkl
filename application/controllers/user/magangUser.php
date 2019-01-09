@@ -24,7 +24,7 @@ class magangUser extends CI_Controller
         $data['siapa'] = $this->session->userdata('nama');
         $data['id']    = $this->session->userdata('id');
         $where1 = array('nama_mhs' => $data['siapa']);
-        $data['jurusan'] = $this->models->get_selected_join('mhs', 'jurusan', $data['id'], 'mhs.id_jurusan = jurusan.id_jurusan')->result();
+        $data['jurusan'] = $this->models->get_data('jurusan')->result();
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where1, 'mhs.id_user = users.id_user')->result();
 
 
