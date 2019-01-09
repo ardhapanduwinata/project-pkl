@@ -30,7 +30,7 @@ class HomeRegister extends CI_Controller {
 
             $data = array(
                 'role' => 1,
-                'nama_user' => $this->input->post("nama"),
+                'nama_user' => ucwords($this->input->post("nama")),
                 'username' => $this->input->post("username"),
                 'password' => MD5($this->input->post("password")),
                 'foto' => 'default.png'

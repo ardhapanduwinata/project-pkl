@@ -23,6 +23,9 @@
                         <th style="width: auto;text-align: center">Universitas</th>
                         <th style="width: auto;text-align: center">Divisi</th>
                         <th style="width: auto;text-align: center">Download File Mhs</th>
+                        <th>Download Nota Dinas</th>
+                        <th>Upload Nota Dinas</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <?php
@@ -42,7 +45,10 @@
                             <td></td>
                             <td><?= $a->univ?></td>
                             <td><?= $a->divisi?></td>
-                            <td><a class="btn btn-outline-success" href="">Download</a></td>
+                            <td><a class="btn btn-outline-success" href="">Download Surat Permohonan Mahasiswa</a></td>
+                            <td><a class="btn btn-outline-success" href="">Download Surat Dinas</a></td>
+                            <td><a class="btn btn-outline-success" href="">Upload Surat Dinas</a></td>
+                            <td>$a->status</a></td>
                         </tr>
                         </tbody>
                     <?php } ?>
