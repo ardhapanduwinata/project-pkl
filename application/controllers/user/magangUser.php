@@ -25,15 +25,18 @@ class magangUser extends CI_Controller
         $data['id']    = $this->session->userdata('id');
         $data['jurusan'] = $this->models->get_data('jurusan')->result();
 
+
         $table  = 'users';
         $table1 = 'mhs';
 
         $where = array(
             'users.id_user' => $data['id']
         );
+        $where1 = array('nama_mhs' => $data['siapa']);
 
         $on = 'mhs.id_user = users.id_user';
         $data['user'] = $this->models->get_selected_join($table,$table1,$where,$on)->result();
+        $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where1, 'mhs.id_user = users.id_user')->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_formMagangUser',$data);
@@ -46,6 +49,11 @@ class magangUser extends CI_Controller
     {
         $data['title'] = 'Pengajuan Magang';
         $data['siapa'] = $this->session->userdata('nama');
+
+        $where = array('nama_mhs' => $data['siapa']);
+
+        $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
+
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_konfirmasiMagangUser');
         $this->load->view('header&footer/user/v_footerUser');

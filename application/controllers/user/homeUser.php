@@ -75,7 +75,7 @@ class homeUser extends CI_Controller {
 
         $on = 'mhs.id_user = users.id_user';
         $data['user'] = $this->models->get_selected_join($table,$table1,$where,$on)->result();
-
+        $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_biodataPassUser',$data);
