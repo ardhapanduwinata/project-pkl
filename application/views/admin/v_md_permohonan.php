@@ -7,52 +7,63 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                    <tr>
-                        <th style="width: 5%">No</th>
-                        <th style="width: auto;text-align: center">No Surat</th>
-                        <th style="width: auto;text-align: center">Tanggal</th>
-                        <th style="width: auto;text-align: center">Perihal</th>
-                        <th style="width: auto;text-align: center">NIM</th>
-                        <th style="width: auto;text-align: center">Nama Mhs</th>
-                        <th style="width: auto;text-align: center">Jurusan</th>
-                        <th style="width: auto;text-align: center">Jenis PKL</th>
-                        <th style="width: auto;text-align: center">Tanggal Mulai</th>
-                        <th style="width: auto;text-align: center">Judul PKL</th>
-                        <th style="width: auto;text-align: center">Universitas</th>
-                        <th style="width: auto;text-align: center">Divisi</th>
-                        <th style="width: auto;text-align: center">Download File Mhs</th>
-                        <th>Download Nota Dinas</th>
-                        <th>Upload Nota Dinas</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <?php
-                    $no = 1;
-                    foreach ($datamagang as $a) {?>
-                        <tbody>
+                <div class="table-responsive" style="width: 100%">
+                    <table class="table table-striped table-bordered table-hover table-responsive" id="dataTables-example" style="width: 100%">
+                        <thead>
                         <tr>
-                            <td style="text-align: center"><?= $no++ ?></td>
-                            <td><?= $a->no_surat ?></td>
-                            <td><?= $a->tgl_mohon_surat ?></td>
-                            <td><?= $a->perihal?></td>
-                            <td><?= $a->nim?></td>
-                            <td><?= $a->nama_mhs?></td>
-                            <td><?= $a->jurusan?></td>
-                            <td><?= $a->jenis?></td>
-                            <td><?= $a->tgl_mulai?></td>
-                            <td></td>
-                            <td><?= $a->univ?></td>
-                            <td><?= $a->divisi?></td>
-                            <td><a class="btn btn-outline-success" href="">Download Surat Permohonan Mahasiswa</a></td>
-                            <td><a class="btn btn-outline-success" href="">Download Surat Dinas</a></td>
-                            <td><a class="btn btn-outline-success" href="">Upload Surat Dinas</a></td>
-                            <td>$a->status</a></td>
+                            <th style="width: 5%">No</th>
+                            <th style="width: auto;text-align: center">No Surat</th>
+                            <th style="width: auto;text-align: center">Tanggal</th>
+                            <th style="width: auto;text-align: center">Download File Mhs</th>
+                            <th style="width: auto;text-align: center">Download/Upload Nota Dinas</th>
+                            <th style="width: auto;text-align: center">Status</th>
+                            <th style="width: auto;text-align: center">Divisi</th>
+                            <th style="width: auto;text-align: center">Perihal</th>
+                            <th style="width: auto;text-align: center">NIM</th>
+                            <th style="width: auto;text-align: center">Nama Mhs</th>
+                            <th style="width: auto;text-align: center">Jurusan</th>
+                            <th style="width: auto;text-align: center">Universitas</th>
+                            <th style="width: auto;text-align: center">Jenis PKL</th>
+                            <th style="width: auto;text-align: center">Tanggal Mulai</th>
+                            <th style="width: auto;text-align: center">Judul PKL</th>
                         </tr>
-                        </tbody>
-                    <?php } ?>
-                </table>
+                        </thead>
+                        <?php
+                        $no = 1;
+                        foreach ($datamagang as $a) {?>
+                            <tbody>
+                            <tr>
+                                <td style="text-align: center"><?= $no++ ?></td>
+                                <td><?= $a->no_surat ?></td>
+                                <td><?= $a->tgl_mohon_surat ?></td>
+                                <td>
+                                    <center>
+                                        <a type="button" class="btn btn-outline btn-success" href="<?= base_url('admin/manageData/download_dtmhs/'.$a->id_form)?>">Download</a>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button>
+                                            <button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button>
+                                        </div>
+                                    </center>
+                                </td>
+                                <td><?= $a->status?></a></td>
+                                <td><?= $a->divisi?></td>
+                                <td><?= $a->perihal?></td>
+                                <td><?= $a->nim?></td>
+                                <td><?= $a->nama_mhs?></td>
+                                <td><?= $a->jurusan?></td>
+                                <td><?= $a->univ?></td>
+                                <td><?= $a->jenis?></td>
+                                <td><?= $a->tgl_mulai?></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        <?php } ?>
+                    </table>
+                </div>
                 <!-- /.table-responsive -->
             </div>
             <!-- /.panel-body -->
@@ -62,9 +73,4 @@
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-</div>
-<!-- /#page-wrapper -->
-
-</div>
-<!-- /#wrapper -->
 

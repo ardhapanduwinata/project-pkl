@@ -27,19 +27,20 @@
     <link href="<?=base_url('assets')?>/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="<?=base_url('assets')?>/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
+<!--    <link href="--><?//=base_url('assets')?><!--/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">-->
+    <script type="text/javascript" language="javascript" src="https://nightly.datatables.net/responsive/js/dataTables.responsive.min.js">
+    </script>
 
     <!-- Custom Fonts -->
     <link href="<?=base_url('assets')?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets')?>semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets')?>/semantic/dist/semantic.min.css">
     <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
-    <script src="<?= base_url('assets')?>semantic/dist/semantic.min.js"></script>
+    <script src="<?=base_url('assets')?>/semantic/dist/semantic.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

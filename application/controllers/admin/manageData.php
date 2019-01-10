@@ -220,6 +220,7 @@ class manageData extends CI_Controller {
         $this->models->delete_data($where, 'kamus');
         redirect(base_url('admin/manageData/kamus'));
     }
+
     public function permohonan()
     {
         $data['title'] = "Manage Kamus";
@@ -231,5 +232,17 @@ class manageData extends CI_Controller {
         $this->load->view('admin/v_md_permohonan');
         $this->load->view('header&footer/admin/v_footerTable_md');
         $this->load->view('v_modals');
+    }
+
+    public function download_dtmhs($id)
+    {
+        $where = array('id_form' => $id);
+        $datamagang = $this->models->get_selected('form_magang', $where)->result();
+
+        foreach ($datamagang as $a) {
+            $data = file_get_contents(base_url('assets/file/permohonanMagang'.$a->file));
+            $nama_file = $a->file;
+            force_download($nama_file, $data);
+        }
     }
 }
