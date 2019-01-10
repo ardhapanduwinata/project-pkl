@@ -75,7 +75,7 @@
                 <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
             <li>
-                <a href="<?= base_url('homeLogin/logout')?>"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a data-toggle="modal" data-target="#logout_modal" href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
         </ul>
         <!-- /.navbar-top-links -->

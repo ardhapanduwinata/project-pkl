@@ -3,7 +3,6 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading" style="height: 55px" >
-                <button type="button" class="btn btn-primary" style="float: right; margin-bottom: 15px" data-toggle="modal" data-target="#addKamus_modal">Tambah Data</button>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -18,7 +17,6 @@
                             <th style="width: auto;text-align: center">Download/Upload Nota Dinas</th>
                             <th style="width: auto;text-align: center">Status</th>
                             <th style="width: auto;text-align: center">Divisi</th>
-                            <th style="width: auto;text-align: center">Perihal</th>
                             <th style="width: auto;text-align: center">NIM</th>
                             <th style="width: auto;text-align: center">Nama Mhs</th>
                             <th style="width: auto;text-align: center">Jurusan</th>
@@ -51,14 +49,13 @@
                                 </td>
                                 <td><?= $a->status?></a></td>
                                 <td><?= $a->divisi?></td>
-                                <td><?= $a->perihal?></td>
                                 <td><?= $a->nim?></td>
                                 <td><?= $a->nama_mhs?></td>
                                 <td><?= $a->jurusan?></td>
                                 <td><?= $a->univ?></td>
                                 <td><?= $a->jenis?></td>
                                 <td><?= $a->tgl_mulai?></td>
-                                <td></td>
+                                <td><?= $a->judul?></td>
                             </tr>
                             </tbody>
                         <?php } ?>

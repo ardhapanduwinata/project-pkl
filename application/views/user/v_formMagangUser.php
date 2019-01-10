@@ -95,9 +95,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="perihal" class="col-4 col-form-label">Perihal</label>
+                                <label for="perihal" class="col-4 col-form-label">Judul PKL</label>
                                 <div class="col-8">
-                                    <input id="perihal" name="perihal" placeholder="Perihal Surat" class="form-control here" type="text" required="required">
+                                    <input id="perihal" name="judul" placeholder="Judul PKL" class="form-control here" type="text" required="required">
                                 </div>
                             </div>
                             <div class="form-group row">

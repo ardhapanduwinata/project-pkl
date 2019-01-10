@@ -110,7 +110,7 @@ class magangUser extends CI_Controller
                 'no_surat' => $this->input->post("noSurat"),
                 'tgl_mohon_surat' => $this->input->post('tglSurat'),
                 'file' => $this->upload->data('file_name'),
-                'perihal' => $this->input->post('perihal'),
+                'judul' => $this->input->post('judul'),
                 'jenis' => $this->input->post('jenis')
             );
 

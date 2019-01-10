@@ -226,7 +226,7 @@ class manageData extends CI_Controller {
         $data['title'] = "Manage Kamus";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Permohonan Magang";
-        $data['datamagang'] = $this->models->get_5join('form_magang', 'mhs', 'kamus', 'jurusan', 'divisi', 'form_magang.id_mhs = mhs.id_mhs', 'mhs.id_jurusan = kamus.id_jurusan', 'kamus.id_jurusan = jurusan.id_jurusan', 'kamus.id_divisi = divisi.id_divisi')->result();
+        $data['datamagang'] = $this->models->get_6join('form_magang', 'mhs', 'kamus', 'jurusan', 'divisi', 'surat_konfirm', 'form_magang.id_mhs = mhs.id_mhs', 'mhs.id_jurusan = kamus.id_jurusan', 'kamus.id_jurusan = jurusan.id_jurusan', 'kamus.id_divisi = divisi.id_divisi', 'form_magang.id_form = surat_konfirm.id_form')->result();
 
         $this->load->view('header&footer/admin/v_headerTable_md', $data);
         $this->load->view('admin/v_md_permohonan');
