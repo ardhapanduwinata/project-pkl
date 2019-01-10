@@ -118,7 +118,7 @@ class magangUser extends CI_Controller
                 'id_mhs' =>$idMhs
             );
 
-            $insert = $this->models->add_data1('form_magang',$data);
+            $insert = $this->models->add_data('form_magang',$data);
             $select = $this->models->get_selected_limit("form_magang",$where1,1,'desc','id_form')->result();
 
             foreach($select as $a)
