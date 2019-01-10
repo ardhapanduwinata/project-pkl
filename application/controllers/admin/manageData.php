@@ -6,6 +6,7 @@ class manageData extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('models');
+        $this->load->helper(array('url','download'));
 
         $role = $this->session->userdata('role');
         $status = $this->session->userdata('status');
@@ -236,13 +237,23 @@ class manageData extends CI_Controller {
 
     public function download_dtmhs($id)
     {
+        $this->load->helper('file');
+        //$this->load->library('zip');
         $where = array('id_form' => $id);
         $datamagang = $this->models->get_selected('form_magang', $where)->result();
 
         foreach ($datamagang as $a) {
-            $data = file_get_contents(base_url('assets/file/permohonanMagang'.$a->file));
+            $data = file_get_contents(base_url().'assets/file/permohonanMagang/'.($a->file));
+            $resumePath = base_url().'assets/file/permohonanMagang/'.$a->file;
+//            //$files = $a->file;
+//            //$this->zip->read_file($resumePath . $files);
             $nama_file = $a->file;
+            ob_clean();
             force_download($nama_file, $data);
+//            //$this->$this->_push_file($resumePath,$files);
+//        }
+            //$this->load->helper('file');
         }
     }
+
 }
