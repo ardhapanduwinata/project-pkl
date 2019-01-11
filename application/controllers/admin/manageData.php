@@ -256,4 +256,27 @@ class manageData extends CI_Controller {
         }
     }
 
+    public function view_notadinas($id)
+    {
+        $this->load->helper('file');
+
+        $where = array('id_form' => $id);
+        $data['title'] = "Download Nota Dinas";
+        $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', $where)->result();
+
+        $this->load->view('admin/v_nota_dinas', $data);
+    }
+
+    public function download_notadinas($id)
+    {
+        $where = array('id_form' => $id);
+        $datamagang = $this->models->get_5join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', $where)->result();
+
+        foreach ($datamagang as $a) {
+            header("Content-Type: application/vnd.msword");
+            header("Expires: 0");//no-cache
+            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");//no-cache
+            header("content-disposition: attachment;filename=".$a->nama_mhs.".docx");
+        }
+    }
 }

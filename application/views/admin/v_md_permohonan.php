@@ -42,8 +42,8 @@
                                 <td>
                                     <center>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button>
-                                            <button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button>
+                                            <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form) ?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
+                                            <a href=""><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
                                         </div>
                                     </center>
                                 </td>
