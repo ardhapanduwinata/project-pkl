@@ -48,12 +48,38 @@
             document.body.removeChild(downloadLink);
         }
     </script>
+    <?php
+    function tgl_indo($tanggal){
+        $bulan = array (
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        $pecahkan = explode('-', $tanggal);
+
+        // variabel pecahkan 0 = tanggal
+        // variabel pecahkan 1 = bulan
+        // variabel pecahkan 2 = tahun
+
+        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+    }
+    ?>
 </html>
 
 <br><br>
 
 <?php foreach ($datamagang as $a)
 $no = 1;
+$source = $a['tgl_mohon_surat'];
 { ?>
     <div style="padding-top: 20px; padding-right: 80px">
         <button onclick="Export2Doc('isi_data','<?= $a['nama_mhs']?>')" style="float: right" class="btn btn-success">Download as Word</button>
@@ -70,14 +96,14 @@ $no = 1;
         <p style="padding-left: 80px">
             Kepada&emsp;&emsp;: <?= $a['divisi'] ?> <br>
             Dari&emsp;&emsp;&emsp;&ensp;: VPHRBHO <br>
-            Tanggal&emsp;&emsp;: <?= date('d F Y') ?> <br>
+            Tanggal&emsp;&emsp;: <?= tgl_indo(date('Y-m-d')) ?> <br>
             Sifat&emsp;&emsp;&emsp;&ensp;: Biasa <br>
             Lampiran&ensp;&emsp;: 1 (satu) Set <br>
             Perihal&emsp;&ensp;&emsp;: Permohonan Bantuan Memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa <br>
         </p>
         <br><br>
         <p style="padding-left: 160px; padding-right: 160px">
-            Menunjuk Surat <?= $a['univ'] ?> Nomor <?= $a['no_surat'] ?>, tanggal <?= $a['tgl_mohon_surat'] ?>, perihal Permohonan Praktek Kerja Lapangan;
+            Menunjuk Surat <?= $a['univ'] ?> Nomor <?= $a['no_surat'] ?>, tanggal <?= tgl_indo($source) ?>, perihal Permohonan Praktek Kerja Lapangan;
         </p> <br><br>
 
         <div style="padding-left: 160px; padding-right: 160px">
