@@ -6,6 +6,7 @@
         <link href="<?=base_url('assets')?>/img/favicon.ico" rel="shortcut icon">
         <link href="<?=base_url('assets')?>/img/apple-icon-180x180.png" rel="apple-touch-icon">
     </head>
+
     <script>
         function Export2Doc(element, filename = ''){
             var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
@@ -77,7 +78,7 @@ $no = 1;
 $source = $a['tgl_mohon_surat'];
 { ?>
     <div style="padding-top: 20px; padding-right: 80px">
-        <button onclick="Export2Doc('isi_data','<?= $a['nama_mhs']?>')" style="float: right" class="btn btn-success">Download as Word</button>
+        <button onclick="Export2Doc('isi_data','<?= $a['nama_mhs']?>')" style="float: right"    class="btn btn-success">Download as Word</button>
     </div>
     <div id="isi_data">
         <p style="padding-left: 80px">PT PLN (Persero) <br>
@@ -118,7 +119,7 @@ $source = $a['tgl_mohon_surat'];
                 <tr>
                     <td>Perihal</td>
                     <td>:</td>
-                    <td>Permohonan Bantuan Memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa</td>
+                    <td><?= $perihal ?></td>
                 </tr>
             </table>
         </div>
