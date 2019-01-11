@@ -266,4 +266,9 @@ class manageData extends CI_Controller {
 
         $this->load->view('admin/v_nota_dinas', $data);
     }
+
+    public function download_notadinas()
+    {
+
+    }
 }

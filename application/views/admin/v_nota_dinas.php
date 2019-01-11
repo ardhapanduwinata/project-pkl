@@ -5,11 +5,6 @@
 
         <link href="<?=base_url('assets')?>/img/favicon.ico" rel="shortcut icon">
         <link href="<?=base_url('assets')?>/img/apple-icon-180x180.png" rel="apple-touch-icon">
-        <style>
-            table, th, td {
-                border: 1px solid black;
-            }
-        </style>
     </head>
     <script>
         function Export2Doc(element, filename = ''){
@@ -93,51 +88,105 @@ $source = $a['tgl_mohon_surat'];
             Nomor:&emsp;&emsp;&emsp;&emsp;&emsp;/SDM.04.06/VPHRBHPHO/2019
         </center>
         <br><br><br>
-        <p style="padding-left: 80px">
-            Kepada&emsp;&emsp;: <?= $a['divisi'] ?> <br>
-            Dari&emsp;&emsp;&emsp;&ensp;: VPHRBHO <br>
-            Tanggal&emsp;&emsp;: <?= tgl_indo(date('Y-m-d')) ?> <br>
-            Sifat&emsp;&emsp;&emsp;&ensp;: Biasa <br>
-            Lampiran&ensp;&emsp;: 1 (satu) Set <br>
-            Perihal&emsp;&ensp;&emsp;: Permohonan Bantuan Memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa <br>
-        </p>
-        <br><br>
-        <p style="padding-left: 160px; padding-right: 160px">
-            Menunjuk Surat <?= $a['univ'] ?> Nomor <?= $a['no_surat'] ?>, tanggal <?= tgl_indo($source) ?>, perihal Permohonan Praktek Kerja Lapangan;
-        </p> <br><br>
-
-        <div style="padding-left: 160px; padding-right: 160px">
-            <table width="100%" border="5" align="center">
-                <tr style="text-align: center">
-                    <th>No</th>
-                    <th>NIM</th>
-                    <th>Nama</th>
-                    <th>Jurusan</th>
+        <div style="padding-left: 80px">
+            <table>
+                <tr>
+                    <td style="width: 13%">Kepada</td>
+                    <td>:</td>
+                    <td><?= $a['divisi'] ?></td>
                 </tr>
                 <tr>
-                    <td style="text-align: center"><?= $no++ ?></td>
-                    <td>&emsp; <?= $a['nim'] ?></td>
-                    <td>&emsp; <?= $a['nama_mhs']?></td>
-                    <td>&emsp; <?= $a['jurusan']?></td>
+                    <td>Dari</td>
+                    <td>:</td>
+                    <td>VPHRBHO</td>
                 </tr>
-                <?php for($i=2;$i<=5;$i++) {
-                    if(!empty($a['nim_mhs'.$i])){?>
-                        <tr>
-                            <td style="text-align: center"><?= $i ?></td>
-                            <td>&emsp; <?= $a['nim_mhs'.$i] ?></td>
-                            <td>&emsp; <?= $a['nama_mhs'.$i]?></td>
-                            <td>&emsp; <?= $a['jurusan']?></td>
-                        </tr>
-                     <?php } ?>
-                <?php }?>
-
-
+                <tr>
+                    <td>Tanggal</td>
+                    <td>:</td>
+                    <td><?= tgl_indo(date('Y-m-d')) ?></td>
+                </tr>
+                <tr>
+                    <td>Sifat</td>
+                    <td>:</td>
+                    <td>Biasa</td>
+                </tr>
+                <tr>
+                    <td>Lampiran</td>
+                    <td>:</td>
+                    <td>1 (satu) Set</td>
+                </tr>
+                <tr>
+                    <td>Perihal</td>
+                    <td>:</td>
+                    <td>Permohonan Bantuan Memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa</td>
+                </tr>
             </table>
         </div>
         <br><br>
 
-        <p style="padding-left: 160px; padding-right: 160px">Mohon kesediaannya untuk dapat memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian.</p>
-        <p style="padding-left: 160px; padding-right: 160px">Demikian disampaikan, atas perhatian dan kerjasamanya kami ucapkan terima kasih.</p>
+        <div style="margin-left: 80px; margin-right: 80px; padding-left: 160px; padding-right: 160px">
+
+            <table>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Menunjuk Surat <?= $a['univ'] ?> Nomor <?= $a['no_surat'] ?>, tanggal <?= tgl_indo($source) ?>, perihal Permohonan Praktek Kerja Lapangan;
+                    </td>
+                </tr>
+                <tr>
+                    <td>&emsp;</td>
+                    <td>&emsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" border="1" align="center">
+                            <tr style="text-align: center">
+                                <th>No</th>
+                                <th>NIM</th>
+                                <th>Nama</th>
+                                <th>Jurusan</th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center"><?= $no++ ?></td>
+                                <td>&emsp; <?= $a['nim'] ?></td>
+                                <td>&emsp; <?= $a['nama_mhs']?></td>
+                                <td>&emsp; <?= $a['jurusan']?></td>
+                            </tr>
+                            <?php for($i=2;$i<=5;$i++) {
+                                if(!empty($a['nim_mhs'.$i])){?>
+                                    <tr>
+                                        <td style="text-align: center"><?= $i ?></td>
+                                        <td>&emsp; <?= $a['nim_mhs'.$i] ?></td>
+                                        <td>&emsp; <?= $a['nama_mhs'.$i]?></td>
+                                        <td>&emsp; <?= $a['jurusan']?></td>
+                                    </tr>
+                                <?php } ?>
+                            <?php }?>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&emsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        Mohon kesediaannya untuk dapat memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian.
+                    </td>
+                </tr>
+                <tr>
+                    <td>&emsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        Demikian disampaikan, atas perhatian dan kerjasamanya kami ucapkan terima kasih.
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br><br>
+
         <br><br><br><br><br>
         <p style="padding-right: 160px; text-align: right">
             <b>PRASETYORINI</b>
