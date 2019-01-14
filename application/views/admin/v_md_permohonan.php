@@ -43,7 +43,7 @@
                                     <center>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form) ?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
-                                            <a href=""><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
+                                            <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
                                         </div>
                                     </center>
                                 </td>
@@ -71,3 +71,18 @@
 </div>
 <!-- /.row -->
 
+<script>
+    $(document).ready(function(){
+        $('#uploadnd_modal').on('show.bs.modal', function (e) {
+            var rowid = $(e.relatedTarget).data('id');
+            $.ajax({
+                type : 'post',
+                url : '<?= base_url('admin/manageData/uploadnd') ?>', //Here you will fetch records
+                data :  'rowid='+ rowid, //Pass $id
+                success : function(data){
+                    $('.fetched-data').html(data);//Show fetched data from database
+                }
+            });
+        });
+    });
+</script>

@@ -284,7 +284,22 @@ class manageData extends CI_Controller {
         $this->load->view('admin/v_nota_dinas', $data);
     }
 
-    public function download_notadinas()
+    public function view_uploadnd($id)
+    {
+        $where = array('id_form' => $id);
+
+        $data['title'] = "Upload Nota Dinas";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Upload Nota Dinas";
+        $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', $where)->result();
+
+        $this->load->view('header&footer/admin/v_headerTable_md', $data);
+        $this->load->view('admin/v_upload_notadinas');
+        $this->load->view('header&footer/admin/v_footerTable_md');
+        $this->load->view('v_modals');
+    }
+
+    public function uploadnd()
     {
 
     }
