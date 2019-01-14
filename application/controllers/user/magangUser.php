@@ -136,4 +136,11 @@ class magangUser extends CI_Controller
             redirect('user/magangUser','refresh');
         }
     }
+
+    public function konfirmasiPkl()
+    {
+        $this->model->get_4join('form_magang','mhs','surat_konfirm','nota_dinas','form_magang.id_mhs = mhs.id_mhs','form_magang.id_form = surat_konfirm.id_form','form_magang.id_form = nota_dinas.id_form')->result();
+
+    }
+
 }
