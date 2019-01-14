@@ -264,6 +264,23 @@ class manageData extends CI_Controller {
         $data['title'] = "Download Nota Dinas";
         $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', $where)->result_array();
 
+        $data['perihal'] = 'Permohonan Bantuan Memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
+        foreach ($data['datamagang'] as $a){
+            $data1 = array(
+                'no_nota' => null,
+                'tgl_keluar' => date('y-m-d'),
+                'id_form' => $a['id_form'],
+                'perihal' => $data['perihal']
+            );
+            $idForm =  $a['id_form'];
+        }
+
+        $where2 = array('id_form' => $idForm);
+        $cek = $this->models->get_selected('nota_dinas',$where2)->num_rows();
+
+        if($cek==0){
+            $this->models->add_data('nota_dinas', $data1);
+        }
         $this->load->view('admin/v_nota_dinas', $data);
     }
 
