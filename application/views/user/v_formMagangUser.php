@@ -38,7 +38,7 @@
                                 <div class="form-group row">
                                     <label for="nama" class="col-4 col-form-label">Nama Lengkap</label>
                                     <div class="col-8">
-                                        <input id="nama" name="nama1" placeholder="Nama Lengkap" value="<?= $user[0]->nama_user?>" class="form-control here" type="text" required="required" readonly>
+                                        <input id="nama" name="nama1" placeholder="Nama Lengkap" value="<?= $user[0]->nama_user?>" class="form-control here" type="text" required="required" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                     <?php foreach($jurusan as $row) {
                                         $cat = $row->id_jurusan;
                                         if($cat ==  $user[0]->id_jurusan){?>
-                                            <input id="jurusan" name="jurusan" value="<?php echo $row->jurusan?>" class="form-control here" type="text" required="required" readonly>
+                                            <input id="jurusan" name="jurusan" value="<?php echo $row->jurusan?>" class="form-control here" type="text" required="required" disabled>
                                         <?php }?>
                                     <?php } ?>
 
@@ -57,7 +57,7 @@
                             <div class="form-group row">
                                 <label for="universitas" class="col-4 col-form-label">Universitas</label>
                                 <div class="col-8">
-                                    <input id="univ" name="univ" placeholder="Universitas Anda" value="<?= $user[0]->univ?>" class="form-control here" type="text" required="required" readonly>
+                                    <input id="univ" name="univ" placeholder="Universitas Anda" value="<?= $user[0]->univ?>" class="form-control here" type="text" required="required" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">
