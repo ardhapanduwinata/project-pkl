@@ -58,7 +58,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="univ" id="univ" autocomplete="off" placeholder="Universitas *" value="" required/>
+                                <input type="text" class="form-control" name="univ" id="univ" autocomplete="on" placeholder="Universitas *" value="" required/>
                             </div>
                         </div>
                         <div class="col-md-6">

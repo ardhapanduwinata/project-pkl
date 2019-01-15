@@ -89,6 +89,34 @@ class models extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
+
+    public function get_7join($table,$table1,$table2,$table3,$table4,$table5,$table6,$on,$on2,$on3,$on4,$on5,$on6)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table1, $on);
+        $this->db->join($table2, $on2);
+        $this->db->join($table3, $on3);
+        $this->db->join($table4, $on4);
+        $this->db->join($table5, $on5);
+        $this->db->join($table6, $on6);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function get_6selected_join($table,$table1,$table2,$table3,$table4,$table5,$on,$on2,$on3,$on4,$on5,$where)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table1, $on);
+        $this->db->join($table2, $on2);
+        $this->db->join($table3, $on3);
+        $this->db->join($table4, $on4);
+        $this->db->join($table5, $on5);
+        $this->db->where($where);
+        $query = $this->db->get();
+        return $query;
+    }
     public function get_5join($table,$table1,$table2,$table3,$table4,$on,$on2,$on3,$on4,$where)
     {
         $this->db->select('*');

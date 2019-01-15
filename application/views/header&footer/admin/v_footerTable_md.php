@@ -33,7 +33,7 @@
     });
     $(document).ready(function() {
         $('#table_permohonan').DataTable({
-            responsive: true
+            responsive: false
         });
     });
 

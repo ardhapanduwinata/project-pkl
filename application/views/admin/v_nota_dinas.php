@@ -84,7 +84,7 @@ $source = $a['tgl_mohon_surat'];
     <div id="isi_data">
         <p style="padding-left: 80px">PT PLN (Persero) <br>
             <u>KANTOR PUSAT</u></p>
-        <br><br><br>
+        <br><br>
         <center>
             <u>NOTA DINAS</u> <br>
             Nomor:&emsp;&emsp;&emsp;&emsp;&emsp;/SDM.04.06/VPHRBHPHO/2019

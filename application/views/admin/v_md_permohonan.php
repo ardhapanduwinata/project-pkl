@@ -43,7 +43,12 @@
                                     <center>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form) ?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
-                                            <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
+                                            <?php
+                                            if($a->no_nota == null) {?>
+                                                <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
+                                            <?php } else { ?>
+                                                <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-warning">ReUpload <i class="fas fa-upload"></i></button></a>
+                                            <?php }?>
                                         </div>
                                     </center>
                                 </td>

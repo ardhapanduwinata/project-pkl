@@ -227,7 +227,7 @@ class manageData extends CI_Controller {
         $data['title'] = "Manage Kamus";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Permohonan Magang";
-        $data['datamagang'] = $this->models->get_6join('form_magang', 'mhs', 'kamus', 'jurusan', 'divisi', 'surat_konfirm', 'form_magang.id_mhs = mhs.id_mhs', 'mhs.id_jurusan = kamus.id_jurusan', 'kamus.id_jurusan = jurusan.id_jurusan', 'kamus.id_divisi = divisi.id_divisi', 'form_magang.id_form = surat_konfirm.id_form')->result();
+        $data['datamagang'] = $this->models->get_7join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
 
         $this->load->view('header&footer/admin/v_headerTable_md', $data);
         $this->load->view('admin/v_md_permohonan');
@@ -267,12 +267,12 @@ class manageData extends CI_Controller {
         $data['perihal'] = 'Permohonan Bantuan Memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
         foreach ($data['datamagang'] as $a){
             $data1 = array(
-                'no_nota' => null,
                 'tgl_keluar' => date('y-m-d'),
                 'id_form' => $a['id_form'],
-                'perihal' => $data['perihal']
+                'perihal' => $data['perihal'],
             );
             $idForm =  $a['id_form'];
+            $this->models->update_data('nota_dinas', $data1, $idForm);
         }
 
         $where2 = array('id_form' => $idForm);
@@ -286,12 +286,12 @@ class manageData extends CI_Controller {
 
     public function view_uploadnd($id)
     {
-        $where = array('id_form' => $id);
+        $where = array('fm.id_form' => $id);
 
         $data['title'] = "Upload Nota Dinas";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Upload Nota Dinas";
-        $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', $where)->result();
+        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', $where)->result();
 
         $this->load->view('header&footer/admin/v_headerTable_md', $data);
         $this->load->view('admin/v_upload_notadinas');
@@ -301,6 +301,41 @@ class manageData extends CI_Controller {
 
     public function uploadnd()
     {
-        
+        $id = $this->input->post('id');
+        $nond = $this->input->post('nond');
+
+        $config['upload_path'] = './assets/file/notaDinas/';
+        $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc';
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('file_nond')) {
+            $error = array('error' => $this->upload->display_errors());
+
+            redirect('admin/manageData/view_uploadnd', 'refresh');
+
+        } else {
+            $data = array(
+                'no_nota' => $nond,
+                'file_nd' => $this->upload->data('file_name')
+            );
+            $where = array('id_form' => $id);
+
+            $this->models->update_data('nota_dinas', $data, $where);
+        }
+        redirect(base_url('admin/manageData/permohonan'));
+    }
+
+    public function download_uploaded_nd($id)
+    {
+        $this->load->helper('file');
+        $where = array('id_nota' => $id);
+        $datand = $this->models->get_selected('nota_dinas', $where)->result();
+
+        foreach ($datand as $a) {
+            $data = file_get_contents(base_url().'assets/file/notaDinas/'.($a->file_nd));
+            $nama_file = $a->file_nd;
+            ob_clean();
+            force_download($nama_file, $data);
+        }
     }
 }
