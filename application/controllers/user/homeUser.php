@@ -201,18 +201,4 @@ class homeUser extends CI_Controller {
         $this->load->view('header&footer/user/v_footerUser');
         $this->load->view('v_modals');
     }
-
-    public function autocomplete_univ()
-    {
-        if(isset($_GET['term']))
-        {
-            $result = $this->models->search('univ', 'nama_univ', $_GET['term']);
-            if(count($result) > 0)
-            {
-                foreach ($result as $row)
-                    $arr_result[] = $row->nama_univ;
-                echo json_encode($arr_result);
-            }
-        }
-    }
 }

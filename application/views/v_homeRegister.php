@@ -87,7 +87,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#univ').autocomplete({
-            source: "<?= base_url('admin/manageData/autocomplete_univ/?') ?>"
+            source: "<?= base_url('homeRegister/autocomplete_univ/?') ?>"
         })
     });
 </script>

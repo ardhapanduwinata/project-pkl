@@ -130,7 +130,19 @@ class HomeRegister extends CI_Controller {
 
     }
 
-
+    public function autocomplete_univ()
+    {
+        if(isset($_GET['term']))
+        {
+            $result = $this->models->search('univ', 'nama_univ', $_GET['term']);
+            if(count($result) > 0)
+            {
+                foreach ($result as $row)
+                    $arr_result[] = $row->nama_univ;
+                echo json_encode($arr_result);
+            }
+        }
+    }
 }
 
 /* End of file homeRegister.php */
