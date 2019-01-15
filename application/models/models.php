@@ -113,11 +113,34 @@ class models extends CI_Model {
         return $query;
     }
 
-    public function autocomplete($table, $column, $where)
-    {
-        $this->db->like($column, $where, 'both');
-        $this->db->order_by($column, 'ASC');
-        $this->db->limit(10);
-        return $this->db->get($table)->result();
+    function getRows($params = array()){
+        $this->db->select("*");
+        $this->db->from('univ');
+
+        //fetch data by conditions
+        if(array_key_exists("conditions",$params)){
+            foreach ($params['conditions'] as $key => $value) {
+                $this->db->where($key,$value);
+            }
+        }
+
+        //search by terms
+        if(!empty($params['searchTerm'])){
+            $this->db->like('nama_univ', $params['searchTerm']);
+        }
+
+        $this->db->order_by('nama_univ', 'asc');
+
+        if(array_key_exists("id",$params)){
+            $this->db->where('id',$params['id']);
+            $query = $this->db->get();
+            $result = $query->row_array();
+        }else{
+            $query = $this->db->get();
+            $result = ($query->num_rows() > 0)?$query->result_array():FALSE;
+        }
+
+        //return fetched data
+        return $result;
     }
 }
