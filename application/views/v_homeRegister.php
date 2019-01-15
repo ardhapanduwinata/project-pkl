@@ -1,7 +1,10 @@
+<html>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="<?php echo base_url('assets')?>/jquery/jquery-ui.css">
-<script src="<?=base_url('assets')?>/jquery/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 <link href="<?=base_url('assets')?>/css/login-register.css" rel="stylesheet">
 <!------ Include the above in your HEAD tag ---------->
@@ -58,7 +61,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="univ" id="univ" autocomplete="off" placeholder="Universitas *" value="" required/>
+                                <input type="text" class="form-control" name="univ" id="univ" placeholder="Universitas *" required/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -83,12 +86,17 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#univ').autocomplete({
-            source: "<?= base_url('homeRegister/autocomplete_univ/?') ?>"
-        })
+<script>
+    $(function() {
+        $("#univ").autocomplete({
+            source: "<?php echo site_url('homeRegister/autocomplete_univ'); ?>",
+            select: function( event, ui ) {
+                event.preventDefault();
+                $("#univ").val(ui.item.nama);
+            }
+        });
     });
 </script>
 </body>
+
+</html>
