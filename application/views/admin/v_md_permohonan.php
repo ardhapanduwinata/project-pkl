@@ -7,7 +7,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive" style="width: 100%">
-                    <table class="table table-striped table-bordered table-hover table-responsive" id="dataTables-example" style="width: 100%">
+                    <table class="table table-striped table-bordered table-hover table-responsive" id="table_permohonan" style="width: 100%">
                         <thead>
                         <tr>
                             <th style="width: 5%">No</th>

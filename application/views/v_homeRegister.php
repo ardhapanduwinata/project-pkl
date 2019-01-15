@@ -1,6 +1,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="<?php echo base_url('assets')?>/jquery/jquery-ui.css">
+<script src="<?=base_url('assets')?>/jquery/jquery-ui.js"></script>
 
 <link href="<?=base_url('assets')?>/css/login-register.css" rel="stylesheet">
 <!------ Include the above in your HEAD tag ---------->
@@ -20,7 +21,7 @@
             <h3 style="color: black">Selamat Datang</h3>
             <p style="color: black">Website ini untuk mempermudah para pelajar untuk mengajukan izin magang pada kantor PT PLN (PERSERO)</p>
         </div>
-        
+
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
@@ -57,7 +58,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="univ" placeholder="Universitas *" value="" required/>
+                                <input type="text" class="form-control" name="univ" id="univ" autocomplete="off" placeholder="Universitas *" value="" required/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -82,4 +83,12 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#univ').autocomplete({
+            source: "<?= base_url('admin/manageData/autocomplete_univ/?') ?>"
+        })
+    });
+</script>
 </body>
