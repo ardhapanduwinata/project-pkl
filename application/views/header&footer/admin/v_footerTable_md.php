@@ -15,15 +15,26 @@
 <!-- Custom Theme JavaScript -->
 <script src="../dist/js/sb-admin-2.js"></script>
 
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive:false
+        $('#table_jurusan').DataTable({
+            responsive: false
         });
     });
+    $(document).ready(function() {
+        $('#table_divisi').DataTable({
+            responsive: false
+        });
+    });
+    $(document).ready(function() {
+        $('#table_kamus').DataTable({
+            responsive: false
+        });
+    });
+    $(document).ready(function() {
+        $('#table_permohonan').DataTable({
+            responsive: true
+        });
+    });
+
 </script>
-
-</body>
-
-</html>

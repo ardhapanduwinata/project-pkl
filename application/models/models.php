@@ -113,5 +113,11 @@ class models extends CI_Model {
         return $query;
     }
 
-
+    public function autocomplete($table, $column, $where)
+    {
+        $this->db->like($column, $where, 'both');
+        $this->db->order_by($column, 'ASC');
+        $this->db->limit(10);
+        return $this->db->get($table)->result();
+    }
 }
