@@ -20,6 +20,7 @@
                             <hr>
                         </div>
                     </div>
+                    <?php if($jumlah_jenis < 2){?>
                     <div class="row">
                         <div class="offset-9 col-3" style="float: right">
                             <button id="add_field_button" class="btn btn-outline-secondary" type="button">Tambah Mahasiswa</button>
@@ -63,10 +64,10 @@
                             <div class="form-group row">
                                 <label for="jenis" class="col-4 col-form-label">Jenis</label>
                                 <div class="col-8">
-                                    <select id="jenis" name="jenis" class="custom-select" required="required">
-                                            <option class="hidden" selected disabled>Jenis</option>
-                                            <option value="Magang">Magang</option>
-                                            <option value="Penelitian/Wawancara">Penelitian/Wawancara</option>
+                                    <select id="jenis" name="jenis" class="custom-select" required>
+                                        <option class="hidden" selected disabled>Jenis</option>
+                                                        <option value="Magang" <?php foreach ($jenis as $row){ if($row->jenis == 'Magang') echo 'disabled';}?>>Magang</option>
+                                                        <option value="Penelitian/Wawancara" <?php foreach ($jenis as $row){ if($row->jenis == 'Penelitian/Wawancara') echo 'disabled';}?>>Penelitian/Wawancara</option>
                                     </select>
                                 </div>
                             </div>
@@ -119,6 +120,9 @@
                             <?php echo form_close();?>
                         </div>
                     </div>
+                    <?php }else{?>
+                        <p>Anda Telah Melebihi Batas Pengajuan Form PKL.</p>
+                    <?php } ?>
                 </div>
             </div>
         </div>
