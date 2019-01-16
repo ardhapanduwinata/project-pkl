@@ -152,9 +152,4 @@ class magangUser extends CI_Controller
         }
     }
 
-    public function konfirmasiPkl()
-    {
-
-    }
-
 }
