@@ -36,6 +36,20 @@
       Author: BootstrapMade.com
       License: https://bootstrapmade.com/license/
     ======================================================= -->
+    <style type="text/css">
+        .nav-pills .nav-link.active,.nav-pills .show>.nav-link{color:#fff;background-color:#0c2e8a}
+        a {
+            color: #000;
+            transition: 0.5s;
+        }
+        a:hover,
+        a:active,
+        a:focus {
+            color: darkgrey;
+            outline: none;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body id="body">
