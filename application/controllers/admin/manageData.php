@@ -311,7 +311,7 @@ class manageData extends CI_Controller {
         if (!$this->upload->do_upload('file_nond')) {
             $error = array('error' => $this->upload->display_errors());
 
-            redirect('admin/manageData/view_uploadnd', 'refresh');
+            redirect('admin/manageData/view_uploadnd/'.$id, 'refresh');
 
         } else {
             $data = array(
