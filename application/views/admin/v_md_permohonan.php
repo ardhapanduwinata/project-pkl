@@ -15,6 +15,7 @@
                             <th style="width: auto;text-align: center">Tanggal</th>
                             <th style="width: auto;text-align: center">Download File Mhs</th>
                             <th style="width: auto;text-align: center">Download/Upload Nota Dinas</th>
+                            <th style="width: auto;text-align: center">Download/Upload Surat Konfirm</th>
                             <th style="width: auto;text-align: center">Status</th>
                             <th style="width: auto;text-align: center">Divisi</th>
                             <th style="width: auto;text-align: center">NIM</th>
@@ -47,12 +48,37 @@
                                             if($a->no_nota == null) {?>
                                                 <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
                                             <?php } else { ?>
-                                                <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-warning">ReUpload <i class="fas fa-upload"></i></button></a>
+                                                <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Upload <i class="fas fa-upload"></i></button></a>
                                             <?php }?>
                                         </div>
                                     </center>
                                 </td>
-                                <td><?= $a->status?></a></td>
+                                <td>
+                                    <center>
+                                        <div>
+                                            <?php
+                                            if($a->no_nota == null) {?>
+                                                <p>Nota Dinas harus diupload terlebih dahulu</p>
+                                            <?php } else { ?>
+                                                <?php if($a->download == 1) {?>
+                                                    <a href="<?= base_url('admin/manageData/view_sk/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
+                                                    <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('admin/manageData/view_sk/'.$a->id_form)?>"><button type="button" class="btn btn-primary btn-block"><i class="fas fa-download"></i> Download</button></a>
+                                                <?php } ?>
+                                            <?php }?>
+                                        </div>
+                                    </center>
+                                </td>
+                                <td>
+                                    <?php if($a->status == "Diterima"){?>
+                                        <p style="color: green"><?= $a->status?></p>
+                                    <?php } elseif($a->status == "Ditolak") { ?>
+                                        <p style="color: red"><?= $a->status?></p>
+                                    <?php } else { ?>
+                                        <p style="color: black"><?= $a->status?></p>
+                                    <?php } ?>
+                                </td>
                                 <td><?= $a->divisi?></td>
                                 <td><?= $a->nim?></td>
                                 <td><?= $a->nama_mhs?></td>

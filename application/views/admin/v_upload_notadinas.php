@@ -32,47 +32,54 @@
                                 <label>Status Mahasiswa</label><br>
                                 <div id="myButtons" class="btn-group-justified" data-toggle="buttons">
                                     <label class="btn btn-default">
-                                        <input type="radio" name="options" id="option1" autocomplete="off"> Diterima
+                                        <input type="radio" name="status" id="option1" autocomplete="off" value="Diterima"> Diterima
                                     </label>
                                     <label class="btn btn-default active">
-                                        <input type="radio" name="options" id="option2" autocomplete="off" checked> Diproses
+                                        <input type="radio" name="status" id="option2" autocomplete="off" value="Diproses" checked> Diproses
                                     </label>
                                     <label class="btn btn-default">
-                                        <input type="radio" name="options" id="option3" autocomplete="off"> Ditolak
+                                        <input type="radio" name="status" id="option3" autocomplete="off" value="Ditolak"> Ditolak
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-6" style="padding-top: 20px">
-                                <label>File Nota Dinas</label>
-                                <?php if($a->no_nota != null) {?>
-                                    <br>
+                            <?php if($a->no_nota != null) {?>
+                                <div class="col-md-6" style="padding-top: 20px">
+                                    <label>File Nota Dinas</label>
                                     <a class="btn btn-primary" href="<?= base_url('admin/manageData/download_uploaded_nd/'.$a->id_nota) ?>">Download Nota Dinas</a>
-                                    <br><p>*nota dinas yang telah ter-upload sebelumnya</p>
-                                <?php } else {?>
-                                    <input type="file" name="file_nond" class="form-control" required>
-                                <?php } ?>
-                            </div>
-                            <div>
-                                <div style="float: right; padding-top: 50px; padding-right: 15px">
-                                    <a href="<?= base_url('admin/manageData/permohonan')?>" class="btn btn-secondary">Cancel</a>
-                                    <input type="hidden" name="id" value="<?= $a->id_form ?>">
-                                    <?php if($a->no_nota == null) {?>
-                                        <button class="btn btn-primary" type="submit">Upload</button>
-                                    <?php } else { ?>
-                                        <button class="btn btn-warning" type="submit">Re-Upload</button>
-                                    <?php }?>
+                                    <p>*nota dinas yang telah ter-upload sebelumnya</p>
                                 </div>
+                                <div class="col-md-6" style="padding-top: 20px">
+                                    <label for="">Upload Nota Dinas Baru</label>
+                                    <input type="file" name="file_nond" class="form-control" required>
+                                </div>
+                            <?php } else {?>
+                                <div class="col-md-6" style="padding-top: 20px">
+                                    <label>File Nota Dinas</label>
+                                    <input type="file" name="file_nond" class="form-control" required>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <div>
+                            <div style="float: right; padding-top: 50px; padding-right: 15px">
+                                <a href="<?= base_url('admin/manageData/permohonan')?>" class="btn btn-secondary">Cancel</a>
+                                <input type="hidden" name="id" value="<?= $a->id_form ?>">
+                                <?php if($a->no_nota == null) {?>
+                                    <button class="btn btn-primary" type="submit">Upload</button>
+                                <?php } else { ?>
+                                    <button class="btn btn-warning" type="submit">Re-Upload</button>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
-                </form>
-                <!-- /.table-responsive -->
             </div>
-            <!-- /.panel-body -->
+            </form>
+            <!-- /.table-responsive -->
         </div>
-        <!-- /.panel -->
+        <!-- /.panel-body -->
     </div>
-    <!-- /.col-lg-12 -->
+    <!-- /.panel -->
+</div>
+<!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
 <script>

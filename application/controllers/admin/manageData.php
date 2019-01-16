@@ -224,7 +224,7 @@ class manageData extends CI_Controller {
 
     public function permohonan()
     {
-        $data['title'] = "Manage Kamus";
+        $data['title'] = "Permohonan Magang";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Permohonan Magang";
         $data['datamagang'] = $this->models->get_7join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
@@ -302,6 +302,7 @@ class manageData extends CI_Controller {
     {
         $id = $this->input->post('id');
         $nond = $this->input->post('nond');
+        $status = $this->input->post('status');
 
         $config['upload_path'] = './assets/file/notaDinas/';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc';
@@ -319,7 +320,11 @@ class manageData extends CI_Controller {
             );
             $where = array('id_form' => $id);
 
+            $data2 = array(
+                'status' => $status
+            );
             $this->models->update_data('nota_dinas', $data, $where);
+            $this->models->update_data('surat_konfirm', $data2, $where);
         }
         redirect(base_url('admin/manageData/permohonan'));
     }
@@ -336,5 +341,75 @@ class manageData extends CI_Controller {
             ob_clean();
             force_download($nama_file, $data);
         }
+    }
+
+    public function view_sk($id)
+    {
+        $this->load->helper('file');
+
+        $where = array('id_form' => $id);
+        $data['title'] = "Download Surat Konfirmasi";
+        $data['datamagang'] = $this->models->get_6join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
+
+        $data['perihal'] = 'Persetujuan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
+
+        $data1 = array(
+            'perihal_sk' => $data['perihal'],
+            'download' => '1'
+        );
+        $this->models->update_data('surat_konfirm', $data1, $where);
+
+        $cek = $this->models->get_selected('surat_konfirm',$where)->num_rows();
+
+        if($cek==0){
+            $this->models->add_data('surat_konfirm', $data1);
+        }
+        $this->load->view('admin/v_surat_konfirm', $data);
+    }
+
+    public function view_uploadsk($id)
+    {
+        $where = array('fm.id_form' => $id);
+
+        $data['title'] = "Upload Nota Dinas";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Upload Nota Dinas";
+        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result();
+
+        $this->load->view('header&footer/admin/v_headerTable_md', $data);
+        $this->load->view('admin/v_upload_notadinas');
+        $this->load->view('header&footer/admin/v_footerTable_md');
+        $this->load->view('v_modals');
+    }
+
+    public function uploadsk()
+    {
+        $id = $this->input->post('id');
+        $nond = $this->input->post('nond');
+        $status = $this->input->post('status');
+
+        $config['upload_path'] = './assets/file/notaDinas/';
+        $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc';
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('file_nond')) {
+            $error = array('error' => $this->upload->display_errors());
+
+            redirect('admin/manageData/view_uploadnd', 'refresh');
+
+        } else {
+            $data = array(
+                'no_nota' => $nond,
+                'file_nd' => $this->upload->data('file_name')
+            );
+            $where = array('id_form' => $id);
+
+            $data2 = array(
+                'status' => $status
+            );
+            $this->models->update_data('nota_dinas', $data, $where);
+            $this->models->update_data('surat_konfirm', $data2, $where);
+        }
+        redirect(base_url('admin/manageData/permohonan'));
     }
 }
