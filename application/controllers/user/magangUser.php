@@ -54,13 +54,21 @@ class magangUser extends CI_Controller
     {
         $data['title'] = 'Pengajuan Magang';
         $data['siapa'] = $this->session->userdata('nama');
+        $data['id']    = $this->session->userdata('id');
 
         $where = array('nama_mhs' => $data['siapa']);
 
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
+        $where1 = array(
+            'users.id_user' => $data['id']
+        );
+        $data['status'] = $this->models->get_4join('surat_konfirm','form_magang','mhs','users','surat_konfirm.id_form = form_magang.id_form','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where1)->result();
+
+        //var_dump($data['status']);
+
         $this->load->view('header&footer/user/v_headerUser', $data);
-        $this->load->view('user/v_konfirmasiMagangUser');
+        $this->load->view('user/v_konfirmasiMagangUser', $data);
         $this->load->view('header&footer/user/v_footerUser');
         $this->load->view('v_modals');
     }
@@ -148,12 +156,6 @@ class magangUser extends CI_Controller
                 redirect('user/magangUser', 'refresh');
             }
         }
-    }
-
-    public function konfirmasiPkl()
-    {
-        $this->model->get_4join('form_magang','mhs','surat_konfirm','nota_dinas','form_magang.id_mhs = mhs.id_mhs','form_magang.id_form = surat_konfirm.id_form','form_magang.id_form = nota_dinas.id_form')->result();
-
     }
 
 }
