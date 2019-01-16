@@ -49,11 +49,13 @@ class HomeRegister extends CI_Controller {
                 $idUser = $a->id_user;
             }
 
+            $pecah = explode(',',ucwords($this->input->post("univ")));
+
             $data1 = array(
                 'nim' => $this->input->post("nim"),
                 'nama_mhs' => ucwords($this->input->post("nama")),
                 'id_jurusan' => $this->input->post("jurusan"),
-                'univ' => ucwords($this->input->post("univ")),
+                'univ' => $pecah[0],
                 'alamat' => $this->input->post("alamat"),
                 'email' => $this->input->post("email"),
                 'id_user' => $idUser
@@ -133,16 +135,24 @@ class HomeRegister extends CI_Controller {
 
     public function autocomplete_univ()
     {
-        if(isset($_GET['term']))
-        {
-            $result = $this->models->search('univ', 'nama_univ', $_GET['term']);
-            if(count($result) > 0)
-            {
-                foreach ($result as $row)
-                    $arr_result[] = $row->nama_univ;
-                echo json_encode($arr_result);
+        $returnData = array();
+
+        // Get skills data
+        $conditions['searchTerm'] = $this->input->get('term');
+        $univData = $this->models->getRows($conditions);
+
+        // Generate array
+        if(!empty($univData)){
+            foreach ($univData as $row){
+                $data['id'] = $row['id'];
+                $data['value'] = $row['nama_univ'];
+                array_push($returnData, $data);
             }
         }
+        // Return results as json encoded array
+        //var_dump($returnData);
+        echo json_encode($returnData);
+        die;
     }
 }
 
