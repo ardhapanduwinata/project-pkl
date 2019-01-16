@@ -5,6 +5,10 @@
 
         <link href="<?=base_url('assets')?>/img/favicon.ico" rel="shortcut icon">
         <link href="<?=base_url('assets')?>/img/apple-icon-180x180.png" rel="apple-touch-icon">
+        <script src="https://unpkg.com/docx@4.0.0/build/index.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+        <script src="<?= base_url('assets') ?>/FileServer.js/dist/FileServer.js"></script>
+        <script src="<?= base_url('assets') ?>/FileServer.js/src/FileServer.js"></script>
     </head>
 
     <script>
@@ -69,6 +73,30 @@
         return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
     }
     ?>
+
+<!--    <script>-->
+<!--        function exportdocx(data, namafile='') {-->
+<!--            let docx = require("docx");-->
+<!--            import * as docx from "docx";-->
+<!---->
+<!--            import { saveAs } from 'file-saver';-->
+<!--            var fs = require("fs");-->
+<!--            var docx = require("docx");-->
+<!---->
+<!--            // Create document-->
+<!--            var doc = new docx.Document();-->
+<!---->
+<!--            // Add some content in the document-->
+<!--            var paragraph = new docx.Paragraph(data);-->
+<!--            // Add more text into the paragraph if you wish-->
+<!--//            paragraph.addRun(new docx.TextRun());-->
+<!--//            doc.addParagraph(paragraph);-->
+<!--            var judul = namafile;-->
+<!--            // Used to export the file into a .docx file-->
+<!--            var packer = new docx.Packer();-->
+<!--            packer.toBuffer(doc).then((buffer) => {fs.writeFileSync(judul".docx", buffer);});-->
+<!--        }-->
+<!--    </script>-->
 </html>
 
 <br><br>
