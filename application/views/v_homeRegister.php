@@ -14,6 +14,13 @@
     <!-- Favicons -->
     <link href="<?=base_url('assets')?>/img/favicon.ico" rel="shortcut icon">
     <link href="<?=base_url('assets')?>/img/apple-icon-180x180.png" rel="apple-touch-icon">
+    <style type="text/css">
+        .ui-autocomplete.ui-widget {
+            font-family: Verdana,Arial,sans-serif;
+            font-size: 12px;
+        }
+
+    </style>
 </head>
 <body style="background: white">
 <div class="container register">
@@ -92,10 +99,12 @@
             source: "<?php echo site_url('homeRegister/autocomplete_univ'); ?>",
             select: function( event, ui ) {
                 event.preventDefault();
-                $("#univ").val(ui.item.nama);
+                var size = ui.size;
+                $("#univ").val(ui.item.value);
             }
         });
     });
+
 </script>
 </body>
 

@@ -48,11 +48,13 @@ class HomeRegister extends CI_Controller {
                 $idUser = $a->id_user;
             }
 
+            $pecah = explode(',',ucwords($this->input->post("univ")));
+
             $data1 = array(
                 'nim' => $this->input->post("nim"),
                 'nama_mhs' => ucwords($this->input->post("nama")),
                 'id_jurusan' => $this->input->post("jurusan"),
-                'univ' => ucwords($this->input->post("univ")),
+                'univ' => $pecah[0],
                 'alamat' => $this->input->post("alamat"),
                 'email' => $this->input->post("email"),
                 'id_user' => $idUser
@@ -132,7 +134,7 @@ class HomeRegister extends CI_Controller {
 
     public function autocomplete_univ()
     {
-        //$returnData = array();
+        $returnData = array();
 
         // Get skills data
         $conditions['searchTerm'] = $this->input->get('term');
@@ -141,12 +143,13 @@ class HomeRegister extends CI_Controller {
         // Generate array
         if(!empty($univData)){
             foreach ($univData as $row){
-                $returnData = array(
-                    'nama' => $row['nama_univ']
-                );
+                $data['id'] = $row['id'];
+                $data['value'] = $row['nama_univ'];
+                array_push($returnData, $data);
             }
         }
         // Return results as json encoded array
+        //var_dump($returnData);
         echo json_encode($returnData);
         die;
     }
