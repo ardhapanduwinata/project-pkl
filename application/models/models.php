@@ -116,6 +116,7 @@ class models extends CI_Model {
     function getRows($params = array()){
         $this->db->select("*");
         $this->db->from('univ');
+        $this->db->limit(5);
 
         //fetch data by conditions
         if(array_key_exists("conditions",$params)){
