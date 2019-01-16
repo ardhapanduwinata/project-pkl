@@ -29,7 +29,7 @@
                 <form action="<?= base_url('admin/manageData/add_jurusan') ?>" method="post">
                     <div class="form-group">
                         <label for="nama">Jurusan</label>
-                        <input class="form-control" name="jurusan" type="text" placeholder="Masukkan Jurusan" required>
+                        <input class="form-control here" name="jurusan" type="text" placeholder="Masukkan Jurusan" required>
                     </div>
                     <div style="float: right;">
                         <a class="btn btn-secondary" href="<?= base_url('admin/manageData/jurusan') ?>">Cancel</a>
@@ -55,7 +55,7 @@
                 <form action="<?= base_url('admin/manageData/add_divisi') ?>" method="post">
                     <div class="form-group">
                         <label for="nama">Divisi</label>
-                        <input class="form-control" name="divisi" type="text" placeholder="Masukkan Divisi" required>
+                        <input class="form-control here" name="divisi" type="text" placeholder="Masukkan Divisi" required>
                     </div>
                     <div style="float: right;">
                         <a class="btn btn-secondary" href="<?= base_url('admin/manageData/divisi') ?>">Cancel</a>

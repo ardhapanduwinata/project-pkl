@@ -268,11 +268,10 @@ class manageData extends CI_Controller {
         foreach ($data['datamagang'] as $a){
             $data1 = array(
                 'tgl_keluar' => date('y-m-d'),
-                'id_form' => $a['id_form'],
                 'perihal' => $data['perihal'],
             );
             $idForm =  $a['id_form'];
-            $this->models->update_data('nota_dinas', $data1, $idForm);
+            $this->models->update_data('nota_dinas', $data1, $where);
         }
 
         $where2 = array('id_form' => $idForm);
