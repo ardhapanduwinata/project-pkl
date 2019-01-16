@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/project-pkl.iml" filepath="$PROJECT_DIR$/.idea/project-pkl.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../uas-baru/.idea/uas-baru.iml" filepath="$PROJECT_DIR$/../uas-baru/.idea/uas-baru.iml" />
-    </modules>
-  </component>
-</project>
