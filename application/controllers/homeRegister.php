@@ -24,6 +24,7 @@ class HomeRegister extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[users.username]');
         if ($this->form_validation->run()==FALSE){
             $data['jurusan'] = $this->models->get_data('jurusan')->result();
+            $data['title'] = "Home Register";
             $this->load->view('v_homeRegister',$data);
 
         }else{

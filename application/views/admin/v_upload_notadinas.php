@@ -26,16 +26,31 @@
                             </div>
                             <div class="col-md-6" style="padding-top: 20px">
                                 <label>Nomor Nota Dinas</label>
-                                <input id="nond" class="form-control here" name="nond" type="text" placeholder="Nomor Nota Dinas" required>
+                                <input id="nond" class="form-control here" name="nond" type="text" placeholder="Nomor Nota Dinas" value="<?= $a->no_nota?>" required>
                             </div>
                             <div class="col-md-6" style="padding-top: 20px">
-                                <label>Upload File Nota Dinas</label>
-                                <input id="file_nond" class="form-control here" name="file_nond" type="file" placeholder="Upload File Nota Dinas" required>
+                                <label>Status Mahasiswa</label><br>
+                                <button class="btn btn-danger" name="status" value="Ditolak">Ditolak</button>
+                                <button class="btn btn-success" name="status" value="Diterima">Diterima</button>
                             </div>
-                            <div style="float: right; padding-top: 25px">
-                                <a href="<?= base_url('admin/manageData/divisi')?>" class="btn btn-secondary">Cancel</a>
-                                <input type="hidden" name="id" value="<?= $a->id_form ?>">
-                                <button class="btn btn-primary" type="submit">Edit</button>
+                            <div class="col-md-6" style="padding-top: 20px">
+                                <label>File Nota Dinas</label>
+                                <?php if($a->no_nota != null) {?>
+                                    <br>
+                                    <a class="btn btn-primary" href="<?= base_url('admin/manageData/download_uploaded_nd/'.$a->id_nota) ?>">Download Nota Dinas</a>
+                                    <br><p>*nota dinas yang telah ter-upload sebelumnya</p>
+                                <?php } ?>
+                            </div>
+                            <div>
+                                <div style="float: right; padding-top: 25px">
+                                    <a href="<?= base_url('admin/manageData/permohonan')?>" class="btn btn-secondary">Cancel</a>
+                                    <input type="hidden" name="id" value="<?= $a->id_form ?>">
+                                    <?php if($a->no_nota == null) {?>
+                                        <button class="btn btn-primary" type="submit">Upload</button>
+                                    <?php } else { ?>
+                                        <button class="btn btn-danger" type="submit">Re-Upload</button>
+                                    <?php }?>
+                                </div>
                             </div>
                         </div>
                     </div>

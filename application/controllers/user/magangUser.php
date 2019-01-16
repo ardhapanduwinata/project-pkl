@@ -138,6 +138,12 @@ class magangUser extends CI_Controller
                     'status' => 'Diproses'
                 );
                 $this->models->add_data('surat_konfirm', $data1);
+
+                $data2 = array(
+                    'id_form' => $idForm,
+                );
+                $this->models->add_data('nota_dinas', $data2);
+
                 echo "<script>alert('Berhasil ditambahkan'); </script>";
                 redirect('user/magangUser', 'refresh');
             }

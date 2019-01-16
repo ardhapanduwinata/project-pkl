@@ -68,7 +68,9 @@
                                 </select>
                             </div>
                             <div class="form-group">
+
                                 <input type="text" class="form-control" name="univ" id="univ" placeholder="Universitas *" required/>
+
                             </div>
                         </div>
                         <div class="col-md-6">
