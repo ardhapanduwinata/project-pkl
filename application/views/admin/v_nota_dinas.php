@@ -106,7 +106,7 @@ $no = 1;
 $source = $a['tgl_mohon_surat'];
 { ?>
     <div style="padding-top: 20px; padding-right: 80px; float: right">
-        <button onclick="Export2Doc('isi_data','<?= $a['nama_mhs']?>')" class="btn btn-success">Download as Word</button>
+        <button onclick="Export2Doc('isi_data','NL-<?= date("Y") ?>.PermohonanMagang.<?= $a['nim']?>.<?= $a['nama_mhs']?>')" class="btn btn-success">Download as Word</button>
         <a href="<?= base_url('admin/manageData/permohonan')?>"><button type="button" class="btn btn-danger">Kembali</button></a>
     </div>
     <div id="isi_data">
@@ -115,7 +115,7 @@ $source = $a['tgl_mohon_surat'];
         <br><br>
         <center>
             <u>NOTA DINAS</u> <br>
-            Nomor:&emsp;&emsp;&emsp;&emsp;&emsp;/SDM.04.06/VPHRBHPHO/2019
+            Nomor:&emsp;&emsp;&emsp;&emsp;&emsp;/SDM.04.06/VPHRBHPHO/<?= date('Y')?>
         </center>
         <br><br><br>
         <div style="padding-left: 80px">

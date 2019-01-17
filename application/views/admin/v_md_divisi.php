@@ -1,3 +1,4 @@
+
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
@@ -38,12 +39,39 @@
                 </div>
                 <!-- /.panel -->
             </div>
-            <!-- /.col-lg-12 -->
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <table width="100%" class="table table-striped table-bordered table-hover" id="table_divisi">
+                    <thead>
+                    <tr>
+                        <th style="width: 10%">No</th>
+                        <th style="width: 70%">Nama Divisi</th>
+                        <td style="width: 20%; ">Action</td>
+                    </tr>
+                    </thead>
+                    <?php
+                    $no = 1;
+                    foreach ($divisi as $a) {?>
+                        <tbody>
+                        <tr>
+                            <td style="text-align: center"><?= $no++ ?></td>
+                            <td><?= $a->divisi ?></td>
+                            <td>
+                                <center>
+                                    <a class="btn btn-success" href="<?= base_url('admin/manageData/edt_divisi/'.$a->id_divisi) ?>">Edit</a>
+                                    <a class="btn btn-danger" onclick="return confirm('Anda yakin? Data akan dihapus Permanen!')" href="<?= base_url('admin/manageData/del_divisi/'.$a->id_divisi)?>">Delete</a>
+                                </center>
+                            </td>
+                        </tr>
+                        </tbody>
+                    <?php } ?>
+                </table>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
         </div>
-        <!-- /.row -->
+        <!-- /.panel -->
     </div>
-    <!-- /#page-wrapper -->
-
+    <!-- /.col-lg-12 -->
 </div>
-<!-- /#wrapper -->
-
+<!-- /.row -->

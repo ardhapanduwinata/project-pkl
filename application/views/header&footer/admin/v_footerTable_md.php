@@ -22,5 +22,4 @@
             "scrollX": false
         });
     } );
-
 </script>
