@@ -28,28 +28,9 @@
                                 <label>Nomor Nota Dinas</label>
                                 <input id="nond" class="form-control here" name="nond" type="text" placeholder="Nomor Nota Dinas" value="<?= $a->no_nota?>" required>
                             </div>
-                            <div class="col-md-6" style="padding-top: 20px">
-                                <label>Status Mahasiswa</label><br>
-                                <div id="myButtons" class="btn-group-justified" data-toggle="buttons">
-                                    <label class="btn btn-default">
-                                        <input type="radio" name="status" id="option1" autocomplete="off" value="Diterima"> Diterima
-                                    </label>
-                                    <label class="btn btn-default active">
-                                        <input type="radio" name="status" id="option2" autocomplete="off" value="Diproses" checked> Diproses
-                                    </label>
-                                    <label class="btn btn-default">
-                                        <input type="radio" name="status" id="option3" autocomplete="off" value="Ditolak"> Ditolak
-                                    </label>
-                                </div>
-                            </div>
                             <?php if($a->no_nota != null) {?>
                                 <div class="col-md-6" style="padding-top: 20px">
-                                    <label>File Nota Dinas</label>
-                                    <a class="btn btn-primary" href="<?= base_url('admin/manageData/download_uploaded_nd/'.$a->id_nota) ?>">Download Nota Dinas</a>
-                                    <p>*nota dinas yang telah ter-upload sebelumnya</p>
-                                </div>
-                                <div class="col-md-6" style="padding-top: 20px">
-                                    <label for="">Upload Nota Dinas Baru</label>
+                                    <label for="">Upload Nota Dinas <b style="color: red">Baru</b></label>
                                     <input type="file" name="file_nond" class="form-control" required>
                                 </div>
                             <?php } else {?>
