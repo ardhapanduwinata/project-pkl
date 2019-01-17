@@ -157,5 +157,18 @@ class magangUser extends CI_Controller
             }
         }
     }
+    public function download_uploaded_sk($id)
+    {
+        $this->load->helper('file');
+        $where = array('id_srtkonfirm' => $id);
+        $datand = $this->models->get_selected('surat_konfirm', $where)->result();
+
+        foreach ($datand as $a) {
+            $data = file_get_contents(base_url().'assets/file/suratKonfirm/'.($a->file_sk));
+            $nama_file = $a->file_sk;
+            ob_clean();
+            force_download($nama_file, $data);
+        }
+    }
 
 }
