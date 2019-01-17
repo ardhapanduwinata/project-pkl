@@ -95,28 +95,31 @@
                                             <td style="padding-top: 10px; padding-right: 5px">
                                                 <?php
                                                 if($a->no_nota == null) {?>
-                                                    <p>Nota Dinas harus diupload terlebih dahulu</p>
+                                                    <p style="color: red">Nota Dinas harus diupload terlebih dahulu</p>
                                                 <?php } else { ?>
                                                 <a href="javascript:void(0);" data-id="<?php echo $a->id_form ; ?>" data-toggle="modal" data-target="#edit-data">
-                                                    <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary <?php if($a->download != 1) echo 'btn-block'; ?>"><i class="fas fa-download"></i><?php if($a->download != 1) echo ' Download'; ?></button></a>
-                                                <?php if($a->download == 1){?>
+                                                    <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary">
+                                                        <i class="fas fa-download"></i>
+                                                        <?php if($a->download != 1) echo ' Download'; ?>
+                                                    </button>
+                                                </a>
+                                                <?php }?>
                                             </td>
                                             <td style="padding-top: 10px">
-                                                <?php if($a->file_sk == null) {?>
+                                                <?php if($a->file_nd != null && $a->no_nota != null && $a->download == '1' && $a->no_konfirm == null && $a->file_sk == null) {?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
-                                                <?php } else { ?>
+                                                <?php } ?>
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download == '1' && $a->no_nota != null && $a->file_nd != null) {?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
-                                                <?php }?>
-                                                       <?php }?>
-                                                    <?php }?>
+                                                <?php } ?>
                                             </td>
                                             <td style="padding-left: 80px; padding-top: 10px">
-                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->no_nota != null && $a->download == '1') {?>
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download == '1' && $a->no_nota != null && $a->file_nd != null) {?>
                                                     <a class="btn btn-outline btn-danger" href="<?= base_url('admin/manageData/download_uploaded_sk/'.$a->id_srtkonfirm) ?>">Download SK Terupload</a>
                                                 <?php } ?>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->no_nota != null && $a->download == '1') {?>
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download == '1' && $a->no_nota != null && $a->file_nd != null) {?>
                                                     Nomor Surat Konfirmasi: <b><?= $a->no_konfirm?></b>
                                                 <?php } ?>
                                             </td>
