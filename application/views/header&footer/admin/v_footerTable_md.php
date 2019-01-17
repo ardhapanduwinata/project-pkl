@@ -17,24 +17,8 @@
 
 <script>
     $(document).ready(function() {
-        $('#table_jurusan').DataTable({
-            responsive: false
-        });
-    });
-    $(document).ready(function() {
-        $('#table_divisi').DataTable({
-            responsive: false
-        });
-    });
-    $(document).ready(function() {
-        $('#table_kamus').DataTable({
-            responsive: false
-        });
-    });
-    $(document).ready(function() {
         $('#table_permohonan').DataTable({
             responsive: false
         });
     });
-
 </script>

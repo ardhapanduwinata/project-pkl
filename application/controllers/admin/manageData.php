@@ -302,7 +302,6 @@ class manageData extends CI_Controller {
     {
         $id = $this->input->post('id');
         $nond = $this->input->post('nond');
-        $status = $this->input->post('status');
 
         $config['upload_path'] = './assets/file/notaDinas/';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc';
@@ -320,11 +319,7 @@ class manageData extends CI_Controller {
             );
             $where = array('id_form' => $id);
 
-            $data2 = array(
-                'status' => $status
-            );
             $this->models->update_data('nota_dinas', $data, $where);
-            $this->models->update_data('surat_konfirm', $data2, $where);
         }
         redirect(base_url('admin/manageData/permohonan'));
     }
@@ -343,28 +338,46 @@ class manageData extends CI_Controller {
         }
     }
 
-    public function view_sk($id)
+    public function view_sk_terima($id)
     {
         $this->load->helper('file');
 
-        $where = array('id_form' => $id);
+        $where = array('fm.id_form' => $id);
+        $where1 = array('id_form' => $id);
         $data['title'] = "Download Surat Konfirmasi";
-        $data['datamagang'] = $this->models->get_6join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
+        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
 
         $data['perihal'] = 'Persetujuan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
 
         $data1 = array(
             'perihal_sk' => $data['perihal'],
-            'download' => '1'
+            'download' => '1',
+            'status' => 'Diterima'
         );
-        $this->models->update_data('surat_konfirm', $data1, $where);
+        $this->models->update_data('surat_konfirm', $data1, $where1);
 
-        $cek = $this->models->get_selected('surat_konfirm',$where)->num_rows();
+        $this->load->view('admin/v_sk_terima', $data);
+    }
 
-        if($cek==0){
-            $this->models->add_data('surat_konfirm', $data1);
-        }
-        $this->load->view('admin/v_surat_konfirm', $data);
+    public function view_sk_tolak($id)
+    {
+        $this->load->helper('file');
+
+        $where = array('fm.id_form' => $id);
+        $where1 = array('id_form' => $id);
+        $data['title'] = "Download Surat Konfirmasi";
+        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
+
+        $data['perihal'] = 'Penolakan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
+
+        $data1 = array(
+            'perihal_sk' => $data['perihal'],
+            'download' => '1',
+            'status' => 'Ditolak'
+        );
+        $this->models->update_data('surat_konfirm', $data1, $where1);
+
+        $this->load->view('admin/v_sk_tolak', $data);
     }
 
     public function view_uploadsk($id)

@@ -61,10 +61,10 @@
                                                 <p>Nota Dinas harus diupload terlebih dahulu</p>
                                             <?php } else { ?>
                                                 <?php if($a->download == 1) {?>
-                                                    <a href="<?= base_url('admin/manageData/view_sk/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
+                                                    <a href="<?= base_url('admin/manageData/view_sk_terima/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
                                                     <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('admin/manageData/view_sk/'.$a->id_form)?>"><button type="button" class="btn btn-primary btn-block"><i class="fas fa-download"></i> Download</button></a>
+                                                    <a href="<?= base_url('admin/manageData/view_sk_terima/'.$a->id_form)?>"><button type="button" class="btn btn-primary btn-block"><i class="fas fa-download"></i> Download</button></a>
                                                 <?php } ?>
                                             <?php }?>
                                         </div>
@@ -101,19 +101,3 @@
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-
-<script>
-    $(document).ready(function(){
-        $('#uploadnd_modal').on('show.bs.modal', function (e) {
-            var rowid = $(e.relatedTarget).data('id');
-            $.ajax({
-                type : 'post',
-                url : '<?= base_url('admin/manageData/uploadnd') ?>', //Here you will fetch records
-                data :  'rowid='+ rowid, //Pass $id
-                success : function(data){
-                    $('.fetched-data').html(data);//Show fetched data from database
-                }
-            });
-        });
-    });
-</script>

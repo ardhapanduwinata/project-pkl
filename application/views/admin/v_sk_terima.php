@@ -5,6 +5,8 @@
 
     <link href="<?=base_url('assets')?>/img/favicon.ico" rel="shortcut icon">
     <link href="<?=base_url('assets')?>/img/apple-icon-180x180.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     <script src="https://unpkg.com/docx@4.0.0/build/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
     <script src="<?= base_url('assets') ?>/FileServer.js/dist/FileServer.js"></script>
@@ -77,13 +79,31 @@ function tgl_indo($tanggal){
 
 <br><br>
 
+
 <?php foreach ($datamagang as $a)
     $no = 1;
 $source = $a['tgl_mohon_surat'];
 { ?>
-    <div style="padding-top: 20px; padding-right: 80px; float: right">
-        <button onclick="Export2Doc('isi_data','<?= $a['nama_mhs']?>')" class="btn btn-success">Download as Word</button>
-        <a href="<?= base_url('admin/manageData/permohonan')?>"><button type="button" class="btn btn-danger">Kembali</button></a>
+    <div style="padding-top: 20px; padding-left: 80px">
+        <table>
+            <tr>
+                <td>
+                    <a href="<?= base_url('admin/manageData/view_sk_terima/').$a['id_form'] ?>">
+                        <button class="btn btn-success">Diterima</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="<?= base_url('admin/manageData/view_sk_tolak/').$a['id_form'] ?>">
+                        <button class="btn btn-danger">Ditolak</button>
+                    </a>
+                </td>
+                <td style="width: 59%"></td>
+                <td style="padding-left: 10px">
+                    <a style="float: right; margin-right: 80px" href="<?= base_url('admin/manageData/permohonan')?>"><button type="button" class="btn btn-danger">X</button></a>
+                    <button style="float: right; margin-right: 5px" onclick="Export2Doc('isi_data','SL-<?= date("Y") ?>.PermohonanMagang.<?= $a['nim']?>.<?= $a['nama_mhs']?>')" class="btn btn-primary">Download as Word</button>
+                </td>
+            </tr>
+        </table>
     </div>
     <div id="isi_data" style="padding-top: 100px;">
         <div style="padding-left: 80px">
@@ -91,7 +111,7 @@ $source = $a['tgl_mohon_surat'];
                 <tr>
                     <td style="width: 10%">Nomor</td>
                     <td>:</td>
-                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;/SDM.04.06/DIVTLN/2019</td>
+                    <td>&emsp;&emsp;&emsp;&emsp;&emsp;/SDM.04.06/DIVTLN/<?= date('Y')?></td>
                     <td style="text-align: right; padding-right: 40px"><?= tgl_indo(date('Y-m- ')) ?>&emsp;&emsp;&emsp;</td>
                 </tr>
                 <tr>
@@ -202,14 +222,14 @@ $source = $a['tgl_mohon_surat'];
                     <b>VICE PRESIDENT HUMAN RESOURCES BUSSINESS</b><br>
                     <b>PARTNER OF HEAD OFFICE</b>
 
-                <br><br><br><br><br>
+                    <br><br><br><br><br>
                     <b>PRASETYORINI</b>
                 </p>
             </center>
         </div>
         <div style="padding-left: 160px;margin-left: 80px">
             <p>Tembusan <br>
-            &emsp;-&emsp;<?= $a['divisi']?></p>
+                &emsp;-&emsp;<?= $a['divisi']?></p>
         </div>
     </div>
 <?php } ?>
