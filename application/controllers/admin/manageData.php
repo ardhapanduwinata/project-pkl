@@ -417,7 +417,7 @@ class manageData extends CI_Controller {
         $tksk = $this->input->post('tksk');
 
         $config['upload_path'] = './assets/file/suratKonfirm/';
-        $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc';
+        $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('file_sk')) {

@@ -108,7 +108,9 @@
                                                 <?php } else { ?>
                                                   <a href="javascript:void(0);" data-id="<?php echo $a->id_form ; ?>" data-toggle="modal" data-target="#edit-data">
                                                     <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary <?php if($a->download != 1) echo 'btn-block'; ?>"><i class="fas fa-download"></i><?php if($a->download != 1) echo ' Download'; ?></button></a>
-                                                <?php }?>
+                                                    <?php if($a->download == 1){?>
+
+
                                             </td>
                                             <td style="padding-top: 10px">
                                                 <?php if($a->file_sk == null) {?>
@@ -116,6 +118,8 @@
                                                 <?php } else { ?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
                                                 <?php }?>
+                                                       <?php }?>
+                                                    <?php }?>
                                             </td>
                                             <td style="padding-left: 80px; padding-top: 10px">
                                                 <?php if($a->no_konfirm != null) {?>
