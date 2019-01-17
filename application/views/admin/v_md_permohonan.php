@@ -10,20 +10,19 @@
                         <thead>
                         <tr>
                             <th style="width: 5%">No</th>
-                            <th style="width: auto;text-align: center">No Surat</th>
                             <th style="width: auto;text-align: center">Tanggal</th>
-                            <th style="width: auto;text-align: center">Download File Mhs</th>
-                            <th style="width: auto;text-align: center">Download/Upload Nota Dinas</th>
-                            <th style="width: auto;text-align: center">Download/Upload Surat Konfirm</th>
-                            <th style="width: auto;text-align: center">Status</th>
-                            <th style="width: auto;text-align: center">Divisi</th>
-                            <th style="width: auto;text-align: center">NIM</th>
                             <th style="width: auto;text-align: center">Nama Mhs</th>
                             <th style="width: auto;text-align: center">Jurusan</th>
                             <th style="width: auto;text-align: center">Universitas</th>
+                            <th style="width: auto;text-align: center">Divisi</th>
+                            <th style="width: auto;text-align: center">Status</th>
                             <th style="width: auto;text-align: center">Jenis PKL</th>
                             <th style="width: auto;text-align: center">Tanggal Mulai</th>
                             <th style="width: auto;text-align: center">Judul PKL</th>
+                            <th style="width: auto;text-align: center">No Surat</th>
+                            <th style="width: auto;text-align: center">Download File Mhs</th>
+                            <th style="width: auto;text-align: center">Download/Upload Nota Dinas</th>
+                            <th style="width: auto;text-align: center">Download/Upload Surat Konfirm</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,8 +31,24 @@
                         foreach ($datamagang as $a) {?>
                             <tr>
                                 <td style="text-align: center"><?= $no++ ?></td>
-                                <td><?= $a->no_surat ?></td>
                                 <td><?= $a->tgl_mohon_surat ?></td>
+                                <td><?= $a->nama_mhs?></td>
+                                <td><?= $a->jurusan?></td>
+                                <td><?= $a->univ?></td>
+                                <td><?= $a->divisi?></td>
+                                <td>
+                                    <?php if($a->status == "Diterima"){?>
+                                        <p style="color: green"><?= $a->status?></p>
+                                    <?php } elseif($a->status == "Ditolak") { ?>
+                                        <p style="color: red"><?= $a->status?></p>
+                                    <?php } else { ?>
+                                        <p style="color: black"><?= $a->status?></p>
+                                    <?php } ?>
+                                </td>
+                                <td><?= $a->jenis?></td>
+                                <td><?= $a->tgl_mulai?></td>
+                                <td><?= $a->judul?></td>
+                                <td><?= $a->no_surat ?></td>
                                 <td>
                                     <center>
                                         <a type="button" class="btn btn-outline btn-success" href="<?= base_url('admin/manageData/download_dtmhs/'.$a->id_form)?>">Download</a>
@@ -47,7 +62,7 @@
                                             if($a->no_nota == null) {?>
                                                 <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
                                             <?php } else { ?>
-                                                <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Upload <i class="fas fa-upload"></i></button></a>
+                                                <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
                                             <?php }?>
                                         </div>
                                     </center>
@@ -61,7 +76,11 @@
                                             <?php } else { ?>
                                                 <?php if($a->download == 1) {?>
                                                     <a href="<?= base_url('admin/manageData/view_sk_terima/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
-                                                    <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
+                                                    <?php if($a->file_sk == null) {?>
+                                                        <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
+                                                    <?php } else { ?>
+                                                        <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
+                                                    <?php }?>
                                                 <?php } else { ?>
                                                     <a href="<?= base_url('admin/manageData/view_sk_terima/'.$a->id_form)?>"><button type="button" class="btn btn-primary btn-block"><i class="fas fa-download"></i> Download</button></a>
                                                 <?php } ?>
@@ -69,23 +88,6 @@
                                         </div>
                                     </center>
                                 </td>
-                                <td>
-                                    <?php if($a->status == "Diterima"){?>
-                                        <p style="color: green"><?= $a->status?></p>
-                                    <?php } elseif($a->status == "Ditolak") { ?>
-                                        <p style="color: red"><?= $a->status?></p>
-                                    <?php } else { ?>
-                                        <p style="color: black"><?= $a->status?></p>
-                                    <?php } ?>
-                                </td>
-                                <td><?= $a->divisi?></td>
-                                <td><?= $a->nim?></td>
-                                <td><?= $a->nama_mhs?></td>
-                                <td><?= $a->jurusan?></td>
-                                <td><?= $a->univ?></td>
-                                <td><?= $a->jenis?></td>
-                                <td><?= $a->tgl_mulai?></td>
-                                <td><?= $a->judul?></td>
                             </tr>
                         <?php } ?>
                         </tbody>

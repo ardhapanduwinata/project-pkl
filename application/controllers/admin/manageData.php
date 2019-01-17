@@ -347,7 +347,7 @@ class manageData extends CI_Controller {
         $data['title'] = "Download Surat Konfirmasi";
         $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
 
-        $data['perihal'] = 'Persetujuan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
+        $data['perihal'] = 'Konfirmasi Permohonan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
 
         $data1 = array(
             'perihal_sk' => $data['perihal'],
@@ -368,7 +368,7 @@ class manageData extends CI_Controller {
         $data['title'] = "Download Surat Konfirmasi";
         $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
 
-        $data['perihal'] = 'Penolakan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
+        $data['perihal'] = 'Konfirmasi Permohonan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
 
         $data1 = array(
             'perihal_sk' => $data['perihal'],
@@ -384,13 +384,13 @@ class manageData extends CI_Controller {
     {
         $where = array('fm.id_form' => $id);
 
-        $data['title'] = "Upload Nota Dinas";
+        $data['title'] = "Upload Surat Konfirm";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Upload Nota Dinas";
         $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result();
 
         $this->load->view('header&footer/admin/v_headerTable_md', $data);
-        $this->load->view('admin/v_upload_notadinas');
+        $this->load->view('admin/v_upload_sk');
         $this->load->view('header&footer/admin/v_footerTable_md');
         $this->load->view('v_modals');
     }
@@ -398,31 +398,42 @@ class manageData extends CI_Controller {
     public function uploadsk()
     {
         $id = $this->input->post('id');
-        $nond = $this->input->post('nond');
-        $status = $this->input->post('status');
+        $nosk = $this->input->post('nond');
+        $tksk = $this->input->post('ttd');
 
-        $config['upload_path'] = './assets/file/notaDinas/';
+        $config['upload_path'] = './assets/file/suratKonfirm/';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc';
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('file_nond')) {
+        if (!$this->upload->do_upload('file_sk')) {
             $error = array('error' => $this->upload->display_errors());
 
             redirect('admin/manageData/view_uploadnd', 'refresh');
 
         } else {
             $data = array(
-                'no_nota' => $nond,
-                'file_nd' => $this->upload->data('file_name')
+                'no_konfirm' => $nosk,
+                'tgl_keluar_sk' => $tksk,
+                'file_sk' => $this->upload->data('file_name')
             );
             $where = array('id_form' => $id);
 
-            $data2 = array(
-                'status' => $status
-            );
-            $this->models->update_data('nota_dinas', $data, $where);
-            $this->models->update_data('surat_konfirm', $data2, $where);
+            $this->models->update_data('surat_konfirm', $data, $where);
         }
         redirect(base_url('admin/manageData/permohonan'));
+    }
+
+    public function download_uploaded_sk($id)
+    {
+        $this->load->helper('file');
+        $where = array('id_srtkonfirm' => $id);
+        $datand = $this->models->get_selected('surat_konfirm', $where)->result();
+
+        foreach ($datand as $a) {
+            $data = file_get_contents(base_url().'assets/file/suratKonfirm/'.($a->file_sk));
+            $nama_file = $a->file_sk;
+            ob_clean();
+            force_download($nama_file, $data);
+        }
     }
 }
