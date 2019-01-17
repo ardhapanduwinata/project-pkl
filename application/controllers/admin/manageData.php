@@ -305,7 +305,7 @@ class manageData extends CI_Controller {
         $status = $this->input->post('status');
 
         $config['upload_path'] = './assets/file/notaDinas/';
-        $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc';
+        $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('file_nond')) {
