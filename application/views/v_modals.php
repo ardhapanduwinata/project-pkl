@@ -105,3 +105,27 @@
         </div>
     </div>
 </div>
+
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="edit-data" class="modal fade-in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center<h4 class="modal-title"> Apakah Status Permohonan Pengajuan PKL ini :</h4><center>
+            </div>
+            <?php echo form_open_multipart('admin/manageData/change_view_sk'); ?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <input type="hidden" id="id" name="id">
+                        <input type="submit" class="btn btn-success" id="btn" name="btn" value="Diterima">
+                        <input type="submit" class="btn btn-danger" id="pict" name="btn" value="Ditolak">
+                    </div>
+                </div>
+            </div>
+            <?php echo form_close();?>
+            <br><br>
+        </div>
+    </div>
+</div>
+

@@ -74,15 +74,14 @@
                                             if($a->no_nota == null) {?>
                                                 <p>Nota Dinas harus diupload terlebih dahulu</p>
                                             <?php } else { ?>
+                                                <a href="javascript:void(0);" data-id="<?php echo $a->id_form ; ?>" data-toggle="modal" data-target="#edit-data">
+                                                    <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary <?php if($a->download != 1) echo 'btn-block'; ?>"><i class="fas fa-download"></i><?php if($a->download != 1) echo ' Download'; ?></button></a>
                                                 <?php if($a->download == 1) {?>
-                                                    <a href="<?= base_url('admin/manageData/view_sk_terima/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
                                                     <?php if($a->file_sk == null) {?>
                                                         <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
                                                     <?php } else { ?>
                                                         <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
                                                     <?php }?>
-                                                <?php } else { ?>
-                                                    <a href="<?= base_url('admin/manageData/view_sk_terima/'.$a->id_form)?>"><button type="button" class="btn btn-primary btn-block"><i class="fas fa-download"></i> Download</button></a>
                                                 <?php } ?>
                                             <?php }?>
                                         </div>
