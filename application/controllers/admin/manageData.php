@@ -413,8 +413,8 @@ class manageData extends CI_Controller {
     public function uploadsk()
     {
         $id = $this->input->post('id');
-        $nosk = $this->input->post('nond');
-        $tksk = $this->input->post('ttd');
+        $nosk = $this->input->post('nosk');
+        $tksk = $this->input->post('tksk');
 
         $config['upload_path'] = './assets/file/suratKonfirm/';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf|doc';

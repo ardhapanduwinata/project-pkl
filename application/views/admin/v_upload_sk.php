@@ -34,12 +34,7 @@
                             </div>
                             <?php if($a->no_konfirm != null) {?>
                                 <div class="col-md-6" style="padding-top: 20px">
-                                    <label>File Surat Konfirmasi</label>
-                                    <a class="btn btn-primary" href="<?= base_url('admin/manageData/download_uploaded_sk/'.$a->id_srtkonfirm) ?>">Download Surat Konfirmasi</a>
-                                    <p>*Surat Konfirmasi yang telah ter-upload sebelumnya</p>
-                                </div>
-                                <div class="col-md-6" style="padding-top: 20px">
-                                    <label for="">Upload Surat Konfirmasi Baru</label>
+                                    <label for="">Upload Surat Konfirmasi <b style="color: red">Baru</b></label>
                                     <input type="file" name="file_sk" class="form-control" required>
                                 </div>
                             <?php } else {?>
