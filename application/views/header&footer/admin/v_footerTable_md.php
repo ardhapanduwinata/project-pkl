@@ -17,8 +17,9 @@
 
 <script>
     $(document).ready(function() {
-        $('#table_permohonan').DataTable({
-            responsive: false
+        $('table.display').DataTable({
+            responsive: true,
+            "scrollX": false
         });
-    });
+    } );
 </script>

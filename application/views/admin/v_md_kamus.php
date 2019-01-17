@@ -7,7 +7,7 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="table_kamus">
+                <table width="100%" class="display table table-striped table-bordered table-hover" id="table_kamus">
                     <thead>
                     <tr>
                         <th style="width: 10%">No</th>
@@ -16,10 +16,10 @@
                         <td style="width: 20%">Action</td>
                     </tr>
                     </thead>
+                    <tbody>
                     <?php
                     $no = 1;
                     foreach ($kamus as $a) {?>
-                        <tbody>
                         <tr>
                             <td style="text-align: center"><?= $no++ ?></td>
                             <td><?= $a->jurusan ?></td>
@@ -31,8 +31,8 @@
                                 </center>
                             </td>
                         </tr>
-                        </tbody>
                     <?php } ?>
+                    </tbody>
                 </table>
                 <!-- /.table-responsive -->
             </div>

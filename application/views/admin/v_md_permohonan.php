@@ -6,8 +6,7 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div class="table-responsive" style="width: 100%">
-                    <table class="table table-striped table-bordered table-hover table-responsive" id="table_permohonan" style="width: 100%">
+                    <table class="display table table-striped table-bordered table-hover " id="table_permohonan" style="width: 100%">
                         <thead>
                         <tr>
                             <th style="width: 5%">No</th>
@@ -27,10 +26,10 @@
                             <th style="width: auto;text-align: center">Judul PKL</th>
                         </tr>
                         </thead>
+                        <tbody>
                         <?php
                         $no = 1;
                         foreach ($datamagang as $a) {?>
-                            <tbody>
                             <tr>
                                 <td style="text-align: center"><?= $no++ ?></td>
                                 <td><?= $a->no_surat ?></td>
@@ -88,10 +87,9 @@
                                 <td><?= $a->tgl_mulai?></td>
                                 <td><?= $a->judul?></td>
                             </tr>
-                            </tbody>
                         <?php } ?>
+                        </tbody>
                     </table>
-                </div>
                 <!-- /.table-responsive -->
             </div>
             <!-- /.panel-body -->
