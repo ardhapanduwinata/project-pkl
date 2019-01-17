@@ -67,31 +67,22 @@
                                     <table>
                                         <tr>
                                             <td style="padding-top: 10px; padding-right: 5px">
-                                                <?php
-                                                if($a->no_nota == null) {?>
-                                                    <p>Nota Dinas harus diupload terlebih dahulu</p>
-                                                <?php } else { ?>
-                                                    <?php if($a->download == 1) {?>
-                                                        <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
-                                                    <?php } else { ?>
-                                                        <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form)?>"><button type="button" class="btn btn-primary btn-block"><i class="fas fa-download"></i> Download</button></a>
-                                                    <?php } ?>
-                                                <?php }?>
+                                                <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
                                             </td>
                                             <td style="padding-left 10px;padding-top: 10px">
-                                                <?php if($a->file_nd == null) {?>
+                                                <?php if($a->no_nota == null) {?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
                                                 <?php } else { ?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
                                                 <?php }?>
                                             </td>
                                             <td style="padding-left: 80px; padding-top: 10px">
-                                                <?php if($a->no_nota != null) {?>
+                                                <?php if($a->no_nota != null && $a->file_nd != null) {?>
                                                     <a class="btn btn-outline btn-danger" href="<?= base_url('admin/manageData/download_uploaded_nd/'.$a->id_nota) ?>">Download ND Terupload</a>
                                                 <?php } ?>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <?php if($a->no_nota != null) {?>
+                                                <?php if($a->no_nota != null && $a->file_nd) {?>
                                                     Nomor Nota Dinas: <b><?= $a->no_nota?></b>
                                                 <?php } ?>
                                             </td>
@@ -106,11 +97,9 @@
                                                 if($a->no_nota == null) {?>
                                                     <p>Nota Dinas harus diupload terlebih dahulu</p>
                                                 <?php } else { ?>
-                                                  <a href="javascript:void(0);" data-id="<?php echo $a->id_form ; ?>" data-toggle="modal" data-target="#edit-data">
+                                                <a href="javascript:void(0);" data-id="<?php echo $a->id_form ; ?>" data-toggle="modal" data-target="#edit-data">
                                                     <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary <?php if($a->download != 1) echo 'btn-block'; ?>"><i class="fas fa-download"></i><?php if($a->download != 1) echo ' Download'; ?></button></a>
-                                                    <?php if($a->download == 1){?>
-
-
+                                                <?php if($a->download == 1){?>
                                             </td>
                                             <td style="padding-top: 10px">
                                                 <?php if($a->file_sk == null) {?>
@@ -122,12 +111,12 @@
                                                     <?php }?>
                                             </td>
                                             <td style="padding-left: 80px; padding-top: 10px">
-                                                <?php if($a->no_konfirm != null) {?>
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->no_nota != null && $a->download == '1') {?>
                                                     <a class="btn btn-outline btn-danger" href="<?= base_url('admin/manageData/download_uploaded_sk/'.$a->id_srtkonfirm) ?>">Download SK Terupload</a>
                                                 <?php } ?>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <?php if($a->no_konfirm != null) {?>
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->no_nota != null && $a->download == '1') {?>
                                                     Nomor Surat Konfirmasi: <b><?= $a->no_konfirm?></b>
                                                 <?php } ?>
                                             </td>
