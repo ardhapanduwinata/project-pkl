@@ -350,7 +350,6 @@ class manageData extends CI_Controller {
         }else if($value == 'Ditolak'){
             redirect(base_url()."admin/manageData/view_sk_tolak/".$id);
         }
-        //$this->load->view('admin/v_sk_terima', $data);
     }
 
     public function view_sk_terima($id)
