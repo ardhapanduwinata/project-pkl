@@ -231,8 +231,10 @@ class manageData extends CI_Controller {
 
         $this->load->view('header&footer/admin/v_headerTable_md', $data);
         $this->load->view('admin/v_md_permohonan');
-        $this->load->view('header&footer/admin/v_footerTable_md');
         $this->load->view('v_modals');
+        $this->load->view('header&footer/admin/v_footerTable_md');
+        $this->load->view('admin/ajax/ajaxModalDownloadPermohonan');
+
     }
 
     public function download_dtmhs($id)
@@ -336,6 +338,19 @@ class manageData extends CI_Controller {
             ob_clean();
             force_download($nama_file, $data);
         }
+    }
+
+    public function change_view_sk()
+    {
+        $id = $this->input->post('id');
+        $value = $this->input->post('btn');
+
+        if($value == 'Diterima'){
+            redirect(base_url()."admin/manageData/view_sk_terima/".$id);
+        }else if($value == 'Ditolak'){
+            redirect(base_url()."admin/manageData/view_sk_tolak/".$id);
+        }
+        //$this->load->view('admin/v_sk_terima', $data);
     }
 
     public function view_sk_terima($id)

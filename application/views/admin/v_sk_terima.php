@@ -84,26 +84,10 @@ function tgl_indo($tanggal){
     $no = 1;
 $source = $a['tgl_mohon_surat'];
 { ?>
-    <div style="padding-top: 20px; padding-left: 80px">
-        <table>
-            <tr>
-                <td>
-                    <a href="<?= base_url('admin/manageData/view_sk_terima/').$a['id_form'] ?>">
-                        <button class="btn btn-success">Diterima</button>
-                    </a>
-                </td>
-                <td>
-                    <a href="<?= base_url('admin/manageData/view_sk_tolak/').$a['id_form'] ?>">
-                        <button class="btn btn-danger">Ditolak</button>
-                    </a>
-                </td>
-                <td style="width: 59%"></td>
-                <td style="padding-left: 10px">
-                    <a style="float: right; margin-right: 80px" href="<?= base_url('admin/manageData/permohonan')?>"><button type="button" class="btn btn-danger">X</button></a>
-                    <button style="float: right; margin-right: 5px" onclick="Export2Doc('isi_data','SL-<?= date("Y") ?>.PermohonanMagang.<?= $a['nim']?>.<?= $a['nama_mhs']?>')" class="btn btn-primary">Download as Word</button>
-                </td>
-            </tr>
-        </table>
+    <div style="padding-top: 20px; padding-right: 80px; float: right">
+        <a style="float: right; margin-right: 80px" href="<?= base_url('admin/manageData/permohonan')?>"><button type="button" class="btn btn-danger">X</button></a>
+        <button style="float: right; margin-right: 5px" onclick="Export2Doc('isi_data','SL-<?= date("Y") ?>.PermohonanMagang.<?= $a['nim']?>.<?= $a['nama_mhs']?>')" class="btn btn-primary">Download as Word</button>
+
     </div>
     <div id="isi_data" style="padding-top: 100px;">
         <div style="padding-left: 80px">
