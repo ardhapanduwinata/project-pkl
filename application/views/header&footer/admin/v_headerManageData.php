@@ -60,7 +60,7 @@
 
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <a href="<?= base_url('admin/homeAdmin') ?>"><i class="fas fa-home"></i>Home Page</a>
+                <a href="<?=  base_url('admin/homeAdmin')?>"><i class="fas fa-home"></i>Home Page</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -98,21 +98,7 @@
                         <a href="<?= base_url('admin/manageData/kamus')?>"><i class="fa fa-book fa-fw"></i> Kamus</a>
                     </li>
                     <li>
-                        <a href=""><i class="fas fa-users"></i> Daftar Permohonan Magang<span style="padding-top: 3px" class="fa arrow"></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<?= base_url('admin/manageData/permohonan/semua')?>">Seluruh Data Permohonan</a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url('admin/manageData/permohonan/diproses')?>">Diproses</a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url('admin/manageData/permohonan/diterima')?>">Diterima</a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url('admin/manageData/permohonan/ditolak')?>">Ditolak</a>
-                            </li>
-                        </ul>
+                        <a href="<?= base_url('admin/manageData/permohonan/semua')?>"><i class="fas fa-users"></i> Daftar Permohonan Magang</a>
                         <!-- /.nav-second-level -->
                     </li>
                 </ul>
