@@ -421,9 +421,11 @@ class manageData extends CI_Controller {
 
         if (!$this->upload->do_upload('file_sk')) {
             $error = array('error' => $this->upload->display_errors());
+            foreach ($error as $row) {
+                echo $row;
+            }
 
             redirect('admin/manageData/view_uploadnd', 'refresh');
-
         } else {
             $data = array(
                 'no_konfirm' => $nosk,

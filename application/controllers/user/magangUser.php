@@ -60,10 +60,10 @@ class magangUser extends CI_Controller
 
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
-        $where1 = array(
+        $where2 = array(
             'users.id_user' => $data['id']
         );
-        $data['status'] = $this->models->get_4join('surat_konfirm','form_magang','mhs','users','surat_konfirm.id_form = form_magang.id_form','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where1)->result();
+        $data['status'] = $this->models->get_4selected_join('surat_konfirm','form_magang','mhs','users','surat_konfirm.id_form = form_magang.id_form','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where2)->result();
 
         //var_dump($data['status']);
 
