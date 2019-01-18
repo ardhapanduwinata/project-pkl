@@ -126,7 +126,8 @@ class magangUser extends CI_Controller
                     'tgl_mohon_surat' => $this->input->post('tglSurat'),
                     'file' => $this->upload->data('file_name'),
                     'judul' => $this->input->post('judul'),
-                    'jenis' => $this->input->post('jenis')
+                    'jenis' => $this->input->post('jenis'),
+                    'tgl_pengajuan_form' => date('y-m-d')
                 );
 
                 $where1 = array(

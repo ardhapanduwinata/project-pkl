@@ -33,9 +33,37 @@
                                 <td style="text-align: center"><?= $no++ ?></td>
                                 <td><?= $a->tgl_mohon_surat ?></td>
                                 <td><?= $a->nama_mhs?></td>
-                                <td><?= $a->jurusan?></td>
+                                <td><?= $a->jurusan?>
+                                    <input type="hidden" value="<?php echo $a->id_jurusan?>" id="idJurusan" name="idJurusan">
+                                </td>
                                 <td><?= $a->univ?></td>
-                                <td><?= $a->divisi?></td>
+                                <td>
+                                    <?php  if (empty($a->id_kamus)){?>
+                                    <form enctype="multipart/form-data" action="<?= base_url('admin/manageData/updateDivisi/'.$a->id_form) ?>" method="post">
+                                    <select class="form-control" name="divisi" onchange="this.form.submit()">
+                                        <option class="hidden" selected disabled>Divisi</option>
+                                        <?php $where = array('id_jurusan' => $a->id_jurusan);
+                                        $divisi = $this->db->select('*')->from('kamus')->join('divisi', 'kamus.id_divisi=divisi.id_divisi')->where($where)->get()->result();
+                                        foreach($divisi as $row) { ?>
+                                            <option value="<?= $row->id_kamus;?>"><?= $row->divisi;?></option>
+                                        <?php } ?>
+                                    </select>
+                                    </form>
+                                    <?php }else{?>
+                                    <form enctype="multipart/form-data" action="<?= base_url('admin/manageData/updateDivisi/'.$a->id_form) ?>" method="post">
+                                        <select class="form-control" name="divisi" onchange="this.form.submit()">
+                                            <option class="hidden" selected disabled>Divisi</option>
+                                            <?php $where = array('id_jurusan' => $a->id_jurusan);
+                                            $divisi = $this->db->select('*')->from('kamus')->join('divisi', 'kamus.id_divisi=divisi.id_divisi')->where($where)->get()->result();
+                                            foreach($divisi as $row) {
+                                                $cat = $row->id_kamus;?>
+                                                <option value="<?= $row->id_kamus;?>" <?php if($cat == $a->id_kamus) echo "selected";?> ><?= $row->divisi;?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </form>
+                                    <?php } ?>
+
+                                </td>
                                 <td>
                                     <?php if($a->status == "Diterima"){?>
                                         <p style="color: green"><?= $a->status?></p>
