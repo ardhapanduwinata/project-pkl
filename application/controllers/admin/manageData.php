@@ -237,10 +237,10 @@ class manageData extends CI_Controller {
         $data['page_header'] = "Permohonan Magang";
         $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
 
-        $this->load->view('header&footer/admin/v_headerTable_md', $data);
+        $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_md_permohonan');
         $this->load->view('v_modals');
-        $this->load->view('header&footer/admin/v_footerTable_md');
+        $this->load->view('header&footer/admin/v_footerManageData');
         $this->load->view('admin/ajax/ajaxModalDownloadPermohonan');
     }
 

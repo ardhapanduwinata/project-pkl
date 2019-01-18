@@ -60,7 +60,7 @@
 
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <a href="admin/homeAdmin"><i class="fas fa-home"></i>Home Page</a>
+                <a href="<?= base_url('admin/homeAdmin') ?>"><i class="fas fa-home"></i>Home Page</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
