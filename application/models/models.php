@@ -77,6 +77,18 @@ class models extends CI_Model {
         return $query;
     }
 
+    public function get_4selected_join($table,$table1,$table2,$table3,$on,$on2,$on3,$where)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table1, $on);
+        $this->db->join($table2, $on2);
+        $this->db->join($table3, $on3);
+        $this->db->where($where);
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function get_6join($table,$table1,$table2,$table3,$table4,$table5,$on,$on2,$on3,$on4,$on5)
     {
         $this->db->select('*');
@@ -130,6 +142,18 @@ class models extends CI_Model {
         return $query;
     }
 
+    public function get_5selected_join($table,$table1,$table2,$table3,$table4,$on,$on2,$on3,$on4)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table1, $on);
+        $this->db->join($table2, $on2);
+        $this->db->join($table3, $on3);
+        $this->db->join($table4, $on4);
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function get_4join($table,$table1,$table2,$table3,$on,$on2,$on3)
     {
         $this->db->select('*');
@@ -171,5 +195,33 @@ class models extends CI_Model {
 
         //return fetched data
         return $result;
+    }
+
+    function chart(){
+//        $query = $this->db->query("SELECT tgl_pengajuan_form,COUNT(tgl_pengajuan_form) as id from form_magang where YEARWEEK(tgl_pengajuan_form) = YEARWEEK(NOW())");
+//        return $query->result();
+
+        $select = array('tgl_pengajuan_form','COUNT(tgl_pengajuan_form) as jumlah_pengajuan');
+        $where = array('YEARWEEK(tgl_pengajuan_form)' => date('YW',strtotime(date('y-m-d'))));
+        var_dump(date('YW',strtotime(date('y-m-d'))));
+        var_dump(date('y-m-d'));
+        $date = date('y-m-d');
+        //$week = $date->date_format('W');
+        //date("W", $date);
+        var_dump(date("W", $date));
+        $this->db->select($select);
+        $this->db->from('form_magang');
+        $this->db->where($where);
+        $this->db->group_by('tgl_pengajuan_form');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function get_divisi($id){
+        $this->db->select('*');
+        $this->db->from('kamus');
+        $this->db->where('id_jurusan',$id);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 }
