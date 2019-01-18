@@ -60,10 +60,10 @@ class magangUser extends CI_Controller
 
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
-        $where1 = array(
+        $where2 = array(
             'users.id_user' => $data['id']
         );
-        $data['status'] = $this->models->get_4join('surat_konfirm','form_magang','mhs','users','surat_konfirm.id_form = form_magang.id_form','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where1)->result();
+        $data['status'] = $this->models->get_4selected_join('surat_konfirm','form_magang','mhs','users','surat_konfirm.id_form = form_magang.id_form','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where2)->result();
 
         //var_dump($data['status']);
 
@@ -126,7 +126,8 @@ class magangUser extends CI_Controller
                     'tgl_mohon_surat' => $this->input->post('tglSurat'),
                     'file' => $this->upload->data('file_name'),
                     'judul' => $this->input->post('judul'),
-                    'jenis' => $this->input->post('jenis')
+                    'jenis' => $this->input->post('jenis'),
+                    'tgl_pengajuan_form' => date('y-m-d')
                 );
 
                 $where1 = array(
@@ -155,6 +156,19 @@ class magangUser extends CI_Controller
                 echo "<script>alert('Berhasil ditambahkan'); </script>";
                 redirect('user/magangUser', 'refresh');
             }
+        }
+    }
+    public function download_uploaded_sk($id)
+    {
+        $this->load->helper('file');
+        $where = array('id_srtkonfirm' => $id);
+        $datand = $this->models->get_selected('surat_konfirm', $where)->result();
+
+        foreach ($datand as $a) {
+            $data = file_get_contents(base_url().'assets/file/suratKonfirm/'.($a->file_sk));
+            $nama_file = $a->file_sk;
+            ob_clean();
+            force_download($nama_file, $data);
         }
     }
 

@@ -38,29 +38,63 @@
                                             <?php
                                                     if(!empty($status)) {
                                                         if (count($status) > 1) {
+                                                            //var_dump(count($status));
                                                             foreach ($status as $row) {
                                                                 if($row->jenis == 'Magang'){
-                                                                    if($row->status == 'Diproses'){
-                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                    }else if($row->status == 'Ditolak'){
-                                                                        echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';
-                                                                    }else if($row->status == 'Diterima'){
-                                                                        echo 'Permohonan Magang Anda Telah Disetujui, Silahkan Download Surat Persetujuan';
+                                                                    if(empty($row->file_sk)){
+                                                                        if($row->status == 'Diproses'){
+                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                        }else if($row->status == 'Ditolak'){
+                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                        }else if($row->status == 'Diterima'){
+                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                        }
+                                                                    }else if (!empty($row->file_sk)){
+                                                                        if($row->status == 'Diproses'){
+                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                        }else if($row->status == 'Ditolak'){
+                                                                            echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';?>
+                                                                            <br><br>
+                                                                            <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                            <?php
+                                                                        }else if($row->status == 'Diterima'){
+                                                                            echo 'Permohonan Magang Anda Telah Disetujui';
+                                                                            ?>
+                                                                            <br><br>
+                                                                            <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                        <?php
+                                                                        }
                                                                     }
                                                                 }
                                                             }
-                                                        } else if(count($status) == 1) {
+                                                        }else if (count($status) == 1) {
+                                                            var_dump(count($status));
                                                             foreach ($status as $row) {
                                                                 if($row->jenis == 'Magang'){
-                                                                    if($row->status == 'Diproses'){
-                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                    }else if($row->status == 'Ditolak'){
-                                                                        echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';
-                                                                    }else if($row->status == 'Diterima'){
-                                                                        echo 'Permohonan Magang Anda Telah Disetujui, Silahkan Download Surat Persetujuan';
+                                                                    if(empty($row->file_sk)){
+                                                                        if($row->status == 'Diproses'){
+                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                        }else if($row->status == 'Ditolak'){
+                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                        }else if($row->status == 'Diterima'){
+                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                        }
+                                                                    }else if (!empty($row->file_sk)){
+                                                                        if($row->status == 'Diproses'){
+                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                        }else if($row->status == 'Ditolak'){
+                                                                            echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';?>
+                                                                            <br><br>
+                                                                            <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                            <?php
+                                                                        }else if($row->status == 'Diterima'){
+                                                                            echo 'Permohonan Magang Anda Telah Disetujui';
+                                                                            ?>
+                                                                            <br><br>
+                                                                            <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                            <?php
+                                                                        }
                                                                     }
-                                                                } else {
-                                                                    echo 'Anda Belum Mengajukan Form Pengajuan Magang';
                                                                 }
                                                             }
                                                         }
@@ -82,10 +116,20 @@
                                                             if($row->jenis == 'Penelitian/Wawancara') {
                                                                 if ($row->status == 'Diproses') {
                                                                     echo 'Mohon Menunggu Permohonan Penelitian/Wawancara Anda Sedang Kami Proses';
-                                                                } else if ($row->status == 'Ditolak') {
-                                                                    echo 'Mohon Maaf Permohonan Penelitian/Wawancara Anda Tidak Dapat Kami Akomodir';
-                                                                } else if ($row->status == 'Diterima') {
-                                                                    echo 'Permohonan Penelitian/Wawancara Anda Telah Disetujui, Silahkan Download Surat Persetujuan';
+                                                                }else if($row->status == 'Ditolak' && empty($row->file_sk)){
+                                                                    echo 'Mohon Menunggu Permohonan Penelitian/Wawancara Anda Sedang Kami Proses';
+                                                                }else if($row->status == 'Ditolak' && !empty($row->file_sk) ){
+                                                                    echo 'Mohon Maaf Permohonan Penelitian/Wawancara Anda Tidak Dapat Kami Akomodir';?>
+                                                                    <br><br>
+                                                                    <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                    <?php
+                                                                }else if($row->status == 'Diterima' && !empty($row->file_sk)){
+                                                                    echo 'Permohonan Penelitian/Wawancara Anda Telah Disetujui';?>
+                                                                    <br><br>
+                                                                    <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                <?php
+                                                                }else if($row->status == 'Diterima' && empty($row->file_sk)){
+                                                                    echo 'Mohon Menunggu Permohonan Penelitian/Wawancara Anda Sedang Kami Proses';
                                                                 }
                                                             }
                                                         }
@@ -94,10 +138,20 @@
                                                             if($row->jenis == 'Penelitian/Wawancara') {
                                                                 if ($row->status == 'Diproses') {
                                                                     echo 'Mohon Menunggu Permohonan Penelitian/Wawancara Anda Sedang Kami Proses';
-                                                                } else if ($row->status == 'Ditolak') {
-                                                                    echo 'Mohon Maaf Permohonan Penelitian/Wawancara Anda Tidak Dapat Kami Akomodir';
-                                                                } else if ($row->status == 'Diterima') {
-                                                                    echo 'Permohonan Penelitian/Wawancara Anda Telah Disetujui, Silahkan Download Surat Persetujuan';
+                                                                }else if($row->status == 'Ditolak' && empty($row->file_sk)){
+                                                                    echo 'Mohon Menunggu Permohonan Penelitian/Wawancara Anda Sedang Kami Proses';
+                                                                }else if($row->status == 'Ditolak' && !empty($row->file_sk) ){
+                                                                    echo 'Mohon Maaf Permohonan Penelitian/Wawancara Anda Tidak Dapat Kami Akomodir';?>
+                                                                    <br><br>
+                                                                    <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                    <?php
+                                                                }else if($row->status == 'Diterima' && !empty($row->file_sk)){
+                                                                    echo 'Permohonan Penelitian/Wawancara Anda Telah Disetujui';?>
+                                                                    <br><br>
+                                                                    <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                    <?php
+                                                                }else if($row->status == 'Diterima' && empty($row->file_sk)){
+                                                                    echo 'Mohon Menunggu Permohonan Penelitian/Wawancara Anda Sedang Kami Proses';
                                                                 }
                                                             }else{
                                                                 echo 'Anda Belum Mengajukan Form Pengajuan Penelitian/Wawancara';

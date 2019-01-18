@@ -230,66 +230,18 @@ class manageData extends CI_Controller {
         redirect(base_url('admin/manageData/kamus'));
     }
 
-    public function permohonan($param)
+    public function permohonan()
     {
-        if($param == 'semua')
-        {
-            $data['title'] = "Permohonan Magang";
-            $data['siapa'] = $this->session->userdata('nama');
-            $data['page_header'] = "Permohonan Magang";
-            $data['datamagang'] = $this->models->get_7join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
+        $data['title'] = "Permohonan Magang";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Permohonan Magang";
+        $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
 
-            $this->load->view('header&footer/admin/v_headerManageData', $data);
-            $this->load->view('admin/v_md_permohonan');
-            $this->load->view('v_modals');
-            $this->load->view('header&footer/admin/v_footerManageData');
-            $this->load->view('admin/ajax/ajaxModalDownloadPermohonan');
-        }
-        elseif($param == 'diproses')
-        {
-            $data['title'] = "Permohonan Magang";
-            $data['siapa'] = $this->session->userdata('nama');
-            $data['page_header'] = "Permohonan Magang";
-
-            $where = array('status' => 'Diproses');
-            $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form', $where)->result();
-
-            $this->load->view('header&footer/admin/v_headerManageData', $data);
-            $this->load->view('admin/v_md_permohonan');
-            $this->load->view('v_modals');
-            $this->load->view('header&footer/admin/v_footerManageData');
-            $this->load->view('admin/ajax/ajaxModalDownloadPermohonan');
-        }
-        elseif($param == 'diterima')
-        {
-            $data['title'] = "Permohonan Magang";
-            $data['siapa'] = $this->session->userdata('nama');
-            $data['page_header'] = "Permohonan Magang";
-
-            $where = array('status' => 'Diterima');
-            $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form', $where)->result();
-
-            $this->load->view('header&footer/admin/v_headerManageData', $data);
-            $this->load->view('admin/v_md_permohonan');
-            $this->load->view('v_modals');
-            $this->load->view('header&footer/admin/v_footerManageData');
-            $this->load->view('admin/ajax/ajaxModalDownloadPermohonan');
-        }
-        elseif($param == 'ditolak')
-        {
-            $data['title'] = "Permohonan Magang";
-            $data['siapa'] = $this->session->userdata('nama');
-            $data['page_header'] = "Permohonan Magang";
-
-            $where = array('status' => 'Ditolak');
-            $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form', $where)->result();
-
-            $this->load->view('header&footer/admin/v_headerManageData', $data);
-            $this->load->view('admin/v_md_permohonan');
-            $this->load->view('v_modals');
-            $this->load->view('header&footer/admin/v_footerManageData');
-            $this->load->view('admin/ajax/ajaxModalDownloadPermohonan');
-        }
+        $this->load->view('header&footer/admin/v_headerTable_md', $data);
+        $this->load->view('admin/v_md_permohonan');
+        $this->load->view('v_modals');
+        $this->load->view('header&footer/admin/v_footerTable_md');
+        $this->load->view('admin/ajax/ajaxModalDownloadPermohonan');
     }
 
     public function download_dtmhs($id)
@@ -477,9 +429,11 @@ class manageData extends CI_Controller {
 
         if (!$this->upload->do_upload('file_sk')) {
             $error = array('error' => $this->upload->display_errors());
+            foreach ($error as $row) {
+                echo $row;
+            }
 
             redirect('admin/manageData/view_uploadnd', 'refresh');
-
         } else {
             $data = array(
                 'no_konfirm' => $nosk,
@@ -505,5 +459,22 @@ class manageData extends CI_Controller {
             ob_clean();
             force_download($nama_file, $data);
         }
+    }
+
+    public function chart(){
+        $data['chart'] = $this->models->chart();
+        var_dump($data['chart']);
+    }
+
+    public function updateDivisi($id){
+        $data = array(
+            'id_kamus' => $this->input->post('divisi')
+        );
+
+        $where = array('id_form' => $id);
+
+        $update = $this->models->update_data('form_magang', $data, $where);
+            redirect(base_url('admin/manageData/permohonan'));
+
     }
 }
