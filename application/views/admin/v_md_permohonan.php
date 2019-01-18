@@ -95,12 +95,12 @@
                                     <table>
                                         <tr>
                                             <td style="padding-top: 10px; padding-right: 5px">
-                                                <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i></button></a>
+                                                <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i><?php if($a->download_nd == '0'){echo "Download";} ?></button></a>
                                             </td>
                                             <td style="padding-left 10px;padding-top: 10px">
-                                                <?php if($a->no_nota == null) {?>
+                                                <?php if($a->no_nota == null && $a->download_nd == '1') {?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
-                                                <?php } else { ?>
+                                                <?php } elseif($a->download_nd == '1' && $a->no_nota != null) { ?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
                                                 <?php }?>
                                             </td>
@@ -128,26 +128,26 @@
                                                 <a href="javascript:void(0);" data-id="<?php echo $a->id_form ; ?>" data-toggle="modal" data-target="#edit-data">
                                                     <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary">
                                                         <i class="fas fa-download"></i>
-                                                        <?php if($a->download != 1) echo ' Download'; ?>
+                                                        <?php if($a->download_sk != 1) echo ' Download'; ?>
                                                     </button>
                                                 </a>
                                                 <?php }?>
                                             </td>
                                             <td style="padding-top: 10px">
-                                                <?php if($a->file_nd != null && $a->no_nota != null && $a->download == '1' && $a->no_konfirm == null && $a->file_sk == null) {?>
+                                                <?php if($a->file_nd != null && $a->no_nota != null && $a->download_sk == '1' && $a->no_konfirm == null && $a->file_sk == null) {?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
                                                 <?php } ?>
-                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download == '1' && $a->no_nota != null && $a->file_nd != null) {?>
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download_sk == '1' && $a->no_nota != null && $a->file_nd != null) {?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadsk/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
                                                 <?php } ?>
                                             </td>
                                             <td style="padding-left: 80px; padding-top: 10px">
-                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download == '1' && $a->no_nota != null && $a->file_nd != null) {?>
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download_sk == '1' && $a->no_nota != null && $a->file_nd != null) {?>
                                                     <a class="btn btn-outline btn-danger" href="<?= base_url('admin/manageData/download_uploaded_sk/'.$a->id_srtkonfirm) ?>">Download SK Terupload</a>
                                                 <?php } ?>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download == '1' && $a->no_nota != null && $a->file_nd != null) {?>
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download_sk == '1' && $a->no_nota != null && $a->file_nd != null) {?>
                                                     Nomor Surat Konfirmasi: <b><?= $a->no_konfirm?></b>
                                                 <?php } ?>
                                             </td>

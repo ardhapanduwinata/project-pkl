@@ -1,40 +1,31 @@
-            <!-- DataTables JavaScript -->
-            <script src="<?= base_url('assets') ?>/vendor/datatables/js/jquery.dataTables.min.js"></script>
-            <script src="<?= base_url('assets') ?>/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-            <script src="<?= base_url('assets') ?>/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
-            <!-- jQuery -->
-            <script src="<?= base_url('assets') ?>/vendor/jquery/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="<?=base_url('assets')?>/vendor/jquery/jquery.min.js"></script>
 
-            <!-- Bootstrap Core JavaScript -->
-            <script src="<?= base_url('assets') ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="<?=base_url('assets')?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-            <!-- Metis Menu Plugin JavaScript -->
-            <script src="<?= base_url('assets') ?>/vendor/metisMenu/metisMenu.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="<?=base_url('assets')?>/vendor/metisMenu/metisMenu.min.js"></script>
 
-            <!-- Morris Charts JavaScript -->
-            <script src="<?= base_url('assets') ?>/vendor/raphael/raphael.min.js"></script>
-            <script src="<?= base_url('assets') ?>/vendor/morrisjs/morris.min.js"></script>
-            <script src="<?= base_url('assets') ?>/data/morris-data.js"></script>
+<!-- DataTables JavaScript -->
+<script src="<?=base_url('assets')?>/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="<?=base_url('assets')?>/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="<?=base_url('assets')?>/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<!-- Morris Charts JavaScript -->
+<script src="<?= base_url('assets') ?>/vendor/raphael/raphael.min.js"></script>
+<script src="<?= base_url('assets') ?>/vendor/morrisjs/morris.min.js"></script>
+<script src="<?= base_url('assets') ?>/data/morris-data.js"></script>
 
-            <!-- Custom Theme JavaScript -->
+<!-- Custom Theme JavaScript -->
+<script src="<?= base_url('assets') ?>/dist/js/sb-admin-2.js"></script>
 
-            <script src="<?= base_url('assets') ?>/dist/js/sb-admin-2.js"></script>
-
-            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-            <script>
-                Morris.Area({
-                    element: 'graph',
-                    data: <?php echo $data;?>,
-                    xkey: 'year',
-                    ykeys: ['purchase', 'sale', 'profit'],
-                    labels: ['Purchase', 'Sale', 'Profit']
-                });
-            </script>
-            </div>
-        </div>
-    </body>
-
-</html>
+<script>
+    $(document).ready(function() {
+        $('table.display').DataTable({
+            responsive: true,
+            "scrollX": false
+        });
+    } );
+</script>

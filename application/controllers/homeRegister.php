@@ -63,7 +63,6 @@ class HomeRegister extends CI_Controller {
 
             $this->models->add_data("mhs",$data1);
 
-
             //enkripsi id
             $encrypted_id = md5($insert);
 

@@ -110,7 +110,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <center<h4 class="modal-title"> Apakah Status Permohonan Pengajuan PKL ini :</h4><center>
+                <center<h3 class="modal-title"> <b>Apakah Status Permohonan Pengajuan PKL ini :</b></h3><center>
             </div>
             <?php echo form_open_multipart('admin/manageData/change_view_sk'); ?>
             <div class="modal-body">
@@ -128,4 +128,3 @@
         </div>
     </div>
 </div>
-

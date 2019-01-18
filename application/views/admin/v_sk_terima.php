@@ -85,7 +85,7 @@ function tgl_indo($tanggal){
 $source = $a['tgl_mohon_surat'];
 { ?>
     <div style="padding-top: 20px; padding-right: 80px; float: right">
-        <a style="float: right; margin-right: 80px" href="<?= base_url('admin/manageData/permohonan')?>"><button type="button" class="btn btn-danger">X</button></a>
+        <a style="float: right; margin-right: 80px" href="<?= base_url('admin/manageData/permohonan/semua')?>"><button type="button" class="btn btn-danger">Kembali</button></a>
         <button style="float: right; margin-right: 5px" onclick="Export2Doc('isi_data','SL-<?= date("Y") ?>.PermohonanMagang.<?= $a['nim']?>.<?= $a['nama_mhs']?>')" class="btn btn-primary">Download as Word</button>
 
     </div>

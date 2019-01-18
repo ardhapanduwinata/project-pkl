@@ -239,7 +239,6 @@
           <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
         </div>
         <div class="owl-carousel testimonials-carousel">
-
             <div class="testimonial-item">
               <p>
                 <img src="<?=base_url('assets')?>/img/quote-sign-left.png" class="quote-sign-left" alt="">
