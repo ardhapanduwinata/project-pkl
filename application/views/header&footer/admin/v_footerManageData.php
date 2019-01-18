@@ -25,10 +25,12 @@
 
             <!-- Page-Level Demo Scripts - Tables - Use for reference -->
             <script>
-                $(document).ready(function() {
-                    $('#dataTables').DataTable({
-                        responsive: true
-                    });
+                Morris.Area({
+                    element: 'graph',
+                    data: <?php echo $data;?>,
+                    xkey: 'year',
+                    ykeys: ['purchase', 'sale', 'profit'],
+                    labels: ['Purchase', 'Sale', 'Profit']
                 });
             </script>
             </div>
