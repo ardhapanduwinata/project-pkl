@@ -37,18 +37,8 @@
     <link href="<?= base_url('assets') ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets')?>semantic/dist/semantic.min.css">
-    <script
-            src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
-    <script src="<?= base_url('assets')?>semantic/dist/semantic.min.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 <body>
@@ -108,7 +98,22 @@
                         <a href="<?= base_url('admin/manageData/kamus')?>"><i class="fa fa-book fa-fw"></i> Kamus</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/manageData/permohonan')?>"><i class="fas fa-users"></i> Daftar Permohonan Magang</a>
+                        <a href=""><i class="fas fa-users"></i> Daftar Permohonan Magang<span style="padding-top: 3px" class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?= base_url('admin/manageData/permohonan/semua')?>">Seluruh Data Permohonan</a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('admin/manageData/permohonan/diproses')?>">Diproses</a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('admin/manageData/permohonan/diterima')?>">Diterima</a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('admin/manageData/permohonan/ditolak')?>">Ditolak</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
                     </li>
                 </ul>
             </div>
