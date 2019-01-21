@@ -90,35 +90,29 @@
 </div>
 <!-- /.row -->
 <div class="row">
-    <div class="">
+    <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-                <div class="pull-right">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            Actions
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                            <li><a href="#">Action</a>
-                            </li>
-                            <li><a href="#">Another action</a>
-                            </li>
-                            <li><a href="#">Something else here</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <i class="fa fa-bar-chart-o fa-fw"></i> Jumlah Pengajuan Magang Berdasarkan Jurusan Mahasiswa
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div id="morris-area-chart"></div>
+                <div id="graph"></div>
             </div>
             <!-- /.panel-body -->
         </div>
     </div>
+        <!-- /.panel -->
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Jumlah Pengajuan Magang Berdasarkan divisi
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div id="graph2"></div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
 </div>

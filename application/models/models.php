@@ -212,24 +212,20 @@ class models extends CI_Model {
         return $result;
     }
 
-    function chart(){
+    function chart($select,$table,$table1,$on1,$table2,$on2,$groupby){
 //        $query = $this->db->query("SELECT tgl_pengajuan_form,COUNT(tgl_pengajuan_form) as id from form_magang where YEARWEEK(tgl_pengajuan_form) = YEARWEEK(NOW())");
 //        return $query->result();
-
-        $select = array('tgl_pengajuan_form','COUNT(tgl_pengajuan_form) as jumlah_pengajuan');
-        $where = array('YEARWEEK(tgl_pengajuan_form)' => date('YW',strtotime(date('y-m-d'))));
-        var_dump(date('YW',strtotime(date('y-m-d'))));
-        var_dump(date('y-m-d'));
-        $date = date('y-m-d');
+//        SELECT divisi.divisi, COUNT(id_form) as jumlah FROM `form_magang` inner join kamus on form_magang.id_kamus = kamus.id_kamus inner join divisi on kamus.id_divisi = divisi.id_divisi group by divisi.divisi
         //$week = $date->date_format('W');
         //date("W", $date);
-        var_dump(date("W", $date));
+        //var_dump(date("W", $date));
         $this->db->select($select);
-        $this->db->from('form_magang');
-        $this->db->where($where);
-        $this->db->group_by('tgl_pengajuan_form');
+        $this->db->from($table);
+        $this->db->join($table1,$on1);
+        $this->db->join($table2,$on2);
+        $this->db->group_by($groupby);
         $query = $this->db->get();
-        return $query->result_array();
+        return $query;
     }
 
     function get_divisi($id){
