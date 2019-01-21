@@ -43,7 +43,7 @@ class manageData extends CI_Controller {
         //var_dump($hasil);
         $data['chart'] = json_encode($hasil);
 
-        $hasil2 = $this->models->chart($select2,'form_magang','kamus','form_magang.id_kamus = kamus.id_kamus','jurusan','kamus.id_jurusan = jurusan.id_jurusan','jurusan')->result();
+        $hasil2 = $this->models->chart($select2,'form_magang','mhs','form_magang.id_mhs = mhs.id_mhs','jurusan','mhs.id_jurusan = jurusan.id_jurusan','jurusan')->result();
         //var_dump($hasil2);
         $data['chart_bar'] = json_encode($hasil2);
 

@@ -104,14 +104,10 @@
                             <div class="form-group row">
                                 <label for="file" class="col-4 col-form-label">File</label>
                                 <div class="col-8">
-                                    <input name="file" placeholder="File" id="file" type="file" required="required">
+                                    <input name="file" placeholder="File" id="file" type="file" accept="application/zip, application/x-rar" required="required"><br>
+                                    <label style="color: red">*File harus berupa format rar/zip</label>
                                 </div>
                             </div>
-                                    <div class="form-group row">
-                                        <div id="progressbr-container">
-                                            <div  id="progress-bar-status-show">	</div>
-                                        </div>
-                                    </div>
                             <div class="form-group row">
                                 <div class="offset-8 col-4" style="float: right;">
                                     <button name="submit" type="submit" class="btn btn-outline-success">Upload Permohonan PKL</button>
