@@ -139,10 +139,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('admin/homeAdmin/add_intro')?>" method="post">
+                <form action="<?= base_url('admin/homeAdmin/add_intro')?>"  method="post">
                     <div class="form-group">
                         <label for="nama">Judul Konten</label>
-                        <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" disabled>
+                        <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" readonly>
                         <br>
                         <input class="form-control" name="gambar" id="gambar" type="file" required>
                     </div>
