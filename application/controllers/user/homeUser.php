@@ -26,6 +26,8 @@ class homeUser extends CI_Controller {
         $data['email'] = $this->session->userdata('email');
         $where = array('nama_mhs' => $data['siapa']);
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
+        $where_intro = array('nama_konten' => 'intro');
+        $data['intro'] = $this->models->get_selected('home_page', $where_intro)->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_homeUser');

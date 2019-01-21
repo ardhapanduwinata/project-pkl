@@ -128,3 +128,31 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="addIntro_modal" tabindex="-1" role="dialog" aria-labelledby="addIntro_modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah Gambar Intro</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= base_url('admin/homeAdmin/add_intro')?>" method="post">
+                    <div class="form-group">
+                        <label for="nama">Judul Konten</label>
+                        <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" disabled>
+                        <br>
+                        <input class="form-control" name="gambar" id="gambar" type="file" required>
+                    </div>
+                    <div style="float: right;">
+                        <a class="btn btn-secondary" href="<?= base_url('admin/homeAdmin') ?>">Cancel</a>
+                        <button class="btn btn-primary" type="submit">Tambah Gambar</button>
+                    </div>
+                </form>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>

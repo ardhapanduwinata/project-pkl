@@ -75,17 +75,20 @@
 ============================-->
 <header id="header">
     <div class="container">
-
         <div id="logo" class="pull-left">
-            <h1><a class="scrollto" href="<?=site_url('user/homeUser')?>">Reve<span>al</span></a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
+            <table>
+                <tr>
+                    <td><img src="<?= base_url('assets/img/pln.png') ?>" style="width: 40px"></td>
+                    <td>
+                        <h1><a href="#body" class="scrollto">&ensp;PT<span style="color: #ED3237"> PLN</span></a></h1>
+                    </td>
+                </tr>
+            </table>
         </div>
-
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a class="nav-link" href="<?=base_url('user/magangUser') ?>">Pengajuan Permohonan Magang</a></li>
-                <li><a class="nav-link" href="<?=site_url('user/homeUser/biodata')?>">Manage Biodata</a></li>
+                <li><a href="<?= base_url('admin/homeAdmin') ?>">Home Page</a></li>
+                <li><a class="nav-link" href="<?= base_url('admin/manageData') ?>">Manage Data</a></li>
                 <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->

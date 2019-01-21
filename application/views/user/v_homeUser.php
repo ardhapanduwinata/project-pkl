@@ -2,22 +2,11 @@
     Intro Section
   ============================-->
   <section id="intro">
-
-    <div class="intro-content">
-      <h2>Making <span>your ideas</span><br>happen!</h2>
-      <div>
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-        <a href="#portfolio" class="btn-projects scrollto">Our Projects</a>
+      <div id="intro-carousel" class="owl-carousel" >
+          <?php foreach ($intro as $a) {?>
+              <div class="item" style="background-image: url('<?= base_url('assets/img/home_content/intro/').$a->image ?>');"></div>
+          <?php } ?>
       </div>
-    </div>
-
-    <div id="intro-carousel" class="owl-carousel" >
-      <div class="item" style="background-image: url('img/intro-carousel/1.jpg');"></div>
-      <div class="item" style="background-image: url('img/intro-carousel/2.jpg');"></div>
-      <div class="item" style="background-image: url('img/intro-carousel/3.jpg');"></div>
-      <div class="item" style="background-image: url('img/intro-carousel/4.jpg');"></div>
-      <div class="item" style="background-image: url('img/intro-carousel/5.jpg');"></div>
-    </div>
 
   </section><!-- #intro -->
 
@@ -26,29 +15,6 @@
     <!--==========================
       About Section
     ============================-->
-    <section id="about" class="wow fadeInUp">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 about-img">
-            <img src="<?=base_url('assets')?>/img/about-img.jpg" alt="">
-          </div>
-
-          <div class="col-lg-6 content">
-            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-            <h3>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
-
-            <ul>
-              <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="ion-android-checkmark-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
-
-          </div>
-        </div>
-
-      </div>
-    </section><!-- #about -->
-
     <!--==========================
       Services Section
     ============================-->
@@ -433,9 +399,8 @@
 
         </div>
       </div>
-
       <div class="container mb-4">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <iframe src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=Jalan%20Trunojoyo%20Blok%20M-I%20No.135%2C%20RT.6%2FRW.2%2C%20Melawai%2C%20Kby.%20Baru%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012160+(Title)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
 
       <div class="container">
