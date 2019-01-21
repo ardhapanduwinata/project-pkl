@@ -29,3 +29,16 @@
         });
     } );
 </script>
+<script>
+    Morris.Bar({
+        element: 'graph',
+        data: <?php echo $chart_bar;?>,
+        xkey: 'jurusan',
+        ykeys: ['jumlah'],
+        labels: ['jumlah']
+    });
+    Morris.Donut({
+        element: 'graph2',
+        data: <?php echo $chart;?>
+    });
+</script>

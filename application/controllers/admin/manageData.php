@@ -29,10 +29,23 @@ class manageData extends CI_Controller {
         $where1 = array('status' => 'Diproses');
         $where2 = array('status' => 'Diterima');
         $where3 = array('status' => 'Ditolak');
+
+        $select = array('divisi as label','COUNT(id_form) as value');
+        $select2 = array('jurusan','COUNT(id_form) as jumlah');
+
+
         $data['form_masuk'] = $this->models->get_data('form_magang')->result();
         $data['diproses'] = $this->models->get_selected('surat_konfirm', $where1)->result();
         $data['diterima'] = $this->models->get_selected('surat_konfirm', $where2)->result();
         $data['ditolak'] = $this->models->get_selected('surat_konfirm', $where3)->result();
+
+        $hasil = $this->models->chart($select,'form_magang','kamus','form_magang.id_kamus = kamus.id_kamus','divisi','kamus.id_divisi = divisi.id_divisi','divisi')->result();
+        //var_dump($hasil);
+        $data['chart'] = json_encode($hasil);
+
+        $hasil2 = $this->models->chart($select2,'form_magang','kamus','form_magang.id_kamus = kamus.id_kamus','jurusan','kamus.id_jurusan = jurusan.id_jurusan','jurusan')->result();
+        //var_dump($hasil2);
+        $data['chart_bar'] = json_encode($hasil2);
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_md_dashboard');
@@ -465,11 +478,6 @@ class manageData extends CI_Controller {
             ob_clean();
             force_download($nama_file, $data);
         }
-    }
-
-    public function chart(){
-        $data['chart'] = $this->models->chart();
-        var_dump($data['chart']);
     }
 
     public function updateDivisi($id){
