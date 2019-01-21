@@ -68,7 +68,7 @@
                                                                 }
                                                             }
                                                         }else if (count($status) == 1) {
-                                                            var_dump(count($status));
+                                                            //var_dump(count($status));
                                                             foreach ($status as $row) {
                                                                 if($row->jenis == 'Magang'){
                                                                     if(empty($row->file_sk)){

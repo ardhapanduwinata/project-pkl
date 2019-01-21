@@ -35,7 +35,7 @@
                             <?php if($a->no_konfirm != null) {?>
                                 <div class="col-md-6" style="padding-top: 20px">
                                     <label for="">Upload Surat Konfirmasi <b style="color: red">Baru</b></label>
-                                    <input type="file" name="file_sk" class="form-control" required>
+                                    <input type="file" name="file_sk" accept="application/pdf,.doc, .docx" class="form-control" required>
                                 </div>
                             <?php } else {?>
                                 <div class="col-md-6" style="padding-top: 20px">
