@@ -3,14 +3,25 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading" style="height: 55px" >
+                <form enctype="multipart/form-data" action="<?= base_url('admin/manageData/permohonan/') ?>" method="post">
+                    <div class="form-group">
+                        <div class="col-7">
+                            <select class="form-control" name="filter" onchange="this.form.submit()" style="width:120px">
+                                <option value="Semua" <?php if($filter=='Semua' || empty($filter)) echo 'Selected';?>>Semua</option>
+                                <option value="Diterima" <?php if($filter=='Diterima') echo 'Selected';?>>Diterima</option>
+                                <option value="Ditolak" <?php if($filter=='Ditolak') echo 'Selected';?>>Ditolak</option>
+                                <option value="Diproses" <?php if($filter=='Diproses') echo 'Selected';?>>Diproses</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <!-- /.panel-heading -->
             <div class="panel-body">
                     <table class="display table table-striped table-bordered table-hover " id="table_permohonan" style="width: 100%">
                         <thead>
                         <tr>
                             <th style="width: 5%">No</th>
-                            <th style="width: auto;text-align: center">Tanggal</th>
+                            <th style="width: auto;text-align: center">Tanggal Pengajuan</th>
                             <th style="width: auto;text-align: center">Nama Mhs</th>
                             <th style="width: auto;text-align: center">Jurusan</th>
                             <th style="width: auto;text-align: center">Universitas</th>
@@ -31,7 +42,7 @@
                         foreach ($datamagang as $a) {?>
                             <tr>
                                 <td style="text-align: center"><?= $no++ ?></td>
-                                <td><?= $a->tgl_mohon_surat ?></td>
+                                <td><?= date('d-M-Y',strtotime($a->tgl_pengajuan_form)); ?></td>
                                 <td><?= $a->nama_mhs?></td>
                                 <td><?= $a->jurusan?>
                                     <input type="hidden" value="<?php echo $a->id_jurusan?>" id="idJurusan" name="idJurusan">
@@ -74,7 +85,7 @@
                                     <?php } ?>
                                 </td>
                                 <td><?= $a->jenis?></td>
-                                <td><?= $a->tgl_mulai?></td>
+                                <td><?=  date('d-M-Y',strtotime($a->tgl_mulai));?></td>
                                 <td><?= $a->judul?></td>
                                 <td><?= $a->no_surat ?></td>
                                 <td>
@@ -95,22 +106,25 @@
                                     <table>
                                         <tr>
                                             <td style="padding-top: 10px; padding-right: 5px">
-                                                <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i><?php if($a->download_nd == '0'){echo "Download";} ?></button></a>
-                                            </td>
+                                                <?php if($a->id_kamus != null) {?>
+                                                <a href="<?= base_url('admin/manageData/view_notadinas/'.$a->id_form)?>"><button type="button" class="btn btn-primary"><i class="fas fa-download"></i><?php if($a->download_nd == '0' && $a->id_kamus != null){echo "Download";} ?></button></a>
+                                                <?php }else if($a->id_kamus == null){?>
+                                                    <p style="color: red">Divisi Mahasiswa Harus Terlebih Dahulu Diisi</p>
+                                                <?php } ?>
                                             <td style="padding-left 10px;padding-top: 10px">
-                                                <?php if($a->no_nota == null && $a->download_nd == '1') {?>
+                                                <?php if($a->no_nota == null && $a->download_nd == '1' && $a->id_kamus != null) {?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
-                                                <?php } elseif($a->download_nd == '1' && $a->no_nota != null) { ?>
+                                                <?php } elseif($a->download_nd == '1' && $a->no_nota != null && $a->id_kamus != null) { ?>
                                                     <a href="<?= base_url('admin/manageData/view_uploadnd/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
                                                 <?php }?>
                                             </td>
                                             <td style="padding-left: 80px; padding-top: 10px">
-                                                <?php if($a->no_nota != null && $a->file_nd != null) {?>
+                                                <?php if($a->no_nota != null && $a->file_nd != null  && $a->id_kamus != null) {?>
                                                     <a class="btn btn-outline btn-danger" href="<?= base_url('admin/manageData/download_uploaded_nd/'.$a->id_nota) ?>">Download ND Terupload</a>
                                                 <?php } ?>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <?php if($a->no_nota != null && $a->file_nd) {?>
+                                                <?php if($a->no_nota != null && $a->file_nd  && $a->id_kamus != null) {?>
                                                     Nomor Nota Dinas: <b><?= $a->no_nota?></b>
                                                 <?php } ?>
                                             </td>
