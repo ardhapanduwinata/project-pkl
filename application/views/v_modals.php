@@ -139,18 +139,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('admin/homeAdmin/add_intro')?>" method="post">
+                    <?php echo form_open_multipart('admin/homeAdmin/add_intro'); ?>
                     <div class="form-group">
                         <label for="nama">Judul Konten</label>
-                        <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" disabled>
+                        <input type="text" class="form-control" name="konten" id="konten" value="intro" readonly>
                         <br>
-                        <input class="form-control" name="gambar" id="gambar" type="file" required>
+                        <input type="file" class="form-control" name="gambar" id="gambar" required>
                     </div>
                     <div style="float: right;">
                         <a class="btn btn-secondary" href="<?= base_url('admin/homeAdmin') ?>">Cancel</a>
                         <button class="btn btn-primary" type="submit">Tambah Gambar</button>
                     </div>
-                </form>
+                <?php echo form_close();?>
             </div>
             <br><br>
         </div>

@@ -37,7 +37,6 @@ class homeAdmin extends CI_Controller {
     public function add_intro()
     {
         $nama_konten = $this->input->post('konten');
-        var_dump($nama_konten);
         $config['upload_path'] = './assets/img/home_content/intro/';
         $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|PNG|png';
         $this->load->library('upload', $config);
@@ -49,7 +48,7 @@ class homeAdmin extends CI_Controller {
                 echo $row;
             }
 
-//            redirect('admin/homeAdmin', 'refresh');
+           redirect('admin/homeAdmin', 'refresh');
 
         } else {
             $data = array(
@@ -59,6 +58,7 @@ class homeAdmin extends CI_Controller {
 
             $this->models->add_data('home_page', $data);
         }
-        //redirect(base_url('admin/homeAdmin'));
+        echo "<script>alert('Berhasil ditambahkan'); </script>";
+        redirect(base_url('admin/homeAdmin'));
     }
 }
