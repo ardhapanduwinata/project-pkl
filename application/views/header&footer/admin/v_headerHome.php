@@ -16,9 +16,12 @@
 
     <!-- Bootstrap CSS File -->
     <link href="<?=base_url('assets')?>/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="<?=base_url('assets')?>/lib/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Libraries CSS Files -->
     <link href="<?=base_url('assets')?>/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     <link href="<?=base_url('assets')?>/lib/animate/animate.min.css" rel="stylesheet">
     <link href="<?=base_url('assets')?>/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="<?=base_url('assets')?>/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">

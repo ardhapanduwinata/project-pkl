@@ -22,28 +22,6 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-green">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fas fa-user-plus fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge"><?php $b=0; foreach($diterima as $a){$b++;}echo $b++ ?></div>
-                        <div><br>Jumlah yang sudah Diterima</div>
-                    </div>
-                </div>
-            </div>
-            <a href="<?= base_url('admin/manageData/permohonan/diterima')?>">
-                <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
         <div class="panel panel-yellow">
             <div class="panel-heading">
                 <div class="row">
@@ -57,6 +35,28 @@
                 </div>
             </div>
             <a href="<?= base_url('admin/manageData/permohonan/diproses')?>">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fas fa-user-plus fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><?php $b=0; foreach($diterima as $a){$b++;}echo $b++ ?></div>
+                        <div><br>Jumlah yang sudah Diterima</div>
+                    </div>
+                </div>
+            </div>
+            <a href="<?= base_url('admin/manageData/permohonan/diterima')?>">
                 <div class="panel-footer">
                     <span class="pull-left">View Details</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
