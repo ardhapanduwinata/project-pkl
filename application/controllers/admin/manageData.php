@@ -235,7 +235,13 @@ class manageData extends CI_Controller {
         $data['title'] = "Permohonan Magang";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Permohonan Magang";
-        $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
+        $data['filter'] = $this->input->post("filter");
+        if( $data['filter']=='Semua' || empty( $data['filter']) ){
+            $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
+        }else{
+            $where = array('sk.status' => $data['filter']);
+            $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form',$where)->result();
+        }
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_md_permohonan');
@@ -271,7 +277,7 @@ class manageData extends CI_Controller {
 
         $where = array('id_form' => $id);
         $data['title'] = "Download Nota Dinas";
-        $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', $where)->result_array();
+        $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'fm.id_mhs = m.id_mhs', 'fm.id_kamus = k.id_kamus', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', $where)->result_array();
 
         $data['perihal'] = 'Permohonan Bantuan Memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
         foreach ($data['datamagang'] as $a){
@@ -300,7 +306,7 @@ class manageData extends CI_Controller {
         $data['title'] = "Upload Nota Dinas";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Upload Nota Dinas";
-        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', $where)->result();
+        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'fm.id_mhs = m.id_mhs', 'fm.id_kamus = k.id_kamus', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', $where)->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_upload_notadinas');
@@ -367,7 +373,7 @@ class manageData extends CI_Controller {
         $where = array('fm.id_form' => $id);
         $where1 = array('id_form' => $id);
         $data['title'] = "Download Surat Konfirmasi";
-        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
+        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'fm.id_kamus = k.id_kamus', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
 
         $data['perihal'] = 'Konfirmasi Permohonan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
 
@@ -388,7 +394,7 @@ class manageData extends CI_Controller {
         $where = array('fm.id_form' => $id);
         $where1 = array('id_form' => $id);
         $data['title'] = "Download Surat Konfirmasi";
-        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
+        $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'fm.id_kamus = k.id_kamus', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result_array();
 
         $data['perihal'] = 'Konfirmasi Permohonan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa';
 
