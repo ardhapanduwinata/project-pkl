@@ -627,10 +627,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .box h4 {
-  margin-left: 100px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  font-size: 22px;
+  /*margin-left: 100px;*/
+  /*font-weight: 700;*/
+  /*margin-bottom: 15px;*/
+  /*font-size: 22px;*/
 }
 
 #services .box h4 a {
@@ -638,10 +638,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #services .box p {
-  font-size: 14px;
-  margin-left: 100px;
-  margin-bottom: 0;
-  line-height: 24px;
+  /*font-size: 14px;*/
+  /*margin-left: 100px;*/
+  /*margin-bottom: 0;*/
+  /*line-height: 24px;*/
 }
 
 /* Clients Section

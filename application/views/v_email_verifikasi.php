@@ -7,7 +7,7 @@
     <table>
         <tr>
             <td>
-                <img src="<?= base_url('assets/img/pln.png') ?>" style="width: 100px">
+                <img src="<?= base_url('assets/img/pln.png') ?>" style="width: 80px; margin-right: 20px; margin-bottom: 20px">
             </td>
             <td>
                 <p style="font-size: 20px; font-family: Arial">

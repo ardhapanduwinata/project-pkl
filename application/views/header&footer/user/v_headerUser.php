@@ -80,15 +80,16 @@
                 <tr>
                     <td><img src="<?= base_url('assets/img/pln.png') ?>" style="width: 40px"></td>
                     <td>
-                        <h1><a href="#body" class="scrollto">&ensp;PT<span style="color: #ED3237"> PLN</span></a></h1>
+                        <h1><a href="<?= base_url('user/homeUser') ?>" class="scrollto">&ensp;PT<span style="color: #ED3237"> PLN</span></a></h1>
                     </td>
                 </tr>
             </table>
         </div>
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="<?= base_url('admin/homeAdmin') ?>">Home Page</a></li>
-                <li><a class="nav-link" href="<?= base_url('admin/manageData') ?>">Manage Data</a></li>
+                <li><a href="<?= base_url('user/homeUser') ?>">Home</a></li>
+                <li><a href="<?= base_url('user/magangUser') ?>">Pengajuan Form Magang</a></li>
+                <li><a class="nav-link" href="<?= base_url('user/homeUser/biodata') ?>">Manage Profile</a></li>
                 <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
