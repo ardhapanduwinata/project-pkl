@@ -6,6 +6,7 @@ class homeAdmin extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('models');
+        $this->load->helper(array('url','download'));
 
         $role = $this->session->userdata('role');
         $status = $this->session->userdata('status');
@@ -38,7 +39,7 @@ class homeAdmin extends CI_Controller {
     {
         $nama_konten = $this->input->post('konten');
         $config['upload_path'] = './assets/img/home_content/intro/';
-        $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|PNG|png';
+        $config['allowed_types'] = 'jpg|png|jpeg';
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
