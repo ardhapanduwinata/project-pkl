@@ -35,10 +35,28 @@
         data: <?php echo $chart_bar;?>,
         xkey: 'jurusan',
         ykeys: ['jumlah'],
-        labels: ['jumlah']
+        labels: ['jumlah'],
+        barColors: [
+            '#364374'
+        ]
     });
     Morris.Donut({
         element: 'graph2',
-        data: <?php echo $chart;?>
+        data: <?php echo $chart;?>,
+        colors: [
+            '#550000',
+            '#801515',
+            '#A33643',
+            '#D46A6A',
+            '#FFAAAA',
+            '#F1BABE',
+            '#BA8B8F',
+            '#AE8588',
+            '#A2787B',
+            '#7C5B5D',
+            '#674B4D',
+            '#453839'
+        ],
+        formatter: function (x) { return x + "%"}
     });
 </script>

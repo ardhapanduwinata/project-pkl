@@ -105,3 +105,12 @@
     margin-bottom: -15%;
     color: #495057;
 }
+.btnReset{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 8px;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
