@@ -26,8 +26,16 @@ class homeUser extends CI_Controller {
         $data['email'] = $this->session->userdata('email');
         $where = array('nama_mhs' => $data['siapa']);
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
+
         $where_intro = array('nama_konten' => 'intro');
         $data['intro'] = $this->models->get_selected('home_page', $where_intro)->result();
+
+        $where_uguide = array('nama_konten' => 'uguide');
+        $data['uguide'] = $this->models->get_selected('home_page', $where_uguide)->result();
+
+        $where_contact = array('nama_konten' => 'contact');
+        $data['contact'] = $this->models->get_selected('home_page', $where_contact)->result();
+
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_homeUser');
@@ -188,19 +196,5 @@ class homeUser extends CI_Controller {
         $this->session->set_userdata('nama',$this->input->post("nama"));
         echo "<script>alert('Profil User berhasil diubah'); </script>";
         redirect('user/homeUser/biodata','refresh');
-    }
-
-    public function pengajuan()
-    {
-        $nama = $this->session->userdata('nama');
-        $where = array('nama_mhs' => $nama);
-        $data['title'] = 'Pengajuan Magang';
-        $data['siapa'] = $this->session->userdata('nama');
-        $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
-
-        $this->load->view('header&footer/user/v_headerUser', $data);
-        $this->load->view('user/v_pengajuan');
-        $this->load->view('header&footer/user/v_footerUser');
-        $this->load->view('v_modals');
     }
 }

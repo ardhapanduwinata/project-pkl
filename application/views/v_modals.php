@@ -139,25 +139,52 @@
                 </button>
             </div>
             <div class="modal-body">
-<<<<<<< HEAD
-                    <?php echo form_open_multipart('admin/homeAdmin/add_intro'); ?>
+                <div class="form-group">
+                    <form enctype="multipart/form-data" action="<?= base_url('admin/homeAdmin/add_service')?>"  method="post">
+                        <div class="form-group">
+                            <label for="nama">Judul Konten</label>
+                            <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" readonly>
+                            <br>
+                            <input type="file" class="form-control" name="gambar" id="gambar" required>
+                        </div>
+                        <div style="float: right;">
+                            <a class="btn btn-secondary" href="<?= base_url('admin/homeAdmin') ?>">Cancel</a>
+                            <button class="btn btn-primary" type="submit">Tambah Gambar</button>
+                        </div>
+                    </form>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addServis_modal" tabindex="-1" role="dialog" aria-labelledby="addServis_modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah Konten Service</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="<?= base_url('admin/homeAdmin/add_service')?>"  method="post">
                     <div class="form-group">
                         <label for="nama">Judul Konten</label>
-                        <input type="text" class="form-control" name="konten" id="konten" value="intro" readonly>
-=======
-                <form action="<?= base_url('admin/homeAdmin/add_intro')?>"  method="post">
-                    <div class="form-group">
-                        <label for="nama">Judul Konten</label>
-                        <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" readonly>
->>>>>>> 1607f2f98ebb4ef13ea706f5566eef4f6f31fa0b
+                        <input type="text" class="form-control" name="judul_konten" id="judul_konten" placeholder="Judul konten ini" required>
                         <br>
+                        <label for="nama">Isi Konten</label>
+                        <input type="text" class="form-control" name="isi_konten" id="isi_konten" placeholder="Isi Konten" required>
+                        <br>
+                        <label for="nama">Gambar Konten</label>
                         <input type="file" class="form-control" name="gambar" id="gambar" required>
                     </div>
                     <div style="float: right;">
                         <a class="btn btn-secondary" href="<?= base_url('admin/homeAdmin') ?>">Cancel</a>
-                        <button class="btn btn-primary" type="submit">Tambah Gambar</button>
+                        <button class="btn btn-primary" type="submit">Tambah Konten</button>
                     </div>
-                <?php echo form_close();?>
+                </form>
             </div>
             <br><br>
         </div>
