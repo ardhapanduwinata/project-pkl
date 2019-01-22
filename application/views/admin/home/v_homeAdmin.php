@@ -9,7 +9,7 @@
                 <i class="fas fa-plus-circle" style="color: white;"></i>
             </button>
         </a>
-        <a style="margin-right: 15px">
+        <a style="margin-right: 15px" href="<?= base_url('admin/homeAdmin/edit_intro') ?>">
             <button style="background-color: rgba(0,0,0,.5); border-radius: 50%" class="btn btn-default">
                 <i class="fas fa-edit" style="color: white"></i>
             </button>

@@ -139,10 +139,17 @@
                 </button>
             </div>
             <div class="modal-body">
+<<<<<<< HEAD
                     <?php echo form_open_multipart('admin/homeAdmin/add_intro'); ?>
                     <div class="form-group">
                         <label for="nama">Judul Konten</label>
                         <input type="text" class="form-control" name="konten" id="konten" value="intro" readonly>
+=======
+                <form action="<?= base_url('admin/homeAdmin/add_intro')?>"  method="post">
+                    <div class="form-group">
+                        <label for="nama">Judul Konten</label>
+                        <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" readonly>
+>>>>>>> 1607f2f98ebb4ef13ea706f5566eef4f6f31fa0b
                         <br>
                         <input type="file" class="form-control" name="gambar" id="gambar" required>
                     </div>

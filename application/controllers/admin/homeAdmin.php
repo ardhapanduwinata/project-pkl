@@ -6,6 +6,7 @@ class homeAdmin extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('models');
+        $this->load->helper(array('url','download'));
 
         $role = $this->session->userdata('role');
         $status = $this->session->userdata('status');
@@ -29,7 +30,7 @@ class homeAdmin extends CI_Controller {
 //        $data['intro'] = $this->models->get_data('home_page')->result();
 
         $this->load->view('header&footer/admin/v_headerHome', $data);
-        $this->load->view('admin/v_homeAdmin');
+        $this->load->view('admin/home/v_homeAdmin');
         $this->load->view('header&footer/admin/v_footerHome');
         $this->load->view('v_modals');
     }
@@ -38,7 +39,7 @@ class homeAdmin extends CI_Controller {
     {
         $nama_konten = $this->input->post('konten');
         $config['upload_path'] = './assets/img/home_content/intro/';
-        $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|PNG|png';
+        $config['allowed_types'] = 'jpg|png|jpeg';
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
@@ -60,5 +61,29 @@ class homeAdmin extends CI_Controller {
         }
         echo "<script>alert('Berhasil ditambahkan'); </script>";
         redirect(base_url('admin/homeAdmin'));
+    }
+
+    public function edit_intro()
+    {
+        $data['title'] = "Edit Intro";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['judul'] = "Gambar yang terupload";
+        $data['param'] = "intro";
+
+        $where = array('nama_konten' => "intro");
+        $data['intro'] = $this->models->get_selected('home_page', $where)->result();
+
+        $this->load->view('header&footer/admin/v_headerHome', $data);
+        $this->load->view('admin/home/v_edit_intro', $data);
+        $this->load->view('header&footer/admin/v_footerHome');
+        $this->load->view('v_modals');
+    }
+
+    public function del_intro($id)
+    {
+        $where = array('id_home' => $id);
+
+        $this->models->delete_data($where, 'home_page');
+        redirect(base_url('admin/homeAdmin/edit_intro'));
     }
 }

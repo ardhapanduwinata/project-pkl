@@ -56,9 +56,6 @@
         <div class="contact-info float-left">
             <i class="fa fa-user-circle"></i> Welcome <?= $siapa ?>
         </div>
-        <div class="contact-info clearfix" style="float: right">
-            <a href="mailto:contact@example.com">contact@example.com </a><i class="fa fa-envelope-o"></i>
-        </div>
     </div>
 </section>
 
