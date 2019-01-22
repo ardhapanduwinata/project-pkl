@@ -47,8 +47,7 @@
                     <form action="<?= base_url('homeRegister/aksi_register')?>" method="post">
                     <div class="row register-form">
                         <?php if(!empty(validation_errors())){ ?>
-                            <div class="alert alert-info alert-dismissable" style="width: 100%">
-                                <a class="panel-close close" data-dismiss="alert">×</a>
+                            <div class="alert alert-info" style="width: 100%">
                                 <?php echo validation_errors(); ?>
                             </div>
                         <?php } ?>
@@ -86,7 +85,7 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password Anda *" value="" required/>
                             </div>
-                            <input type="submit" class="btnRegister" name="register"  value="Register"/>
+                            <input type="submit" class="btnRegister" name="register"  onClick="confirm('Apakah anda yakin yang anda isikan sudah benar?')" value="Register"/>
                         </div>
                     </div>
                 </form>

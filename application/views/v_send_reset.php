@@ -32,40 +32,30 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                    <h3 class="register-heading">Login</h3>
-                        <div class="row register-form">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-8">
-                                <form action="<?= base_url('homeLogin/aksi_login')?>" method="post">
+                    <h3 class="register-heading">Reset your password</h3>
+                    <div class="row register-form">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <p>Masukkan alamat email Anda dan kami akan mengirimkan Anda tautan untuk mereset kata sandi Anda.</p>
+                            <form action="<?= base_url('homeRegister/reset_pass')?>" method="post">
                                 <div class="form-group">
-                                    <input type="text" name="username" class="form-control" placeholder="Username" required/>
+                                    <input type="text" name="email" class="form-control" placeholder="Masukkan alamat email anda" required/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" required/>
-                                </div>
-                                    <div class="form-group">
-                                        <?php if(!empty($note)){ ?>
-                                            <div class="alert alert-info" style="width: 100%">
-                                                <?php echo $note; ?>
-                                            </div>
-                                        <?php } ?>
-                                        <div class="row">
-                                            <div class="col-md-4" style="margin-top: 4%; padding: 8px;">
-                                                <a  href="<?= base_url('homeRegister/reset') ?>"><button type="button" class="btn" style="background: #0062cc;color: #fff;border-radius: 1.5rem;">Forgot Password?</button></a>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <button type="submit" class="btnLogin">Login</button>
-                                            </div>
+                                    <?php if(!empty($note)){ ?>
+                                        <div class="alert alert-info" style="width: 100%">
+                                            <?php echo $note; ?>
                                         </div>
-
-
-                                    </div>
-                                </form>
-                            </div>
+                                    <?php } ?>
+                                    <center>
+                                        <button type="submit" class="btnReset">Kirim password reset email</button></center>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>

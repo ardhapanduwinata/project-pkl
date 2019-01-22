@@ -32,40 +32,36 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                    <h3 class="register-heading">Login</h3>
-                        <div class="row register-form">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-8">
-                                <form action="<?= base_url('homeLogin/aksi_login')?>" method="post">
+                    <h3 class="register-heading">Change password for @<?= $user[0]->username;?></h3>
+                    <div class="row register-form">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <form action="<?= base_url('homeRegister/update_reset_pass/').$id?>" method="post">
+
                                 <div class="form-group">
-                                    <input type="text" name="username" class="form-control" placeholder="Username" required/>
+                                    <input type="password" name="password" class="form-control" placeholder="New Password" required/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" required/>
+                                    <input type="password" name="confirm" class="form-control" placeholder="Confirm Password" required/>
                                 </div>
-                                    <div class="form-group">
-                                        <?php if(!empty($note)){ ?>
-                                            <div class="alert alert-info" style="width: 100%">
-                                                <?php echo $note; ?>
-                                            </div>
-                                        <?php } ?>
-                                        <div class="row">
-                                            <div class="col-md-4" style="margin-top: 4%; padding: 8px;">
-                                                <a  href="<?= base_url('homeRegister/reset') ?>"><button type="button" class="btn" style="background: #0062cc;color: #fff;border-radius: 1.5rem;">Forgot Password?</button></a>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <button type="submit" class="btnLogin">Login</button>
-                                            </div>
+                                <div class="form-group">
+                                    <?php if(!empty($note)){ ?>
+                                        <div class="alert alert-info" style="width: 100%">
+                                            <?php echo $note; ?>
                                         </div>
-
-
+                                    <?php } ?>
+                                            <center><button type="submit" class="btnReset">Change Password</button></center>
+                                        </div>
                                     </div>
-                                </form>
-                            </div>
+
+
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
