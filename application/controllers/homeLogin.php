@@ -12,6 +12,8 @@ class homeLogin extends CI_Controller {
 
     public function index()
     {
+        $this->session->sess_destroy();
+
         $data['title'] = "Home Login";
         $data['note'] = "";
         $this->load->view('v_homeLogin', $data);
@@ -49,6 +51,7 @@ class homeLogin extends CI_Controller {
             }
         } else {
             $data['note'] = "Username atau Password anda salah! Atau Anda belum verifikasi email";
+            $data['title'] = "Home Login";
             $this->load->view('v_homeLogin', $data);
         }
     }
@@ -56,6 +59,7 @@ class homeLogin extends CI_Controller {
     public function logout()
     {
         session_destroy();
+        $this->session->sess_destroy();
         redirect(base_url('homeLogin'));
     }
 }

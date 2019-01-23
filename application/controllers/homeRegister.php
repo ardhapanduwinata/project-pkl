@@ -6,12 +6,18 @@ class HomeRegister extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-
         $this->load->model('models');
     }
 
 	public function index()
 	{
+        $status = $this->session->userdata('status');
+
+        if ($status != "login") {
+            base_url('homeLogin');
+        }
+        $this->session->sess_destroy();
+
 		$data['title'] = "Home Register";
 		$data['jurusan'] = $this->models->get_data('jurusan')->result();
         $this->load->view('v_homeRegister', $data);

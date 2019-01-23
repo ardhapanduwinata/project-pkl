@@ -28,14 +28,12 @@ class homeUser extends CI_Controller {
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
 
         $where_intro = array('nama_konten' => 'intro');
-        $data['intro'] = $this->models->get_selected('home_page', $where_intro)->result();
+        $data['intro'] = $this->models->get_selected('konten', $where_intro)->result();
 
-        $where_uguide = array('nama_konten' => 'uguide');
-        $data['uguide'] = $this->models->get_selected('home_page', $where_uguide)->result();
+        $data['kontak'] = $this->models->get_data('kontak')->result();
 
-        $where_contact = array('nama_konten' => 'contact');
-        $data['contact'] = $this->models->get_selected('home_page', $where_contact)->result();
-
+        $where_konten = array('nama_konten' => null);
+        $data['konten'] = $this->models->get_selected('konten', $where_konten)->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_homeUser');

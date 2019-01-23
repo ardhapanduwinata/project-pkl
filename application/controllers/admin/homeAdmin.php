@@ -26,13 +26,12 @@ class homeAdmin extends CI_Controller {
         $data['siapa'] = $this->session->userdata('nama');
 
         $where_intro = array('nama_konten' => 'intro');
-        $data['intro'] = $this->models->get_selected('home_page', $where_intro)->result();
+        $data['intro'] = $this->models->get_selected('konten', $where_intro)->result();
 
-        $where_uguide = array('nama_konten' => 'uguide');
-        $data['uguide'] = $this->models->get_selected('home_page', $where_uguide)->result();
+        $data['kontak'] = $this->models->get_data('kontak')->result();
 
-        $where_contact = array('nama_konten' => 'contact');
-        $data['contact'] = $this->models->get_selected('home_page', $where_contact)->result();
+        $where_konten = array('nama_konten' => null);
+        $data['konten'] = $this->models->get_selected('konten', $where_konten)->result();
 
         $this->load->view('header&footer/admin/v_headerHome', $data);
         $this->load->view('admin/home/v_homeAdmin', $data);
@@ -57,12 +56,25 @@ class homeAdmin extends CI_Controller {
            redirect('admin/homeAdmin', 'refresh');
 
         } else {
-            $data = array(
+            $data1 = array(
                 'nama_konten' => $nama_konten,
-                'image' => $this->upload->data('file_name')
+                'gambar_konten' => $this->upload->data('file_name')
+            );
+            $data2 = array(
+                'param' => "1"
             );
 
-            $this->models->add_data('home_page', $data);
+            $this->models->add_data('konten', $data1);
+            $this->models->add_data('id_home', $data2);
+
+            $get = $this->models->get_selected('konten', $where);
+
+            foreach($get as $a){
+                $data2 = array(
+                    'id_konten' => $a->id_konten
+                );
+            }
+            $this->models->add_data('home_page', $data2);
         }
         echo "<script>alert('Berhasil ditambahkan'); </script>";
         redirect(base_url('admin/homeAdmin'));
@@ -75,8 +87,8 @@ class homeAdmin extends CI_Controller {
         $data['judul'] = "Gambar yang terupload";
         $data['param'] = "intro";
 
-        $where = array('nama_konten' => "intro");
-        $data['intro'] = $this->models->get_selected('home_page', $where)->result();
+        $where_intro = array('nama_konten' => 'intro');
+        $data['intro'] = $this->models->get_selected('konten', $where_intro)->result();
 
         $this->load->view('header&footer/admin/v_headerHome', $data);
         $this->load->view('admin/home/v_edit_homeAdmin', $data);
@@ -86,13 +98,13 @@ class homeAdmin extends CI_Controller {
 
     public function del_intro($id)
     {
-        $where = array('id_home' => $id);
+        $where = array('id_konten' => $id);
 
-        $this->models->delete_data($where, 'home_page');
+        $this->models->delete_data($where, 'konten');
         redirect(base_url('admin/homeAdmin/edit_intro'));
     }
 
-    public function add_service()
+    public function add_konten()
     {
         $judul = $this->input->post('judul_konten');
         $isi = $this->input->post('isi_konten');
@@ -111,27 +123,26 @@ class homeAdmin extends CI_Controller {
 
         } else {
             $data = array(
-                'nama_konten' => 'uguide',
                 'judul_konten' => $judul,
                 'isi_konten' => $isi,
-                'image' => $this->upload->data('file_name')
+                'gambar_konten' => $this->upload->data('file_name')
             );
 
-            $this->models->add_data('home_page', $data);
+            $this->models->add_data('konten', $data);
         }
         echo "<script>alert('Berhasil ditambahkan'); </script>";
         redirect(base_url('admin/homeAdmin'));
     }
 
-    public function edit_service()
+    public function edit_konten()
     {
-        $data['title'] = "Edit Intro";
+        $data['title'] = "Edit Konten";
         $data['siapa'] = $this->session->userdata('nama');
-        $data['judul'] = "Konten pada bagian Service";
+        $data['judul'] = "Konten yang Terupload";
         $data['param'] = "part2";
 
-        $where_uguide = array('nama_konten' => 'uguide');
-        $data['uguide'] = $this->models->get_selected('home_page', $where_uguide)->result();
+        $where_konten = array('nama_konten' => null);
+        $data['konten'] = $this->models->get_selected('konten', $where_konten)->result();
 
         $this->load->view('header&footer/admin/v_headerHome', $data);
         $this->load->view('admin/home/v_edit_homeAdmin', $data);
@@ -139,140 +150,12 @@ class homeAdmin extends CI_Controller {
         $this->load->view('v_modals');
     }
 
-    public function del_service($id)
+    public function del_konten($id)
     {
-        $where = array('id_home' => $id);
+        $where = array('id_konten' => $id);
 
-        $this->models->delete_data($where, 'home_page');
-        redirect(base_url('admin/homeAdmin/edit_service'));
-    }
-
-    public function add_porto()
-    {
-        $nama_konten = $this->input->post('konten');
-        $config['upload_path'] = './assets/img/home_content/intro/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('gambar')) {
-            $error = array('error' => $this->upload->display_errors());
-            //echo $error;
-            foreach ($error as $row){
-                echo $row;
-            }
-
-            redirect('admin/homeAdmin', 'refresh');
-
-        } else {
-            $data = array(
-                'nama_konten' => $nama_konten,
-                'image' => $this->upload->data('file_name')
-            );
-
-            $this->models->add_data('home_page', $data);
-        }
-        echo "<script>alert('Berhasil ditambahkan'); </script>";
-        redirect(base_url('admin/homeAdmin'));
-    }
-
-    public function edit_porto()
-    {
-        $data['title'] = "Edit Intro";
-        $data['siapa'] = $this->session->userdata('nama');
-        $data['judul'] = "Gambar yang terupload";
-        $data['param'] = "intro";
-
-        $where = array('nama_konten' => "intro");
-        $data['intro'] = $this->models->get_selected('home_page', $where)->result();
-
-        $this->load->view('header&footer/admin/v_headerHome', $data);
-        $this->load->view('admin/home/v_edit_homeAdmin', $data);
-        $this->load->view('header&footer/admin/v_footerHome');
-        $this->load->view('v_modals');
-    }
-
-    public function del_porto($id)
-    {
-        $where = array('id_home' => $id);
-
-        $this->models->delete_data($where, 'home_page');
-        redirect(base_url('admin/homeAdmin/edit_intro'));
-    }
-
-    public function add_testi()
-    {
-        $nama_konten = $this->input->post('konten');
-        $config['upload_path'] = './assets/img/home_content/intro/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('gambar')) {
-            $error = array('error' => $this->upload->display_errors());
-            //echo $error;
-            foreach ($error as $row){
-                echo $row;
-            }
-
-            redirect('admin/homeAdmin', 'refresh');
-
-        } else {
-            $data = array(
-                'nama_konten' => $nama_konten,
-                'image' => $this->upload->data('file_name')
-            );
-
-            $this->models->add_data('home_page', $data);
-        }
-        echo "<script>alert('Berhasil ditambahkan'); </script>";
-        redirect(base_url('admin/homeAdmin'));
-    }
-
-    public function edit_testi()
-    {
-        $data['title'] = "Edit Intro";
-        $data['siapa'] = $this->session->userdata('nama');
-        $data['judul'] = "Gambar yang terupload";
-        $data['param'] = "intro";
-
-        $where = array('nama_konten' => "intro");
-        $data['intro'] = $this->models->get_selected('home_page', $where)->result();
-
-        $this->load->view('header&footer/admin/v_headerHome', $data);
-        $this->load->view('admin/home/v_edit_homeAdmin', $data);
-        $this->load->view('header&footer/admin/v_footerHome');
-        $this->load->view('v_modals');
-    }
-
-    public function del_testi($id)
-    {
-        $where = array('id_home' => $id);
-
-        $this->models->delete_data($where, 'home_page');
-        redirect(base_url('admin/homeAdmin/edit_intro'));
-    }
-
-    public function edit_action()
-    {
-        $data['title'] = "Edit Intro";
-        $data['siapa'] = $this->session->userdata('nama');
-        $data['judul'] = "Gambar yang terupload";
-        $data['param'] = "intro";
-
-        $where = array('nama_konten' => "intro");
-        $data['intro'] = $this->models->get_selected('home_page', $where)->result();
-
-        $this->load->view('header&footer/admin/v_headerHome', $data);
-        $this->load->view('admin/home/v_edit_homeAdmin', $data);
-        $this->load->view('header&footer/admin/v_footerHome');
-        $this->load->view('v_modals');
-    }
-
-    public function del_action($id)
-    {
-        $where = array('id_home' => $id);
-
-        $this->models->delete_data($where, 'home_page');
-        redirect(base_url('admin/homeAdmin/edit_intro'));
+        $this->models->delete_data($where, 'konten');
+        redirect(base_url('admin/homeAdmin/edit_uguide'));
     }
 
     public function edit_contact()
@@ -291,12 +174,40 @@ class homeAdmin extends CI_Controller {
         $this->load->view('v_modals');
     }
 
-    public function del_contact($id)
+    public function edit_header()
     {
-        $where = array('id_home' => $id);
+        $judul = $this->input->post('judul');
+        $deskripsi = $this->input->post('deskripsi');
 
-        $this->models->delete_data($where, 'home_page');
-        redirect(base_url('admin/homeAdmin/edit_intro'));
+        $data = array(
+            'header' => $judul,
+            'deskripsi' => $deskripsi
+        );
+        $where = array(
+            'id_header' => "2"
+        );
+
+        $this->models->update_data('header_home', $data, $where);
+        redirect(base_url('admin/homeAdmin/edit_konten'));
+    }
+
+    public function edit_kontak()
+    {
+        $alamat = $this->input->post('alamat');
+        $notelp = $this->input->post('notelp');
+        $email = $this->input->post('email');
+
+        $data = array(
+            'alamat' => $alamat,
+            'notelp' => $notelp,
+            'email' => $email
+        );
+        $where = array(
+            'id_kontak' => "1"
+        );
+
+        $this->models->update_data('kontak', $data, $where);
+        redirect(base_url('admin/homeAdmin'));
     }
 
     public function view_email()
