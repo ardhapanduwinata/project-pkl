@@ -55,7 +55,7 @@
                                                                         }else if($row->status == 'Ditolak'){
                                                                             echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';?>
                                                                             <br><br>
-                                                                            <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                            <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
                                                                             <?php
                                                                         }else if($row->status == 'Diterima'){
                                                                             echo 'Permohonan Magang Anda Telah Disetujui';
@@ -85,7 +85,7 @@
                                                                         }else if($row->status == 'Ditolak'){
                                                                             echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';?>
                                                                             <br><br>
-                                                                            <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                            <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
                                                                             <?php
                                                                         }else if($row->status == 'Diterima'){
                                                                             echo 'Permohonan Magang Anda Telah Disetujui';

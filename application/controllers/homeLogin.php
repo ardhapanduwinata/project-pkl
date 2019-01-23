@@ -26,33 +26,38 @@ class homeLogin extends CI_Controller {
 
         $where = array(
             'username' => $username,
-            'password' => md5($password),
-            'aktif' => 'Sudah'
+            'password' => md5($password)
         );
         $cek = $this->models->get_selected('users', $where)->num_rows();
         $user = $this->models->get_selected('users', $where)->result();
 
         if ($cek > 0) {
             foreach ($user as $a) {
-                $data_session = array(
-                    'id' => $a->id_user,
-                    'nama' => $a->nama_user,
-                    'status' => 'login',
-                    'pass' => $a->password,
-                    'role' => $a->role,
-                );
+                if($a->aktif == 'Sudah') {
+                    $data_session = array(
+                        'id' => $a->id_user,
+                        'nama' => $a->nama_user,
+                        'status' => 'login',
+                        'pass' => $a->password,
+                        'role' => $a->role,
+                    );
 
-                $this->session->set_userdata($data_session);
-                if ($a->role == '0') {
-                    redirect(base_url('admin/homeAdmin'));
-                } elseif ($a->role == '1') {
-                    redirect(base_url('user/homeUser'));
+                    $this->session->set_userdata($data_session);
+                    if ($a->role == '0') {
+                        redirect(base_url('admin/homeAdmin'));
+                    } elseif ($a->role == '1') {
+                        redirect(base_url('user/homeUser'));
+                    }
+                }else{
+                    $data['note'] = "Anda belum melakukan verifikasi email";
+                    $this->load->view('v_homeLogin', $data);
                 }
             }
         } else {
             $data['note'] = "Username atau Password anda salah! Atau Anda belum verifikasi email";
             $data['title'] = "Home Login";
-            $this->load->view('v_homeLogin', $data);
+
+            $data['note'] = "Username atau Password anda salah!";
         }
     }
 
@@ -62,4 +67,5 @@ class homeLogin extends CI_Controller {
         $this->session->sess_destroy();
         redirect(base_url('homeLogin'));
     }
+
 }

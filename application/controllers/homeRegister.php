@@ -7,6 +7,7 @@ class HomeRegister extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('models');
+        $this->load->library('email');
     }
 
 	public function index()
@@ -27,7 +28,9 @@ class HomeRegister extends CI_Controller {
     public function aksi_register()
     {
 
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[users.username]');
+        $this->form_validation->set_rules('username', 'Username', 'is_unique[users.username]');
+        $this->form_validation->set_rules('email', 'Email', 'is_unique[mhs.email]');
+        $this->form_validation->set_message('is_unique', '%s sudah digunakan');
         if ($this->form_validation->run()==FALSE){
             $data['jurusan'] = $this->models->get_data('jurusan')->result();
             $data['title'] = "Home Register";
@@ -72,7 +75,6 @@ class HomeRegister extends CI_Controller {
             //enkripsi id
             $encrypted_id = md5($insert);
 
-            $this->load->library('email');
             $config = array();
             $config['charset'] = 'utf-8';
             $config['useragent'] = 'Codeigniter';
@@ -124,6 +126,7 @@ class HomeRegister extends CI_Controller {
         $this->models->update_data('users',$data, $where);
 
         $data_user = $this->models->get_selected('users', $where)->result();
+        //var_dump($data_user);
 
         foreach($data_user as $a)
         {
@@ -158,6 +161,104 @@ class HomeRegister extends CI_Controller {
         //var_dump($returnData);
         echo json_encode($returnData);
         die;
+    }
+
+    public function reset(){
+        $data['title'] = "Reset Password";
+        $this->load->view('v_send_reset', $data);
+    }
+
+    public function reset_pass(){
+        $email = $this->input->post('email');
+
+        $where = array(
+            'email' => $email,
+        );
+        //$cek = $this->models->get_selected('mhs', $where)->num_rows();
+        $mhs = $this->models->get_selected_join('mhs','users',$where,'mhs.id_user = users.id_user')->result();
+
+        if (count($mhs) == 1) {
+            foreach ($mhs as $a) {
+                $id = $a->id_user;
+            }
+
+            $encrypted_id = md5($id);
+
+            $config = array();
+            $config['charset'] = 'utf-8';
+            $config['useragent'] = 'Codeigniter';
+            $config['protocol']= "smtp";
+            $config['mailtype']= "html";
+            $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
+            $config['smtp_port']= "465";
+            $config['smtp_timeout']= "400";
+            $config['smtp_user']= "cobaTugas123@gmail.com"; // isi dengan email kamu
+            $config['smtp_pass']= "Coba12345"; // isi dengan password kamu
+            $config['crlf']="\r\n";
+            $config['newline']="\r\n";
+            $config['wordwrap'] = TRUE;
+            //memanggil library email dan set konfigurasi untuk pengiriman email
+
+            $this->email->initialize($config);
+            //konfigurasi pengiriman
+            $this->email->from($config['smtp_user']);
+            $this->email->to($this->input->post("email"));
+            $this->email->subject("Silahkan Reset Password Anda");
+            $this->email->message(
+                "Kami mendengar bahwa Anda kehilangan kata sandi Anda. Maaf soal itu! Tapi jangan khawatir! Anda dapat menggunakan tautan berikut untuk mengatur ulang kata sandi Anda:<br><br>".
+                site_url("homeRegister/reset_pass_user/$encrypted_id")
+            );
+
+            if($this->email->send())
+            {
+                echo "<script>alert('Berhasil mengirim reset password, silahkan cek email kamu');</script>";
+                redirect('homeRegister/reset','refresh');
+            }else
+            {
+                echo "<script>alert('Gagal mengirim verifikasi email');</script>";
+                redirect('homeRegister/reset','refresh');
+            }
+            redirect('homeLogin','refresh');
+
+        } else {
+            $data['note'] = "Email Yang anda masukkan belum terdaftar";
+            $this->load->view('v_reset_pass', $data);
+        }
+    }
+
+    public function reset_pass_user($key){
+        $data['title'] = "Reset Password";
+        $data['id'] = $key;
+
+        $where = array(
+            'md5(id_user)' => $key
+        );
+
+        $data['user'] = $this->models->get_selected('users', $where)->result();
+        //var_dump( $data['user']);
+
+        $this->load->view('v_reset_pass', $data);
+    }
+
+    public function update_reset_pass($key){
+        if($this->input->post('password')==$this->input->post('confirm')){
+            $data = array(
+                'password' => md5($this->input->post('password'))
+            );
+
+            $where = array(
+                'md5(id_user)' => $key
+            );
+
+            $this->models->update_data('users',$data, $where);
+
+            echo "<script>alert('Berhasil Merubah Password');</script>";
+
+            redirect('homeLogin');
+        }else{
+            $data['note'] = "Konfirmasi Password dan Password tidak sesuai";
+            redirect('homeRegister/reset_pass_user/'.$key);
+        }
     }
 }
 
