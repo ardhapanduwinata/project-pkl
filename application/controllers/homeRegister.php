@@ -97,15 +97,82 @@ class HomeRegister extends CI_Controller {
             if($this->email->send())
             {
                 echo "<script>alert('Berhasil melakukan registrasi, silahkan cek email kamu');</script>";
-                redirect('homeLogin','refresh');
+
+                redirect('homeRegister/success/'.$insert,'refresh');
             }else
             {
                 echo "<script>alert('Berhasil melakukan registrasi, namun gagal mengirim verifikasi email');</script>";
-                redirect('homeLogin','refresh');
+                redirect('homeRegister/success/'.$insert,'refresh');
             }
             redirect('homeLogin','refresh');
         }
     }
+
+
+    public function verification_again($id){
+        $data['title'] = "Verifikasi";
+        //$data['div'] = 'myTabContent';
+        $where = array(
+            'users.id_user' => $id,
+        );
+        //$cek = $this->models->get_selected('mhs', $where)->num_rows();
+        $mhs = $this->models->get_selected_join('mhs','users',$where,'mhs.id_user = users.id_user')->result();
+
+        if (count($mhs) == 1) {
+            foreach ($mhs as $a) {
+                $email = $a->email;
+            }
+
+            $encrypted_id = md5($id);
+
+            $config = array();
+            $config['charset'] = 'utf-8';
+            $config['useragent'] = 'Codeigniter';
+            $config['protocol']= "smtp";
+            $config['mailtype']= "html";
+            $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
+            $config['smtp_port']= "465";
+            $config['smtp_timeout']= "400";
+            $config['smtp_user']= "cobaTugas123@gmail.com"; // isi dengan email kamu
+            $config['smtp_pass']= "Coba12345"; // isi dengan password kamu
+            $config['crlf']="\r\n";
+            $config['newline']="\r\n";
+            $config['wordwrap'] = TRUE;
+            //memanggil library email dan set konfigurasi untuk pengiriman email
+
+            $this->email->initialize($config);
+            //konfigurasi pengiriman
+            $this->email->from($config['smtp_user']);
+            $this->email->to($email);
+            $this->email->subject("");
+            $this->email->subject("Verifikasi Akun");
+            $this->email->message(
+                "terimakasih telah melakukan registrasi, untuk memverifikasi silahkan klik tautan dibawah ini<br><br>".
+                site_url("homeRegister/verification/$encrypted_id")
+            );
+
+            if($this->email->send())
+            {
+                echo "<script>alert('Berhasil mengirimkan verifikasi,silahkan cek email kamu');</script>";
+
+                redirect('homeRegister/success/'.$id,'refresh');
+            }else
+            {
+                echo "<script>alert('gagal mengirim verifikasi email');</script>";
+                redirect('homeRegister/success/'.$id,'refresh');
+            }
+            redirect('homeLogin','refresh');
+        }
+    }
+
+    public function success($id){
+        $data['title'] = "Verifikasi";
+        $data['id'] = $id;
+        //$data['div'] = 'myTabContent';
+        $this->load->view('v_verifikasi', $data);
+    }
+
+
 
     public function verification($key)
     {
@@ -159,12 +226,14 @@ class HomeRegister extends CI_Controller {
 
     public function reset(){
         $data['title'] = "Reset Password";
+        $data['div'] = 'myTabContent';
         $this->load->view('v_send_reset', $data);
     }
 
     public function reset_pass(){
         $email = $this->input->post('email');
-
+        $data['div'] = 'myTabContent2';
+        $data['title'] = "Reset Password";
         $where = array(
             'email' => $email,
         );
@@ -206,17 +275,17 @@ class HomeRegister extends CI_Controller {
             if($this->email->send())
             {
                 echo "<script>alert('Berhasil mengirim reset password, silahkan cek email kamu');</script>";
-                redirect('homeRegister/reset','refresh');
+                $this->load->view('v_send_reset', $data);
             }else
             {
                 echo "<script>alert('Gagal mengirim verifikasi email');</script>";
-                redirect('homeRegister/reset','refresh');
+                $this->load->view('v_send_reset', $data);
             }
-            redirect('homeLogin','refresh');
+            //redirect('homeLogin','refresh');
 
         } else {
             $data['note'] = "Email Yang anda masukkan belum terdaftar";
-            $this->load->view('v_reset_pass', $data);
+            $this->load->view('v_send_reset', $data);
         }
     }
 

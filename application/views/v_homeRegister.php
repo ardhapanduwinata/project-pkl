@@ -84,7 +84,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password Anda *" value="" required/>
-                            </div>
+                                </div>
                             <input type="submit" class="btnRegister" name="register"  onClick="confirm('Apakah anda yakin yang anda isikan sudah benar?')" value="Register"/>
                         </div>
                     </div>
