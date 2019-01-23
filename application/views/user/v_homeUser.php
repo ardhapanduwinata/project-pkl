@@ -5,7 +5,7 @@
     <div>
         <div id="intro-carousel" class="owl-carousel" >
             <?php foreach ($intro as $a) {?>
-                <div class="item" style="background-image: url('<?= base_url('assets/img/home_content/intro/').$a->image ?>');"></div>
+                <div class="item" style="background-image: url('<?= base_url('assets/img/home_content/intro/').$a->gambar_konten ?>');"></div>
             <?php } ?>
         </div>
     </div>
@@ -19,20 +19,30 @@
     <section id="services">
         <div class="container">
             <div class="section-header">
-                <h2>User Guide</h2>
-                <p> magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+                <?php
+                $where = array('id_header' => '2');
+                $header = $this->db->get_where('header_home', $where)->result();
+                foreach ($header as $a) {
+                    if ($a->header == null || $a->deskripsi == null) { ?>
+                        <h2>Untitled</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <?php } else { ?>
+                        <h2><?= $a->header ?></h2>
+                        <p><?= $a->deskripsi ?></p>
+                    <?php }
+                }?>
             </div>
             <div class="row">
                 <?php
                 $no=0;
-                $jumlah = count($uguide);
-                foreach($uguide as $a) {
+                $jumlah = count($konten);
+                foreach($konten as $a) {
                     $no++;
                     if($no == $jumlah && $no %2 != 0){?>
                         <div class="col-lg-12">
                             <div class="box wow fadeInLeft row">
                                 <div class="col-lg-5">
-                                    <img src="<?= base_url('assets/img/home_content/userguide/'.$a->image) ?>" style="height: 200px" alt="">
+                                    <img src="<?= base_url('assets/img/home_content/userguide/'.$a->gambar_konten) ?>" style="height: 200px" alt="">
                                 </div>
                                 <div class="col-lg-7" style="margin-top: 10px">
                                     <h4><a href=""><b><?= $a->judul_konten ?></b></a></h4>
@@ -43,8 +53,7 @@
                     <?php } else { ?>
                         <div class="col-lg-6">
                             <div class="box wow fadeInLeft">
-                                <div class="icon"><img src="<?= base_url('assets/img/home_content/userguide/'.$a->image) ?>"
-                                                       style="height: 200px" alt=""><br><br></div>
+                                <div class="icon"><img src="<?= base_url('assets/img/home_content/userguide/'.$a->gambar_konten) ?>" style="height: 250px" width="100%" alt=""><br><br></div>
                                 <h4><a href=""><b><?= $a->judul_konten ?></b></a></h4>
                                 <p><?= $a->isi_konten ?></p>
                             </div>
@@ -57,8 +66,8 @@
     <section id="contact" class="wow fadeInUp">
         <div class="container">
             <div class="section-header">
-                <?php foreach($contact as $a) {?>
-                <h2>Contact Us</h2>
+                <?php foreach($kontak as $a) {?>
+                <h2>Hubungi Kami</h2>
                 <p></p>
             </div>
 
@@ -67,7 +76,7 @@
                 <div class="col-md-4">
                     <div class="contact-address">
                         <i class="ion-ios-location-outline"></i>
-                        <h3>Address</h3>
+                        <h3>Alamat</h3>
                         <address><?= $a->alamat ?></address>
                     </div>
                 </div>
@@ -75,7 +84,7 @@
                 <div class="col-md-4">
                     <div class="contact-phone">
                         <i class="ion-ios-telephone-outline"></i>
-                        <h3>Phone Number</h3>
+                        <h3>No Telepon</h3>
                         <p><a href="tel:<?= $a->notelp ?>"><?= $a->notelp ?></a></p>
                     </div>
                 </div>
