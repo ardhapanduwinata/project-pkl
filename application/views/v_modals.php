@@ -146,7 +146,7 @@
                     <form enctype="multipart/form-data" action="<?= base_url('admin/homeAdmin/add_intro')?>"  method="post">
                         <div class="form-group">
                             <label for="nama">Judul Konten</label>
-                            <input class="form-control" name="konten" type="text" placeholder="Intro" value="Intro" readonly>
+                            <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" readonly>
                             <br>
                             <label for="nama">Gambar Konten</label>
                             <div class="custom-file">

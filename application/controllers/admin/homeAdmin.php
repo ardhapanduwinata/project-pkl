@@ -60,21 +60,8 @@ class homeAdmin extends CI_Controller {
                 'nama_konten' => $nama_konten,
                 'gambar_konten' => $this->upload->data('file_name')
             );
-            $data2 = array(
-                'param' => "1"
-            );
 
             $this->models->add_data('konten', $data1);
-            $this->models->add_data('id_home', $data2);
-
-            $get = $this->models->get_selected('konten', $where);
-
-            foreach($get as $a){
-                $data2 = array(
-                    'id_konten' => $a->id_konten
-                );
-            }
-            $this->models->add_data('home_page', $data2);
         }
         echo "<script>alert('Berhasil ditambahkan'); </script>";
         redirect(base_url('admin/homeAdmin'));
