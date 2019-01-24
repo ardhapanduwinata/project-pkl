@@ -25,19 +25,32 @@ class manageData extends CI_Controller {
         $data['title'] = "Manage Data";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Dashboard";
+        $data['role'] = $this->session->userdata('role');
 
         $where1 = array('status' => 'Diproses');
         $where2 = array('status' => 'Diterima');
         $where3 = array('status' => 'Ditolak');
+        $where4 = array('divisi' =>  $data['siapa']);
+
+        if($data['role'] == 0){
+            $data['form_masuk'] = $this->models->get_data('form_magang')->result();
+
+            $data['diproses'] = $this->models->get_selected('surat_konfirm', $where1)->result();
+            $data['diterima'] = $this->models->get_selected('surat_konfirm', $where2)->result();
+            $data['ditolak'] = $this->models->get_selected('surat_konfirm', $where3)->result();
+
+        }else{
+            $data['form_masuk'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where4)->result();
+
+            $data['diterima'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where4,$where1)->result();
+            $data['diproses'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where4,$where2)->result();
+            $data['ditolak'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where4,$where3)->result();
+
+        }
+
 
         $select = array('divisi as label','COUNT(id_form) as value');
         $select2 = array('jurusan','COUNT(id_form) as jumlah');
-
-
-        $data['form_masuk'] = $this->models->get_data('form_magang')->result();
-        $data['diproses'] = $this->models->get_selected('surat_konfirm', $where1)->result();
-        $data['diterima'] = $this->models->get_selected('surat_konfirm', $where2)->result();
-        $data['ditolak'] = $this->models->get_selected('surat_konfirm', $where3)->result();
 
         $hasil = $this->models->chart($select,'form_magang','kamus','form_magang.id_kamus = kamus.id_kamus','divisi','kamus.id_divisi = divisi.id_divisi','divisi')->result();
         //var_dump($hasil);
@@ -247,13 +260,25 @@ class manageData extends CI_Controller {
     {
         $data['title'] = "Permohonan Magang";
         $data['siapa'] = $this->session->userdata('nama');
+        $data['role'] = $this->session->userdata('role');
         $data['page_header'] = "Permohonan Magang";
         $data['filter'] = $this->input->post("filter");
-        if( $data['filter']=='Semua' || empty( $data['filter']) ){
-            $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
+        if($data['role'] == 0){
+                if( $data['filter']=='Semua' || empty( $data['filter']) ){
+                    $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
+                }else{
+                    $where = array('sk.status' => $data['filter']);
+                    $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form',$where)->result();
+                }
         }else{
-            $where = array('sk.status' => $data['filter']);
-            $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form',$where)->result();
+            if( $data['filter']=='Semua' || empty( $data['filter']) ){
+                $where = array('d.divisi' =>  $data['siapa']);
+                $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where)->result();
+            }else{
+                $where = array('sk.status' => $data['filter']);
+                $where1 = array('d.divisi' =>  $data['siapa']);
+                $data['datamagang'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where,$where1)->result();
+            }
         }
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);

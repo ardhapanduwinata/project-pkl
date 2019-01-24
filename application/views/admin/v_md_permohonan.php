@@ -49,7 +49,9 @@
                                 </td>
                                 <td><?= $a->univ?></td>
                                 <td>
-                                    <?php  if (empty($a->id_kamus)){?>
+
+                                    <?php  if($role == 0){
+                                    if (empty($a->id_kamus)){?>
                                     <form enctype="multipart/form-data" action="<?= base_url('admin/manageData/updateDivisi/'.$a->id_form) ?>" method="post">
                                     <select class="form-control" name="divisi" onchange="this.form.submit()">
                                         <option class="hidden" selected disabled>Divisi</option>
@@ -73,7 +75,9 @@
                                         </select>
                                     </form>
                                     <?php } ?>
-
+                                    <?php }else{?>
+                                    <?php echo $a->divisi ?>
+                                    <?php } ?>
                                 </td>
                                 <td>
                                     <?php if($a->status == "Diterima"){?>

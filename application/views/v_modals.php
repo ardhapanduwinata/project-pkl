@@ -81,6 +81,7 @@
                         <label for="divisi">Nama User (Sesuai Divisi)</label>
                         <?php $divisi=$this->db->select('*')->from('divisi')->join('users','divisi.divisi = users.nama_user','left')->where('id_user',null)->get(); ?>
                         <select id="divisi" class="form-control" name="divisi" required>
+                            <option class="hidden" selected disabled>Pilih Nama User</option>
                             <?php
                                 foreach($divisi->result() as $key){?>
                                         <option value="<?= $key->divisi ?>"><?= $key->divisi?></option>
