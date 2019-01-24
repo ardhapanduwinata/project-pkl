@@ -40,11 +40,11 @@ class manageData extends CI_Controller {
             $data['ditolak'] = $this->models->get_selected('surat_konfirm', $where3)->result();
 
         }else{
-            $data['form_masuk'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where4)->result();
+            $data['form_masuk'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where4)->result();
 
-            $data['diproses'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where4,$where1)->result();
-            $data['diterima'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where4,$where2)->result();
-            $data['ditolak'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where4,$where3)->result();
+            $data['diproses'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where4,$where1)->result();
+            $data['diterima'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where4,$where2)->result();
+            $data['ditolak'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where4,$where3)->result();
 
         }
 
@@ -273,11 +273,11 @@ class manageData extends CI_Controller {
         }else{
             if( $data['filter']=='Semua' || empty( $data['filter']) ){
                 $where = array('d.divisi' =>  $data['siapa']);
-                $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where)->result();
+                $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where)->result();
             }else{
                 $where = array('sk.status' => $data['filter']);
                 $where1 = array('d.divisi' =>  $data['siapa']);
-                $data['datamagang'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk','kamus k','divisi d', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','m.id_jurusan = k.id_jurusan','k.id_divisi = d.id_divisi',$where,$where1)->result();
+                $data['datamagang'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where,$where1)->result();
             }
         }
 

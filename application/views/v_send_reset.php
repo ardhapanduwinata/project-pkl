@@ -63,7 +63,7 @@
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
                             <p align="justify">Periksa email Anda untuk tautan untuk mengatur ulang kata sandi Anda. Jika tidak muncul dalam beberapa menit, periksa folder spam Anda.</p>
-                                       <center> <a href="<?= base_url('homeLogin')?>"> <button type="button" class="btnReset" id="btnReset">Kembali Ke Login</button></a></center>
+                            <center> <a href="<?= base_url('homeLogin')?>"> <button type="button" class="btnReset" id="btnReset">Kembali Ke Login</button></a></center>
                         </div>
                     </div>
                 </div>

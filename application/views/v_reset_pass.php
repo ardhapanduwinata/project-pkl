@@ -51,10 +51,6 @@
                                         </div>
                                     <?php } ?>
                                             <center><button type="submit" class="btnReset">Change Password</button></center>
-                                        </div>
-                                    </div>
-
-
                                 </div>
                             </form>
                         </div>
