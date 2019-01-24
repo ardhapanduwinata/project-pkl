@@ -56,10 +56,9 @@ class homeLogin extends CI_Controller {
                 }
             }
         } else {
-            $data['note'] = "Username atau Password anda salah! Atau Anda belum verifikasi email";
             $data['title'] = "Home Login";
-
             $data['note'] = "Username atau Password anda salah!";
+            $this->load->view('v_homeLogin', $data);
         }
     }
 
