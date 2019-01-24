@@ -53,7 +53,7 @@ class homeAdmin extends CI_Controller {
                 echo $row;
             }
 
-           redirect('admin/homeAdmin', 'refresh');
+            redirect('admin/homeAdmin', 'refresh');
 
         } else {
             $data1 = array(

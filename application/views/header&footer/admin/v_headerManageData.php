@@ -43,6 +43,8 @@
 </head>
 <body>
 
+<?php $role = $this->session->userdata('role'); ?>
+
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -66,7 +68,7 @@
                 <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
             <li>
-                <a data-toggle="modal" data-target="#logout_modal" href=""><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a data-toggle="modal" data-target="#logout_modal" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
         </ul>
         <!-- /.navbar-top-links -->
@@ -88,6 +90,11 @@
                     <li>
                         <a href="<?= base_url('admin/manageData')?>"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     </li>
+                    <?php if($role == '0') {?>
+                        <li>
+                            <a href="<?= base_url('admin/manageData/admin')?>"><i class="fas fa-user-check"></i> Manage Admin Divisi</a>
+                        </li>
+                    <?php } ?>
                     <li>
                         <a href="<?= base_url('admin/manageData/jurusan') ?>"><i class="fa fa-table fa-fw"></i> Jurusan</a>
                     </li>

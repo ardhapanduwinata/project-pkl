@@ -17,7 +17,7 @@
     </div>
     <div id="intro-carousel" class="owl-carousel" >
         <?php foreach ($intro as $a) {?>
-            <div class="item" style="background-image: url('<?= base_url('assets/img/home_content/intro/').$a->gambar_konten ?>');"></div>
+            <div class="item" style="background-image: url('<?= base_url('assets/img/home_content/intro/').$a->gambar_konten ?>')"></div>
         <?php } ?>
     </div>
 </div>
