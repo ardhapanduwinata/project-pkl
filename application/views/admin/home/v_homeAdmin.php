@@ -1,8 +1,10 @@
 <!--==========================
   Intro Section
 ============================-->
+<?php $role = $this->session->userdata('role'); ?>
 <section id="intro">
 <div>
+    <?php if($role == '0') {?>
     <div style="z-index: 10;position: absolute; width: 100%">
         <a class="nav-link" data-toggle="modal" data-target="#addIntro_modal" href="" style="float: right">
             <button style="background-color: rgba(0,0,0,.5); border-radius: 50%" class="btn btn-default">
@@ -15,6 +17,7 @@
             </button>
         </a>
     </div>
+    <?php } ?>
     <div id="intro-carousel" class="owl-carousel" >
         <?php foreach ($intro as $a) {?>
             <div class="item" style="background-image: url('<?= base_url('assets/img/home_content/intro/').$a->gambar_konten ?>')"></div>
@@ -31,6 +34,7 @@
     <section id="services">
         <div class="container">
             <div class="section-header">
+                <?php if($role == '0') {?>
                 <div style="z-index: 10;position: absolute; width: 96%">
                     <a class="nav-link" data-toggle="modal" data-target="#addKonten_modal" href="" style="float: right">
                         <button style="background-color: rgba(0,0,0,.5); border-radius: 50%" class="btn btn-default">
@@ -43,6 +47,7 @@
                         </button>
                     </a>
                 </div>
+                <?php } ?>
                 <?php
                 $where = array('id_header' => '2');
                 $header = $this->db->get_where('header_home', $where)->result();
@@ -90,6 +95,7 @@
     <section id="contact" class="wow fadeInUp">
         <div class="container">
             <div class="section-header">
+                <?php if($role == '0') {?>
                 <div style="z-index: 10;position: absolute; width: 96%">
                     <a class="nav-link" data-toggle="modal" data-target="#editKontak_modal" href="" style="float: right">
                         <button style="background-color: rgba(0,0,0,.5); border-radius: 50%" class="btn btn-default">
@@ -97,6 +103,7 @@
                         </button>
                     </a>
                 </div>
+                <?php } ?>
                 <?php foreach($kontak as $a) {?>
                 <h2>Hubungi Kami</h2>
                 <p></p>

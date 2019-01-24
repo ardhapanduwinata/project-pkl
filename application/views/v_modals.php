@@ -10,6 +10,27 @@
             <div class="modal-body">Pilih "Logout" jika anda ingin mengkahiri session anda</div>
             <div class="modal-footer">
                 <form action="<?= base_url('homeLogin/logout') ?>" method="post">
+                    <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancel</a>
+                    <input type="hidden" name="status" value="logout">
+                    <a href=""><button class="btn btn-primary">Logout</button></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="logout_modaladm" tabindex="-1" role="dialog" aria-labelledby="logout_modaladm" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Siap untuk pergi?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Pilih "Logout" jika anda ingin mengkahiri session anda</div>
+            <div class="modal-footer">
+                <form action="<?= base_url('homeLogin/logout') ?>" method="post">
                     <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
                     <input type="hidden" name="status" value="logout">
                     <a href=""><button class="btn btn-primary">Logout</button></a>

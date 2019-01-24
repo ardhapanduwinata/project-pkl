@@ -65,10 +65,10 @@
                 <a href="<?=  base_url('admin/homeAdmin')?>"><i class="fas fa-home"></i>Home Page</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                <a href="<?= base_url('admin/manageData/admdiv_edit/'.$this->session->userdata('id'))?>"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
             <li>
-                <a data-toggle="modal" data-target="#logout_modal" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a data-toggle="modal" data-target="#logout_modaladm" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
         </ul>
         <!-- /.navbar-top-links -->
@@ -94,16 +94,16 @@
                         <li>
                             <a href="<?= base_url('admin/manageData/admin')?>"><i class="fas fa-user-check"></i> Manage Admin Divisi</a>
                         </li>
+                        <li>
+                            <a href="<?= base_url('admin/manageData/jurusan') ?>"><i class="fa fa-table fa-fw"></i> Jurusan</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('admin/manageData/divisi') ?>"><i class="fas fa-chalkboard-teacher"></i> Divisi</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('admin/manageData/kamus')?>"><i class="fa fa-book fa-fw"></i> Kamus</a>
+                        </li>
                     <?php } ?>
-                    <li>
-                        <a href="<?= base_url('admin/manageData/jurusan') ?>"><i class="fa fa-table fa-fw"></i> Jurusan</a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('admin/manageData/divisi') ?>"><i class="fas fa-chalkboard-teacher"></i> Divisi</a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('admin/manageData/kamus')?>"><i class="fa fa-book fa-fw"></i> Kamus</a>
-                    </li>
                     <li>
                         <a href="<?= base_url('admin/manageData/permohonan/semua')?>"><i class="fas fa-users"></i> Daftar Permohonan Magang</a>
                         <!-- /.nav-second-level -->

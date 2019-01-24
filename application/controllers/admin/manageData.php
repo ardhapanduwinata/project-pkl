@@ -563,4 +563,39 @@ class manageData extends CI_Controller {
         $this->models->delete_data($where, 'users');
         redirect(base_url('admin/manageData/admin'));
     }
+
+    public function admdiv_edit($id)
+    {
+        $where = array('id_user' => $id);
+        $data['title'] = "Edit Admin";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Edit Admin Profile";
+        $data['admin'] = $this->models->get_selected('users', $where)->result();
+
+        $this->load->view('header&footer/admin/v_headerManageData', $data);
+        $this->load->view('admin/v_edt_admdiv');
+        $this->load->view('header&footer/admin/v_footerManageData');
+        $this->load->view('v_modals');
+    }
+
+    public function admdiv_update()
+    {
+        $id = $this->input->post('id');
+        $nama_user = $this->input->post('nama');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+
+        $data = array(
+            'nama_user' => $nama_user,
+            'username' => $username,
+            'password' => md5($password)
+        );
+
+        $where = array('id_user' => $id);
+
+        $this->models->update_data('users', $data, $where);
+        $this->session->set_userdata('nama',$this->input->post("nama"));
+        echo "<script>alert('Data Berhasil Diubah :)');</script>";
+        redirect(base_url('admin/manageData'));
+    }
 }
