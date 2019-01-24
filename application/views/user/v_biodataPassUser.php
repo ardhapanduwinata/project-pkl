@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="offset-4 col-8">
-                                <button name="submit" type="submit" class="btn">Update Username</button>
+                                <button name="submit" type="submit" class="btn" style="background-color: #0c2e8a; color: white">Update Username</button>
                             </div>
                         </div>
                     <?php echo form_close();?>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="offset-4 col-8">
-                                <button name="submit" type="submit" class="btn">Update Password</button>
+                                <button name="submit" type="submit" class="btn" style="background-color: #0c2e8a; color: white">Update Password</button>
                             </div>
                         </div>
                     <?php echo form_close();?>

@@ -18,7 +18,7 @@
                     <h6>Upload a different photo...</h6>
                     <input type="file" class="form-control" name="pic">
                     <br>
-                    <input type="submit" name="submit" class="btn" value="Update">
+                    <input type="submit" name="submit" class="btn" style="background-color: #0c2e8a; color: white" value="Update">
                     <?php echo form_close();?>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn">Update Profile</button>
+                                        <button name="submit" type="submit" class="btn" style="background-color: #0c2e8a; color: white">Update Profile</button>
                                     </div>
                                 </div>
                             <?php echo form_close();?>

@@ -87,9 +87,9 @@
         </div>
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="<?= base_url('user/homeUser') ?>">Home</a></li>
+                <li><a href="<?= base_url('user/homeUser') ?>">Beranda</a></li>
                 <li><a href="<?= base_url('user/magangUser') ?>">Pengajuan Form Magang</a></li>
-                <li><a class="nav-link" href="<?= base_url('user/homeUser/biodata') ?>">Manage Profile</a></li>
+                <li><a class="nav-link" href="<?= base_url('user/homeUser/biodata') ?>">Ubah Profil</a></li>
                 <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->

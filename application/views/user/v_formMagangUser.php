@@ -22,14 +22,19 @@
                     </div>
                     <?php if($jumlah_jenis < 2){?>
                     <div class="row">
-                        <div class="offset-9 col-3" style="float: right">
-                            <button id="add_field_button" class="btn btn-outline-secondary" type="button">Tambah Mahasiswa</button>
-                        </div>
+<!--                        <div class="col-md-8"></div>-->
+<!--                        <div class="col-md-4" style="float: right; padding-bottom: 10px; padding-left: 80px">-->
+<!--                            <button id="add_field_button" class="btn btn-outline-secondary" type="button" >Tambah Mahasiswa</button>-->
+<!--                        </div>-->
                         <br><br>
                         <div class="col-md-12">
                             <?php
                             echo form_open_multipart('user/magangUser/uploadPengajuan',array('class' => 'form-horizontal upload-form')); ?>
                             <div class="input_fields_wrap">
+                                    <div style="width: 100%">
+                                        <button id="add_field_button" style="float: right" class="btn btn-outline-secondary" type="button" ><i class="fa fa-plus"></i> Mahasiswa</button>
+                                        <br><br>
+                                    </div>
                                 <div class="form-group row">
                                     <label for="nim" class="col-4 col-form-label">NIM</label>
                                     <div class="col-8">
@@ -103,14 +108,21 @@
                             </div>
                             <div class="form-group row">
                                 <label for="file" class="col-4 col-form-label">File</label>
-                                <div class="col-8">
-                                    <input name="file" placeholder="File" id="file" type="file" accept="application/zip, application/x-rar" required="required"><br>
-                                    <label style="color: red">*File harus berupa format rar/zip</label>
+                                <div class="custom-file" style="width: 63%; margin-left: 15px">
+                                        <input type="file" class="custom-file-input" accept="application/zip, application/x-rar" name="file" id="file" required>
+                                        <label for="nama" class="custom-file-label" style="color: red">*File harus berupa format rar/zip</label>
                                 </div>
                             </div>
+<!--                            <div class="form-group row">-->
+<!--                                -->
+<!--                                <div class="col-8">-->
+<!--                                    <input name="file" placeholder="File" id="file" type="file"  required="required"><br>-->
+<!--                                    <label style="color: red"></label>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="form-group row">
-                                <div class="offset-8 col-4" style="float: right;">
-                                    <button name="submit" type="submit" class="btn btn-outline-success">Upload Permohonan PKL</button>
+                                <div style="width: 98%">
+                                    <button name="submit" style="float: right;" type="submit" class="btn btn-outline-success">Upload Permohonan PKL</button>
                                 </div>
                             </div>
                             <?php echo form_close();?>
