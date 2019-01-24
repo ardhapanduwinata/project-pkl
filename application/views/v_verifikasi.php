@@ -37,7 +37,7 @@
                             <div class="col-md-8">
                                 <form action="<?= base_url('homeRegister/verification_again/').$id?>" method="post">
                                 <p align="justify">Kami telah mengirimkan tautan untuk mengaktifkan akun anda, Silahkan cek email. Jika tidak muncul kirim ulang verifikasi</p>
-                                <center> <button type="submit" class="btnReset" id="btnReset">Kirim Ulang Verifikasi </button></a></center>
+                                    <center> <div id="countdown" style="color: #c9c9c9;"></div><button type="submit" class="btnReset" id="btnReset" style="visibility: hidden">Kirim Ulang Verifikasi </button></a></center>
                                 </form>
                             </div>
                         </div>
@@ -47,3 +47,28 @@
     </div>
 </div>
 </body>
+<script>
+    $(document).ready(function() {
+       // $("#btnReset").hide();
+        function countDown(sec, elem) {
+            var intervalId = undefined;
+            var intervalId = setInterval(function () {
+                var element = document.getElementById(elem);
+                element.innerHTML = "00:" + sec;
+                if (sec < 10 && sec >=1) {
+                    element.innerHTML = "00:0" + sec;
+                }else if (sec < 1) {
+                    clearInterval(intervalId);
+                    element.innerHTML = null;
+                    $("#btnReset").show();
+//                    element.innerHTML.style.display = "none";
+                   document.getElementById("btnReset").style.visibility = "visible"; // ← Uncomment this line!
+                }
+                sec--;
+            }, 1000);
+        }
+
+        countDown(10, "countdown");
+    });
+</script>
+
