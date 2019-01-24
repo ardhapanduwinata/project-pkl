@@ -491,4 +491,76 @@ class manageData extends CI_Controller {
             redirect(base_url('admin/manageData/permohonan'));
 
     }
+
+    public function admin()
+    {
+        $data['title'] = "Manage Admin Divisi";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Manage Admin Divisi";
+
+        $where = array('role' => '2');
+        $data['admin'] = $this->models->get_selected('users', $where)->result();
+
+        $this->load->view('header&footer/admin/v_headerManageData', $data);
+        $this->load->view('admin/v_md_admin');
+        $this->load->view('header&footer/admin/v_footerManageData');
+        $this->load->view('v_modals');
+    }
+
+    public function add_admin()
+    {
+        $nama = $this->input->post('divisi');
+        $username = $this->input->post('username');
+
+        $data = array(
+            'nama_user' => $nama,
+            'username' => $username,
+            'password' => md5($username),
+            'role' => '2',
+            'foto' => 'default.jpg',
+            'aktif' => 'Sudah'
+        );
+
+        $this->models->add_data('users', $data);
+        redirect(base_url('admin/manageData/admin'));
+    }
+
+    public function edt_admin($id)
+    {
+        $where = array('id_user' => $id);
+        $data['title'] = "Edit Admin";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Manage Admin Divisi";
+        $data['admin'] = $this->models->get_selected('users', $where)->result();
+
+        $this->load->view('header&footer/admin/v_headerManageData', $data);
+        $this->load->view('admin/v_edt_admin');
+        $this->load->view('header&footer/admin/v_footerManageData');
+        $this->load->view('v_modals');
+    }
+
+    public function update_admin()
+    {
+        $id = $this->input->post('id');
+        $nama_user = $this->input->post('divisi');
+        $username = $this->input->post('username');
+
+        $data = array(
+            'nama_user' => $nama_user,
+            'username' => $username,
+            'password' => md5($username)
+        );
+
+        $where = array('id_user' => $id);
+
+        $this->models->update_data('users', $data, $where);
+        redirect(base_url('admin/manageData/admin'));
+    }
+
+    public function del_admin($id)
+    {
+        $where = array('id_user' => $id);
+        $this->models->delete_data($where, 'users');
+        redirect(base_url('admin/manageData/admin'));
+    }
 }

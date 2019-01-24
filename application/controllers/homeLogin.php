@@ -47,6 +47,8 @@ class homeLogin extends CI_Controller {
                         redirect(base_url('admin/homeAdmin'));
                     } elseif ($a->role == '1') {
                         redirect(base_url('user/homeUser'));
+                    } elseif ($a->role == '2'){
+                        redirect(base_url('admin/homeAdmin'));
                     }
                 }else{
                     $data['note'] = "Anda belum melakukan verifikasi email";
