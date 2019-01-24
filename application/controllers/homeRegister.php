@@ -20,7 +20,7 @@ class HomeRegister extends CI_Controller {
         $this->session->sess_destroy();
 
 		$data['title'] = "Home Register";
-		$data['jurusan'] = $this->models->get_data('jurusan')->result();
+		//$data['jurusan'] = $this->models->get_data('jurusan')->result();
         $this->load->view('v_homeRegister', $data);
 
 	}
@@ -32,7 +32,7 @@ class HomeRegister extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'is_unique[mhs.email]');
         $this->form_validation->set_message('is_unique', '%s sudah digunakan');
         if ($this->form_validation->run()==FALSE){
-            $data['jurusan'] = $this->models->get_data('jurusan')->result();
+            //$data['jurusan'] = $this->models->get_data('jurusan')->result();
             $data['title'] = "Home Register";
             $this->load->view('v_homeRegister',$data);
 
@@ -50,20 +50,50 @@ class HomeRegister extends CI_Controller {
                 'nama_user' =>$this->input->post("nama")
             );
 
+            $where1 = array(
+                'jurusan' =>$this->input->post("jurusan")
+            );
+
+            $where2 = array(
+                'nama_univ' =>$this->input->post("univ")
+            );
+
             $insert = $this->models->add_data1("users",$data);
             $select = $this->models->get_selected_limit("users",$where,1,'desc','id_user')->result();
+            $select1 = $this->models->get_selected("jurusan",$where1)->result();
+            $select2 = $this->models->get_selected("univ",$where2)->result();
+
+            if(count($select1)>0){
+                foreach($select1 as $a)
+                {
+                    $id_jurusan = $a->id_jurusan;
+                }
+            }else{
+                $data_jur = array(
+                    'jurusan' => ucwords($this->input->post('jurusan'))
+                );
+                $id_jurusan = $this->models->add_data1("jurusan",$data_jur);
+            }
+
+            if(count($select2)==0){
+                $data_univ = array(
+                    'nama_univ' => ucwords($this->input->post('univ'))
+                );
+                 $this->models->add_data1("univ",$data_univ);
+            }
 
             foreach($select as $a)
             {
                 $idUser = $a->id_user;
             }
 
+
             $pecah = explode(',',ucwords($this->input->post("univ")));
 
             $data1 = array(
                 'nim' => $this->input->post("nim"),
                 'nama_mhs' => ucwords($this->input->post("nama")),
-                'id_jurusan' => $this->input->post("jurusan"),
+                'id_jurusan' => $id_jurusan,
                 'univ' => $pecah[0],
                 'alamat' => $this->input->post("alamat"),
                 'email' => $this->input->post("email"),
@@ -214,13 +244,35 @@ class HomeRegister extends CI_Controller {
 
         // Get skills data
         $conditions['searchTerm'] = $this->input->get('term');
-        $univData = $this->models->getRows($conditions);
+        $univData = $this->models->getRows($conditions,'univ','nama_univ','id');
 
         // Generate array
         if(!empty($univData)){
             foreach ($univData as $row){
                 $data['id'] = $row['id'];
                 $data['value'] = $row['nama_univ'];
+                array_push($returnData, $data);
+            }
+        }
+        // Return results as json encoded array
+        //var_dump($returnData);
+        echo json_encode($returnData);
+        die;
+    }
+
+    public function autocomplete_jurusan()
+    {
+        $returnData = array();
+
+        // Get skills data
+        $conditions['searchTerm'] = $this->input->get('term');
+        $jurData = $this->models->getRows($conditions,'jurusan','jurusan','id_jurusan');
+
+        // Generate array
+        if(!empty($jurData)){
+            foreach ($jurData as $row){
+                $data['id'] = $row['id_jurusan'];
+                $data['value'] = $row['jurusan'];
                 array_push($returnData, $data);
             }
         }
