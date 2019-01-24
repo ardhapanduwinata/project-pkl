@@ -198,9 +198,9 @@ class models extends CI_Model {
         return $query;
     }
 
-    function getRows($params = array()){
+    function getRows($params = array(),$table,$orderby,$id){
         $this->db->select("*");
-        $this->db->from('univ');
+        $this->db->from($table);
         $this->db->limit(5);
 
         //fetch data by conditions
@@ -212,13 +212,13 @@ class models extends CI_Model {
 
         //search by terms
         if(!empty($params['searchTerm'])){
-            $this->db->like('nama_univ', $params['searchTerm']);
+            $this->db->like($orderby, $params['searchTerm']);
         }
 
-        $this->db->order_by('nama_univ', 'asc');
+        $this->db->order_by($orderby, 'asc');
 
         if(array_key_exists("id",$params)){
-            $this->db->where('id',$params['id']);
+            $this->db->where($id,$params['id']);
             $query = $this->db->get();
             $result = $query->row_array();
         }else{

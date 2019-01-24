@@ -57,6 +57,6 @@
             '#674B4D',
             '#453839'
         ],
-        formatter: function (x) { return x + "%"}
+        formatter: function (x) { return "Jumlah: "+ x }
     });
 </script>

@@ -59,16 +59,11 @@
                                 <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap *" value="" required/>
                             </div>
                             <div class="form-group">
-                                <select class="form-control" name="jurusan">
-                                    <option class="hidden" selected disabled>Jurusan</option>
-                                    <?php foreach($jurusan as $row) { ?>
-                                        <option value="<?= $row->id_jurusan;?>"><?= $row->jurusan;?></option>
-                                    <?php } ?>
-                                </select>
+                                <input type="text" class="form-control" name="jurusan" id="jurusan" placeholder="Jurusan Anda *" required/>
                             </div>
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="univ" id="univ" placeholder="Universitas *" required/>
+                                <input type="text" class="form-control" name="univ" id="univ" placeholder="Universitas Anda *" required/>
 
                             </div>
                         </div>
@@ -85,7 +80,7 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password Anda *" value="" required/>
                                 </div>
-                            <input type="submit" class="btnRegister" name="register"  onClick="confirm('Apakah anda yakin yang anda isikan sudah benar?')" value="Register"/>
+                            <input type="submit" class="btnRegister" name="register"  onClick="return confirm('Apakah anda yakin yang anda isikan sudah benar?')" value="Register"/>
                         </div>
                     </div>
                 </form>
@@ -102,6 +97,14 @@
                 event.preventDefault();
                 var size = ui.size;
                 $("#univ").val(ui.item.value);
+            }
+        });
+        $("#jurusan").autocomplete({
+            source: "<?php echo site_url('homeRegister/autocomplete_jurusan'); ?>",
+            select: function( event, ui ) {
+                event.preventDefault();
+                var size = ui.size;
+                $("#jurusan").val(ui.item.value);
             }
         });
     });
