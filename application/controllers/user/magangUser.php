@@ -172,4 +172,12 @@ class magangUser extends CI_Controller
         }
     }
 
+    public function download_uploaded_sp()
+    {
+        $this->load->helper('file');
+        $data = file_get_contents(base_url().'assets/file/suratPernyataan/SuratPernyataanPKL-PLN.pdf');
+            $nama_file = 'SuratPernyataanPKL-PLN.pdf';
+            ob_clean();
+            force_download($nama_file, $data);
+    }
 }

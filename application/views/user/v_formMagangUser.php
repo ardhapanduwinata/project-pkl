@@ -112,6 +112,7 @@
                                         <input type="file" class="custom-file-input" accept="application/zip, application/x-rar" name="file" id="file" required>
                                         <label for="nama" class="custom-file-label" style="color: red">*File harus berupa format rar/zip</label>
                                 </div>
+                                <p style="color: red">*Didalam rar/zip berisi 3 macam file yaitu : proposal,surat pengantar,surat per</p>
                             </div>
 <!--                            <div class="form-group row">-->
 <!--                                -->

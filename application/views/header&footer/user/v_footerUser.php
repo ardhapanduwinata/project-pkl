@@ -18,7 +18,6 @@
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 <!-- JavaScript Libraries -->
-<script src="<?=base_url('assets')?>/lib/jquery/jquery.min.js"></script>
 <script src="<?=base_url('assets')?>/lib/jquery/jquery-migrate.min.js"></script>
 <script src="<?=base_url('assets')?>/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="<?=base_url('assets')?>/lib/easing/easing.min.js"></script>

@@ -10,7 +10,9 @@
 
             </div>
         </div>
-
+        <?php
+        $sar;
+        $far;?>
         <div class="col-md-9">
             <div class="card" style="height: 483px">
                 <div class="card-body">
@@ -33,76 +35,78 @@
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-magang" role="tabpanel" aria-labelledby="pills-magang-tab">
                                     <center>
-                                    <div class="card" style="margin-top: 20px">
-                                        <div class="card-body">
-                                            <?php
-                                                    if(!empty($status)) {
-                                                        if (count($status) > 1) {
-                                                            //var_dump(count($status));
-                                                            foreach ($status as $row) {
-                                                                if($row->jenis == 'Magang'){
-                                                                    if(empty($row->file_sk)){
-                                                                        if($row->status == 'Diproses'){
-                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                        }else if($row->status == 'Ditolak'){
-                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                        }else if($row->status == 'Diterima'){
-                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                        }
-                                                                    }else if (!empty($row->file_sk)){
-                                                                        if($row->status == 'Diproses'){
-                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                        }else if($row->status == 'Ditolak'){
-                                                                            echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';?>
-                                                                            <br><br>
-                                                                            <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
-                                                                            <?php
-                                                                        }else if($row->status == 'Diterima'){
-                                                                            echo 'Permohonan Magang Anda Telah Disetujui';
-                                                                            ?>
-                                                                            <br><br>
-                                                                            <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
-                                                                        <?php
-                                                                        }
+                                        <div class="card" style="margin-top: 20px">
+                                            <div class="card-body">
+                                                <?php
+                                                if(!empty($status)) {
+                                                    if (count($status) > 1) {
+                                                        //var_dump(count($status));
+                                                        foreach ($status as $row) {
+                                                            if($row->jenis == 'Magang'){
+                                                                if(empty($row->file_sk)){
+                                                                    if($row->status == 'Diproses'){
+                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                    }else if($row->status == 'Ditolak'){
+                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                    }else if($row->status == 'Diterima'){
+                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
                                                                     }
-                                                                }
-                                                            }
-                                                        }else if (count($status) == 1) {
-                                                            //var_dump(count($status));
-                                                            foreach ($status as $row) {
-                                                                if($row->jenis == 'Magang'){
-                                                                    if(empty($row->file_sk)){
-                                                                        if($row->status == 'Diproses'){
-                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                        }else if($row->status == 'Ditolak'){
-                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                        }else if($row->status == 'Diterima'){
-                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                        }
-                                                                    }else if (!empty($row->file_sk)){
-                                                                        if($row->status == 'Diproses'){
-                                                                            echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
-                                                                        }else if($row->status == 'Ditolak'){
-                                                                            echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';?>
-                                                                            <br><br>
-                                                                            <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
-                                                                            <?php
-                                                                        }else if($row->status == 'Diterima'){
-                                                                            echo 'Permohonan Magang Anda Telah Disetujui';
-                                                                            ?>
-                                                                            <br><br>
-                                                                            <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
-                                                                            <?php
-                                                                        }
+                                                                }else if (!empty($row->file_sk)){
+                                                                    if($row->status == 'Diproses'){
+                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                    }else if($row->status == 'Ditolak'){
+                                                                        echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';?>
+                                                                        <br><br>
+                                                                        <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                        <?php
+                                                                    }else if($row->status == 'Diterima'){
+                                                                        $sar = $row->status;
+                                                                        echo 'Permohonan Magang Anda Telah Disetujui';
+                                                                        ?>
+                                                                        <br><br>
+                                                                        <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                        <?php
                                                                     }
                                                                 }
                                                             }
                                                         }
-                                                    }else{
-                                                        echo 'Anda Belum Mengajukan Form Pengajuan Magang';
-                                                    }?>
+                                                    }else if (count($status) == 1) {
+                                                        //var_dump(count($status));
+                                                        foreach ($status as $row) {
+                                                            if($row->jenis == 'Magang'){
+                                                                if(empty($row->file_sk)){
+                                                                    if($row->status == 'Diproses'){
+                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                    }else if($row->status == 'Ditolak'){
+                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                    }else if($row->status == 'Diterima'){
+                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                    }
+                                                                }else if (!empty($row->file_sk)){
+                                                                    if($row->status == 'Diproses'){
+                                                                        echo 'Mohon Menunggu Permohonan Magang Anda Sedang Kami Proses';
+                                                                    }else if($row->status == 'Ditolak'){
+                                                                        echo 'Mohon Maaf Permohonan Magang Anda Tidak Dapat Kami Akomodir';?>
+                                                                        <br><br>
+                                                                        <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                        <?php
+                                                                    }else if($row->status == 'Diterima'){
+                                                                        $sar = $row->status;
+                                                                        echo 'Permohonan Magang Anda Telah Disetujui';
+                                                                        ?>
+                                                                        <br><br>
+                                                                        <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }else{
+                                                    echo 'Anda Belum Mengajukan Form Pengajuan Magang';
+                                                }?>
+                                            </div>
                                         </div>
-                                    </div>
                                     </center>
                                 </div>
                                 <div class="tab-pane fade" id="pills-wawancara" role="tabpanel" aria-labelledby="pills-wawancara-tab">
@@ -124,10 +128,11 @@
                                                                     <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
                                                                     <?php
                                                                 }else if($row->status == 'Diterima' && !empty($row->file_sk)){
+                                                                    $far = $row->status;
                                                                     echo 'Permohonan Penelitian/Wawancara Anda Telah Disetujui';?>
                                                                     <br><br>
                                                                     <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
-                                                                <?php
+                                                                    <?php
                                                                 }else if($row->status == 'Diterima' && empty($row->file_sk)){
                                                                     echo 'Mohon Menunggu Permohonan Penelitian/Wawancara Anda Sedang Kami Proses';
                                                                 }
@@ -146,6 +151,7 @@
                                                                     <a class="btn btn-outline-danger" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
                                                                     <?php
                                                                 }else if($row->status == 'Diterima' && !empty($row->file_sk)){
+                                                                    $far = $row->status;
                                                                     echo 'Permohonan Penelitian/Wawancara Anda Telah Disetujui';?>
                                                                     <br><br>
                                                                     <a class="btn btn-outline-success" href="<?= base_url('user/magangUser/download_uploaded_sk/'.$row->id_srtkonfirm) ?>">Silahkan Download Surat Konfirmasi Anda Disini</a>
@@ -168,14 +174,48 @@
                             </div>
                         </div>
                     </div>
-
+                    <div id="magang">
+                        <?php
+                        foreach ($status as $row) {
+                            if($row->jenis == 'Magang'&& $row->status == 'Diterima' &&  !empty($row->file_sk)){ ?>
+                                <div style="width: 100%;padding-top: 15%">
+                                    <a class="btn btn-outline-info" style="float: right" href="<?= base_url('user/magangUser/download_uploaded_sp/') ?>">Download Surat Pernyataan PKL </a><br>
+                                </div>
+                                <div style="width: 100%;padding-top: 2%">
+                                    <p style="color: red; float: right">*Surat Pernyataan wajib dibawa pada saat hari pertama PKL.</p>
+                                </div>
+                            <?php }?>
+                        <?php }?>
+                    </div>
+                    <div id="wawancara" style="visibility: hidden">
+                        <?php
+                        foreach ($status as $row) {
+                            if($row->jenis == 'Penelitian/Wawancara'&& $row->status == 'Diterima' &&  !empty($row->file_sk)){ ?>
+                                <div style="width: 100%;padding-top: 15%">
+                                    <a class="btn btn-outline-info" style="float: right" href="<?= base_url('user/magangUser/download_uploaded_sp/') ?>">Download Surat Pernyataan PKL </a><br>
+                                </div>
+                                <div style="width: 100%;padding-top: 2%">
+                                    <p style="color: red; float: right">*Surat Pernyataan wajib dibawa pada saat hari pertama PKL.</p>
+                                </div>
+                            <?php }?>
+                        <?php }?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $(function () {
-        $('#myList a:last-child').tab('show')
-    })
+    $(document).ready(function() {
+        $('#myList a:last-child').tab('show');
+        $('#magang').show();
+        $('#pills-wawancara-tab').click(function () {
+            document.getElementById("wawancara").style.visibility="visible";
+            $('#magang').hide();
+        });
+        $('#pills-magang-tab').click(function () {
+            $('#magang').show();
+            document.getElementById("wawancara").style.visibility="hidden";
+        });
+    });
 </script>

@@ -24,6 +24,7 @@
     <link href="<?=base_url('assets')?>/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="<?=base_url('assets')?>/lib/magnific-popup/magnific-popup.css" rel="stylesheet">
     <link href="<?=base_url('assets')?>/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <script src="<?=base_url('assets')?>/lib/jquery/jquery.min.js"></script>
 
     <!-- Main Stylesheet File -->
     <link href="<?=base_url('assets')?>/css/style.css" rel="stylesheet">
