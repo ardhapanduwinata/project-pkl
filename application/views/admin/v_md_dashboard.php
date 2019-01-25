@@ -1,4 +1,4 @@
-<div class="row">
+
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -12,6 +12,18 @@
                     </div>
                 </div>
             </div>
+            <?php
+            $attributes = array('id' => 'myform');
+            echo form_open('admin/manageData/permohonan/',$attributes);?>
+            <input type="hidden" id="filter" name="filter" value="Semua">
+            <a href="#" onclick="document.getElementById('myform').submit()">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+            <?php echo form_close();?>
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
@@ -27,6 +39,18 @@
                     </div>
                 </div>
             </div>
+            <?php
+            $attributes = array('id' => 'myform1');
+            echo form_open('admin/manageData/permohonan/',$attributes);?>
+            <input type="hidden" id="filter" name="filter" value="Diproses">
+            <a href="#" onclick="document.getElementById('myform1').submit()">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+            <?php echo form_close();?>
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
@@ -42,6 +66,18 @@
                     </div>
                 </div>
             </div>
+            <?php
+            $attributes = array('id' => 'myform2');
+            echo form_open('admin/manageData/permohonan/',$attributes);?>
+            <input type="hidden" id="filter" name="filter" value="Diterima">
+            <a href="#" onclick="document.getElementById('myform2').submit()">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+            <?php echo form_close();?>
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
@@ -57,9 +93,20 @@
                     </div>
                 </div>
             </div>
+            <?php
+            $attributes = array('id' => 'myform3');
+            echo form_open('admin/manageData/permohonan/',$attributes);?>
+            <input type="hidden" id="filter" name="filter" value="Ditolak">
+            <a href="#" onclick="document.getElementById('myform3').submit()">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+            <?php echo form_close();?>
         </div>
     </div>
-</div>
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-6">
