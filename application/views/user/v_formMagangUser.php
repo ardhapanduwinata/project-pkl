@@ -130,13 +130,11 @@
                         </div>
                     </div>
                     <?php }else{?>
-                        <p>Anda Telah Melebihi Batas Pengajuan Form PKL.</p>
+                        <p>Anda Telah Mencapai Batas Pengajuan Form PKL.</p>
+                        <br><br><br><br><br><br><br>
                     <?php } ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
