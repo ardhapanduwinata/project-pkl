@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2019 at 02:05 AM
+-- Generation Time: Jan 28, 2019 at 08:12 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -75,8 +75,15 @@ CREATE TABLE `form_magang` (
   `judul` mediumtext NOT NULL,
   `jenis` enum('Magang','Penelitian/Wawancara') NOT NULL,
   `tgl_pengajuan_form` date NOT NULL,
-  `id_kamus` int(11) NOT NULL
+  `id_kamus` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `form_magang`
+--
+
+INSERT INTO `form_magang` (`id_form`, `id_mhs`, `nim_mhs2`, `nim_mhs3`, `nim_mhs4`, `nim_mhs5`, `nama_mhs2`, `nama_mhs3`, `nama_mhs4`, `nama_mhs5`, `tgl_mulai`, `tgl_selesai`, `no_surat`, `tgl_mohon_surat`, `file`, `judul`, `jenis`, `tgl_pengajuan_form`, `id_kamus`) VALUES
+(4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-01-08', '2019-02-13', '122/1212/12TKB', '2019-01-10', 'autocomplete_ci-master1.zip', 'Perbandingab EOS Canonsss', 'Magang', '2019-01-28', 4);
 
 -- --------------------------------------------------------
 
@@ -225,6 +232,13 @@ CREATE TABLE `mhs` (
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `mhs`
+--
+
+INSERT INTO `mhs` (`id_mhs`, `nim`, `nama_mhs`, `id_jurusan`, `univ`, `alamat`, `email`, `id_user`) VALUES
+(3, '1641720029', 'Millenia Rusbandi', 4, 'Politeknik Negeri Malang', 'Malang', 'rmillenia96@gmail.com', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -240,6 +254,39 @@ CREATE TABLE `nota_dinas` (
   `perihal` varchar(120) DEFAULT NULL,
   `download_nd` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nota_dinas`
+--
+
+INSERT INTO `nota_dinas` (`id_nota`, `no_nota`, `tgl_keluar`, `id_form`, `file_nd`, `perihal`, `download_nd`) VALUES
+(2, '12121212', '2019-01-28', 4, '11.docx', 'Permohonan Bantuan Memfasilitasi Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notif`
+--
+
+CREATE TABLE `notif` (
+  `id_notif` int(11) NOT NULL,
+  `url` varchar(1000) NOT NULL,
+  `penerima` int(11) NOT NULL,
+  `pesan` varchar(1000) NOT NULL,
+  `status_notif` enum('0','1') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notif`
+--
+
+INSERT INTO `notif` (`id_notif`, `url`, `penerima`, `pesan`, `status_notif`) VALUES
+(9, 'admin/manageData/permohonan/', 1, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '1'),
+(10, 'admin/manageData/permohonan/', 7, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '1'),
+(11, 'admin/manageData/permohonan/', 6, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '1'),
+(12, 'admin/manageData/permohonan/', 8, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '0'),
+(13, 'admin/manageData/permohonan/', 6, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '0'),
+(14, 'user/magangUser/konfirmasi/', 4, 'Form Magang Anda Telah Dikonfirmasi', '0');
 
 -- --------------------------------------------------------
 
@@ -259,6 +306,13 @@ CREATE TABLE `surat_konfirm` (
   `file_sk` varchar(120) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `surat_konfirm`
+--
+
+INSERT INTO `surat_konfirm` (`id_srtkonfirm`, `no_konfirm`, `tgl_keluar_sk`, `id_form`, `id_mhs`, `status`, `download_sk`, `perihal_sk`, `file_sk`) VALUES
+(2, 'e23232', '2019-01-16', 4, 3, 'Diterima', '1', 'Konfirmasi Permohonan Pelaksanaan Magang/Wawancara/Penelitian Mahasiswa', '111.docx');
+
 -- --------------------------------------------------------
 
 --
@@ -275,6 +329,7 @@ CREATE TABLE `univ` (
 --
 
 INSERT INTO `univ` (`id`, `nama_univ`) VALUES
+(0, 'Politeknik Negeri Malang, Malang'),
 (1, 'Universitas Syiah Kuala, Banda Aceh\r\n'),
 (2, 'Universitas Malikussaleh, Lhokseumawe\r\n'),
 (3, 'Politeknik Negeri Lhokseumawe, Lhokseumawe\r\n'),
@@ -590,7 +645,7 @@ INSERT INTO `univ` (`id`, `nama_univ`) VALUES
 
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
-  `role` enum('0','1','2') NOT NULL,
+  `role` enum('1','0','2') NOT NULL,
   `nama_user` varchar(120) NOT NULL,
   `username` varchar(120) NOT NULL,
   `password` varchar(120) NOT NULL,
@@ -603,7 +658,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `role`, `nama_user`, `username`, `password`, `foto`, `aktif`) VALUES
-(1, '0', 'SUPER DUPER ADMIN', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'default.png', 'Sudah');
+(1, '0', 'SUPER DUPER ADMIN', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'default.png', 'Sudah'),
+(4, '1', 'Millenia Rusbandi', 'meli', '315fef7b8d30f99d6964f489ee4c9828', 'default.png', 'Sudah'),
+(5, '2', 'Talenta', 'tln', 'ef83d1e17235ac5d3ef6ca96cea6e314', 'default.jpg', 'Sudah'),
+(6, '2', 'Scanning :v', 'scan', '53aefec08170b2ebed981a0a86d0dbe0', 'default.jpg', 'Sudah'),
+(7, '2', 'Water Treatment', 'water', '9460370bb0ca1c98a779b1bcc6861c2c', 'default.jpg', 'Sudah'),
+(8, '2', 'Kepala Cabang', 'kepala', '870f669e4bbbfa8a6fde65549826d1c4', 'default.jpg', 'Sudah');
 
 --
 -- Indexes for dumped tables
@@ -672,6 +732,13 @@ ALTER TABLE `nota_dinas`
   ADD KEY `id_form` (`id_form`);
 
 --
+-- Indexes for table `notif`
+--
+ALTER TABLE `notif`
+  ADD PRIMARY KEY (`id_notif`),
+  ADD KEY `penerima` (`penerima`);
+
+--
 -- Indexes for table `surat_konfirm`
 --
 ALTER TABLE `surat_konfirm`
@@ -705,7 +772,7 @@ ALTER TABLE `divisi`
 -- AUTO_INCREMENT for table `form_magang`
 --
 ALTER TABLE `form_magang`
-  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `header_home`
@@ -729,7 +796,7 @@ ALTER TABLE `kamus`
 -- AUTO_INCREMENT for table `kontak`
 --
 ALTER TABLE `kontak`
-  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `konten`
@@ -741,25 +808,31 @@ ALTER TABLE `konten`
 -- AUTO_INCREMENT for table `mhs`
 --
 ALTER TABLE `mhs`
-  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `nota_dinas`
 --
 ALTER TABLE `nota_dinas`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `notif`
+--
+ALTER TABLE `notif`
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `surat_konfirm`
 --
 ALTER TABLE `surat_konfirm`
-  MODIFY `id_srtkonfirm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_srtkonfirm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -769,28 +842,34 @@ ALTER TABLE `users`
 -- Constraints for table `form_magang`
 --
 ALTER TABLE `form_magang`
-  ADD CONSTRAINT `form_magang_ibfk_1` FOREIGN KEY (`id_mhs`) REFERENCES `mhs` (`id_mhs`) ON DELETE CASCADE,
+  ADD CONSTRAINT `form_magang_ibfk_1` FOREIGN KEY (`id_mhs`) REFERENCES `mhs` (`id_mhs`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `form_magang_ibfk_2` FOREIGN KEY (`id_kamus`) REFERENCES `kamus` (`id_kamus`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `kamus`
 --
 ALTER TABLE `kamus`
-  ADD CONSTRAINT `kamus_ibfk_1` FOREIGN KEY (`id_divisi`) REFERENCES `divisi` (`id_divisi`) ON DELETE CASCADE,
-  ADD CONSTRAINT `kamus_ibfk_2` FOREIGN KEY (`id_jurusan`) REFERENCES `jurusan` (`id_jurusan`) ON DELETE CASCADE;
+  ADD CONSTRAINT `kamus_ibfk_1` FOREIGN KEY (`id_divisi`) REFERENCES `divisi` (`id_divisi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `kamus_ibfk_2` FOREIGN KEY (`id_jurusan`) REFERENCES `jurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `mhs`
 --
 ALTER TABLE `mhs`
-  ADD CONSTRAINT `mhs_ibfk_1` FOREIGN KEY (`id_jurusan`) REFERENCES `jurusan` (`id_jurusan`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_fk` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE;
+  ADD CONSTRAINT `mhs_ibfk_1` FOREIGN KEY (`id_jurusan`) REFERENCES `jurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_fk` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `nota_dinas`
 --
 ALTER TABLE `nota_dinas`
-  ADD CONSTRAINT `nota_dinas_ibfk_1` FOREIGN KEY (`id_form`) REFERENCES `form_magang` (`id_form`) ON DELETE CASCADE;
+  ADD CONSTRAINT `nota_dinas_ibfk_1` FOREIGN KEY (`id_form`) REFERENCES `form_magang` (`id_form`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `notif`
+--
+ALTER TABLE `notif`
+  ADD CONSTRAINT `notif_ibfk_1` FOREIGN KEY (`penerima`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `surat_konfirm`
