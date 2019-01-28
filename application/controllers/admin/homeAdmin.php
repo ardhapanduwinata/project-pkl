@@ -44,6 +44,7 @@ class homeAdmin extends CI_Controller {
         $nama_konten = $this->input->post('konten');
         $config['upload_path'] = './assets/img/home_content/intro/';
         $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['overwrite'] = true;
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
@@ -87,7 +88,15 @@ class homeAdmin extends CI_Controller {
     {
         $where = array('id_konten' => $id);
 
+        $select = $this->models->get_selected('konten',$where)->result();
+
+        foreach ($select as $row){
+            $name = $row->gambar_konten;
+        }
+        $unlink = unlink(FCPATH.'assets/img/home_content/intro/'.$name);
         $this->models->delete_data($where, 'konten');
+        //var_dump($unlink);
+
         redirect(base_url('admin/homeAdmin/edit_intro'));
     }
 
@@ -97,6 +106,7 @@ class homeAdmin extends CI_Controller {
         $isi = $this->input->post('isi_konten');
         $config['upload_path'] = './assets/img/home_content/userguide/';
         $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['overwrite'] = true;
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
@@ -141,7 +151,13 @@ class homeAdmin extends CI_Controller {
     {
         $where = array('id_konten' => $id);
 
-        $this->models->delete_data($where, 'konten');
+        $select = $this->models->get_selected('konten',$where)->result();
+        foreach ($select as $row){
+            $name = $row->gambar_konten;
+        }
+        $unlink = unlink(FCPATH.'/assets/img/home_content/userguide/'.$name);
+
+            $this->models->delete_data($where, 'konten');
         redirect(base_url('admin/homeAdmin/edit_konten'));
     }
 

@@ -114,7 +114,7 @@
                                     <!--                                        <label for="nama" class="custom-file-label" style="color: red">*File harus berupa format rar/zip</label>-->
                                     <i style="color: red;">*File harus berupa format rar/zip</i>
                                     <br> <i style="color: red;">*Didalam rar/zip berisi 2 macam file yaitu : Proposal dan Surat Pengantar</i>
-                                    <br> <i style="color: red;">*Format penulisan nama : NIM_NamaAnda</i>
+                                    <br> <i style="color: red;">*Format penulisan nama : NIM_NamaAnda_JenisPengajuan</i>
                                     <!--                                </div>-->
                                 </div>
                             </div>

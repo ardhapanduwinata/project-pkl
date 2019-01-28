@@ -114,6 +114,7 @@ class magangUser extends CI_Controller
             }
             $config['upload_path'] = './assets/file/permohonanMagang/';
             $config['allowed_types'] = 'zip|rar';
+            $config['overwrite'] = true;
 
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('file')) {
@@ -164,6 +165,7 @@ class magangUser extends CI_Controller
                     'id_form' => $idForm,
                 );
                 $this->models->add_data('nota_dinas', $data2);
+                $this->models->add_data('sk_selesai_magang', $data2);
 
                 $base = "admin/manageData/permohonan/";
                 $data['siapa'] = $this->session->userdata('nama');
