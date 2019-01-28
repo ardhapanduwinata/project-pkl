@@ -547,8 +547,6 @@ class manageData extends CI_Controller {
         $nosk = $this->input->post('nosk');
         $tksk = $this->input->post('tksk');
 
-
-
         $config['upload_path'] = './assets/file/suratKonfirm/';
         $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
         $name = $_FILES["file_sk"]['name'];
@@ -850,7 +848,17 @@ class manageData extends CI_Controller {
 
         $config['upload_path'] = './assets/file/skSelesaiMagang/';
         $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
-        $this->load->library('upload', $config);
+        $name = $_FILES["file_sksm"]['name'];
+
+        $path = FCPATH . '/assets/file/skSelesaiMagang/';
+
+        if(file_exists($path.$name) === FALSE || $name == null) {
+            $this->load->library('upload', $config);
+
+        }else{
+            $unlink = unlink(FCPATH.'/assets/file/skSelesaiMagang/'.$name);
+            $this->load->library('upload', $config);
+        }
 
         if (!$this->upload->do_upload('file_sksm')) {
             $error = array('error' => $this->upload->display_errors());
