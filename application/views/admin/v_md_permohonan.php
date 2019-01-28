@@ -61,6 +61,8 @@
                                             <option value="<?= $row->id_kamus;?>"><?= $row->divisi;?></option>
                                         <?php } ?>
                                     </select>
+                                        <input type="hidden" name="nama" id="nama" value="<?= $a->nama_mhs?>">
+                                        <input type="hidden" name="jenis" id="jenis" value="<?= $a->jenis?>">
                                     </form>
                                     <?php }else{?>
                                     <form enctype="multipart/form-data" action="<?= base_url('admin/manageData/updateDivisi/'.$a->id_form) ?>" method="post">
@@ -73,6 +75,8 @@
                                                 <option value="<?= $row->id_kamus;?>" <?php if($cat == $a->id_kamus) echo "selected";?> ><?= $row->divisi;?></option>
                                             <?php } ?>
                                         </select>
+                                        <input type="hidden" name="nama" id="nama" value="<?= $a->nama_mhs?>">
+                                        <input type="hidden" name="jenis" id="jenis" value="<?= $a->jenis?>">
                                     </form>
                                     <?php } ?>
                                     <?php }else{?>

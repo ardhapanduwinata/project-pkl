@@ -153,6 +153,17 @@ class magangUser extends CI_Controller
                 );
                 $this->models->add_data('nota_dinas', $data2);
 
+                $base = "admin/manageData/permohonan/";
+                $data['siapa'] = $this->session->userdata('nama');
+                $pesan = $data['siapa'].' Mengajukan Form '.$this->input->post('jenis');
+
+                $data3 = array(
+                    'url' => $base,
+                    'penerima' => 1,
+                    'pesan' => $pesan,
+                    'status_notif' =>'0'
+                );
+                $this->models->add_data('notif', $data3);
                 echo "<script>alert('Berhasil ditambahkan'); </script>";
                 redirect('user/magangUser', 'refresh');
             }

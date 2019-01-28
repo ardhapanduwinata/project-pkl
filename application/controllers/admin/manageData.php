@@ -26,11 +26,16 @@ class manageData extends CI_Controller {
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Dashboard";
         $data['role'] = $this->session->userdata('role');
+        $data['id'] = $this->session->userdata('id');
 
         $where1 = array('status' => 'Diproses');
         $where2 = array('status' => 'Diterima');
         $where3 = array('status' => 'Ditolak');
         $where4 = array('divisi' =>  $data['siapa']);
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         if($data['role'] == 0){
             $data['form_masuk'] = $this->models->get_data('form_magang')->result();
@@ -71,7 +76,13 @@ class manageData extends CI_Controller {
         $data['title'] = "Manage Jurusan";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Jurusan";
+        $data['id'] = $this->session->userdata('id');
         $data['jurusan'] = $this->models->get_data('jurusan')->result();
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_md_jurusan');
@@ -133,7 +144,13 @@ class manageData extends CI_Controller {
         $data['title'] = "Manage Divisi";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Divisi";
+        $data['id'] = $this->session->userdata('id');
         $data['divisi'] = $this->models->get_data('divisi')->result();
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_md_divisi');
@@ -195,7 +212,13 @@ class manageData extends CI_Controller {
         $data['title'] = "Manage Kamus";
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Kamus Divisi+Jurusan";
+        $data['id'] = $this->session->userdata('id');
         $data['kamus'] = $this->models->get_3join('kamus', 'jurusan', 'divisi', 'kamus.id_jurusan = jurusan.id_jurusan', 'kamus.id_divisi = divisi.id_divisi')->result();
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_md_kamus');
@@ -261,6 +284,14 @@ class manageData extends CI_Controller {
         $data['title'] = "Permohonan Magang";
         $data['siapa'] = $this->session->userdata('nama');
         $data['role'] = $this->session->userdata('role');
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
+//        var_dump($data['notif']);
+
         $data['page_header'] = "Permohonan Magang";
         $data['filter'] = $this->input->post("filter");
         if($data['role'] == 0){
@@ -512,9 +543,31 @@ class manageData extends CI_Controller {
 
         $where = array('id_form' => $id);
 
-        $update = $this->models->update_data('form_magang', $data, $where);
-            redirect(base_url('admin/manageData/permohonan'));
+        $base = "admin/manageData/permohonan/";
+        $pesan = $this->input->post('nama').' Mengajukan Form '.$this->input->post('jenis');
 
+        $penerima = $this->models->get_3selected_join('kamus','divisi','users','kamus.id_divisi = divisi.id_divisi','divisi.divisi = users.nama_user',$data)->result();
+
+        if(empty($penerima)){
+            echo "<script>alert('Divisi Tersebut Belum Memiliki Akun'); </script>";
+            redirect('admin/manageData/permohonan','refresh');
+        }else{
+            foreach ($penerima as $a){
+                $idUser = $a->id_user;
+            }
+
+            $data3 = array(
+                'url' => $base,
+                'penerima' => $idUser,
+                'pesan' => $pesan,
+                'status_notif' =>'0'
+            );
+            $this->models->add_data('notif', $data3);
+            echo "<script>alert('Berhasil ditambahkan'); </script>";
+
+            $update = $this->models->update_data('form_magang', $data, $where);
+            redirect(base_url('admin/manageData/permohonan'));
+        }
     }
 
     public function admin()
@@ -525,6 +578,12 @@ class manageData extends CI_Controller {
 
         $where = array('role' => '2');
         $data['admin'] = $this->models->get_selected('users', $where)->result();
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_md_admin');
@@ -622,5 +681,17 @@ class manageData extends CI_Controller {
         $this->session->set_userdata('nama',$this->input->post("nama"));
         echo "<script>alert('Data Berhasil Diubah :)');</script>";
         redirect(base_url('admin/manageData'));
+    }
+
+    public function update_notif($id){
+        $data = array('status_notif' => '1');
+        $this->db->where('id_notif',$id)->update('notif',$data);
+        $where = array('id_notif' => $id);
+
+        $notif = $this->models->get_selected_join('notif','users',$where,'notif.penerima = users.id_user')->result();
+
+        foreach ($notif as $a) {
+            redirect(base_url($a->url));
+        }
     }
 }
