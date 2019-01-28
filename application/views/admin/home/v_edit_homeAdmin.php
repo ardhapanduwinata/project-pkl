@@ -51,7 +51,7 @@ if($param == "intro") {
                             <div class="box col-lg-12">
                                 <div style="z-index: 10; position: absolute; float: right;width: 95%; text-align: right; padding-top: -5px" class="wow fadeInLeft">
                                     <a style="margin-right: 15px" onclick="return confirm('Anda yakin? Data akan dihapus Permanen!')"
-                                       href="<?= base_url('admin/homeAdmin/del_service/'.$a->id_konten ) ?>">
+                                       href="<?= base_url('admin/homeAdmin/del_konten/'.$a->id_konten ) ?>">
                                         <button style="background-color: rgba(255,0,0, 0.8); border-radius: 50%" class="btn btn-default">
                                             <i class="fas fa-trash-alt" style="color: white"></i>
                                         </button>
@@ -72,7 +72,7 @@ if($param == "intro") {
                         <div class="col-lg-6">
                             <div style="z-index: 10; position: absolute; float: right;width: 95%; text-align: right; padding-top: 10px" class="wow fadeInLeft">
                                 <a style="margin-right: 15px" onclick="return confirm('Anda yakin? Data akan dihapus Permanen!')"
-                                   href="<?= base_url('admin/homeAdmin/del_service/'.$a->id_konten ) ?>">
+                                   href="<?= base_url('admin/homeAdmin/del_konten/'.$a->id_konten ) ?>">
                                     <button style="background-color: rgba(255,0,0, 0.8); border-radius: 50%" class="btn btn-default">
                                         <i class="fas fa-trash-alt" style="color: white"></i>
                                     </button>
