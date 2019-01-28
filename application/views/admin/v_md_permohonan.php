@@ -202,12 +202,12 @@
                                                 <?php } ?>
                                             </td>
                                             <td style="padding-left: 80px; padding-top: 10px">
-                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download_sk == '1' && $a->no_nota != null && $a->file_nd != null) {?>
+                                                <?php if($a->no_sksm != null && $a->file_sksm != null && $a->download_sksm == '1') {?>
                                                     <a class="btn btn-outline btn-danger" href="<?= base_url('admin/manageData/download_uploaded_sksm/'.$a->id_sksm) ?>">Download SKSM Terupload</a>
                                                 <?php } ?>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <?php if($a->no_sksm != null && $a->file_sksm != null && $a->download_sksm == '1' && $a->no_nota != null && $a->file_sksm != null) {?>
+                                                <?php if($a->no_sksm != null && $a->file_sksm != null && $a->download_sksm == '1') {?>
                                                     Nomor SKSM: <b><?= $a->no_sksm?></b>
                                                 <?php } ?>
                                             </td>

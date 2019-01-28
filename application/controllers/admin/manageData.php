@@ -576,11 +576,6 @@ class manageData extends CI_Controller {
             );
             $where = array('id_form' => $id);
             $this->models->update_data('surat_konfirm', $data, $where);
-            $data2 = array(
-                'id_form' => $where,
-                'download_sksm' => '0'
-            );
-            $this->models->add_data('sk_selesai_magang', $data2);
 
             $base = "user/magangUser/konfirmasi/";
 
