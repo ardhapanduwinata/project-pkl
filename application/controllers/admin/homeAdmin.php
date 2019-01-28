@@ -142,7 +142,7 @@ class homeAdmin extends CI_Controller {
         $where = array('id_konten' => $id);
 
         $this->models->delete_data($where, 'konten');
-        redirect(base_url('admin/homeAdmin/edit_uguide'));
+        redirect(base_url('admin/homeAdmin/edit_konten'));
     }
 
     public function edit_contact()

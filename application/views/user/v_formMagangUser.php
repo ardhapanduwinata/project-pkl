@@ -111,8 +111,8 @@
                                 <div class="custom-file" style="width: 63%; margin-left: 15px">
                                         <input type="file" class="custom-file-input" accept="application/zip, application/x-rar" name="file" id="file" required>
                                         <label for="nama" class="custom-file-label" style="color: red">*File harus berupa format rar/zip</label>
+                                    <p style="color: red; padding-top: 5px; padding-left: 13px">*Didalam rar/zip berisi 2 macam file yaitu : Proposal dan Surat Pengantar</p>
                                 </div>
-                                <p style="color: red">*Didalam rar/zip berisi 3 macam file yaitu : proposal,surat pengantar,surat per</p>
                             </div>
 <!--                            <div class="form-group row">-->
 <!--                                -->
@@ -123,6 +123,7 @@
 <!--                            </div>-->
                             <div class="form-group row">
                                 <div style="width: 98%">
+                                    <br><br>
                                     <button name="submit" style="float: right;" type="submit" class="btn btn-outline-success">Upload Permohonan PKL</button>
                                 </div>
                             </div>
