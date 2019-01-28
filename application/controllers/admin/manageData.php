@@ -860,8 +860,7 @@ class manageData extends CI_Controller {
             foreach ($error as $row) {
                 echo $row;
             }
-
-            redirect('admin/manageData/view_uploadsksm/'.$id, 'refresh');
+            //redirect('admin/manageData/view_uploadsksm/'.$id, 'refresh');
         } else {
             $data = array(
                 'no_sksm' => $nosksm,
