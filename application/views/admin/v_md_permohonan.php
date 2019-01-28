@@ -34,6 +34,7 @@
                             <th style="width: auto;text-align: center">Download File Mhs</th>
                             <th style="width: auto;text-align: center">Download/Upload Nota Dinas</th>
                             <th style="width: auto;text-align: center">Download/Upload Surat Konfirm</th>
+                            <th style="width: auto;text-align: center">Download/Upload Surat Keterangan Selesai Magang</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -175,10 +176,43 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <center>
-                                        <div>
-                                        </div>
-                                    </center>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td style="padding-top: 10px; padding-right: 5px">
+                                                <?php
+                                                if($a->no_konfirm == null) {?>
+                                                    <p style="color: red">Surat Konfirmasi harus diupload terlebih dahulu</p>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('admin/manageData/view_sksm/'.$a->id_form) ?>">
+                                                        <button class="btn btn-primary">
+                                                            <i class="fas fa-download"></i>
+                                                            <?php if($a->download_sksm != 1) echo ' Download'; ?>
+                                                        </button>
+                                                    </a>
+                                                <?php }?>
+                                            </td>
+                                            <td style="padding-top: 10px">
+                                                <?php if($a->file_sk != null && $a->no_konfirm != null && $a->download_sksm == '1' && $a->no_sksm == null && $a->file_sksm == null) {?>
+                                                    <a href="<?= base_url('admin/manageData/view_uploadsksm/'.$a->id_form)?>"><button type="button" class="btn btn-info">Upload <i class="fas fa-upload"></i></button></a>
+                                                <?php } ?>
+                                                <?php if($a->file_sk != null && $a->no_konfirm != null && $a->download_sksm == '1' && $a->no_sksm != null && $a->file_sksm != null) {?>
+                                                    <a href="<?= base_url('admin/manageData/view_uploadsksm/'.$a->id_form)?>"><button type="button" class="btn btn-warning">Re-Upload <i class="fas fa-upload"></i></button></a>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="padding-left: 80px; padding-top: 10px">
+                                                <?php if($a->no_konfirm != null && $a->file_sk != null && $a->download_sk == '1' && $a->no_nota != null && $a->file_nd != null) {?>
+                                                    <a class="btn btn-outline btn-danger" href="<?= base_url('admin/manageData/download_uploaded_sksm/'.$a->id_sksm) ?>">Download SKSM Terupload</a>
+                                                <?php } ?>
+                                            </td>
+                                            <td style="padding-left: 20px">
+                                                <?php if($a->no_sksm != null && $a->file_sksm != null && $a->download_sksm == '1' && $a->no_nota != null && $a->file_sksm != null) {?>
+                                                    Nomor SKSM: <b><?= $a->no_sksm?></b>
+                                                <?php } ?>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         <?php } ?>
