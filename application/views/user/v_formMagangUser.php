@@ -108,15 +108,13 @@
                             </div>
                             <div class="form-group row">
                                 <label for="file" class="col-4 col-form-label">File</label>
-<!--                                <div class="custom-file" style="width: 63%; margin-left: 15px">-->
+                                <!--                                <div class="custom-file" style="width: 63%; margin-left: 15px">-->
                                 <div class="col-8">
                                     <input type="file" class="form-control here" accept="application/zip, application/x-rar" name="file" id="file" required>
                                     <!--                                        <label for="nama" class="custom-file-label" style="color: red">*File harus berupa format rar/zip</label>-->
-                                    <p style="color: red; padding-top: 5px; padding-left: 13px">*File harus berupa format rar/zip
-                                        <br> *Didalam rar/zip berisi 2 macam file yaitu : Proposal dan Surat Pengantar
-                                        <br> *Format penulisan nama : NIM_NamaAnda
-                                        </p>
-
+                                    <i style="color: red;">*File harus berupa format rar/zip</i>
+                                    <br> <i style="color: red;">*Didalam rar/zip berisi 2 macam file yaitu : Proposal dan Surat Pengantar</i>
+                                    <br> <i style="color: red;">*Format penulisan nama : NIM_NamaAnda</i>
                                     <!--                                </div>-->
                                 </div>
                             </div>
@@ -127,7 +125,7 @@
 <!--                                    <label style="color: red"></label>-->
 <!--                                </div>-->
 <!--                            </div>-->
-                            <div class="form-group row">
+                            <div class="form-group row" style="margin-top: -30px">
                                 <div style="width: 98%">
                                     <br><br>
                                     <button name="submit" style="float: right;" type="submit" class="btn btn-outline-success">Upload Permohonan PKL</button>
