@@ -317,19 +317,20 @@ class manageData extends CI_Controller {
         $data['filter'] = $this->input->post("filter");
         if($data['role'] == 0){
             if( $data['filter']=='Semua' || empty( $data['filter']) ){
-                $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
+                $data['datamagang'] = $this->models->get_6join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'sk_selesai_magang sksm', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form', 'fm.id_form = sksm.id_form')->result();
             }else{
                 $where = array('sk.status' => $data['filter']);
-                $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form',$where)->result();
+                $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'sk_selesai_magang sksm', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form', 'fm.id_form = sksm.id_form',$where)->result();
             }
         }else{
             if( $data['filter']=='Semua' || empty( $data['filter']) ){
                 $where = array('d.divisi' =>  $data['siapa']);
-                $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where)->result();
+//                $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where)->result();
+                $data['datamagang'] = $this->models->get_8selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'sk_selesai_magang sksm','fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi', 'fm.id_form = sksm.id_form',$where)->result();
             }else{
                 $where = array('sk.status' => $data['filter']);
                 $where1 = array('d.divisi' =>  $data['siapa']);
-                $data['datamagang'] = $this->models->get_where_7selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi',$where,$where1)->result();
+                $data['datamagang'] = $this->models->get_where_8selected_join('form_magang fm', 'mhs m', 'kamus k','jurusan j','nota_dinas nd','surat_konfirm sk','divisi d', 'sk_selesai_magang sksm','fm.id_mhs = m.id_mhs','fm.id_kamus = k.id_kamus','k.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form','k.id_divisi = d.id_divisi', 'fm.id_form = sksm.id_form',$where,$where1)->result();
             }
         }
 
@@ -418,24 +419,36 @@ class manageData extends CI_Controller {
 
         $config['upload_path'] = './assets/file/notaDinas/';
         $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
-        $this->load->library('upload', $config);
+        $name = $_FILES["file_nond"]['name'];
+
+        $path = FCPATH . '/assets/file/notaDinas/';
+
+        if(file_exists($path.$name) === FALSE || $name == null) {
+            $this->load->library('upload', $config);
+
+
+        }else{
+            $unlink = unlink(FCPATH.'/assets/file/notaDinas/'.$name);
+            $this->load->library('upload', $config);
+        }
 
         if (!$this->upload->do_upload('file_nond')) {
             $error = array('error' => $this->upload->display_errors());
 
-            redirect('admin/manageData/view_uploadnd/'.$id, 'refresh');
+            redirect('admin/manageData/view_uploadnd/' . $id, 'refresh');
 
         } else {
             $data = array(
                 'no_nota' => $nond,
                 'file_nd' => $this->upload->data('file_name')
             );
+
             $where = array('id_form' => $id);
 
             $this->models->update_data('nota_dinas', $data, $where);
-
         }
         redirect(base_url('admin/manageData/permohonan'));
+
     }
 
     public function download_uploaded_nd($id)
@@ -512,7 +525,7 @@ class manageData extends CI_Controller {
 
         $data['title'] = "Upload Surat Konfirm";
         $data['siapa'] = $this->session->userdata('nama');
-        $data['page_header'] = "Upload Nota Dinas";
+        $data['page_header'] = "Upload Surat Konfirmasi";
         $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result();
 
         $data['id'] = $this->session->userdata('id');
@@ -534,17 +547,29 @@ class manageData extends CI_Controller {
         $nosk = $this->input->post('nosk');
         $tksk = $this->input->post('tksk');
 
+
+
         $config['upload_path'] = './assets/file/suratKonfirm/';
         $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
-        $this->load->library('upload', $config);
+        $name = $_FILES["file_sk"]['name'];
+
+        $path = FCPATH . '/assets/file/suratKonfirm/';
+
+        if(file_exists($path.$name) === FALSE || $name == null) {
+            $this->load->library('upload', $config);
+
+
+        }else{
+            $unlink = unlink(FCPATH.'/assets/file/suratKonfirm/'.$name);
+            $this->load->library('upload', $config);
+        }
 
         if (!$this->upload->do_upload('file_sk')) {
             $error = array('error' => $this->upload->display_errors());
             foreach ($error as $row) {
                 echo $row;
             }
-
-            redirect('admin/manageData/view_uploadnd', 'refresh');
+            redirect('admin/manageData/view_uploadsk/'.$id, 'refresh');
         } else {
             $data = array(
                 'no_konfirm' => $nosk,
@@ -552,9 +577,12 @@ class manageData extends CI_Controller {
                 'file_sk' => $this->upload->data('file_name')
             );
             $where = array('id_form' => $id);
-
             $this->models->update_data('surat_konfirm', $data, $where);
-
+            $data2 = array(
+                'id_form' => $where,
+                'download_sksm' => '0'
+            );
+            $this->models->add_data('sk_selesai_magang', $data2);
 
             $base = "user/magangUser/konfirmasi/";
 
@@ -563,7 +591,6 @@ class manageData extends CI_Controller {
             foreach ($penerima as $a){
                 $idUser = $a->id_user;
                 $jenis = $a->jenis;
-
             }
 
             $pesan = 'Form '.$jenis.' Anda Telah Dikonfirmasi';
@@ -763,6 +790,117 @@ class manageData extends CI_Controller {
 
         foreach ($notif as $a) {
             redirect(base_url($a->url));
+        }
+    }
+
+    public function view_sksm($id)
+    {
+        $this->load->helper('file');
+
+        $where = array('id_form' => $id);
+        $data['title'] = "Download Nota Dinas";
+        $data['datamagang'] = $this->models->get_6join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'sk_selesai_magang sksm', 'fm.id_mhs = m.id_mhs', 'fm.id_kamus = k.id_kamus', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sksm.id_form', $where)->result_array();
+
+        $data['perihal'] = 'Keterangan Selesai Magang';
+        foreach ($data['datamagang'] as $a){
+            $data1 = array(
+                'perihal_sksm' => $data['perihal'],
+                'download_sksm' => '1'
+            );
+            $idForm =  $a['id_form'];
+            $this->models->update_data('sk_selesai_magang', $data1, $where);
+        }
+
+        $where2 = array('id_form' => $idForm);
+        $cek = $this->models->get_selected('sk_selesai_magang',$where2)->num_rows();
+
+        if($cek==0){
+            $this->models->add_data('sk_selesai_magang', $data1);
+        }
+        $this->load->view('admin/v_sksm', $data);
+    }
+
+    public function view_uploadsksm($id)
+    {
+        $where = array('fm.id_form' => $id);
+
+        $data['title'] = "Upload Surat Keterangan Selasai Magang";
+        $data['siapa'] = $this->session->userdata('nama');
+        $data['page_header'] = "Upload Surat Keterangan Selasai Magang";
+        $data['datamagang'] = $this->models->get_7selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'sk_selesai_magang sksm', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', 'fm.id_form = sksm.id_form', $where)->result();
+
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
+
+        $this->load->view('header&footer/admin/v_headerManageData', $data);
+        $this->load->view('admin/v_upload_sksm');
+        $this->load->view('header&footer/admin/v_footerManageData');
+        $this->load->view('v_modals');
+    }
+
+    public function uploadsksm()
+    {
+        $id = $this->input->post('id');
+        $nosksm = $this->input->post('nosksm');
+        $tksksm = $this->input->post('tksksm');
+
+        $config['upload_path'] = './assets/file/skSelesaiMagang/';
+        $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('file_sksm')) {
+            $error = array('error' => $this->upload->display_errors());
+            foreach ($error as $row) {
+                echo $row;
+            }
+
+            redirect('admin/manageData/view_uploadsksm/'.$id, 'refresh');
+        } else {
+            $data = array(
+                'no_sksm' => $nosksm,
+                'tgl_keluar_sksm' => $tksksm,
+                'file_sksm' => $this->upload->data('file_name')
+            );
+            $where = array('id_form' => $id);
+            $this->models->update_data('sk_selesai_magang', $data, $where);
+
+//            $base = "user/magangUser/konfirmasi/";
+//
+//            $penerima = $this->models->get_3selected_join('form_magang','mhs','users','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where)->result();
+//
+//            foreach ($penerima as $a){
+//                $idUser = $a->id_user;
+//                $jenis = $a->jenis;
+//            }
+
+//            $pesan = 'Form '.$jenis.' Anda Telah Dikonfirmasi';
+//
+//            $data3 = array(
+//                'url' => $base,
+//                'penerima' => $idUser,
+//                'pesan' => $pesan,
+//                'status_notif' =>'0'
+//            );
+//            $this->models->add_data('notif', $data3);
+        }
+        redirect(base_url('admin/manageData/permohonan'));
+    }
+
+    public function download_uploaded_sksm($id)
+    {
+        $this->load->helper('file');
+        $where = array('id_sksm' => $id);
+        $datand = $this->models->get_selected('sk_selesai_magang', $where)->result();
+
+        foreach ($datand as $a) {
+            $data = file_get_contents(base_url().'assets/file/skSelesaiMagang/'.($a->file_sksm));
+            $nama_file = $a->file_sksm;
+            ob_clean();
+            force_download($nama_file, $data);
         }
     }
 }
