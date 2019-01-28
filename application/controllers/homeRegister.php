@@ -75,13 +75,6 @@ class HomeRegister extends CI_Controller {
                 $id_jurusan = $this->models->add_data1("jurusan",$data_jur);
             }
 
-            if(count($select2)==0){
-                $data_univ = array(
-                    'nama_univ' => ucwords($this->input->post('univ'))
-                );
-                 $this->models->add_data1("univ",$data_univ);
-            }
-
             foreach($select as $a)
             {
                 $idUser = $a->id_user;

@@ -316,12 +316,12 @@ class manageData extends CI_Controller {
         $data['page_header'] = "Permohonan Magang";
         $data['filter'] = $this->input->post("filter");
         if($data['role'] == 0){
-                if( $data['filter']=='Semua' || empty( $data['filter']) ){
-                    $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
-                }else{
-                    $where = array('sk.status' => $data['filter']);
-                    $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form',$where)->result();
-                }
+            if( $data['filter']=='Semua' || empty( $data['filter']) ){
+                $data['datamagang'] = $this->models->get_5selected_join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form')->result();
+            }else{
+                $where = array('sk.status' => $data['filter']);
+                $data['datamagang'] = $this->models->get_5join('form_magang fm', 'mhs m', 'jurusan j', 'nota_dinas nd','surat_konfirm sk', 'fm.id_mhs = m.id_mhs','m.id_jurusan = j.id_jurusan', 'fm.id_form = nd.id_form', 'fm.id_form = sk.id_form',$where)->result();
+            }
         }else{
             if( $data['filter']=='Semua' || empty( $data['filter']) ){
                 $where = array('d.divisi' =>  $data['siapa']);
@@ -560,21 +560,21 @@ class manageData extends CI_Controller {
 
             $penerima = $this->models->get_3selected_join('form_magang','mhs','users','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where)->result();
 
-                foreach ($penerima as $a){
-                    $idUser = $a->id_user;
-                    $jenis = $a->jenis;
+            foreach ($penerima as $a){
+                $idUser = $a->id_user;
+                $jenis = $a->jenis;
 
-                }
+            }
 
             $pesan = 'Form '.$jenis.' Anda Telah Dikonfirmasi';
 
-                $data3 = array(
-                    'url' => $base,
-                    'penerima' => $idUser,
-                    'pesan' => $pesan,
-                    'status_notif' =>'0'
-                );
-                $this->models->add_data('notif', $data3);
+            $data3 = array(
+                'url' => $base,
+                'penerima' => $idUser,
+                'pesan' => $pesan,
+                'status_notif' =>'0'
+            );
+            $this->models->add_data('notif', $data3);
         }
         redirect(base_url('admin/manageData/permohonan'));
     }
