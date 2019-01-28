@@ -89,6 +89,18 @@
         <nav id="nav-menu-container">
             <ul class="nav-menu">
                 <li><a href="<?= base_url('user/homeUser') ?>">Beranda</a></li>
+                <li class="menu-has-children"><a href=""><i class="fa fa-bell"></i><sup>
+                            <?php if (count($notif) != 0) echo count($notif);?>
+                        </sup></a>
+                    <ul>
+                        <?php if(is_array($notif) && !empty($notif)){
+                            foreach($notif as $key){?>
+                                <li><a href="<?= base_url('user/magangUser/update_notif/'.$key->id_notif);?>"><?= $key->pesan?></a></li>
+                            <?php }}else{ ?>
+                            <li><a href="#">Tidak ada pemberitahuan</a></li>
+                        <?php }?>
+                    </ul>
+                </li>
                 <li><a href="<?= base_url('user/magangUser') ?>">Pengajuan Form Magang</a></li>
                 <li><a class="nav-link" href="<?= base_url('user/homeUser/biodata') ?>">Ubah Profil</a></li>
                 <li><a class="nav-link" data-toggle="modal" data-target="#logout_modal" href="">Log Out</a></li>

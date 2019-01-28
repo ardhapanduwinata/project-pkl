@@ -43,6 +43,13 @@ class magangUser extends CI_Controller
         $data['user'] = $this->models->get_selected_join($table,$table1,$where,$on)->result();
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where1, 'mhs.id_user = users.id_user')->result();
 
+
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
+
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_formMagangUser',$data);
         $this->load->view('header&footer/user/v_footerUser');
@@ -66,6 +73,11 @@ class magangUser extends CI_Controller
         $data['status'] = $this->models->get_4selected_join('surat_konfirm','form_magang','mhs','users','surat_konfirm.id_form = form_magang.id_form','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where2)->result();
 
         //var_dump($data['status']);
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_konfirmasiMagangUser', $data);
@@ -190,5 +202,17 @@ class magangUser extends CI_Controller
             $nama_file = 'SuratPernyataanPKL-PLN.pdf';
             ob_clean();
             force_download($nama_file, $data);
+    }
+
+    public function update_notif($id){
+        $data = array('status_notif' => '1');
+        $this->db->where('id_notif',$id)->update('notif',$data);
+        $where = array('id_notif' => $id);
+
+        $notif = $this->models->get_selected_join('notif','users',$where,'notif.penerima = users.id_user')->result();
+
+        foreach ($notif as $a) {
+            redirect(base_url($a->url));
+        }
     }
 }

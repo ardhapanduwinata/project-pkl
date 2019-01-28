@@ -35,6 +35,13 @@ class homeUser extends CI_Controller {
         $where_konten = array('nama_konten' => null);
         $data['konten'] = $this->models->get_selected('konten', $where_konten)->result();
 
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
+
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_homeUser');
         $this->load->view('header&footer/user/v_footerUser');
@@ -61,6 +68,13 @@ class homeUser extends CI_Controller {
         $on = 'mhs.id_user = users.id_user';
         $data['user'] = $this->models->get_selected_join($table,$table1,$where,$on)->result();
 
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
+
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_biodataUser',$data);
         $this->load->view('header&footer/user/v_footerUser');
@@ -83,6 +97,13 @@ class homeUser extends CI_Controller {
         $on = 'mhs.id_user = users.id_user';
         $data['user'] = $this->models->get_selected_join($table,$table1,$where,$on)->result();
         $data['mhs'] = $this->models->get_selected_join('users', 'mhs', $where, 'mhs.id_user = users.id_user')->result();
+
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/user/v_headerUser', $data);
         $this->load->view('user/v_biodataPassUser',$data);

@@ -518,6 +518,27 @@ class manageData extends CI_Controller {
             $where = array('id_form' => $id);
 
             $this->models->update_data('surat_konfirm', $data, $where);
+
+
+            $base = "user/magangUser/konfirmasi/";
+
+            $penerima = $this->models->get_3selected_join('form_magang','mhs','users','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where)->result();
+
+                foreach ($penerima as $a){
+                    $idUser = $a->id_user;
+                    $jenis = $a->jenis;
+
+                }
+
+            $pesan = 'Form '.$jenis.' Anda Telah Dikonfirmasi';
+
+                $data3 = array(
+                    'url' => $base,
+                    'penerima' => $idUser,
+                    'pesan' => $pesan,
+                    'status_notif' =>'0'
+                );
+                $this->models->add_data('notif', $data3);
         }
         redirect(base_url('admin/manageData/permohonan'));
     }
