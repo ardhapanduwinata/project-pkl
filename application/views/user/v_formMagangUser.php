@@ -108,10 +108,16 @@
                             </div>
                             <div class="form-group row">
                                 <label for="file" class="col-4 col-form-label">File</label>
-                                <div class="custom-file" style="width: 63%; margin-left: 15px">
-                                        <input type="file" class="custom-file-input" accept="application/zip, application/x-rar" name="file" id="file" required>
-                                        <label for="nama" class="custom-file-label" style="color: red">*File harus berupa format rar/zip</label>
-                                    <p style="color: red; padding-top: 5px; padding-left: 13px">*Didalam rar/zip berisi 2 macam file yaitu : Proposal dan Surat Pengantar</p>
+<!--                                <div class="custom-file" style="width: 63%; margin-left: 15px">-->
+                                <div class="col-8">
+                                    <input type="file" class="form-control here" accept="application/zip, application/x-rar" name="file" id="file" required>
+                                    <!--                                        <label for="nama" class="custom-file-label" style="color: red">*File harus berupa format rar/zip</label>-->
+                                    <p style="color: red; padding-top: 5px; padding-left: 13px">*File harus berupa format rar/zip
+                                        <br> *Didalam rar/zip berisi 2 macam file yaitu : Proposal dan Surat Pengantar
+                                        <br> *Format penulisan nama : NIM_NamaAnda
+                                        </p>
+
+                                    <!--                                </div>-->
                                 </div>
                             </div>
 <!--                            <div class="form-group row">-->

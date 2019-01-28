@@ -56,6 +56,16 @@ class models extends CI_Model {
         return $query;
     }
 
+    public function get_selected_join_where($table,$table1,$where,$where1,$on){
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table1, $on);
+        $this->db->where($where);
+        $this->db->where($where1);
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function get_3selected_join($table,$table1,$table2,$on,$on2,$where)
     {
         $this->db->select('*');

@@ -67,6 +67,38 @@
             <li>
                 <a href="<?= base_url('admin/manageData/admdiv_edit/'.$this->session->userdata('id'))?>"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell fa-fw"></i><sup>
+                        <?php if (count($notif) != 0) echo count($notif);?>
+                    </sup><i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <?php if(is_array($notif) && !empty($notif)){
+                        foreach($notif as $key){?>
+                            <li>
+                                <a href="<?php echo base_url('admin/manageData/update_notif/'.$key->id_notif)?>">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-2"> <i class="fa fa-file-text fa-1x"></i></div>
+                                            <div class="col-md-8"><?= $key->pesan?></div>
+                                            <!--  <span class="pull-right text-muted small">4 minutes ago</span>-->
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                        <?php }}
+                    else{?>
+                        <li class="divider"></li>
+                        <li>
+                            <center><div>Tidak ada pemberitahuan</div></center>
+                        </li>
+                        <li class="divider"></li>
+                    <?php }?>
+                </ul>
+                <!-- /.dropdown-alerts -->
+            </li>
             <li>
                 <a data-toggle="modal" data-target="#logout_modaladm" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </li>
