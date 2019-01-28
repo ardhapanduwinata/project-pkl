@@ -115,7 +115,7 @@ $source = $a['tgl_mohon_surat'];
         <br><br>
         <center>
             <u>NOTA DINAS</u> <br>
-            Nomor:&emsp;&emsp;&emsp;&emsp;&emsp;/SDM.04.06/VPHRBHPHO/<?= date('Y')?>
+            Nomor:&emsp;&emsp;&emsp;&emsp;&emsp;/SDM.04.06/VPHRBPHO/<?= date('Y')?>
         </center>
         <br><br><br>
         <div style="padding-left: 80px">
@@ -128,7 +128,7 @@ $source = $a['tgl_mohon_surat'];
                 <tr>
                     <td>Dari</td>
                     <td>:</td>
-                    <td>VPHRBHO</td>
+                    <td>VPHRBPHO</td>
                 </tr>
                 <tr>
                     <td>Tanggal</td>
