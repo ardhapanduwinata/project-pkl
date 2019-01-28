@@ -418,24 +418,36 @@ class manageData extends CI_Controller {
 
         $config['upload_path'] = './assets/file/notaDinas/';
         $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
-        $this->load->library('upload', $config);
+        $name = $_FILES["file_nond"]['name'];
+
+        $path = FCPATH . '/assets/file/notaDinas/';
+
+        if(file_exists($path.$name) === FALSE || $name == null) {
+            $this->load->library('upload', $config);
+
+
+        }else{
+            $unlink = unlink(FCPATH.'/assets/file/notaDinas/'.$name);
+            $this->load->library('upload', $config);
+        }
 
         if (!$this->upload->do_upload('file_nond')) {
             $error = array('error' => $this->upload->display_errors());
 
-            redirect('admin/manageData/view_uploadnd/'.$id, 'refresh');
+            redirect('admin/manageData/view_uploadnd/' . $id, 'refresh');
 
         } else {
             $data = array(
                 'no_nota' => $nond,
                 'file_nd' => $this->upload->data('file_name')
             );
+
             $where = array('id_form' => $id);
 
             $this->models->update_data('nota_dinas', $data, $where);
-
         }
         redirect(base_url('admin/manageData/permohonan'));
+
     }
 
     public function download_uploaded_nd($id)
@@ -512,7 +524,7 @@ class manageData extends CI_Controller {
 
         $data['title'] = "Upload Surat Konfirm";
         $data['siapa'] = $this->session->userdata('nama');
-        $data['page_header'] = "Upload Nota Dinas";
+        $data['page_header'] = "Upload Surat Konfirmasi";
         $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result();
 
         $data['id'] = $this->session->userdata('id');
@@ -534,16 +546,28 @@ class manageData extends CI_Controller {
         $nosk = $this->input->post('nosk');
         $tksk = $this->input->post('tksk');
 
+
+
         $config['upload_path'] = './assets/file/suratKonfirm/';
         $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
-        $this->load->library('upload', $config);
+        $name = $_FILES["file_sk"]['name'];
+
+        $path = FCPATH . '/assets/file/suratKonfirm/';
+
+        if(file_exists($path.$name) === FALSE || $name == null) {
+            $this->load->library('upload', $config);
+
+
+        }else{
+            $unlink = unlink(FCPATH.'/assets/file/suratKonfirm/'.$name);
+            $this->load->library('upload', $config);
+        }
 
         if (!$this->upload->do_upload('file_sk')) {
             $error = array('error' => $this->upload->display_errors());
             foreach ($error as $row) {
                 echo $row;
             }
-
             redirect('admin/manageData/view_uploadnd', 'refresh');
         } else {
             $data = array(
