@@ -124,6 +124,8 @@ class homeUser extends CI_Controller {
         $config['max_size']=1000000000;
         $config['max_width']=10240;
         $config['max_height']=7680;
+        $config['overwrite']=true;
+
 
         $this->load->library('upload', $config);
         if (! $this->upload->do_upload('pic')) {
