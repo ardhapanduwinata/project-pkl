@@ -206,12 +206,9 @@
                             <input class="form-control" name="konten" type="text" placeholder="Intro" value="intro" readonly>
                             <br>
                             <label for="nama">Gambar Konten</label>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" accept="image/*" name="gambar" id="gambar" required>
-                                <label for="nama" class="custom-file-label">Pilih File anda</label>
-                            </div>
+                            <input style="float: right" type="file" class="form-control" accept="image/*" name="gambar" id="gambar" required>
                         </div>
-                        <div style="float: right;">
+                        <div style="float: right; margin-top: 10px">
                             <a class="btn btn-secondary" data-dismiss="modal" style="color: white">Cancel</a>
                             <button class="btn btn-primary" type="submit">Tambah Gambar</button>
                         </div>
@@ -239,18 +236,15 @@
                         <input type="text" class="form-control" name="judul_konten" id="judul_konten" placeholder="Judul Konten Ini" required>
                         <label style="margin-top: 15px" for="nama">Isi Konten</label>
                         <textarea type="text" class="form-control" name="isi_konten" id="isi_konten" placeholder="Isi Atau Deskripsi Singkat Konten Ini. Max 1000 huruf." rows="3" required></textarea>
-                        <label style="margin-top: 15px" for="nama">Gambar Konten</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" accept="image/*" name="gambar" id="gambar" required>
-                            <label for="nama" class="custom-file-label">Pastikan Ukuran Foto 16:9 dan Lanscape</label>
-                        </div>
+                        <label style="margin-top: 10px" for="nama">Gambar Konten</label>
+                        <input type="file" class="form-control" accept="image/*" name="gambar" id="gambar" required>
+                        <i style="color: red;">*Pastikan Ukuran Foto 16:9 dan Landscape</i>
                     </div>
-                    <div style="float: right; margin-top: 5px">
+                    <div style="float: right">
                         <a class="btn btn-secondary" data-dismiss="modal" style="color: white">Cancel</a>
                         <button class="btn btn-primary" type="submit">Tambah Konten</button>
                     </div>
                 </form>
-                <br>
             </div>
         </div>
     </div>
