@@ -110,6 +110,13 @@ class manageData extends CI_Controller {
         $data['page_header'] = "Jurusan";
         $data['jurusan'] = $this->models->get_selected('jurusan', $where)->result();
 
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
+
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_edt_jurusan');
         $this->load->view('header&footer/admin/v_footerManageData');
@@ -177,6 +184,13 @@ class manageData extends CI_Controller {
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Divisi";
         $data['divisi'] = $this->models->get_selected('divisi', $where)->result();
+
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_edt_divisi');
@@ -247,6 +261,13 @@ class manageData extends CI_Controller {
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Kamus Divisi+Jurusan";
         $data['kamus'] = $this->models->get_3selected_join('kamus', 'jurusan', 'divisi', 'kamus.id_jurusan = jurusan.id_jurusan', 'kamus.id_divisi = divisi.id_divisi', $where)->result();
+
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_edt_kamus');
@@ -377,6 +398,13 @@ class manageData extends CI_Controller {
         $data['page_header'] = "Upload Nota Dinas";
         $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'nota_dinas nd', 'fm.id_mhs = m.id_mhs', 'fm.id_kamus = k.id_kamus', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = nd.id_form', $where)->result();
 
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
+
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_upload_notadinas');
         $this->load->view('header&footer/admin/v_footerManageData');
@@ -405,6 +433,7 @@ class manageData extends CI_Controller {
             $where = array('id_form' => $id);
 
             $this->models->update_data('nota_dinas', $data, $where);
+
         }
         redirect(base_url('admin/manageData/permohonan'));
     }
@@ -485,6 +514,13 @@ class manageData extends CI_Controller {
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Upload Nota Dinas";
         $data['datamagang'] = $this->models->get_6selected_join('form_magang fm', 'mhs m', 'kamus k', 'jurusan j', 'divisi d', 'surat_konfirm sk', 'fm.id_mhs = m.id_mhs', 'm.id_jurusan = k.id_jurusan', 'k.id_jurusan = j.id_jurusan', 'k.id_divisi = d.id_divisi', 'fm.id_form = sk.id_form', $where)->result();
+
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_upload_sk');
@@ -638,6 +674,13 @@ class manageData extends CI_Controller {
         $data['page_header'] = "Manage Admin Divisi";
         $data['admin'] = $this->models->get_selected('users', $where)->result();
 
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
+
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_edt_admin');
         $this->load->view('header&footer/admin/v_footerManageData');
@@ -676,6 +719,13 @@ class manageData extends CI_Controller {
         $data['siapa'] = $this->session->userdata('nama');
         $data['page_header'] = "Edit Admin Profile";
         $data['admin'] = $this->models->get_selected('users', $where)->result();
+
+        $data['id'] = $this->session->userdata('id');
+
+        $where5 = array('penerima' =>  $data['id']);
+        $where6 = array('status_notif' => '0');
+
+        $data['notif'] = $this->models->get_selected_join_where('notif','users',$where5,$where6,'notif.penerima = users.id_user')->result();
 
         $this->load->view('header&footer/admin/v_headerManageData', $data);
         $this->load->view('admin/v_edt_admdiv');
