@@ -68,7 +68,7 @@
                 <tr>
                     <td><img src="<?= base_url('assets/img/pln.png') ?>" style="width: 40px"></td>
                     <td>
-                        <h1><a href="#body" class="scrollto">&ensp;PT<span style="color: #ED3237"> PLN</span></a></h1>
+                        <h1><a href="#body" style="color: #02ADF2" class="scrollto">&ensp;PLN</a></h1>
                     </td>
                 </tr>
             </table>
