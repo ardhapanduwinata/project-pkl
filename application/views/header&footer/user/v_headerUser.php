@@ -28,7 +28,7 @@
 
     <!-- Main Stylesheet File -->
     <link href="<?=base_url('assets')?>/css/style.css" rel="stylesheet">
-<!--    <link href="--><?php //echo base_url('assets'); ?><!--/dropzone/dropzone.css" type="text/css" rel="stylesheet" />-->
+    <!--    <link href="--><?php //echo base_url('assets'); ?><!--/dropzone/dropzone.css" type="text/css" rel="stylesheet" />-->
 
 
     <!-- =======================================================
