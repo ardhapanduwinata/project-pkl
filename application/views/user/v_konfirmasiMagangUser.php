@@ -177,28 +177,40 @@
                     <div id="magang">
                         <?php
                         foreach ($status as $row) {
-                            if($row->jenis == 'Magang'&& $row->status == 'Diterima' &&  !empty($row->file_sk)){ ?>
+                            if($row->jenis == 'Magang'&& $row->status == 'Diterima' && !empty($row->file_sk) && empty($row->file_sksm)){ ?>
                                 <div style="width: 100%;padding-top: 15%">
                                     <a class="btn btn-outline-info" style="float: right" href="<?= base_url('user/magangUser/download_uploaded_sp/') ?>">Download Surat Pernyataan PKL </a><br>
                                 </div>
                                 <div style="width: 100%;padding-top: 2%">
                                     <p style="color: red; float: right">*Surat Pernyataan wajib dibawa pada saat hari pertama PKL.</p>
                                 </div>
-                            <?php }?>
-                        <?php }?>
+                            <?php }else if($row->jenis == 'Magang'&& $row->status == 'Diterima' &&  !empty($row->file_sk) && !empty($row->file_sksm)){?>
+                                <div style="width: 100%;padding-top: 15%">
+                                    <a class="btn btn-outline-info" style="float: right" href="<?= base_url('user/magangUser/download_uploaded_ss/'.$row->id_sksm) ?>">Download Surat Keterangan Selesai PKL </a><br>
+                                </div>
+                                <div style="width: 100%;padding-top: 2%">
+                                    <p style="color: red; float: right">*Jika pihak kampus membutuhkan.</p>
+                                </div>
+                            <?php }}?>
                     </div>
                     <div id="wawancara" style="visibility: hidden">
                         <?php
                         foreach ($status as $row) {
-                            if($row->jenis == 'Penelitian/Wawancara'&& $row->status == 'Diterima' &&  !empty($row->file_sk)){ ?>
+                            if($row->jenis == 'Penelitian/Wawancara'&& $row->status == 'Diterima' &&  !empty($row->file_sk) && empty($row->file_sksm)){ ?>
                                 <div style="width: 100%;padding-top: 15%">
                                     <a class="btn btn-outline-info" style="float: right" href="<?= base_url('user/magangUser/download_uploaded_sp/') ?>">Download Surat Pernyataan PKL </a><br>
                                 </div>
                                 <div style="width: 100%;padding-top: 2%">
                                     <p style="color: red; float: right">*Surat Pernyataan wajib dibawa pada saat hari pertama PKL.</p>
                                 </div>
-                            <?php }?>
-                        <?php }?>
+                            <?php }else if($row->jenis == 'Penelitian/Wawancara'&& $row->status == 'Diterima' &&  !empty($row->file_sk) && !empty($row->file_sksm)){?>
+                                <div style="width: 100%;padding-top: 15%">
+                                    <a class="btn btn-outline-info" style="float: right" href="<?= base_url('user/magangUser/download_uploaded_ss/'.$row->id_sksm) ?>">Download Surat Keterangan Selesai PKL </a><br>
+                                </div>
+                                <div style="width: 100%;padding-top: 2%">
+                                    <p style="color: red; float: right">*Jika pihak kampus membutuhkan.</p>
+                                </div>
+                            <?php }}?>
                     </div>
                 </div>
             </div>

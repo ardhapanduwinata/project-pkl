@@ -37,53 +37,53 @@
                         <div class="col-md-12">
                             <?php echo form_open_multipart('user/homeUser/updateBio'); ?>
 
-                                <div class="form-group row">
-                                    <label for="nim" class="col-4 col-form-label">NIM</label>
-                                    <div class="col-8">
-                                        <input id="nim" name="nim" placeholder="NIM" class="form-control here" value="<?= $user[0]->nim?>" type="text" required="required">
+                            <div class="form-group row">
+                                <label for="nim" class="col-4 col-form-label">NIM</label>
+                                <div class="col-8">
+                                    <input id="nim" name="nim" placeholder="NIM" class="form-control here" value="<?= $user[0]->nim?>" type="text" required="required">
                                 </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="nama" class="col-4 col-form-label">Nama Lengkap</label>
+                                <div class="col-8">
+                                    <input id="nama" name="nama" placeholder="Nama Lengkap" class="form-control here" value="<?= $user[0]->nama_user?>" type="text" required="required">
                                 </div>
-                                <div class="form-group row">
-                                    <label for="nama" class="col-4 col-form-label">Nama Lengkap</label>
-                                    <div class="col-8">
-                                        <input id="nama" name="nama" placeholder="Nama Lengkap" class="form-control here" value="<?= $user[0]->nama_user?>" type="text" required="required">
-                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="jurusan" class="col-4 col-form-label">Jurusan</label>
+                                <div class="col-8">
+                                    <select id="jurusan" name="jurusan" class="custom-select" required="required">
+                                        <?php foreach($jurusan as $row) {
+                                            $cat = $row->id_jurusan;
+                                            ?>
+                                            <option <?php if($cat ==  $user[0]->id_jurusan) echo"selected"; ?> value="<?php echo $row->id_jurusan;?>"><?php echo $row->jurusan;?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="jurusan" class="col-4 col-form-label">Jurusan</label>
-                                    <div class="col-8">
-                                        <select id="jurusan" name="jurusan" class="custom-select" required="required">
-                                            <?php foreach($jurusan as $row) {
-                                                $cat = $row->id_jurusan;
-                                                ?>
-                                                <option <?php if($cat ==  $user[0]->id_jurusan) echo"selected"; ?> value="<?php echo $row->id_jurusan;?>"><?php echo $row->jurusan;?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="universitas" class="col-4 col-form-label">Universitas</label>
+                                <div class="col-8">
+                                    <input id="univ" name="univ" placeholder="Universitas Anda" value="<?= $user[0]->univ?>" class="form-control here" type="text" required="required">
                                 </div>
-                                <div class="form-group row">
-                                    <label for="universitas" class="col-4 col-form-label">Universitas</label>
-                                    <div class="col-8">
-                                        <input id="univ" name="univ" placeholder="Universitas Anda" value="<?= $user[0]->univ?>" class="form-control here" type="text" required="required">
-                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="alamatUniv" class="col-4 col-form-label">Alamat Universitas</label>
+                                <div class="col-8">
+                                    <input id="alamat" name="alamat" placeholder="Alamat Universitas Anda" value="<?= $user[0]->alamat?>" class="form-control here" type="text" required="required">
                                 </div>
-                                <div class="form-group row">
-                                    <label for="alamatUniv" class="col-4 col-form-label">Alamat Universitas</label>
-                                    <div class="col-8">
-                                        <input id="alamat" name="alamat" placeholder="Alamat Universitas Anda" value="<?= $user[0]->alamat?>" class="form-control here" type="text" required="required">
-                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Email</label>
+                                <div class="col-8">
+                                    <input id="email" name="email" placeholder="Email" class="form-control here" value="<?= $user[0]->email?>" type="text" required="required">
                                 </div>
-                                <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">Email</label>
-                                    <div class="col-8">
-                                        <input id="email" name="email" placeholder="Email" class="form-control here" value="<?= $user[0]->email?>" type="text" required="required">
-                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                    <button name="submit" type="submit" class="btn" style="background-color: #0c2e8a; color: white">Update Profile</button>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn" style="background-color: #0c2e8a; color: white">Update Profile</button>
-                                    </div>
-                                </div>
+                            </div>
                             <?php echo form_close();?>
                         </div>
                     </div>

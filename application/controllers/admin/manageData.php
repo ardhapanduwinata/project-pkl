@@ -843,24 +843,15 @@ class manageData extends CI_Controller {
 
         $config['upload_path'] = './assets/file/skSelesaiMagang/';
         $config['allowed_types'] = 'pdf|doc|docx|DOC|DOCX';
-        $name = $_FILES["file_sksm"]['name'];
-
-        $path = FCPATH . '/assets/file/skSelesaiMagang/';
-
-        if(file_exists($path.$name) === FALSE || $name == null) {
-            $this->load->library('upload', $config);
-
-        }else{
-            $unlink = unlink(FCPATH.'/assets/file/skSelesaiMagang/'.$name);
-            $this->load->library('upload', $config);
-        }
+        $config['overwrite'] = true;
+        $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('file_sksm')) {
             $error = array('error' => $this->upload->display_errors());
             foreach ($error as $row) {
                 echo $row;
             }
-            //redirect('admin/manageData/view_uploadsksm/'.$id, 'refresh');
+            redirect('admin/manageData/view_uploadsksm/'.$id, 'refresh');
         } else {
             $data = array(
                 'no_sksm' => $nosksm,
@@ -870,24 +861,24 @@ class manageData extends CI_Controller {
             $where = array('id_form' => $id);
             $this->models->update_data('sk_selesai_magang', $data, $where);
 
-//            $base = "user/magangUser/konfirmasi/";
-//
-//            $penerima = $this->models->get_3selected_join('form_magang','mhs','users','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where)->result();
-//
-//            foreach ($penerima as $a){
-//                $idUser = $a->id_user;
-//                $jenis = $a->jenis;
-//            }
+            $base = "user/magangUser/konfirmasi/";
 
-//            $pesan = 'Form '.$jenis.' Anda Telah Dikonfirmasi';
-//
-//            $data3 = array(
-//                'url' => $base,
-//                'penerima' => $idUser,
-//                'pesan' => $pesan,
-//                'status_notif' =>'0'
-//            );
-//            $this->models->add_data('notif', $data3);
+            $penerima = $this->models->get_3selected_join('form_magang','mhs','users','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where)->result();
+
+            foreach ($penerima as $a){
+                $idUser = $a->id_user;
+                $jenis = $a->jenis;
+            }
+
+            $pesan = 'Surat Keterangan Selesai '.$jenis.' Anda Telah Diupload';
+
+            $data3 = array(
+                'url' => $base,
+                'penerima' => $idUser,
+                'pesan' => $pesan,
+                'status_notif' =>'0'
+            );
+            $this->models->add_data('notif', $data3);
         }
         redirect(base_url('admin/manageData/permohonan'));
     }

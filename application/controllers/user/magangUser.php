@@ -70,7 +70,7 @@ class magangUser extends CI_Controller
         $where2 = array(
             'users.id_user' => $data['id']
         );
-        $data['status'] = $this->models->get_4selected_join('surat_konfirm','form_magang','mhs','users','surat_konfirm.id_form = form_magang.id_form','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user',$where2)->result();
+        $data['status'] = $this->models->get_5selected_join('surat_konfirm','form_magang','mhs','users','sk_selesai_magang','surat_konfirm.id_form = form_magang.id_form','form_magang.id_mhs = mhs.id_mhs','mhs.id_user = users.id_user','sk_selesai_magang.id_form = form_magang.id_form',$where2)->result();
 
         //var_dump($data['status']);
 
@@ -204,6 +204,19 @@ class magangUser extends CI_Controller
             $nama_file = 'SuratPernyataanPKL-PLN.pdf';
             ob_clean();
             force_download($nama_file, $data);
+    }
+
+    public function download_uploaded_ss($id)
+    {
+        $this->load->helper('file');
+        $where = array('id_sksm' => $id);
+        $datand = $this->models->get_selected('sk_selesai_magang', $where)->result();
+        foreach ($datand as $a) {
+        $data = file_get_contents(base_url().'assets/file/skSelesaiMagang/'.($a->file_sksm));
+        $nama_file = $a->file_sksm;
+        ob_clean();
+        force_download($nama_file, $data);
+        }
     }
 
     public function update_notif($id){
