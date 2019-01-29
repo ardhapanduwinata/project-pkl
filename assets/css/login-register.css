@@ -16,7 +16,7 @@
     background: #f8f9fa;
     font-weight: bold;
     color: #383d41;
-    margin-top: 30%;
+    margin-top: 10%;
     margin-bottom: 2.5%;
     cursor: pointer;
 }
@@ -26,7 +26,7 @@
     border-bottom-left-radius: 10% 50%;
 }
 .register-left img{
-    margin-top: 5px;
+    margin-top: -50px;
     margin-bottom: 4.5%;
     width: 25%;
     -webkit-animation: mover 2s infinite  alternate;
