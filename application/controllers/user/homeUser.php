@@ -13,7 +13,7 @@ class homeUser extends CI_Controller {
         if($status != "login")
         {
             redirect(base_url('homeLogin'));
-        } elseif($role == "0")
+        } elseif($role == "0" || $role == "2")
         {
             redirect(base_url('admin/homeAdmin'));
         }
