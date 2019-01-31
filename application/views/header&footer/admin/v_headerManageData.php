@@ -32,7 +32,7 @@
 
     <!-- Morris Charts CSS -->
     <link href="<?= base_url('assets') ?>/vendor/morrisjs/morris.css" rel="stylesheet">
-
+    <link href="<?= base_url('assets') ?>/css/toggle.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="<?= base_url('assets') ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -45,7 +45,7 @@
 
 <?php $role = $this->session->userdata('role'); ?>
 
-<div id="wrapper">
+<div id="wrapper" class="toggled">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -104,47 +104,55 @@
             </li>
         </ul>
         <!-- /.navbar-top-links -->
-
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
+        <div id="sidebar-wrapper">
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav in" id="side-menu">
+                        <li>
+                            <span id="menu-toggle" data-toggle="button" class="btn" style="right: 0%">
+                                <a><i class="fa fa-navicon fa-fw"></i></a>
+                            </span>
+                        </li>
+                        <li class="sidebar-search">
+                            <div class="masked">
+                                <div class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
-                        </div>
-                        <!-- /input-group -->
-                    </li>
-                    <li>
-                        <a href="<?= base_url('admin/manageData')?>"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                    </li>
-                    <?php if($role == '0') {?>
-                        <li>
-                            <a href="<?= base_url('admin/manageData/admin')?>"><i class="fas fa-user-check"></i> Manage Admin Divisi</a>
+                                </div>
+                            </div>
+                            <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="<?= base_url('admin/manageData/jurusan') ?>"><i class="fa fa-table fa-fw"></i> Jurusan</a>
+                            <a href="<?= base_url('admin/manageData')?>"><i class="fas fa-tachometer-alt"></i> <span class="masked">Dashboard <span class="masked"></a>
                         </li>
+                        <?php if($role == '0') {?>
+                            <li>
+                                <a href="<?= base_url('admin/manageData/admin')?>"><i class="fas fa-user-check"></i>  <span class="masked">Manage Admin Divisi</span></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('admin/manageData/jurusan') ?>"><i class="fa fa-table fa-fw"></i> <span class="masked"> Jurusan</span></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('admin/manageData/divisi') ?>"><i class="fas fa-chalkboard-teacher"></i>  <span class="masked">Divisi</span></a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('admin/manageData/kamus')?>"><i class="fa fa-book fa-fw"></i>  <span class="masked">Kamus</span></a>
+                            </li>
+                        <?php } ?>
                         <li>
-                            <a href="<?= base_url('admin/manageData/divisi') ?>"><i class="fas fa-chalkboard-teacher"></i> Divisi</a>
+                            <a href="<?= base_url('admin/manageData/permohonan/semua')?>"><i class="fas fa-users"></i> <span class="masked">Daftar Permohonan Magang</span></a>
+                            <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="<?= base_url('admin/manageData/kamus')?>"><i class="fa fa-book fa-fw"></i> Kamus</a>
-                        </li>
-                    <?php } ?>
-                    <li>
-                        <a href="<?= base_url('admin/manageData/permohonan/semua')?>"><i class="fas fa-users"></i> Daftar Permohonan Magang</a>
-                        <!-- /.nav-second-level -->
-                    </li>
-                </ul>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.sidebar-collapse -->
+            <!-- /.navbar-static-side -->
         </div>
-        <!-- /.navbar-static-side -->
     </nav>
 
     <div id="page-wrapper">
