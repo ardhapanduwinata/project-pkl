@@ -40,7 +40,7 @@
                             <?php } else {?>
                                 <div class="col-md-6" style="padding-top: 20px">
                                     <label>File Surat Konfirmasi</label>
-                                    <input type="file" name="file_sk" class="form-control" required>
+                                    <input type="file" name="file_sk" accept="application/pdf,.doc, .docx" class="form-control" required>
                                 </div>
                             <?php } ?>
                         </div>

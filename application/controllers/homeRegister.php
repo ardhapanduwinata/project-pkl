@@ -6,6 +6,7 @@ class HomeRegister extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+        ob_start();
         $this->load->model('models');
         $this->load->library('email');
     }

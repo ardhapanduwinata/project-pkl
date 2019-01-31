@@ -6,6 +6,7 @@ class magangUser extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        ob_start();
         $this->load->model('models');
 
         $role = $this->session->userdata('role');
