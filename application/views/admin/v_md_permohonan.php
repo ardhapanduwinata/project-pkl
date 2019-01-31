@@ -1,4 +1,29 @@
 <!-- /.row -->
+<?php
+function tgl_indo($tanggal){
+    $bulan = array (
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}
+?>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -21,14 +46,15 @@
                         <thead>
                         <tr>
                             <th style="width: 5%">No</th>
-                            <th style="width: auto;text-align: center">Tanggal Pengajuan</th>
                             <th style="width: auto;text-align: center">Nama Mhs</th>
                             <th style="width: auto;text-align: center">Jurusan</th>
                             <th style="width: auto;text-align: center">Universitas</th>
                             <th style="width: auto;text-align: center">Divisi</th>
                             <th style="width: auto;text-align: center">Status</th>
+                            <th style="width: auto;text-align: center">Tanggal Pengajuan</th>
                             <th style="width: auto;text-align: center">Jenis PKL</th>
-                            <th style="width: auto;text-align: center">Tanggal Mulai</th>
+                            <th style="width: auto;text-align: center">Tanggal Mulai PKL</th>
+                            <th style="width: auto;text-align: center">Tanggal Selesai PKL</th>
                             <th style="width: auto;text-align: center">Judul PKL</th>
                             <th style="width: auto;text-align: center">No Surat</th>
                             <th style="width: auto;text-align: center">Download File Mhs</th>
@@ -43,7 +69,6 @@
                         foreach ($datamagang as $a) {?>
                             <tr>
                                 <td style="text-align: center"><?= $no++ ?></td>
-                                <td><?= date('d-M-Y',strtotime($a->tgl_pengajuan_form)); ?></td>
                                 <td><?= $a->nama_mhs?></td>
                                 <td><?= $a->jurusan?>
                                     <input type="hidden" value="<?php echo $a->id_jurusan?>" id="idJurusan" name="idJurusan">
@@ -93,8 +118,15 @@
                                         <p style="color: black"><?= $a->status?></p>
                                     <?php } ?>
                                 </td>
+                                <?php
+                                $tglPengajuanForm = $a->tgl_pengajuan_form;
+                                $tglMulai = $a->tgl_mulai;
+                                $tglSelesai = $a->tgl_selesai;
+                                ?>
+                                <td><?= tgl_indo($tglPengajuanForm); ?></td>
                                 <td><?= $a->jenis?></td>
-                                <td><?=  date('d-M-Y',strtotime($a->tgl_mulai));?></td>
+                                <td><?= tgl_indo($tglMulai) ?></td>
+                                <td><?= tgl_indo($tglSelesai) ?></td>
                                 <td><?= $a->judul?></td>
                                 <td><?= $a->no_surat ?></td>
                                 <td>

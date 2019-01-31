@@ -38,7 +38,7 @@
                             <div class="col-md-8">
                                 <form action="<?= base_url('homeLogin/aksi_login')?>" method="post">
                                 <div class="form-group">
-                                    <input type="text" name="username" class="form-control" placeholder="Username" required/>
+                                    <input type="text" name="username" class="form-control" placeholder="Username" autofocus required/>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control" placeholder="Password" required/>

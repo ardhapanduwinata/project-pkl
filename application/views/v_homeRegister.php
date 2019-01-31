@@ -53,7 +53,7 @@
                         <?php } ?>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="nim" placeholder="NIM *" value="" required/>
+                                <input type="text" class="form-control" name="nim" placeholder="NIM *" value="" autofocus required/>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap *" value="" required/>
