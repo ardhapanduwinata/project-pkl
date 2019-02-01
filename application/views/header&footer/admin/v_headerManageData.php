@@ -29,6 +29,9 @@
 
     <!-- DataTables Responsive CSS -->
     <link href="<?= base_url('assets') ?>/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+<!--    <link href=" https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet">-->
+
+
 
     <!-- Morris Charts CSS -->
     <link href="<?= base_url('assets') ?>/vendor/morrisjs/morris.css" rel="stylesheet">

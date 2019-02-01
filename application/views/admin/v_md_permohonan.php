@@ -42,13 +42,14 @@ function tgl_indo($tanggal){
                     </form>
                 </div>
                 <div class="panel-body">
-                    <table class="display table table-striped table-bordered table-hover " id="table_permohonan" style="width: 100%">
+                    <div class="table-responsive">
+                    <table class="display table table-striped table-bordered table-hover dt-responsive" id="table_permohonan" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th style="width: 5%">No</th>
+                            <th style="width: auto">No</th>
                             <th style="width: auto;text-align: center">Nama Mhs</th>
                             <th style="width: auto;text-align: center">Jurusan</th>
-                            <th style="width: auto;text-align: center">Universitas</th>
+                            <th style="width: 40%;text-align: center">Universitas</th>
                             <th style="width: auto;text-align: center">Divisi</th>
                             <th style="width: auto;text-align: center">Status</th>
                             <th style="width: auto;text-align: center">Tanggal Pengajuan</th>
@@ -250,6 +251,7 @@ function tgl_indo($tanggal){
                         <?php } ?>
                         </tbody>
                     </table>
+                    </div>
                     <!-- /.table-responsive -->
                 </div>
                 <!-- /.panel-body -->

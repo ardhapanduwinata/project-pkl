@@ -81,6 +81,17 @@ class HomeRegister extends CI_Controller {
                 $idUser = $a->id_user;
             }
 
+            if(count($select2)>0){
+                foreach($select2 as $a)
+                {
+                    $id_univ = $a->id;
+                }
+            }else{
+                $data_univ = array(
+                    'nama_univ' => ucwords($this->input->post('univ'))
+                );
+                $id_univ = $this->models->add_data("univ",$data_univ);
+            }
 
             $pecah = explode(',',ucwords($this->input->post("univ")));
 
