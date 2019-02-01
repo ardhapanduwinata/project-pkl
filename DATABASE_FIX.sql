@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2019 at 06:12 AM
+-- Generation Time: Feb 01, 2019 at 07:59 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `divisi` (
   `id_divisi` int(11) NOT NULL,
-  `divisi` varchar(120) NOT NULL
+  `divisi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -125,6 +125,14 @@ CREATE TABLE `form_magang` (
   `id_kamus` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `form_magang`
+--
+
+INSERT INTO `form_magang` (`id_form`, `id_mhs`, `nim_mhs2`, `nim_mhs3`, `nim_mhs4`, `nim_mhs5`, `nama_mhs2`, `nama_mhs3`, `nama_mhs4`, `nama_mhs5`, `tgl_mulai`, `tgl_selesai`, `no_surat`, `tgl_mohon_surat`, `file`, `judul`, `jenis`, `tgl_pengajuan_form`, `id_kamus`) VALUES
+(2, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-02-15', '2019-03-14', '01322/1212/12TKB', '2019-02-28', 'ci_chart.zip', 'Perbandingan EOS Canon', 'Magang', '2019-02-01', NULL),
+(3, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-02-08', '2019-03-14', '01322/1212/12TKB', '2019-02-14', 'bootstrap-4_2_1-dist11.zip', 'Perbandingab EOS Canon', 'Penelitian/Wawancara', '2019-02-01', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -143,7 +151,7 @@ CREATE TABLE `header_home` (
 
 INSERT INTO `header_home` (`id_header`, `header`, `deskripsi`) VALUES
 (1, NULL, NULL),
-(2, 'LANGKAH-LANGKAH UPLOAD', 'Halo semua. Ucapkan selamat datang padaku dalam mimpi burukmu, aku akan mnemanimu berpetualang melewati dunia yang tidak pernah kau lalui sebelumnya di dunia nyata. Mungkin akan ada banyak hal yang tidak kau percaya, tetapi ada satu hal yang bisa kau percaya dengan sepenuh hatimu. Yaitu aku.');
+(2, 'ini adalah judul PKL saya', 'Halo semua. Ucapkan selamat datang padaku dalam mimpi burukmu, aku akan mnemanimu berpetualang melewati dunia yang tidak pernah kau lalui sebelumnya di dunia nyata. Mungkin akan ada banyak hal yang tidak kau percaya, tetapi ada satu hal yang bisa kau percaya dengan sepenuh hatimu. Yaitu aku.');
 
 -- --------------------------------------------------------
 
@@ -184,6 +192,13 @@ CREATE TABLE `kamus` (
   `id_jurusan` int(11) NOT NULL,
   `id_divisi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kamus`
+--
+
+INSERT INTO `kamus` (`id_kamus`, `id_jurusan`, `id_divisi`) VALUES
+(18, 4, 32);
 
 -- --------------------------------------------------------
 
@@ -226,9 +241,10 @@ CREATE TABLE `konten` (
 INSERT INTO `konten` (`id_konten`, `judul_konten`, `isi_konten`, `gambar_konten`, `nama_konten`) VALUES
 (1, 'Step Pertama', 'Step yang pertama adalah kamu harus membuat akun baru melalui halaman register yang telah disediakan oleh website.', '1.jpg', NULL),
 (2, 'Step Kedua', 'Pada step ini adalah lorem ipsum dolor sit amet bla daku juga aku gak mau jika satu sakit penyakit itu wabah datang.', '2.jpg', NULL),
-(3, NULL, NULL, '3.jpg', 'intro'),
-(4, NULL, NULL, '4.jpg', 'intro'),
-(5, NULL, NULL, '21.jpg', 'intro');
+(3, 'Step Ketiga', 'JIka memang sayang aku juga jangan pergi dari satu ke yang lain dan juga jika memang sakit aku mau pergi dari hidup dan juga teman jika memang itu yang terbaik.', '3.jpg', NULL),
+(10, NULL, NULL, '3.jpg', 'intro'),
+(11, NULL, NULL, '4.jpg', 'intro'),
+(12, NULL, NULL, '21.jpg', 'intro');
 
 -- --------------------------------------------------------
 
@@ -247,6 +263,13 @@ CREATE TABLE `mhs` (
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `mhs`
+--
+
+INSERT INTO `mhs` (`id_mhs`, `nim`, `nama_mhs`, `id_jurusan`, `univ`, `alamat`, `email`, `id_user`) VALUES
+(5, '1641720029', 'Millenia Rusbandi', 4, 'Politeknik Negeri Indonesia', 'Malang', 'rmillenia96@gmail.com', 82);
+
 -- --------------------------------------------------------
 
 --
@@ -263,6 +286,14 @@ CREATE TABLE `nota_dinas` (
   `download_nd` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `nota_dinas`
+--
+
+INSERT INTO `nota_dinas` (`id_nota`, `no_nota`, `tgl_keluar`, `id_form`, `file_nd`, `perihal`, `download_nd`) VALUES
+(1, NULL, NULL, 2, NULL, NULL, '0'),
+(2, NULL, NULL, 3, NULL, NULL, '0');
+
 -- --------------------------------------------------------
 
 --
@@ -277,6 +308,21 @@ CREATE TABLE `notif` (
   `status_notif` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `notif`
+--
+
+INSERT INTO `notif` (`id_notif`, `url`, `penerima`, `pesan`, `status_notif`) VALUES
+(9, 'admin/manageData/permohonan/', 1, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '1'),
+(18, 'admin/manageData/permohonan/', 1, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '1'),
+(19, 'admin/manageData/permohonan/', 1, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '1'),
+(22, 'admin/manageData/permohonan/', 11, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '1'),
+(23, 'admin/manageData/permohonan/', 1, 'Millenia Rusbandi Mengajukan Form Magang', '1'),
+(24, 'admin/manageData/permohonan/', 11, 'Millenia Rusbandi Mengajukan Form Magang', '0'),
+(25, 'admin/manageData/permohonan/', 1, 'Millenia Rusbandi Mengajukan Form Magang', '0'),
+(26, 'admin/manageData/permohonan/', 1, 'Millenia Rusbandi Mengajukan Form Magang', '0'),
+(27, 'admin/manageData/permohonan/', 1, 'Millenia Rusbandi Mengajukan Form Penelitian/Wawancara', '0');
+
 -- --------------------------------------------------------
 
 --
@@ -288,10 +334,18 @@ CREATE TABLE `sk_selesai_magang` (
   `no_sksm` varchar(120) DEFAULT NULL,
   `tgl_keluar_sksm` date DEFAULT NULL,
   `id_form` int(11) NOT NULL,
-  `download_sksm` enum('0','1') NOT NULL,
-  `perihal_sksm` varchar(300) NOT NULL,
+  `download_sksm` enum('0','1') DEFAULT NULL,
+  `perihal_sksm` varchar(300) DEFAULT NULL,
   `file_sksm` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sk_selesai_magang`
+--
+
+INSERT INTO `sk_selesai_magang` (`id_sksm`, `no_sksm`, `tgl_keluar_sksm`, `id_form`, `download_sksm`, `perihal_sksm`, `file_sksm`) VALUES
+(2, NULL, NULL, 2, NULL, NULL, NULL),
+(3, NULL, NULL, 3, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -308,8 +362,16 @@ CREATE TABLE `surat_konfirm` (
   `status` enum('Diproses','Diterima','Ditolak') NOT NULL,
   `download_sk` enum('0','1') NOT NULL,
   `perihal_sk` varchar(120) DEFAULT NULL,
-  `file_sk` varchar(300) DEFAULT NULL
+  `file_sk` varchar(120) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `surat_konfirm`
+--
+
+INSERT INTO `surat_konfirm` (`id_srtkonfirm`, `no_konfirm`, `tgl_keluar_sk`, `id_form`, `id_mhs`, `status`, `download_sk`, `perihal_sk`, `file_sk`) VALUES
+(2, NULL, '0000-00-00', 2, 5, 'Diproses', '0', NULL, NULL),
+(3, NULL, '0000-00-00', 3, 5, 'Diproses', '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -632,7 +694,8 @@ INSERT INTO `univ` (`id`, `nama_univ`) VALUES
 (303, 'Sekolah Tinggi. Agama Kristen Negeri (STAKN) Jayapura\r\n'),
 (304, 'Universitas Negeri Papua, Manokwari \r\n'),
 (305, 'STAIN Sorong, Sorong\r\n'),
-(306, 'Sekolah Tinggi Penyuluhan Pertanian (STTP) Manokwari');
+(306, 'Sekolah Tinggi Penyuluhan Pertanian (STTP) Manokwari'),
+(307, 'Politeknik Negeri Indonesia');
 
 -- --------------------------------------------------------
 
@@ -656,64 +719,65 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `role`, `nama_user`, `username`, `password`, `foto`, `aktif`) VALUES
 (1, '0', 'SUPER DUPER ADMIN', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'default.png', 'Sudah'),
-(2, '2', 'DIVISI HUMAN CAPITAL MANAGEMENT SYSTEM', 'hcms', '2db5cf854e07fb7767f92a3beba9571a', 'default.jpg', 'Sudah'),
-(3, '2', 'DIVISI PEMASARAN DAN PELAYANAN PELANGGAN', 'pdpp', 'b40ff3f28ed6aed78241e4c2690e8fac', 'default.jpg', 'Sudah'),
-(4, '2', 'DIVISI PENGEMBANGAN PRODUK', 'pp', 'c483f6ce851c9ecd9fb835ff7551737c', 'default.jpg', 'Sudah'),
-(5, '2', 'DIVISI QUALITY ASSURANCE PRODUK DAN LAYANAN', 'qapdl', '4b111d9ac9f84a0ea50b2dd8300be87f', 'default.jpg', 'Sudah'),
-(6, '2', 'DIVISI TARIF DAN PELAYANAN PUBLIK', 'tdpp', '2cf784503f040c8d314567e1e945623b', 'default.jpg', 'Sudah'),
-(7, '2', 'DIVISI LEGAL ASET PROPERTI', 'lap', '3a5c9f667568a07a36b0e6bdc378d5b6', 'default.jpg', 'Sudah'),
-(8, '2', 'DIVISI PENDAYAGUNAAN ASET PROPERTI', 'pap', '4e951936957c783062a399c629ce9a95', 'default.jpg', 'Sudah'),
-(9, '2', 'DIVISI PENGAMANAN DAN PEMELIHARAAN ASET PROPERTI', 'pdpap', '1da8aea28efbd2acd0966c3a179cb67c', 'default.jpg', 'Sudah'),
-(10, '2', 'DIVISI KONSTRUKSI REGIONAL JAWA BAGIAN BARAT', 'krjbb', 'c1f7b32937589c4046b3f1f0ff37095d', 'default.jpg', 'Sudah'),
-(11, '2', 'DIVISI OPERASI REGIONAL JAWA BAGIAN BARAT', 'orjbb', '767bb5b03d20df508bc178312716d4d3', 'default.jpg', 'Sudah'),
-(12, '2', 'DIVISI PENGEMBANGAN REGIONAL JAWA BAGIAN BARAT', 'prjbb', '5fab5695d1c86e379dff0b18306ae7b7', 'default.jpg', 'Sudah'),
-(13, '2', 'DIVISI KONSTRUKSI REGIONAL JAWA BAGIAN TENGAH', 'krjbt', '686c48ddf3c1f59e1b23fd1c734d0245', 'default.jpg', 'Sudah'),
-(14, '2', 'DIVISI OPERASI REGIONAL JAWA BAGIAN TENGAH', 'orjbt', 'd64cdbaea28554743fcbe8e6fe6c6c1d', 'default.jpg', 'Sudah'),
-(15, '2', 'DIVISI PENGEMBANGAN REGIONAL JAWA BAGIAN TENGAH', 'prjbt', 'c10d0308bb7fea1a32030a108cd07271', 'default.jpg', 'Sudah'),
-(16, '2', 'DIVISI KONSTRUKSI REGIONAL JAWA BAGIAN TIMUR, BALI DAN NUSA TENGGARA', 'krjbtbdnt', '0ac955ae8db46868ad7086270bc8fec3', 'default.jpg', 'Sudah'),
-(17, '2', 'DIVISI OPERASI REGIONAL JAWA BAGIAN TIMUR, BALI DAN NUSA TENGGARA', 'orjbtbdnt', '396a5c7856cb69c953bb8e43ba549ccc', 'default.jpg', 'Sudah'),
-(18, '2', 'DIVISI PENGEMBANGAN REGIONAL JAWA BAGIAN TIMUR, BALI DAN NUSA TENGGARA', 'prjbtbnt', 'ae5f01f6d82419b9f519af93776ac1ff', 'default.jpg', 'Sudah'),
-(19, '2', 'DIVISI KONSTRUKSI REGIONAL KALIMANTAN', 'krk', 'c90c6a0c3862adae4ccc0d874e2cb571', 'default.jpg', 'Sudah'),
-(20, '2', 'DIVISI OPERASI REGIONAL KALIMANTAN', 'ork', 'd1dc2d1ec5e32ada1fd8de859ccbaa6e', 'default.jpg', 'Sudah'),
-(21, '2', 'DIVISI PENGEMBANGAN REGIONAL KALIMANTAN', 'prk', 'a20c0d8fcaa9d371edcfbf2269519399', 'default.jpg', 'Sudah'),
-(22, '2', 'DIVISI KONSTRUKSI REGIONAL MALUKU DAN PAPUA', 'krmdp', 'd5715b1c05998f5802cd579d1f6da4dd', 'default.jpg', 'Sudah'),
-(23, '2', 'DIVISI OPERASI REGIONAL MALUKU DAN PAPUA', 'ormdp', '283a8545c31b2a22b25db6b99a7bf26d', 'default.jpg', 'Sudah'),
-(24, '2', 'DIVISI PENGEMBANGAN REGIONAL MALUKU DAN PAPUA', 'prmdp', 'd650e72b17f1314b7d4c718aa4f61526', 'default.jpg', 'Sudah'),
-(25, '2', 'DIVISI KONSTRUKSI REGIONAL SULAWESI', 'krs', 'cc4aaa1245234d2de974b392f8b4d880', 'default.jpg', 'Sudah'),
-(26, '2', 'DIVISI OPERASI REGIONAL SULAWESI', 'ors', '70b6401e3bc944ef019df3cc8f783564', 'default.jpg', 'Sudah'),
-(27, '2', 'DIVISI PENGEMBANGAN REGIONAL SULAWESI', 'prs', '7a51b166dfe235dfec2901a24ed2f671', 'default.jpg', 'Sudah'),
-(28, '2', 'DIVISI KONSTRUKSI REGIONAL SUMATERA', 'knrs', '802cca2f1342f74b71f472dc62b6eed7', 'default.jpg', 'Sudah'),
-(29, '2', 'DIVISI OPERASI REGIONAL SUMATERA', 'oprs', '7cf05ed3944422722c97f9128dcf5238', 'default.jpg', 'Sudah'),
-(30, '2', 'DIVISI PENGEMBANGAN REGIONAL SUMATERA', 'prst', 'e0b92ba527f3e2a570d78b195bf39993', 'default.jpg', 'Sudah'),
-(31, '2', 'DIVISI CORPORATE COMMUNICATION AND CSR', 'ccac', '275f9389db92d603e0937dc9687fd9a8', 'default.jpg', 'Sudah'),
-(32, '2', 'DIVISI GENERAL AFFAIRS', 'ga', '32d7508fe69220cb40af28441ef746d9', 'default.jpg', 'Sudah'),
-(33, '2', 'DIVISI HEALTH, SAFETY, SECURITY, AND ENVIRONMENT', 'hsse', 'eb0cdd2f192ba92c1f2e5d7c6fe6536e', 'default.jpg', 'Sudah'),
-(34, '2', 'DIVISI ORGANIZATION DEVELOPMENT', 'od', 'afc7e8a98f75755e513d9d5ead888e1d', 'default.jpg', 'Sudah'),
-(35, '2', 'DIVISI TALENT DEVELOPMENT', 'td', '626726e60bd1215f36719a308a25b798', 'default.jpg', 'Sudah'),
-(36, '2', 'DIVISI AKUNTANSI', 'akn', 'e7f98af504ea2c9bc4421a37429e71b1', 'default.jpg', 'Sudah'),
-(37, '2', 'DIVISI ANGGARAN', 'angg', 'a5ca70285255b55eb3e84da245df236c', 'default.jpg', 'Sudah'),
-(38, '2', 'DIVISI KEUANGAN', 'keu', 'ef57b36bddcc35421153b0ba1bf1b593', 'default.jpg', 'Sudah'),
-(39, '2', 'DIVISI SISTEM DAN TEKNOLOGI INFORMASI', 'sdti', '473aef8b293d6653897ee77c5619576d', 'default.jpg', 'Sudah'),
-(40, '2', 'DIVISI TREASURY', 'treasury', '51b77f45e04a44c06147ddf8c0ecbfec', 'default.jpg', 'Sudah'),
-(41, '2', 'DIVISI ENERGI BARU DAN TERBARUKAN', 'ebdt', '34c5fc46ac397b8d46c7e41a641df310', 'default.jpg', 'Sudah'),
-(42, '2', 'DIVISI PENGADAAN STRATEGIS', 'ps', '8812c36aa5ae336c2a77bf63211d899a', 'default.jpg', 'Sudah'),
-(43, '2', 'DIVISI PERENCANAAN PENGADAAN STRATEGIS', 'pps', '98aa876e2d8a8296926f8c9782d44f40', 'default.jpg', 'Sudah'),
-(44, '2', 'DIVISI PERIJINAN DAN PERTANAHAN', 'pdp', '452af0ea3b1515c56f8f754cde7d2ea4', 'default.jpg', 'Sudah'),
-(45, '2', 'DIVISI PROJECT MANAGEMENT OFFICE', 'pmo', 'e9f662f92d4d40288329870c9a597afb', 'default.jpg', 'Sudah'),
-(46, '2', 'DIVISI SUPPLY CHAIN MANAGEMENT', 'scm', '7b3a7a628c6e84b2b00d8089edb3b4b1', 'default.jpg', 'Sudah'),
-(47, '2', 'DIVISI BATUBARA', 'batubara', '6e19c395ebc4c58f266b4faefd6bf757', 'default.jpg', 'Sudah'),
-(48, '2', 'DIVISI GAS DAN BBM', 'gdb', 'ca3e1c20efd5690f9789a87c66a5047a', 'default.jpg', 'Sudah'),
-(49, '2', 'DIVISI PENGADAAN IPP', 'pi', '72ab8af56bddab33b269c5964b26620a', 'default.jpg', 'Sudah'),
-(50, '2', 'DIVISI KEPATUHAN', 'kepatuhan', '988aef40ddf8c32393eacd02441641d7', 'default.jpg', 'Sudah'),
-(51, '2', 'DIVISI MANAJEMEN RISIKO', 'mr', 'd9394066970e44ae252fd0347e58c03e', 'default.jpg', 'Sudah'),
-(52, '2', 'DIVISI PERENCANAAN KORPORAT', 'pk', '1cd3c693132f4c31b5b5e5f4c5eed6bd', 'default.jpg', 'Sudah'),
-(53, '2', 'DIVISI PERENCANAAN SISTEM', 'persis', 'e173302028765321bc1abe6ffbd60808', 'default.jpg', 'Sudah'),
-(54, '2', 'DIVISI PORTFOLIO MANAGEMENT', 'pm', '5109d85d95fece7816d9704e6e5b1279', 'default.jpg', 'Sudah'),
-(55, '2', 'DIVISI CHANGE MANAGEMENT OFFICE', 'cmo', '99330263c899fa050dc18add519cae39', 'default.jpg', 'Sudah'),
-(56, '2', 'DIVISI HUKUM KORPORAT', 'hk', 'ae4171856a75f7b67d51fc0e1f95902e', 'default.jpg', 'Sudah'),
-(57, '2', 'DIVISI PENGENDALIAN KINERJA KORPORAT', 'pkk', '59164fab9d03cc63b28f409d928022a0', 'default.jpg', 'Sudah'),
-(58, '2', 'SATUAN PENGAWASAN INTERN', 'spi', '0b0760e072413088ea8460c3b4f43dbe', 'default.jpg', 'Sudah'),
-(59, '2', 'SEKRETARIS PERUSAHAAN', 'sk', '41d6ad0761a5d27a9e1bd567041ce9e9', 'default.jpg', 'Sudah');
+(11, '2', 'DIVISI HUMAN CAPITAL MANAGEMENT SYSTEM', 'hcms', '2db5cf854e07fb7767f92a3beba9571a', 'default.jpg', 'Sudah'),
+(12, '2', 'DIVISI PEMASARAN DAN PELAYANAN PELANGGAN', 'pdpp', 'b40ff3f28ed6aed78241e4c2690e8fac', 'default.jpg', 'Sudah'),
+(13, '2', 'DIVISI PENGEMBANGAN PRODUK', 'pp', 'c483f6ce851c9ecd9fb835ff7551737c', 'default.jpg', 'Sudah'),
+(14, '2', 'DIVISI QUALITY ASSURANCE PRODUK DAN LAYANAN', 'qapdl', '4b111d9ac9f84a0ea50b2dd8300be87f', 'default.jpg', 'Sudah'),
+(15, '2', 'DIVISI TARIF DAN PELAYANAN PUBLIK', 'tdpp', '2cf784503f040c8d314567e1e945623b', 'default.jpg', 'Sudah'),
+(16, '2', 'DIVISI LEGAL ASET PROPERTI', 'lap', '3a5c9f667568a07a36b0e6bdc378d5b6', 'default.jpg', 'Sudah'),
+(17, '2', 'DIVISI PENDAYAGUNAAN ASET PROPERTI', 'pap', '4e951936957c783062a399c629ce9a95', 'default.jpg', 'Sudah'),
+(18, '2', 'DIVISI PENGAMANAN DAN PEMELIHARAAN ASET PROPERTI', 'pdpap', '1da8aea28efbd2acd0966c3a179cb67c', 'default.jpg', 'Sudah'),
+(19, '2', 'DIVISI KONSTRUKSI REGIONAL JAWA BAGIAN BARAT', 'krjbb', 'c1f7b32937589c4046b3f1f0ff37095d', 'default.jpg', 'Sudah'),
+(20, '2', 'DIVISI OPERASI REGIONAL JAWA BAGIAN BARAT', 'orjbb', '767bb5b03d20df508bc178312716d4d3', 'default.jpg', 'Sudah'),
+(21, '2', 'DIVISI PENGEMBANGAN REGIONAL JAWA BAGIAN BARAT', 'prjbb', '5fab5695d1c86e379dff0b18306ae7b7', 'default.jpg', 'Sudah'),
+(22, '2', 'DIVISI KONSTRUKSI REGIONAL JAWA BAGIAN TENGAH', 'krjbt', '686c48ddf3c1f59e1b23fd1c734d0245', 'default.jpg', 'Sudah'),
+(23, '2', 'DIVISI OPERASI REGIONAL JAWA BAGIAN TENGAH', 'orjbt', 'd64cdbaea28554743fcbe8e6fe6c6c1d', 'default.jpg', 'Sudah'),
+(24, '2', 'DIVISI PENGEMBANGAN REGIONAL JAWA BAGIAN TENGAH', 'prjbt', 'c10d0308bb7fea1a32030a108cd07271', 'default.jpg', 'Sudah'),
+(25, '2', 'DIVISI KONSTRUKSI REGIONAL JAWA BAGIAN TIMUR, BALI DAN NUSA TENGGARA', 'krjbtbdnt', '0ac955ae8db46868ad7086270bc8fec3', 'default.jpg', 'Sudah'),
+(26, '2', 'DIVISI OPERASI REGIONAL JAWA BAGIAN TIMUR, BALI DAN NUSA TENGGARA', 'orjbtbdnt', '396a5c7856cb69c953bb8e43ba549ccc', 'default.jpg', 'Sudah'),
+(27, '2', 'DIVISI PENGEMBANGAN REGIONAL JAWA BAGIAN TIMUR, BALI DAN NUSA TENGGARA', 'prjbtbnt', 'ae5f01f6d82419b9f519af93776ac1ff', 'default.jpg', 'Sudah'),
+(28, '2', 'DIVISI KONSTRUKSI REGIONAL KALIMANTAN', 'krk', 'c90c6a0c3862adae4ccc0d874e2cb571', 'default.jpg', 'Sudah'),
+(29, '2', 'DIVISI OPERASI REGIONAL KALIMANTAN', 'ork', 'd1dc2d1ec5e32ada1fd8de859ccbaa6e', 'default.jpg', 'Sudah'),
+(30, '2', 'DIVISI PENGEMBANGAN REGIONAL KALIMANTAN', 'prk', 'a20c0d8fcaa9d371edcfbf2269519399', 'default.jpg', 'Sudah'),
+(31, '2', 'DIVISI KONSTRUKSI REGIONAL MALUKU DAN PAPUA', 'krmdp', 'd5715b1c05998f5802cd579d1f6da4dd', 'default.jpg', 'Sudah'),
+(32, '2', 'DIVISI OPERASI REGIONAL MALUKU DAN PAPUA', 'ormdp', '283a8545c31b2a22b25db6b99a7bf26d', 'default.jpg', 'Sudah'),
+(33, '2', 'DIVISI PENGEMBANGAN REGIONAL MALUKU DAN PAPUA', 'prmdp', 'd650e72b17f1314b7d4c718aa4f61526', 'default.jpg', 'Sudah'),
+(34, '2', 'DIVISI KONSTRUKSI REGIONAL SULAWESI', 'krs', 'cc4aaa1245234d2de974b392f8b4d880', 'default.jpg', 'Sudah'),
+(35, '2', 'DIVISI OPERASI REGIONAL SULAWESI', 'ors', '70b6401e3bc944ef019df3cc8f783564', 'default.jpg', 'Sudah'),
+(36, '2', 'DIVISI PENGEMBANGAN REGIONAL SULAWESI', 'prs', '7a51b166dfe235dfec2901a24ed2f671', 'default.jpg', 'Sudah'),
+(38, '2', 'DIVISI KONSTRUKSI REGIONAL SUMATERA', 'knrs', '802cca2f1342f74b71f472dc62b6eed7', 'default.jpg', 'Sudah'),
+(40, '2', 'DIVISI OPERASI REGIONAL SUMATERA', 'oprs', '7cf05ed3944422722c97f9128dcf5238', 'default.jpg', 'Sudah'),
+(42, '2', 'DIVISI PENGEMBANGAN REGIONAL SUMATERA', 'prst', 'e0b92ba527f3e2a570d78b195bf39993', 'default.jpg', 'Sudah'),
+(43, '2', 'DIVISI CORPORATE COMMUNICATION AND CSR', 'ccac', '275f9389db92d603e0937dc9687fd9a8', 'default.jpg', 'Sudah'),
+(45, '2', 'DIVISI GENERAL AFFAIRS', 'ga', '32d7508fe69220cb40af28441ef746d9', 'default.jpg', 'Sudah'),
+(46, '2', 'DIVISI HEALTH, SAFETY, SECURITY, AND ENVIRONMENT', 'hsse', 'eb0cdd2f192ba92c1f2e5d7c6fe6536e', 'default.jpg', 'Sudah'),
+(47, '2', 'DIVISI ORGANIZATION DEVELOPMENT', 'od', 'afc7e8a98f75755e513d9d5ead888e1d', 'default.jpg', 'Sudah'),
+(48, '2', 'DIVISI TALENT DEVELOPMENT', 'td', '626726e60bd1215f36719a308a25b798', 'default.jpg', 'Sudah'),
+(49, '2', 'DIVISI AKUNTANSI', 'akn', 'e7f98af504ea2c9bc4421a37429e71b1', 'default.jpg', 'Sudah'),
+(50, '2', 'DIVISI ANGGARAN', 'angg', 'a5ca70285255b55eb3e84da245df236c', 'default.jpg', 'Sudah'),
+(51, '2', 'DIVISI KEUANGAN', 'keu', 'ef57b36bddcc35421153b0ba1bf1b593', 'default.jpg', 'Sudah'),
+(52, '2', 'DIVISI SISTEM DAN TEKNOLOGI INFORMASI', 'sdti', '473aef8b293d6653897ee77c5619576d', 'default.jpg', 'Sudah'),
+(53, '2', 'DIVISI TREASURY', 'treasury', '51b77f45e04a44c06147ddf8c0ecbfec', 'default.jpg', 'Sudah'),
+(54, '2', 'DIVISI ENERGI BARU DAN TERBARUKAN', 'ebdt', '34c5fc46ac397b8d46c7e41a641df310', 'default.jpg', 'Sudah'),
+(55, '2', 'DIVISI PENGADAAN STRATEGIS', 'ps', '8812c36aa5ae336c2a77bf63211d899a', 'default.jpg', 'Sudah'),
+(56, '2', 'DIVISI PERENCANAAN PENGADAAN STRATEGIS', 'pps', '98aa876e2d8a8296926f8c9782d44f40', 'default.jpg', 'Sudah'),
+(57, '2', 'DIVISI PERIJINAN DAN PERTANAHAN', 'pdp', '452af0ea3b1515c56f8f754cde7d2ea4', 'default.jpg', 'Sudah'),
+(58, '2', 'DIVISI PROJECT MANAGEMENT OFFICE', 'pmo', 'e9f662f92d4d40288329870c9a597afb', 'default.jpg', 'Sudah'),
+(59, '2', 'DIVISI SUPPLY CHAIN MANAGEMENT', 'scm', '7b3a7a628c6e84b2b00d8089edb3b4b1', 'default.jpg', 'Sudah'),
+(60, '2', 'DIVISI BATUBARA', 'batubara', '6e19c395ebc4c58f266b4faefd6bf757', 'default.jpg', 'Sudah'),
+(61, '2', 'DIVISI GAS DAN BBM', 'gdb', 'ca3e1c20efd5690f9789a87c66a5047a', 'default.jpg', 'Sudah'),
+(62, '2', 'DIVISI PENGADAAN IPP', 'pi', '72ab8af56bddab33b269c5964b26620a', 'default.jpg', 'Sudah'),
+(63, '2', 'DIVISI KEPATUHAN', 'kepatuhan', '988aef40ddf8c32393eacd02441641d7', 'default.jpg', 'Sudah'),
+(64, '2', 'DIVISI MANAJEMEN RISIKO', 'mr', 'd9394066970e44ae252fd0347e58c03e', 'default.jpg', 'Sudah'),
+(65, '2', 'DIVISI PERENCANAAN KORPORAT', 'pk', '1cd3c693132f4c31b5b5e5f4c5eed6bd', 'default.jpg', 'Sudah'),
+(67, '2', 'DIVISI PERENCANAAN SISTEM', 'persis', 'e173302028765321bc1abe6ffbd60808', 'default.jpg', 'Sudah'),
+(68, '2', 'DIVISI PORTFOLIO MANAGEMENT', 'pm', '5109d85d95fece7816d9704e6e5b1279', 'default.jpg', 'Sudah'),
+(69, '2', 'DIVISI CHANGE MANAGEMENT OFFICE', 'cmo', '99330263c899fa050dc18add519cae39', 'default.jpg', 'Sudah'),
+(70, '2', 'DIVISI HUKUM KORPORAT', 'hk', 'ae4171856a75f7b67d51fc0e1f95902e', 'default.jpg', 'Sudah'),
+(71, '2', 'DIVISI PENGENDALIAN KINERJA KORPORAT', 'pkk', '59164fab9d03cc63b28f409d928022a0', 'default.jpg', 'Sudah'),
+(72, '2', 'SATUAN PENGAWASAN INTERN', 'spi', '0b0760e072413088ea8460c3b4f43dbe', 'default.jpg', 'Sudah'),
+(73, '2', 'SEKRETARIS PERUSAHAAN', 'sk', '41d6ad0761a5d27a9e1bd567041ce9e9', 'default.jpg', 'Sudah'),
+(82, '1', 'Millenia Rusbandi', 'meli', '315fef7b8d30f99d6964f489ee4c9828', 'default.png', 'Sudah');
 
 --
 -- Indexes for dumped tables
@@ -813,7 +877,8 @@ ALTER TABLE `univ`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -829,7 +894,7 @@ ALTER TABLE `divisi`
 -- AUTO_INCREMENT for table `form_magang`
 --
 ALTER TABLE `form_magang`
-  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `header_home`
@@ -847,7 +912,7 @@ ALTER TABLE `jurusan`
 -- AUTO_INCREMENT for table `kamus`
 --
 ALTER TABLE `kamus`
-  MODIFY `id_kamus` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kamus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `kontak`
@@ -859,43 +924,49 @@ ALTER TABLE `kontak`
 -- AUTO_INCREMENT for table `konten`
 --
 ALTER TABLE `konten`
-  MODIFY `id_konten` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_konten` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `mhs`
 --
 ALTER TABLE `mhs`
-  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `nota_dinas`
 --
 ALTER TABLE `nota_dinas`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `notif`
 --
 ALTER TABLE `notif`
-  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `sk_selesai_magang`
 --
 ALTER TABLE `sk_selesai_magang`
-  MODIFY `id_sksm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sksm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `surat_konfirm`
 --
 ALTER TABLE `surat_konfirm`
-  MODIFY `id_srtkonfirm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_srtkonfirm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `univ`
+--
+ALTER TABLE `univ`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=308;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- Constraints for dumped tables
