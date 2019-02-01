@@ -246,13 +246,20 @@ class manageData extends CI_Controller {
         $jurusan = $this->input->post('jurusan');
         $divisi = $this->input->post('divisi');
 
-        $data = array(
-            'id_jurusan' => $jurusan,
-            'id_divisi' => $divisi
-        );
+        $where = array('id_jurusan' => $jurusan);
+        $where1 = array('id_divisi' => $divisi);
+        $select = $this->models->get_selected_where('kamus',$where,$where1)->result();
+        if (count($select)>0){
+            echo "<script>alert('Data yang anda masukkan sudah ada'); </script>";
+        }else{
+            $data = array(
+                'id_jurusan' => $jurusan,
+                'id_divisi' => $divisi
+            );
 
-        $this->models->add_data('kamus', $data);
-        redirect(base_url('admin/manageData/kamus'));
+            $this->models->add_data('kamus', $data);
+        }
+        redirect(base_url('admin/manageData/kamus'),'refresh');
     }
 
     public function edt_kamus($id)

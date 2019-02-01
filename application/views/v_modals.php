@@ -134,7 +134,7 @@
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h5 class="modal-title"><b>Tambah Admin Per-Divisi</b></h5>
+                <h5 class="modal-title"><b>Tambah Kamus</b></h5>
             </div>
             <div class="modal-body">
                 <form enctype="multipart/form-data" action="<?= base_url('admin/manageData/add_kamus') ?>" method="post">
@@ -142,6 +142,7 @@
                         <label for="jurusan">Jurusan</label>
                         <?php $jurusan=$this->db->get('jurusan') ?>
                         <select id="jurusan" class="form-control" name="jurusan" required>
+                            <option class="hidden" selected disabled>-Pilih Jurusan-</option>
                             <?php foreach($jurusan->result() as $a) {?>
                                 <option value="<?= $a->id_jurusan ?>"><?= $a->jurusan ?></option>
                             <?php } ?>
@@ -150,6 +151,7 @@
                         <label for="divisi">Divisi</label>
                         <?php $divisi=$this->db->get('divisi') ?>
                         <select id="divisi" class="form-control" name="divisi" required>
+                            <option class="hidden" selected disabled>-Pilih Divisi-</option>
                             <?php foreach($divisi->result() as $key) {?>
                                 <option value="<?= $key->id_divisi ?>"><?= $key->divisi ?></option>
                             <?php } ?>

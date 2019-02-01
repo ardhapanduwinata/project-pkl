@@ -18,6 +18,13 @@ class models extends CI_Model {
         return $this->db->get_where($table,$where);
     }
 
+    public function get_selected_where($table,$where,$where1)
+    {
+        $this->db->where($where);
+        $this->db->where($where1);
+        return $this->db->get($table);
+    }
+
     public function add_data($table, $data)
     {
         $this->db->insert($table, $data);

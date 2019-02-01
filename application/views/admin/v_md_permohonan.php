@@ -81,7 +81,7 @@ function tgl_indo($tanggal){
                                         if (empty($a->id_kamus)){?>
                                             <form enctype="multipart/form-data" action="<?= base_url('admin/manageData/updateDivisi/'.$a->id_form) ?>" method="post">
                                                 <select class="form-control" name="divisi" onchange="this.form.submit()">
-                                                    <option class="hidden" selected disabled>Divisi</option>
+                                                    <option class="hidden" selected disabled>-Pilih Divisi-</option>
                                                     <?php $where = array('id_jurusan' => $a->id_jurusan);
                                                     $divisi = $this->db->select('*')->from('kamus')->join('divisi', 'kamus.id_divisi=divisi.id_divisi')->where($where)->get()->result();
                                                     foreach($divisi as $row) { ?>
